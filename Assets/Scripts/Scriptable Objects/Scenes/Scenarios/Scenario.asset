@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306bb26a6dc49594a93f3c1e031a10c7, type: 3}
+  m_Name: Scenario
+  m_EditorClassIdentifier: 
+  id: 1
+  text:
+  - This is a test Scenario. This Scenario also contains a dialogue. To see the Dialogue
+    please press the button below
+  - dialogue here
+  exit_text:
+  - Default Button Text
+  - Press to start the Dialogue
+  scene_exits:
+  - '[1,0,0,0][1,0,0,0]'
+  scenario_dialogues:
+  - {fileID: 11400000, guid: 0a15d8c65dd1f274e86574820c9f94d8, type: 2}

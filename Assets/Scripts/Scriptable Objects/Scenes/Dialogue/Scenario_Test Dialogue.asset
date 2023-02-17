@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ed339f40d44eae4ebce6e5fd6b580ac, type: 3}
+  m_Name: Scenario_Test Dialogue
+  m_EditorClassIdentifier: 
+  id: 0
+  text:
+  - 'This dialogue has been inserted within the Test Scenario. This is fully considered
+    a dialogue, watch:'
+  - Now this is the end of the dialogue, and from here on out the test scenario will
+    proceed
+  exit_text:
+  - Default Button
+  - You stop and watch
+  scene_exits:
+  - '[1,0,0,0][1,0,0,0]'
+  responses:
+  - Default Response
+  - You stop to watch. You realize that, if you are seeing a direct response, it
+    means that this must indeed be a dialogue!

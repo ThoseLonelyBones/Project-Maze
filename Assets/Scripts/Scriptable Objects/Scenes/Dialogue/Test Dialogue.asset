@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ed339f40d44eae4ebce6e5fd6b580ac, type: 3}
+  m_Name: Test Dialogue
+  m_EditorClassIdentifier: 
+  id: 0
+  text:
+  - Hello! This is the Demonstration of the newly and improved inner workings of
+    Horn of Ammon
+  - Horn of Ammon is an interactive textual adventure designed to document and improve
+    muscle-memory password memorization!
+  - Of course that by itself sounds rather dull. However, this is a fully fledged
+    game, not just a slightly-more-tollerable group work. You are fully welcomed
+    and encouraged to engage in the game's story, characters and atmosphere!
+  - To interact with the game, Choice Buttons will be used. These choice buttons
+    appear at the end of certain text (will it be a dialogue or a scenario).  Here,
+    try to interact with me!
+  - That was an interaction you just did! The text you saw after pressing the button
+    was a Response. Responses are unique to these scenes (aka Dialogues).
+  - This is the end of the test dialogue. It's time to start the test scenario.
+  exit_text:
+  - Button
+  - Wave Hello
+  - Blow a Kiss
+  - Do a Thumbs Up Gesture
+  - Do Nothing
+  scene_exits:
+  - '[1,2,3,4][4,4,4,4]'
+  responses:
+  - This is the default response.
+  - You wave hello... but the game cannot wave back.
+  - You blow a kiss to the game. The game blushes.
+  - You do a Thumbs-Up, the significantly-cooler hello. The game now thinks you are
+    pretty cool too.
+  - You do nothing... and the game notices (you still pressed the button, dummy).
