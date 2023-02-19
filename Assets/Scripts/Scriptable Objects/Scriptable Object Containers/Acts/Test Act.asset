@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa4bf07e5753b7e41bd3c7439c26ca5f, type: 3}
   m_Name: Test Act
   m_EditorClassIdentifier: 
-  act_scenes:
-  - {fileID: 11400000, guid: c3900464e6823a64ba6831f4e2316848, type: 2}
-  act_dialogue:
-  - {fileID: 11400000, guid: ca8f74d8b3345fc4eb2f2724dba9dae0, type: 2}
+  actid: 0
+  act_elements:
+  - {fileID: 11400000, guid: f7480e2781840b9418efaa5421286450, type: 2}
+  - {fileID: 11400000, guid: 867e6da4c3fdadb45b4393634d25fb8a, type: 2}

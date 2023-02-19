@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 /* 
  * The SO_Director (or Scriptable Object Director) is the script which governs the distribution and handling of information contained in Scriptable Object to other parts of the code.
@@ -22,36 +23,40 @@ using UnityEngine.UI;
  */
 
 
+
 public class SO_Director : MonoBehaviour
 {
+    public MainGameplayLoop loop;
     /*
-     * Progression Elements are loaded only when needed
+     * Progression Elements are loaded only when needed, only a maximum of two Scenes are loaded at once: SOT_Scene and SOT_Scenario.
      */
-    public SOT_Scene    current_scene;
+    public SOT_Scene current_scene;
 
+    /*
+     * Variables relative to the Dialogue-within-Scenarios handling, used by ReadFlag, case a.
+     */
     public SOT_Scenario alternate_scenario = null;
-    public int          alternate_index;
-    private int         alt_scenario_count = 0;
+    public int alternate_index;
+    private int alt_scenario_count = 0;
 
 
     /*
-     * GameObject and Text still need to be accessed, even with the TextDirector script actually putting in the text. 
+     * GameObject and Text still need to be accessed, even with the TextDirector script actually putting in the text. (Or... we don't. Not if we make a function that specifically writes to buttons, called ButtonWrite)
      */
 
-    public GameObject   button1 = GameObject.Find("Button 1"), 
-                        button2 = GameObject.Find("Button 2"), 
-                        button3 = GameObject.Find("Button 3"), 
-                        button4 = GameObject.Find("Button 4");
+    public GameObject   button1,
+                        button2,
+                        button3,
+                        button4;
 
-    public Text         button1Text,
-                        button2Text,
-                        button3Text,
-                        button4Text;
+    public GameObject textDisplay;
 
-    public Text         TextDisplay;
+    public TextMeshProUGUI   button1Text,
+                             button2Text,
+                             button3Text,
+                             button4Text;
 
-    public int[]        exits_array = { 0, 0, 0, 0 };
-
+    public TextMeshProUGUI TextDisplay;
 
     /*  
      *  CallExits(int scene_index) is a function that returns an Int array of values, exit[], which contains (in order of buttons) the IDs that their respective button will create the text for.
@@ -59,7 +64,7 @@ public class SO_Director : MonoBehaviour
      *  
      *      [x1,x2,x3,x4][b1,b2,b3,b4]
      *  
-     *  The first square bracket contains the ID value of the text each button is assigned to, as shown in the scenario_exits variable in the SOT_Scenario.cs script (line 78)
+     *  The first square bracket contains the ID value of the text each button is assigned to, as shown in the scene_exits variable in the SOT_Scene.cs script (line 62)
      *  These values are also subsequently converted from strings to integer and then passed as an int[] to the GameDirector script.
      *  The second square bracket contains the ID value of the text inside the respective button, as shown in the exit_text variable in the SOT_Scenario.cs script (line 56)
      *  These values are not returned to the GameDirector function. Instead, they are passed to the TextDirector script to be formatted correctly and then subsequently put inside each button.
@@ -67,11 +72,22 @@ public class SO_Director : MonoBehaviour
      * 
      */
 
-
-
-    void CallExits(int scene_index)
+    private void Awake()
     {
-        exits_array = { 0, 0, 0, 0 };
+        loop = GetComponent<MainGameplayLoop>();
+        button1 = GameObject.Find("Button 1");
+        button2 = GameObject.Find("Button 2");
+        button3 = GameObject.Find("Button 3");
+        button4 = GameObject.Find("Button 4");
+
+        textDisplay = GameObject.Find("Text Display");
+        TextDisplay = textDisplay.GetComponent<TextMeshProUGUI>();
+    }
+
+    public int[] CallExits(int scene_index)
+    {
+        int[] exits_array = { 0, 0, 0, 0 };
+
         string[] current_scene_exits = current_scene.scene_exits;
 
         string exits_editing = current_scene_exits[scene_index];            // => exits_editing = [11,12,13,14][1,2,3,4]
@@ -128,6 +144,8 @@ public class SO_Director : MonoBehaviour
            }
         }
 
+        return exits_array;
+
     }
 
     /*
@@ -145,9 +163,8 @@ public class SO_Director : MonoBehaviour
      * Other steps that need to be undertaken are done in the Main Gameplay Loop script
      */
 
-    char SceneFlags(int scene_index)
+    public char SceneFlags(int scene_index)
     {      
-
         switch(current_scene.scene_flags[scene_index])
         {
             case 'a':
@@ -156,7 +173,6 @@ public class SO_Director : MonoBehaviour
                     try
                     {
                         alternate_scenario = (SOT_Scenario)current_scene;
-
                         alternate_index = scene_index + 1;                                               // Do I really need this? Check main gameplay loop. <= Yeah, you do.
                         current_scene = alternate_scenario.scenario_dialogues[alt_scenario_count];
                         ChangeScenarioText(0);
@@ -174,16 +190,14 @@ public class SO_Director : MonoBehaviour
                         ChangeScenarioText(alternate_index);
 
                         alternate_scenario = null;
-                        alternate_index = 0;
                     }
                 }
                 return 'a';
             case 'b':
-                // Call Exits
-                CallExits(scene_index);
+                // Call Exits is called on the main gameplay loop (needs the int[] return to work)
                 return 'b';
             case 'c':
-                // Change Scenario Text
+                // Change Scenario Text -> this prompts into a change of the index.
                 ChangeScenarioText(scene_index + 1);
                 return 'c';
             default:
@@ -193,12 +207,21 @@ public class SO_Director : MonoBehaviour
 
     }
 
-    int[] ReturnExits()
+    public int ChangeScene(SOT_Scene newscene)
     {
-        return exits_array;
+        if(newscene != null)
+        {
+            current_scene = newscene;
+        }
+        else
+        {
+            Debug.Log("This is wrong...");
+        }
+        
+        return 0;
     }
 
-    void ChangeScenarioText(int id)
+    public void ChangeScenarioText(int id)
     {
         TextDisplay.text = "";
         TextDisplay.text = current_scene.text[id];                                                          // => Replace this with TextDirector's Writing Function when done!
