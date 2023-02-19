@@ -35,6 +35,7 @@ MonoBehaviour:
   - Do Nothing
   scene_exits:
   - '[1,2,3,4][4,4,4,4]'
+  scene_flags: 63006300630062006300
   responses:
   - This is the default response.
   - You wave hello... but the game cannot wave back.

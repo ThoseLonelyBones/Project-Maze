@@ -58,6 +58,8 @@ public class SO_Director : MonoBehaviour
 
     public TextMeshProUGUI TextDisplay;
 
+    public int exit_index = 0;
+
     /*  
      *  CallExits(int scene_index) is a function that returns an Int array of values, exit[], which contains (in order of buttons) the IDs that their respective button will create the text for.
      *  To check which buttons to activate and to check what text is required to be placed on each button, it takes the current_scenario's scenario_exits string[], which is formatted like this:
@@ -74,40 +76,86 @@ public class SO_Director : MonoBehaviour
 
     private void Awake()
     {
+        Debug.Log("Awaking SO_Director");
         loop = GetComponent<MainGameplayLoop>();
+
         button1 = GameObject.Find("Button 1");
         button2 = GameObject.Find("Button 2");
         button3 = GameObject.Find("Button 3");
         button4 = GameObject.Find("Button 4");
 
+        if(button1 == null || button2 == null || button3 == null || button4 == null)
+        {
+            Debug.Log("Buttons are not available?");
+        }
+        else
+        {
+            Debug.Log("Buttons are available!");
+        }
+
+        button1Text = button1.GetComponentInChildren<TextMeshProUGUI>();
+        button2Text = button2.GetComponentInChildren<TextMeshProUGUI>();
+        button3Text = button3.GetComponentInChildren<TextMeshProUGUI>();
+        button4Text = button4.GetComponentInChildren<TextMeshProUGUI>();
+
+        
+
+        if (button1Text == null || button2Text == null || button3Text == null || button4Text == null)
+        {
+            Debug.Log("Buttons text is not available?");
+        }
+        else
+        {
+            Debug.Log("Button text is available!");
+        }
+
         textDisplay = GameObject.Find("Text Display");
         TextDisplay = textDisplay.GetComponent<TextMeshProUGUI>();
+
+        if(textDisplay != null)
+        {
+            if(TextDisplay == null)
+            {
+                Debug.Log("Object available, text unavailable?");
+            }
+            else
+            {
+                Debug.Log("Text Display is available!");
+            }
+        }
+        else
+        {
+            Debug.Log("Object Unavailable?");               
+        }
     }
 
-    public int[] CallExits(int scene_index)
+    public int[] CallExits()
     {
         int[] exits_array = { 0, 0, 0, 0 };
 
         string[] current_scene_exits = current_scene.scene_exits;
 
-        string exits_editing = current_scene_exits[scene_index];            // => exits_editing = [11,12,13,14][1,2,3,4]
+        Debug.Log(current_scene_exits[0]);
+
+        string exits_editing = current_scene_exits[exit_index];            // => exits_editing = [11,12,13,14][1,2,3,4]
         // Step 1 = Merge '][' into ','                                  
         exits_editing = exits_editing.Replace("][", ",");                   // => exits_editing = [11,12,13,14,1,2,3,4]
         // Step 2 = Delete "[" and "]"
         exits_editing = exits_editing.Replace("[", "");                     // => exits_editing = 11,12,13,14,1,2,3,4]
         exits_editing = exits_editing.Replace("]", "");                     // => exits_editing = 11,12,13,14,1,2,3,4
-        // Step 3 = Split the String by "," -> The first 4 values are the Button values (exits[], the return integer array)
-        //                                  -> The last 4 values are the value of exit_text (the button's text)                                    
+        // Step 3 = Split the String by "," -> The first 4 values are the value of exit_text (the button's text)
+        //                                  -> The last 4 values  are the Button values (exits[], the return integer array)                                  
         string[] exits_formatted = exits_editing.Split(",");
         // Step 4 = exits_formatted is now usable in the next for loop! The example above now looks something like this:
         //
         //  exits_formatted[0] = 11; exits_formatted[3] = 14; exits_formatted[4] = 1; exits_formatted[7] = 4 
         // However this is still a string. So it still needs to be formatted a bit to actually work, as seen below using int.Parse
-
+        Debug.Log(exits_formatted);
 
         for (int x = 0; x < 4; x++)
         {
-           exits_array[x] = int.Parse(exits_formatted[x]);
+           exits_array[x] = int.Parse(exits_formatted[x + 4]);
+            Debug.Log("Exit Array at Pos:" + x + "is: " + exits_array[x]);
            if(exits_array[x] > 0)
            {
                 switch(x)
@@ -116,25 +164,25 @@ public class SO_Director : MonoBehaviour
                         // Activate Button 1;
                         button1Text.text = "";                                                              // => Replace this with TextDirector's CleanseText Function when done!
                         button1.SetActive(true);
-                        button1Text.text = current_scene.exit_text[int.Parse(exits_formatted[x + 4])];      // => Replace this with TextDirector's Writing Function when done!
+                        button1Text.text = current_scene.exit_text[int.Parse(exits_formatted[x])];      // => Replace this with TextDirector's Writing Function when done!
                         break;
                     case 1:
                         // Activate Button 2;
                         button2Text.text = "";                                                              // => Replace this with TextDirector's CleanseText Function when done!
                         button2.SetActive(true);
-                        button2Text.text = current_scene.exit_text[int.Parse(exits_formatted[x + 4])];      // => Replace this with TextDirector's Writing Function when done!
+                        button2Text.text = current_scene.exit_text[int.Parse(exits_formatted[x])];      // => Replace this with TextDirector's Writing Function when done!
                         break;
                     case 2:
                         // Activate Button 3;
                         button3Text.text = "";                                                              // => Replace this with TextDirector's CleanseText Function when done!
                         button3.SetActive(true);
-                        button3Text.text = current_scene.exit_text[int.Parse(exits_formatted[x + 4])];      // => Replace this with TextDirector's Writing Function when done!
+                        button3Text.text = current_scene.exit_text[int.Parse(exits_formatted[x])];      // => Replace this with TextDirector's Writing Function when done!
                         break;
                     case 3:
                         // Active Button 4;
                         button4Text.text = "";                                                               // => Replace this with TextDirector's CleanseText Function when done!
                         button4.SetActive(true);
-                        button4Text.text = current_scene.exit_text[int.Parse(exits_formatted[x + 4])];      // => Replace this with TextDirector's Writing Function when done!
+                        button4Text.text = current_scene.exit_text[int.Parse(exits_formatted[x])];          // => Replace this with TextDirector's Writing Function when done!
                         break;
                     default:
                         Debug.Log("LonelyBones has made the advancement [How Did We Get Here?]");
@@ -144,6 +192,7 @@ public class SO_Director : MonoBehaviour
            }
         }
 
+        exit_index++;
         return exits_array;
 
     }
@@ -226,5 +275,7 @@ public class SO_Director : MonoBehaviour
         TextDisplay.text = "";
         TextDisplay.text = current_scene.text[id];                                                          // => Replace this with TextDirector's Writing Function when done!
     }
+
+    // Dialogue Response
 
 }

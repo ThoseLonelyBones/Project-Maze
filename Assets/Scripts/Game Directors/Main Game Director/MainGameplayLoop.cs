@@ -37,7 +37,7 @@ public class MainGameplayLoop : MonoBehaviour
 
     public GameObject       title;
 
-    public bool             progressText = false;
+    public bool             progressText = true;
     private bool            alternateScene = false;
     
 
@@ -94,44 +94,72 @@ public class MainGameplayLoop : MonoBehaviour
     {
         for(int x = 0; x < 4; x++)
         {
+            Debug.Log("ButtonSet exit for button n°" + (x + 1) + "is " + exits[x]);
             if(exits[x] > 0)
             {
                 switch(x)
                 {
                     case 0:
                         button1Exit = exits[x];
-                        button_1.onClick.AddListener(() => buttonClick(exits[x]));                       // This may not work?
+                        button_1.onClick.AddListener(() => buttonClick("Button 1"));                       // This may not work?
                         button1.SetActive(true);
-                        return;
+                        break;
                     case 1:
                         button2Exit = exits[x];
-                        button_2.onClick.AddListener(() => buttonClick(exits[x]));                       // This may not work?
+                        button_2.onClick.AddListener(() => buttonClick("Button 2"));                       // This may not work?
                         button2.SetActive(true);
-                        return;
+                        break;
                     case 2:
                         button3Exit = exits[x];
-                        button_3.onClick.AddListener(() => buttonClick(exits[x]));                       // This may not work?
+                        button_3.onClick.AddListener(() => buttonClick("Button 3"));                       // This may not work?
                         button3.SetActive(true);
-                        return;
+                        break;
                     case 3:
                         button4Exit = exits[x];
-                        button_4.onClick.AddListener(() => buttonClick(exits[x]));                       // This may not work?
+                        button_4.onClick.AddListener(() => buttonClick("Button 4"));                       // This may not work?
                         button4.SetActive(true);
-                        return;
+                        break;
                     default:
                         Debug.Log("There was supposed to be a cool error message here but I forgor :skull:");
-                        return;
+                        break;
                 }
             }
         }
+
+        progressText = false;
     }
 
     // Rework later?
-    public void buttonClick(int exit)
+    public void buttonClick(string buttonname)
     {
-        so_director.ChangeScenarioText(exit);
-        index = exit;
+        switch(buttonname)
+        {
+            case "Button 1":
+                so_director.ChangeScenarioText(button1Exit);
+                index = button1Exit;
+                break;
+            case "Button 2":
+                so_director.ChangeScenarioText(button2Exit);
+                index = button2Exit;
+                break;
+            case "Button 3":
+                so_director.ChangeScenarioText(button3Exit);
+                index = button3Exit;
+                break;
+            case "Button 4":
+                so_director.ChangeScenarioText(button4Exit);
+                index = button4Exit;
+                break;
+            default:
+                Debug.Log("How could this happen to me?");
+                break;
+        }
+
+        buttonsHide();
+        progressText = true;
     }
+
+
 
 
     public void readFlag(char flag)
@@ -151,7 +179,7 @@ public class MainGameplayLoop : MonoBehaviour
                 }
                 return;
             case 'b':
-                buttonsSet(so_director.CallExits(index));
+                buttonsSet(so_director.CallExits());
                 return;
             case 'c':
                 index++;
@@ -201,9 +229,9 @@ public class MainGameplayLoop : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.Space) && progressText)
         {
-            if(TextDisplay.text == so_director.current_scene.text[index])
+            if(TextDisplay.text == so_director.current_scene.text[index])               // Change to saved text (which can vary in case of a response)
             {
                 readFlag(so_director.SceneFlags(index));
             }
