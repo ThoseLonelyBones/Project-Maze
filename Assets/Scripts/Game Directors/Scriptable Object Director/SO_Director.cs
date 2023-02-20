@@ -59,6 +59,7 @@ public class SO_Director : MonoBehaviour
     public TextMeshProUGUI TextDisplay;
 
     public int exit_index = 0;
+    private int[] response = { 0, 0, 0, 0 };
 
     /*  
      *  CallExits(int scene_index) is a function that returns an Int array of values, exit[], which contains (in order of buttons) the IDs that their respective button will create the text for.
@@ -154,6 +155,7 @@ public class SO_Director : MonoBehaviour
 
         for (int x = 0; x < 4; x++)
         {
+           response[x] = int.Parse(exits_formatted[x]);
            exits_array[x] = int.Parse(exits_formatted[x + 4]);
             Debug.Log("Exit Array at Pos:" + x + "is: " + exits_array[x]);
            if(exits_array[x] > 0)
@@ -270,12 +272,58 @@ public class SO_Director : MonoBehaviour
         return 0;
     }
 
-    public void ChangeScenarioText(int id)
+    public string ChangeScenarioText(int id)
     {
         TextDisplay.text = "";
         TextDisplay.text = current_scene.text[id];                                                          // => Replace this with TextDirector's Writing Function when done!
+        return TextDisplay.text;
     }
 
     // Dialogue Response
+
+    public string DialogueResponse(string button_name)
+    {
+        int x = 4;
+
+        switch(button_name)
+        {
+            case "Button 1":
+                x = 0;
+                break;
+            case "Button 2":
+                x = 1;
+                break;
+            case "Button 3":
+                x = 2;
+                break;
+            case "Button 4":
+                x = 3;
+                break;
+            default:
+                Debug.Log("This shouldn't be happening?");
+                break;
+        }
+
+        try
+        {
+            SOT_Dialogue dialogue = (SOT_Dialogue)current_scene;
+            TextDisplay.text = "";
+            if(x < 4)
+            {
+                TextDisplay.text = dialogue.responses[response[x]];                                        // => Replace this with TextDirector's Writing Function when done!      
+                return dialogue.responses[response[x]];
+            }
+            else
+            {
+                return "";
+            }
+        }
+        catch (InvalidCastException)
+        {
+            Debug.Log("Well you got me: by all accounts, this doesn't make sense.");
+            return "";
+        }
+        
+    }
 
 }

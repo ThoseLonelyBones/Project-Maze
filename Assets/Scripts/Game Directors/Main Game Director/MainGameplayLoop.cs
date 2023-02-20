@@ -39,6 +39,13 @@ public class MainGameplayLoop : MonoBehaviour
 
     public bool             progressText = true;
     private bool            alternateScene = false;
+    public bool             isResponse = false;
+
+
+    private string          button_response;
+    public string           text_check;
+
+    public SOT_Scene scene;
     
 
     /*
@@ -129,30 +136,49 @@ public class MainGameplayLoop : MonoBehaviour
         progressText = false;
     }
 
-    // Rework later?
     public void buttonClick(string buttonname)
     {
-        switch(buttonname)
+        button_response = buttonname;
+
+        if (so_director.current_scene is SOT_Dialogue)
         {
-            case "Button 1":
-                so_director.ChangeScenarioText(button1Exit);
-                index = button1Exit;
-                break;
-            case "Button 2":
-                so_director.ChangeScenarioText(button2Exit);
-                index = button2Exit;
-                break;
-            case "Button 3":
-                so_director.ChangeScenarioText(button3Exit);
-                index = button3Exit;
-                break;
-            case "Button 4":
-                so_director.ChangeScenarioText(button4Exit);
-                index = button4Exit;
-                break;
-            default:
-                Debug.Log("How could this happen to me?");
-                break;
+            Debug.Log("This current scene is a dialogue");
+        }
+        else
+        {
+            Debug.Log("The is flag just doesn't work!");
+        }
+
+        if (so_director.current_scene is SOT_Dialogue && !isResponse)
+        {
+            Debug.Log("This is a response!");
+            text_check = so_director.DialogueResponse(buttonname);
+            isResponse = true;
+        }
+        else
+        {
+            switch (buttonname)
+            {
+                case "Button 1":
+                    so_director.ChangeScenarioText(button1Exit);
+                    index = button1Exit;
+                    break;
+                case "Button 2":
+                    so_director.ChangeScenarioText(button2Exit);
+                    index = button2Exit;
+                    break;
+                case "Button 3":
+                    so_director.ChangeScenarioText(button3Exit);
+                    index = button3Exit;
+                    break;
+                case "Button 4":
+                    so_director.ChangeScenarioText(button4Exit);
+                    index = button4Exit;
+                    break;
+                default:
+                    Debug.Log("How could this happen to me?");
+                    break;
+            }
         }
 
         buttonsHide();
@@ -183,7 +209,7 @@ public class MainGameplayLoop : MonoBehaviour
                 return;
             case 'c':
                 index++;
-                so_director.ChangeScenarioText(index);
+                text_check = so_director.ChangeScenarioText(index);
                 return;
             default:
                 Debug.Log("How has this even happened? Is this even possible?");
@@ -193,29 +219,35 @@ public class MainGameplayLoop : MonoBehaviour
 
     public void startGame()
     {
-        SOT_Act start_act = sot_play.all_acts[0];
-        if(start_act == null)
-        {
-            Debug.Log("Start Act is null?");
-        }
-        else
-        {
-            Debug.Log("Starting Act!");
-        }
-        SOT_Scene start_scene = start_act.act_elements[0];
-        if(start_scene == null)
-        {
-            Debug.Log("Start Scene is null?");
-        }
-        else
-        {
-            Debug.Log("Starting Scene!");
-        }
+        /*
+            SOT_Act start_act = sot_play.all_acts[0];
+            if(start_act == null)
+            {
+                Debug.Log("Start Act is null?");
+            }
+            else
+            {
+                Debug.Log("Starting Act!");
+            }
+            SOT_Scene start_scene = start_act.act_elements[0];
+            if(start_scene == null)
+            {
+                Debug.Log("Start Scene is null?");
+            }
+            else
+            {
+                Debug.Log("Starting Scene!");
+            }
 
-        index = so_director.ChangeScene(start_scene);
+            index = so_director.ChangeScene(start_scene);
+        */
 
         index = so_director.ChangeScene(sot_play.all_acts[0].act_elements[0]);
         so_director.ChangeScenarioText(index);
+
+        text_check = so_director.current_scene.text[index];
+
+        progressText = true;
     }
 
     // Start is called before the first frame update
@@ -231,9 +263,17 @@ public class MainGameplayLoop : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space) && progressText)
         {
-            if(TextDisplay.text == so_director.current_scene.text[index])               // Change to saved text (which can vary in case of a response)
+            if(TextDisplay.text == text_check)               // Change to saved text (which can vary in case of a response)
             {
-                readFlag(so_director.SceneFlags(index));
+                if(!isResponse)
+                {
+                    readFlag(so_director.SceneFlags(index));
+                }
+                else
+                {
+                    buttonClick(button_response);
+                    isResponse = false;
+                }
             }
             else
             {
