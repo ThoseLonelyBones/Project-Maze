@@ -1497,6 +1497,7 @@ GameObject:
   - component: {fileID: 1837130504}
   - component: {fileID: 1837130503}
   - component: {fileID: 1837130505}
+  - component: {fileID: 1837130506}
   m_Layer: 0
   m_Name: GameplayDirector
   m_TagString: Untagged
@@ -1516,7 +1517,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ec2ed50cd2c03a4a81c699790ae3569, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  so_director: {fileID: 0}
   sot_play: {fileID: 11400000, guid: c41614654d3c9e841b256f98982f80fa, type: 2}
   textDisplay: {fileID: 346464218}
   button_1: {fileID: 698902456}
@@ -1534,6 +1534,10 @@ MonoBehaviour:
   button4Text: {fileID: 784755369}
   title: {fileID: 81481772}
   progressText: 0
+  alternateScene: 0
+  isResponse: 0
+  text_check: 
+  scene: {fileID: 0}
 --- !u!4 &1837130504
 Transform:
   m_ObjectHideFlags: 0
@@ -1562,7 +1566,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loop: {fileID: 0}
+  writing_director: {fileID: 1837130506}
   current_scene: {fileID: 0}
+  text_to_write: 
   alternate_scenario: {fileID: 0}
   alternate_index: 0
   button1: {fileID: 0}
@@ -1575,6 +1581,20 @@ MonoBehaviour:
   button3Text: {fileID: 0}
   button4Text: {fileID: 0}
   TextDisplay: {fileID: 0}
+  exit_index: 0
+--- !u!114 &1837130506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1837130502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e24eba9b9686eb48b7ab1a30fee67b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Text: 
 --- !u!1 &1977150166
 GameObject:
   m_ObjectHideFlags: 0

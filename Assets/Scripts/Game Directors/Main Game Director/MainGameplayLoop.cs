@@ -6,8 +6,9 @@ using UnityEngine.UI;
 
 public class MainGameplayLoop : MonoBehaviour
 {
-    public SO_Director     so_director;
-    public  SOT_Play        sot_play;
+   // private Writing_Director    writing_director; 
+    private SO_Director         so_director;
+    public  SOT_Play            sot_play;
 
     public static GameObject       button1,
                                    button2,
@@ -38,7 +39,7 @@ public class MainGameplayLoop : MonoBehaviour
     public GameObject       title;
 
     public bool             progressText = true;
-    private bool            alternateScene = false;
+    public bool            alternateScene = false;
     public bool             isResponse = false;
 
 
@@ -54,23 +55,27 @@ public class MainGameplayLoop : MonoBehaviour
      * 
      */
     private int             index;
+    private int             act_index = 0;
+    private int             play_index = 0;
 
     private void Awake()
     {
-        so_director = GetComponent<SO_Director>();                              // This isn't working, returns NULL.
-        if(so_director == null)
-        {
-            Debug.Log("Ehm... we... don't have a director?");
-        }
+        so_director = GetComponent<SO_Director>();
+        //writing_director = GetComponent<Writing_Director>();
+        
 
         button1 = GameObject.Find("Button 1");
         button2 = GameObject.Find("Button 2");
         button3 = GameObject.Find("Button 3");
         button4 = GameObject.Find("Button 4");
 
+        button_1.onClick.AddListener(() => buttonClick("Button 1"));                       // This may not work?
+        button_2.onClick.AddListener(() => buttonClick("Button 2"));                       // This may not work?
+        button_3.onClick.AddListener(() => buttonClick("Button 3"));                       // This may not work?
+        button_4.onClick.AddListener(() => buttonClick("Button 4"));                       // This may not work?
+
         Debug.Log("Awoke");
 
-        //title = GameObject.Find("Title");
     }
 
     // This function is used in the Demo Pre-Alpha to hide elements of the game before the first scenario is loaded
@@ -108,22 +113,18 @@ public class MainGameplayLoop : MonoBehaviour
                 {
                     case 0:
                         button1Exit = exits[x];
-                        button_1.onClick.AddListener(() => buttonClick("Button 1"));                       // This may not work?
                         button1.SetActive(true);
                         break;
                     case 1:
                         button2Exit = exits[x];
-                        button_2.onClick.AddListener(() => buttonClick("Button 2"));                       // This may not work?
                         button2.SetActive(true);
                         break;
                     case 2:
                         button3Exit = exits[x];
-                        button_3.onClick.AddListener(() => buttonClick("Button 3"));                       // This may not work?
                         button3.SetActive(true);
                         break;
                     case 3:
                         button4Exit = exits[x];
-                        button_4.onClick.AddListener(() => buttonClick("Button 4"));                       // This may not work?
                         button4.SetActive(true);
                         break;
                     default:
@@ -140,15 +141,6 @@ public class MainGameplayLoop : MonoBehaviour
     {
         button_response = buttonname;
 
-        if (so_director.current_scene is SOT_Dialogue)
-        {
-            Debug.Log("This current scene is a dialogue");
-        }
-        else
-        {
-            Debug.Log("The is flag just doesn't work!");
-        }
-
         if (so_director.current_scene is SOT_Dialogue && !isResponse)
         {
             Debug.Log("This is a response!");
@@ -157,22 +149,27 @@ public class MainGameplayLoop : MonoBehaviour
         }
         else
         {
+            Debug.Log("Button Pressed");
             switch (buttonname)
             {
                 case "Button 1":
                     so_director.ChangeScenarioText(button1Exit);
+                    text_check = so_director.ChangeScenarioText(button1Exit);
                     index = button1Exit;
                     break;
                 case "Button 2":
                     so_director.ChangeScenarioText(button2Exit);
+                    text_check = so_director.ChangeScenarioText(button2Exit);
                     index = button2Exit;
                     break;
                 case "Button 3":
                     so_director.ChangeScenarioText(button3Exit);
+                    text_check = so_director.ChangeScenarioText(button3Exit);
                     index = button3Exit;
                     break;
                 case "Button 4":
                     so_director.ChangeScenarioText(button4Exit);
+                    text_check = so_director.ChangeScenarioText(button4Exit);
                     index = button4Exit;
                     break;
                 default:
@@ -196,12 +193,14 @@ public class MainGameplayLoop : MonoBehaviour
                 if(!alternateScene)
                 {
                     index = 0;
+                    text_check = so_director.ChangeScenarioText(index);
                     alternateScene = true;
                 }
                 else
                 {
                     index = so_director.alternate_index;
                     so_director.alternate_index = 0;
+                    text_check = so_director.ChangeScenarioText(index);
                 }
                 return;
             case 'b':
@@ -211,38 +210,33 @@ public class MainGameplayLoop : MonoBehaviour
                 index++;
                 text_check = so_director.ChangeScenarioText(index);
                 return;
+            case 'r':
+                if(act_index == sot_play.all_acts[play_index].act_elements.Length)
+                {
+                    play_index++;
+                    act_index = 0;
+                    index = 0;
+                }
+                else
+                {
+                    act_index++;
+                    index = 0;
+                }
+
+                so_director.ChangeScene(sot_play.all_acts[play_index].act_elements[act_index]);
+                text_check = so_director.ChangeScenarioText(index);
+                return;
             default:
                 Debug.Log("How has this even happened? Is this even possible?");
                 return;
         }
     }
 
+    // This function is used to start game. This function will include random generation in itself further along development.
     public void startGame()
     {
-        /*
-            SOT_Act start_act = sot_play.all_acts[0];
-            if(start_act == null)
-            {
-                Debug.Log("Start Act is null?");
-            }
-            else
-            {
-                Debug.Log("Starting Act!");
-            }
-            SOT_Scene start_scene = start_act.act_elements[0];
-            if(start_scene == null)
-            {
-                Debug.Log("Start Scene is null?");
-            }
-            else
-            {
-                Debug.Log("Starting Scene!");
-            }
 
-            index = so_director.ChangeScene(start_scene);
-        */
-
-        index = so_director.ChangeScene(sot_play.all_acts[0].act_elements[0]);
+        index = so_director.ChangeScene(sot_play.all_acts[play_index].act_elements[act_index]);
         so_director.ChangeScenarioText(index);
 
         text_check = so_director.current_scene.text[index];
@@ -261,9 +255,11 @@ public class MainGameplayLoop : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space) && progressText)
+        //text_check = TextDisplay.text;                                                  // This allows for text to be outright skipped. Not good.
+
+        if (Input.GetKeyDown(KeyCode.Space) && progressText)
         {
-            if(TextDisplay.text == text_check)               // Change to saved text (which can vary in case of a response)
+            if(TextDisplay.text == so_director.text_to_write)                                          // Change to saved text (which can vary in case of a response) <= done
             {
                 if(!isResponse)
                 {
@@ -271,13 +267,16 @@ public class MainGameplayLoop : MonoBehaviour
                 }
                 else
                 {
+                    Debug.Log("Response detected!");
                     buttonClick(button_response);
                     isResponse = false;
+                    text_check = so_director.current_scene.text[index];
                 }
             }
             else
             {
-                TextDisplay.text = so_director.current_scene.text[index];               // Skips text writing program when it will be done.
+
+                TextDisplay.text = so_director.text_to_write;              // Skips text writing program when it will be done.
             }
         }
 

@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   text:
-  - Hello! This is the Demonstration of the newly and improved inner workings of
-    Horn of Ammon
+  - This is to demonstrate that I can change the text from the variables in real
+    time!
   - Horn of Ammon is an interactive textual adventure designed to document and improve
     muscle-memory password memorization!
   - Of course that by itself sounds rather dull. However, this is a fully fledged
@@ -35,7 +35,7 @@ MonoBehaviour:
   - Do Nothing
   scene_exits:
   - '[1,2,3,4][4,4,4,4]'
-  scene_flags: 63006300630062006300
+  scene_flags: 630063006300620063006300
   responses:
   - This is the default response.
   - You wave hello... but the game cannot wave back.

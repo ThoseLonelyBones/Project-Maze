@@ -27,16 +27,20 @@ using TMPro;
 public class SO_Director : MonoBehaviour
 {
     public MainGameplayLoop loop;
+    public Writing_Director writing_director;
     /*
      * Progression Elements are loaded only when needed, only a maximum of two Scenes are loaded at once: SOT_Scene and SOT_Scenario.
      */
     public SOT_Scene current_scene;
+
+    public string text_to_write;
 
     /*
      * Variables relative to the Dialogue-within-Scenarios handling, used by ReadFlag, case a.
      */
     public SOT_Scenario alternate_scenario = null;
     public int alternate_index;
+    private int alternate_exit_index;
     private int alt_scenario_count = 0;
 
 
@@ -78,7 +82,28 @@ public class SO_Director : MonoBehaviour
     private void Awake()
     {
         Debug.Log("Awaking SO_Director");
+
         loop = GetComponent<MainGameplayLoop>();
+
+        if (loop == null)
+        {
+            Debug.Log("Main Gameplay Loop is unreachable");
+        }
+        else
+        {
+            Debug.Log("Main Gameplay Loop is reachable");
+        }
+
+        writing_director = GetComponent<Writing_Director>();
+
+        if(writing_director == null)
+        {
+            Debug.Log("Writing Director is off");
+        }
+        else
+        {
+            Debug.Log("Writing Director is on");
+        }
 
         button1 = GameObject.Find("Button 1");
         button2 = GameObject.Find("Button 2");
@@ -210,52 +235,77 @@ public class SO_Director : MonoBehaviour
      * a: alternate -> Load the dialogue based on dialogue-index, a local variable exclusive to Scenarios, whilst saving the current Scenario and Index. This is used later to recover the dialogue when this flag is called again -> if this flag is called in a dialogue, return to the saved scenario.
      * b: buttons -> Load CallExits[]
      * c: continue -> Load next Text[]
+     * d: default -> default flag, does nothing. Don't use this!
+     * r: return -> used exclusively as a way to tell the game that the current scene is over and to move over to the next one
+     * 
+     * Additional Flags:
+     * 
+     * f: fish -> used in conjunction with hook. Once called, the scene is reset to what the hook saved.
+     * h: hook -> save the current index and when "fish" is called retrieve that scene. Used for Dead Ends.
+     * 
+     * (possible implementation) m: mood -> used to determine the Observer's mood. Possibly influences some dialogue choices.
+     * 
+     * s: sound -> used to scour for sound clips and add a sound effect to the clip. Search the BBC network for loads of soundclips.
+     * t: timer -> used to decrease the attempt timer.
      * 
      * Other steps that need to be undertaken are done in the Main Gameplay Loop script
      */
 
     public char SceneFlags(int scene_index)
-    {      
-        switch(current_scene.scene_flags[scene_index])
+    {
+        if (scene_index + 1 == current_scene.text.Length && alternate_scenario == null)
         {
-            case 'a':
-                if(alternate_scenario == null && current_scene is SOT_Scenario)
-                {
-                    try
-                    {
-                        alternate_scenario = (SOT_Scenario)current_scene;
-                        alternate_index = scene_index + 1;                                               // Do I really need this? Check main gameplay loop. <= Yeah, you do.
-                        current_scene = alternate_scenario.scenario_dialogues[alt_scenario_count];
-                        ChangeScenarioText(0);
-                    }
-                    catch (InvalidCastException)
-                    {
-                        Debug.Log("Well you got me: by all accounts, this doesn't make sense.");
-                    }          
-                }
-                else
-                {
-                    if (current_scene = alternate_scenario.scenario_dialogues[alt_scenario_count])
-                    {
-                        current_scene = alternate_scenario;
-                        ChangeScenarioText(alternate_index);
-
-                        alternate_scenario = null;
-                    }
-                }
-                return 'a';
-            case 'b':
-                // Call Exits is called on the main gameplay loop (needs the int[] return to work)
-                return 'b';
-            case 'c':
-                // Change Scenario Text -> this prompts into a change of the index.
-                ChangeScenarioText(scene_index + 1);
-                return 'c';
-            default:
-                // Return 'd', prompt error message on the d
-                return 'd';
+            Debug.Log("Returning Flag R");
+            exit_index = 0;
+            return 'r';        
         }
+        else
+        {
+            switch (current_scene.scene_flags[scene_index])
+            {
+                case 'a':
+                    if (alternate_scenario == null && current_scene is SOT_Scenario)
+                    {
+                        try
+                        {
+                            alternate_scenario = (SOT_Scenario)current_scene;
+                            alternate_index = scene_index + 1;
+                            alternate_exit_index = exit_index;
+                            exit_index = 0;
+                            current_scene = alternate_scenario.scenario_dialogues[alt_scenario_count];
+                            ChangeScenarioText(0);
+                        }
+                        catch (InvalidCastException)
+                        {
+                            Debug.Log("Well you got me: by all accounts, this doesn't make sense.");
+                        }
+                    }
+                    else
+                    {
+                        if (current_scene = alternate_scenario.scenario_dialogues[alt_scenario_count])
+                        {
+                            current_scene = alternate_scenario;
+                            scene_index = alternate_index;
+                            exit_index = alternate_exit_index;
+                            ChangeScenarioText(scene_index);
 
+                            alternate_scenario = null;
+                        }
+                    }
+                    
+                    return 'a';
+                case 'b':
+                    // Call Exits is called on the main gameplay loop (needs the int[] return to work)
+                    return 'b';
+                case 'c':
+                    // Change Scenario Text -> this prompts into a change of the index.
+                    ChangeScenarioText(scene_index + 1);
+                    return 'c';
+                default:
+                    // Return 'd', prompt error message on the d
+                    return 'd';
+            }
+        }
     }
 
     public int ChangeScene(SOT_Scene newscene)
@@ -272,10 +322,13 @@ public class SO_Director : MonoBehaviour
         return 0;
     }
 
+    // This gets out of bounds!
     public string ChangeScenarioText(int id)
     {
         TextDisplay.text = "";
-        TextDisplay.text = current_scene.text[id];                                                          // => Replace this with TextDirector's Writing Function when done!
+        //TextDisplay.text = current_scene.text[id];                                                       // => Replace this with TextDirector's Writing Function when done!
+        text_to_write = current_scene.text[id];
+        writing_director.TypingEffect(TextDisplay, text_to_write, 0.045f);
         return TextDisplay.text;
     }
 
@@ -288,15 +341,19 @@ public class SO_Director : MonoBehaviour
         switch(button_name)
         {
             case "Button 1":
+                Debug.Log("Button 1 was pressed!");
                 x = 0;
                 break;
             case "Button 2":
+                Debug.Log("Button 2 was pressed!");
                 x = 1;
                 break;
             case "Button 3":
+                Debug.Log("Button 3 was pressed!");
                 x = 2;
                 break;
             case "Button 4":
+                Debug.Log("Button 4 was pressed!");
                 x = 3;
                 break;
             default:
@@ -310,7 +367,10 @@ public class SO_Director : MonoBehaviour
             TextDisplay.text = "";
             if(x < 4)
             {
-                TextDisplay.text = dialogue.responses[response[x]];                                        // => Replace this with TextDirector's Writing Function when done!      
+                //TextDisplay.text = dialogue.responses[response[x]];                                         // => Replace this with TextDirector's Writing Function when done!
+                text_to_write = dialogue.responses[response[x]];
+                writing_director.TypingEffect(TextDisplay, text_to_write, 0.045f);
+                Debug.Log(dialogue.responses[response[x]]);
                 return dialogue.responses[response[x]];
             }
             else

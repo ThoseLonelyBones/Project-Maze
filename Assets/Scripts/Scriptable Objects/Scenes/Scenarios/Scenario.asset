@@ -16,11 +16,16 @@ MonoBehaviour:
   text:
   - This is a test Scenario. This Scenario also contains a dialogue. To see the Dialogue
     please press the button below
-  - dialogue here
+  - 'From now on, you''ll be on the Dialogue of this scenario. Note that this isn''t
+    a dialogue''s unique response: this is another piece of text'
+  - And that's the end of the dialogue! In order of text disposition, this piece
+    comes right after the text that prompts you into the dialogue!
+  - This is the end of the function demo. There's nothing from here on forward
   exit_text:
   - Default Button Text
   - Press to start the Dialogue
   scene_exits:
   - '[1,0,0,0][1,0,0,0]'
+  scene_flags: 620061006300
   scenario_dialogues:
   - {fileID: 11400000, guid: 0a15d8c65dd1f274e86574820c9f94d8, type: 2}
