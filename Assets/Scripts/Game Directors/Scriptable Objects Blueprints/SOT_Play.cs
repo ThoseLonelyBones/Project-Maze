@@ -17,6 +17,11 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Scriptable Objects/Scriptable Object Container/Play")]
 public class SOT_Play : ScriptableObject
 {
+
+    /*
+     *  Where all playable sections of the game are compiled and put together. If you want to add an act, you can move it in here!
+     *  Acts are used as a quick way to divide certain gameplay sections of the game (such as prologue, puzzle1, puzzle2, etc.) and are placed in order of appearance in here.
+     */
     [Tooltip("All Acts of the game, compiled!")]
     public SOT_Act[] all_acts;
 }

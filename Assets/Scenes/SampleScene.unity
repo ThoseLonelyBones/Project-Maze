@@ -1498,6 +1498,7 @@ GameObject:
   - component: {fileID: 1837130503}
   - component: {fileID: 1837130505}
   - component: {fileID: 1837130506}
+  - component: {fileID: 1837130507}
   m_Layer: 0
   m_Name: GameplayDirector
   m_TagString: Untagged
@@ -1517,7 +1518,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ec2ed50cd2c03a4a81c699790ae3569, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sot_play: {fileID: 11400000, guid: c41614654d3c9e841b256f98982f80fa, type: 2}
+  sot_play: {fileID: 11400000, guid: 31ff86ee27fc06e46b08081381355fac, type: 2}
+  timer_director: {fileID: 1837130507}
   textDisplay: {fileID: 346464218}
   button_1: {fileID: 698902456}
   button_2: {fileID: 1307291844}
@@ -1538,6 +1540,7 @@ MonoBehaviour:
   isResponse: 0
   text_check: 
   scene: {fileID: 0}
+  hook_index: 0
 --- !u!4 &1837130504
 Transform:
   m_ObjectHideFlags: 0
@@ -1582,6 +1585,7 @@ MonoBehaviour:
   button4Text: {fileID: 0}
   TextDisplay: {fileID: 0}
   exit_index: 0
+  hook_exit_index: 0
 --- !u!114 &1837130506
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1595,6 +1599,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Text: 
+--- !u!114 &1837130507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1837130502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b541516acf59e54f895263b8ef0a12a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Attempt_Timer: 0
+  stage0: 0
+  stage1: 0
+  stage2: 0
+  stage3: 0
+  stage4: 0
 --- !u!1 &1977150166
 GameObject:
   m_ObjectHideFlags: 0

@@ -62,7 +62,7 @@ public abstract class SOT_Scene : ScriptableObject
     public string[] scene_exits;
 
     /*
-     * A character array called scene_tree, this is used to determined how the scene needs to proceed. Called at the end of every text displayed in the main text display that isn't a response, the scene tree
+     * A string array called scene_tree, this is used to determined how the scene needs to proceed. Called at the end of every text displayed in the main text display that isn't a response, the scene tree
      * tells the game what the next manouver should be to proceed in the scene., based on the character read from this variable. The index to navigate this array is the exact same as the index to navigate the
      * text array (aka index), which is used to determine which text is displayed AND what to do after that text is displayed
      * 
@@ -71,8 +71,21 @@ public abstract class SOT_Scene : ScriptableObject
      * a, or "alternate" Used in Scenarios, this is a clue for the game to save the current index and then start the dialogue within a scenario. This flag is also used in Scenario-exclusive Dialogues to return to the Scenario using the saved index.
      * b, or "buttons": Call for the game to start Choice Buttons, using index to call the function CallExits()
      * c, or "continue": The index increases by one, and the next text is displayed. This WAITS for the Response to be finished first in the case of Dialogue
+     * r, or "return": used exclusively as a way to tell the game that the current scene is over and to move over to the next one
+     * 
+     * Additional Flags:
+     * 
+     * f, or "fish": used in conjunction with hook. Once called, the scene is reset to what the hook saved.
+     * h, or "hook":save the current index and when "fish" is called retrieve that scene. Used for Dead Ends.
+     * 
+     * s, or "sound": used to scour for sound clips and add a sound effect to the clip. Search the BBC network for loads of soundclips.
+     * t, or "timer": used to decrease the attempt timer.
+     * 
+     * Other steps that need to be undertaken are done in the Main Gameplay Loop script
      */
-    [Tooltip("This is used to determine how the scene needs to proceed, if it needs to be interrupted, if certain dialogues need to be skipped or anything.")]
-    public char[] scene_flags;
+    [Tooltip("This is used to determine how the scene needs to proceed, if it needs to be interrupted, if certain dialogues need to be skipped or anything. \n This is the flag index: \n a: alternate (use exclusively in Scenarios w/ Dialogues or Dialogues-within-scenarios) \n" +
+             "b: buttons \n c: continue \n d: default (used for interruption or displaying error messages) \n f: fish (used in conjunction with hook, fish is the last text before returning to the hook text \n h: hook (used in conjunction with fish, hook saves the current room and is called back with fish \n" +
+             "s: sound (calls the sound director for more specific sounds) \n t: timer (decrease attempt timer)")]
+    public string[] scene_flags;
 
 }

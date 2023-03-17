@@ -10,14 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 306bb26a6dc49594a93f3c1e031a10c7, type: 3}
-  m_Name: Nuovo Scenario
+  m_Name: New Scenario
   m_EditorClassIdentifier: 
-  id: 0
+  id: 2
   text:
-  - Entri in una stanza
-  - All'interno della stanza vedi Nemmi
-  - Nemmi ti salta addosso e ti uccide
+  - Sike, you thought it was gonna end?
   exit_text: []
   scene_exits: []
-  scene_flags: 630063006300
+  scene_flags:
+  - ct
   scenario_dialogues: []

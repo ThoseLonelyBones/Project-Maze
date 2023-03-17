@@ -8,15 +8,16 @@ using TMPro;
 /* 
  * The SO_Director (or Scriptable Object Director) is the script which governs the distribution and handling of information contained in Scriptable Object to other parts of the code.
  * The SO_Director is called by the GameDirector whenever information from a Scriptable Object needs to be put in the game, will it be from a Scenario or from a Dialogue.
- * While the SO_Director is able to communicate with all the Scriptable Objects, it doesn't do so in a specific order: instead, it is a collection of generalized functions that allow for game scalability
+ * While the SO_Director is able to communicate with all the Scriptable Objects, it doesn't do so in a specific order or by recovering data via hardcoded SO identifiers or functions: instead, it is a collection of generalized functions that allow for game scalability
  * The SO_Director makes use of Scriptable Object to deconstruct, reformat and present the information contained in them in the clearest and most obvious way possible to the player, as well as allowing for:
  * 
- * Increased flexibility in the Game Director Script and for CONSIDERABLY less clutter (just compare the old Game Director script from the "The Guardsman's Stand" Demonstration to the new one!)
- * 
- * Ease of understanding of the code for any party involved, as well as providing IMMENSE scalabiity: the older code had a limited amount of actions, and each action was MANUALLY HARDCODED IN...
- * 
- *      [...] the all-caps of the previous sentence should let you know how bad it was. To be both the devil and the advocate, I had one week to learn Unity and create a fully-fledged Text-Adventure Demo
- *      [...] now, this code is MUCH more effective for scaling upwards as well as adding new scenarios or dialogue to the game. As long as I can add Scriptable Objects, I can do anything! ~ muahahahah ~
+ *      Increased flexibility in the Gameplay_Director Script
+ *      ONSIDERABLY less clutter (just compare the old Game Director script from the "The Guardsman's Stand" Demonstration to the new one and remember this game is INFINITELY bigger!)
+ *      Ease of understanding of the code for any party involved, as well as providing IMMENSE scalabiity: the older code had a limited amount of actions, and each action was MANUALLY HARDCODED IN...
+ *         "
+ *          [...] the all-caps of the previous sentence should let you know how bad it was. To be both the devil and the advocate, I had one week to learn Unity and create a fully-fledged Text-Adventure Demo
+ *          [...] now, this code is MUCH more effective for scaling upwards as well as adding new scenarios or dialogue to the game. As long as I can add Scriptable Objects, I can do anything! ~ OHOHOHohohoh <3 ~ "
+ *                                                                                                                                                                                                                -LonelyBones
  *      
  * Creates a unique script that is called by whatever is needed, instead of having to load the Scriptable Object TWICE or more into memory. The Scriptable Object is called in here ONCE, and only the
  *      [...] current one. The ScenarioIndex variable in the GameDirector Script helps find which script to load.
@@ -26,18 +27,30 @@ using TMPro;
 
 public class SO_Director : MonoBehaviour
 {
-    public MainGameplayLoop loop;
+    /*
+     * Directors! These are called in here to use their functions when needed (such as the writing director for putting text on the screen)
+     * 
+     */
+    public Gameplay_Director loop;
     public Writing_Director writing_director;
     /*
-     * Progression Elements are loaded only when needed, only a maximum of two Scenes are loaded at once: SOT_Scene and SOT_Scenario.
+     * Progression Elements are loaded only when needed, only a maximum of two Scenes are loaded at once: current_scene and alternate_scenario (look further below for more info)
      */
     public SOT_Scene current_scene;
-
+    /*
+     * This is used as a control text in the gameplay_director as well as an import for the writing_director to know what to write in the main text box. I could have not made it a variable but
+     * writing so_director.current_scene.text[index] strained my fingers after a while (aaaaaand it also didn't work with responses, figures!)
+     */
     public string text_to_write;
 
     /*
      * Variables relative to the Dialogue-within-Scenarios handling, used by ReadFlag, case a.
-     */
+     * There are a few very important things to save here, which are going to be used later on, such as:
+     *  - The scenario we were in.                 (Actually, do we have to save this? Can't we just retrieve this again from the main Gameplay_Director? Look into it)
+     *  - The index we were at.
+     *  - The Exit Index we were at (very important!)
+     *  - The current index of the scenario dialgoues (alt_scenario_count)
+     */ 
     public SOT_Scenario alternate_scenario = null;
     public int alternate_index;
     private int alternate_exit_index;
@@ -45,7 +58,8 @@ public class SO_Director : MonoBehaviour
 
 
     /*
-     * GameObject and Text still need to be accessed, even with the TextDirector script actually putting in the text. (Or... we don't. Not if we make a function that specifically writes to buttons, called ButtonWrite)
+     * GameObject and Text still need to be accessed, even with the TextDirector script actually putting in the text.
+     * (Or... we don't. Not if we make a function that specifically writes to buttons, called ButtonWrite) <- Buttons are not written in, instead they spawn with a unique animation (look at VFX_Director for more info on ButtonSpawn)
      */
 
     public GameObject   button1,
@@ -55,6 +69,12 @@ public class SO_Director : MonoBehaviour
 
     public GameObject textDisplay;
 
+    /*
+     * 
+     * The text elements used to assign text to buttons and the text display! TextMeshProUGUI is actually super cool and allows you to do so many weird effects with text! It's great!
+     * 
+     */
+
     public TextMeshProUGUI   button1Text,
                              button2Text,
                              button3Text,
@@ -62,47 +82,38 @@ public class SO_Director : MonoBehaviour
 
     public TextMeshProUGUI TextDisplay;
 
+    // Two elements used in conjuction with the callexits and response handler functions 
     public int exit_index = 0;
+    [SerializeField]
+    private int hook_exit_index = 0;
     private int[] response = { 0, 0, 0, 0 };
 
-    /*  
-     *  CallExits(int scene_index) is a function that returns an Int array of values, exit[], which contains (in order of buttons) the IDs that their respective button will create the text for.
-     *  To check which buttons to activate and to check what text is required to be placed on each button, it takes the current_scenario's scenario_exits string[], which is formatted like this:
-     *  
-     *      [x1,x2,x3,x4][b1,b2,b3,b4]
-     *  
-     *  The first square bracket contains the ID value of the text each button is assigned to, as shown in the scene_exits variable in the SOT_Scene.cs script (line 62)
-     *  These values are also subsequently converted from strings to integer and then passed as an int[] to the GameDirector script.
-     *  The second square bracket contains the ID value of the text inside the respective button, as shown in the exit_text variable in the SOT_Scenario.cs script (line 56)
-     *  These values are not returned to the GameDirector function. Instead, they are passed to the TextDirector script to be formatted correctly and then subsequently put inside each button.
-     *  (... As of now the text simply appears in the text boxes with no formatting ...)
-     * 
-     */
 
+    // Awake is a good point to assing all elements where needed, to check if the various objects in the game and other scripts are reachable, etc.
     private void Awake()
     {
-        Debug.Log("Awaking SO_Director");
+        Debug.Log("Scriptable Object Director Start-Up");
 
-        loop = GetComponent<MainGameplayLoop>();
+        loop = GetComponent<Gameplay_Director>();
 
         if (loop == null)
         {
-            Debug.Log("Main Gameplay Loop is unreachable");
+            Debug.Log("SO_Director > Gameplay Director: X");
         }
         else
         {
-            Debug.Log("Main Gameplay Loop is reachable");
+            Debug.Log("SO_Director > Gameplay Director: V");
         }
 
         writing_director = GetComponent<Writing_Director>();
 
         if(writing_director == null)
         {
-            Debug.Log("Writing Director is off");
+            Debug.Log("SO_Director > Writing Director: X");
         }
         else
         {
-            Debug.Log("Writing Director is on");
+            Debug.Log("SO_Director > Writing Director: V");
         }
 
         button1 = GameObject.Find("Button 1");
@@ -112,11 +123,11 @@ public class SO_Director : MonoBehaviour
 
         if(button1 == null || button2 == null || button3 == null || button4 == null)
         {
-            Debug.Log("Buttons are not available?");
+            Debug.Log("SO_Director > Buttons: X");
         }
         else
         {
-            Debug.Log("Buttons are available!");
+            Debug.Log("SO_Director > Buttons: V");
         }
 
         button1Text = button1.GetComponentInChildren<TextMeshProUGUI>();
@@ -128,11 +139,11 @@ public class SO_Director : MonoBehaviour
 
         if (button1Text == null || button2Text == null || button3Text == null || button4Text == null)
         {
-            Debug.Log("Buttons text is not available?");
+            Debug.Log("SO_Director > Button Text: X");
         }
         else
         {
-            Debug.Log("Button text is available!");
+            Debug.Log("SO_Director > Button Text: V");
         }
 
         textDisplay = GameObject.Find("Text Display");
@@ -142,18 +153,31 @@ public class SO_Director : MonoBehaviour
         {
             if(TextDisplay == null)
             {
-                Debug.Log("Object available, text unavailable?");
+                Debug.Log("SO_Director > Text Display Object: V, Text Display Text: X");
             }
             else
             {
-                Debug.Log("Text Display is available!");
+                Debug.Log("SO_Director > Text Display Object: V, Text Display Text: V");
             }
         }
         else
         {
-            Debug.Log("Object Unavailable?");               
+            Debug.Log("SO_Director > Text Display Object: X, Text Display Text: X");               
         }
     }
+
+    /*  
+    *  CallExits(int scene_index) is a function that returns an Int array of values, exit[], which contains (in order of buttons) the IDs that their respective button will create the text for.
+    *  To check which buttons to activate and to check what text is required to be placed on each button, it takes the current_scenario's scenario_exits string[], which is formatted like this:
+    *  
+    *      [x1,x2,x3,x4][b1,b2,b3,b4]
+    *  
+    *  The first square bracket contains the ID value of the text inside the respective button, as shown in the exit_text variable in the SOT_Scenario.cs script (line 56)
+    *  These values are not returned to the GameDirector function. Instead, they are passed to the TextDirector script to be formatted correctly and then subsequently put inside each button.
+    *  The second square bracket contains the ID value of the text each button is assigned to, as shown in the scene_exits variable in the SOT_Scene.cs script (line 62)
+    *  These values are also subsequently converted from strings to integer and then passed as an int[] to the GameDirector script.
+    * 
+    */
 
     public int[] CallExits()
     {
@@ -189,27 +213,27 @@ public class SO_Director : MonoBehaviour
                 {
                     case 0:
                         // Activate Button 1;
-                        button1Text.text = "";                                                              // => Replace this with TextDirector's CleanseText Function when done!
+                        button1Text.text = "";                                                              // => Replace this with VFX_Director's ButtonSpawn Function when done!
                         button1.SetActive(true);
-                        button1Text.text = current_scene.exit_text[int.Parse(exits_formatted[x])];      // => Replace this with TextDirector's Writing Function when done!
+                        button1Text.text = current_scene.exit_text[int.Parse(exits_formatted[x])];      // => Replace this with VFX_Director's ButtonSpawn Function when done!
                         break;
                     case 1:
                         // Activate Button 2;
-                        button2Text.text = "";                                                              // => Replace this with TextDirector's CleanseText Function when done!
+                        button2Text.text = "";                                                              // => Replace this with VFX_Director's ButtonSpawn  Function when done!
                         button2.SetActive(true);
-                        button2Text.text = current_scene.exit_text[int.Parse(exits_formatted[x])];      // => Replace this with TextDirector's Writing Function when done!
+                        button2Text.text = current_scene.exit_text[int.Parse(exits_formatted[x])];      // => Replace this with VFX_Director's ButtonSpawn Function when done!
                         break;
                     case 2:
                         // Activate Button 3;
-                        button3Text.text = "";                                                              // => Replace this with TextDirector's CleanseText Function when done!
+                        button3Text.text = "";                                                              // => Replace this with VFX_Director's ButtonSpawn  Function when done!
                         button3.SetActive(true);
-                        button3Text.text = current_scene.exit_text[int.Parse(exits_formatted[x])];      // => Replace this with TextDirector's Writing Function when done!
+                        button3Text.text = current_scene.exit_text[int.Parse(exits_formatted[x])];      // => Replace this with VFX_Director's ButtonSpawn Function when done!
                         break;
                     case 3:
                         // Active Button 4;
-                        button4Text.text = "";                                                               // => Replace this with TextDirector's CleanseText Function when done!
+                        button4Text.text = "";                                                               // => Replace this with VFX_Director's ButtonSpawn Function when done!
                         button4.SetActive(true);
-                        button4Text.text = current_scene.exit_text[int.Parse(exits_formatted[x])];          // => Replace this with TextDirector's Writing Function when done!
+                        button4Text.text = current_scene.exit_text[int.Parse(exits_formatted[x])];          // => Replace this with VFX_Director's ButtonSpawn  Function when done!
                         break;
                     default:
                         Debug.Log("LonelyBones has made the advancement [How Did We Get Here?]");
@@ -237,75 +261,114 @@ public class SO_Director : MonoBehaviour
      * c: continue -> Load next Text[]
      * d: default -> default flag, does nothing. Don't use this!
      * r: return -> used exclusively as a way to tell the game that the current scene is over and to move over to the next one
+     * t: timer -> used to decrease the attempt timer.
      * 
      * Additional Flags:
      * 
      * f: fish -> used in conjunction with hook. Once called, the scene is reset to what the hook saved.
      * h: hook -> save the current index and when "fish" is called retrieve that scene. Used for Dead Ends.
      * 
-     * (possible implementation) m: mood -> used to determine the Observer's mood. Possibly influences some dialogue choices.
-     * 
+     * (possible implementation) 
+     * m: mood -> used to determine the Observer's mood. Possibly influences some dialogue choices.
      * s: sound -> used to scour for sound clips and add a sound effect to the clip. Search the BBC network for loads of soundclips.
-     * t: timer -> used to decrease the attempt timer.
+     * 
      * 
      * Other steps that need to be undertaken are done in the Main Gameplay Loop script
      */
 
-    public char SceneFlags(int scene_index)
+    public char[] SceneFlags(int scene_index)
     {
-        if (scene_index + 1 == current_scene.text.Length && alternate_scenario == null)
-        {
-            Debug.Log("Returning Flag R");
-            exit_index = 0;
-            return 'r';        
-        }
-        else
-        {
-            switch (current_scene.scene_flags[scene_index])
-            {
-                case 'a':
-                    if (alternate_scenario == null && current_scene is SOT_Scenario)
-                    {
-                        try
-                        {
-                            alternate_scenario = (SOT_Scenario)current_scene;
-                            alternate_index = scene_index + 1;
-                            alternate_exit_index = exit_index;
-                            exit_index = 0;
-                            current_scene = alternate_scenario.scenario_dialogues[alt_scenario_count];
-                            ChangeScenarioText(0);
-                        }
-                        catch (InvalidCastException)
-                        {
-                            Debug.Log("Well you got me: by all accounts, this doesn't make sense.");
-                        }
-                    }
-                    else
-                    {
-                        if (current_scene = alternate_scenario.scenario_dialogues[alt_scenario_count])
-                        {
-                            current_scene = alternate_scenario;
-                            scene_index = alternate_index;
-                            exit_index = alternate_exit_index;
-                            ChangeScenarioText(scene_index);
+        char[] return_array = { ' ' };
+        bool returnconfirm = true;
 
-                            alternate_scenario = null;
-                        }
-                    }
-                    
-                    return 'a';
-                case 'b':
-                    // Call Exits is called on the main gameplay loop (needs the int[] return to work)
-                    return 'b';
-                case 'c':
-                    // Change Scenario Text -> this prompts into a change of the index.
-                    ChangeScenarioText(scene_index + 1);
-                    return 'c';
-                default:
-                    // Return 'd', prompt error message on the d
-                    return 'd';
+        int str_length = current_scene.scene_flags[scene_index].Length;
+
+        // Apparently, strings aren't char[] in C#... buuuuuut there's a handy function to convert them into just that! (How nifty)
+        char[] section_array = current_scene.scene_flags[scene_index].ToCharArray();
+
+        for (int x = 0; x < str_length; x++)
+        {
+            if(x > 0)
+            {
+                Array.Resize(ref return_array, return_array.Length + 1);
             }
+
+            if (scene_index + 1 == current_scene.text.Length && alternate_scenario == null && returnconfirm == true)
+            {
+                Debug.Log("Returning Flag R");
+                exit_index = 0;
+                return_array[x] = 'r';
+                returnconfirm = false;
+            }
+            else
+            {
+                switch (section_array[x])
+                {
+                    case 'a':
+                        if (alternate_scenario == null && current_scene is SOT_Scenario)
+                        {
+                            try
+                            {
+                                alternate_scenario = (SOT_Scenario)current_scene;
+                                alternate_index = scene_index + 1;
+                                alternate_exit_index = exit_index;
+                                exit_index = 0;
+                                current_scene = alternate_scenario.scenario_dialogues[alt_scenario_count];
+                                ChangeScenarioText(0);
+                            }
+                            catch (InvalidCastException)
+                            {
+                                Debug.Log("Well you got me: by all accounts, this doesn't make sense.");
+                            }
+                        }
+                        else
+                        {
+                            if (current_scene = alternate_scenario.scenario_dialogues[alt_scenario_count])
+                            {
+                                current_scene = alternate_scenario;
+                                scene_index = alternate_index;
+                                exit_index = alternate_exit_index;
+                                ChangeScenarioText(scene_index);
+
+                                alternate_scenario = null;
+                            }
+                        }
+
+                        return_array[x] = 'a';
+                        break;
+                    case 'b':
+                        // Call Exits is called on the main gameplay loop (needs the int[] return to work)
+                        return_array[x] = 'b';
+                        break;
+                    case 'c':
+                        // Change Scenario Text -> this prompts into a change of the index.
+                        return_array[x] = 'c';
+                        break;
+                    case 'f':
+                        return_array[x] = 'f';
+                        exit_index = hook_exit_index;
+                        // Return to saved 'h' index
+                        break;
+                    case 'h':
+                        return_array[x] = 'h';
+                        hook_exit_index = exit_index;
+                        // Return to this index once 'f' is called. If 'h' is called again, override the old one.
+                        break;
+                    case 't':
+                        return_array[x] = 't';
+                        break;
+                    default:
+                        // Return 'd', prompt error message on the d
+                        return_array[x] = 'd';
+                        break;
+                }
+            }
+
+           
         }
+
+        return return_array;
+        
     }
 
     public int ChangeScene(SOT_Scene newscene)
@@ -326,7 +389,7 @@ public class SO_Director : MonoBehaviour
     public string ChangeScenarioText(int id)
     {
         TextDisplay.text = "";
-        //TextDisplay.text = current_scene.text[id];                                                       // => Replace this with TextDirector's Writing Function when done!
+        //TextDisplay.text = current_scene.text[id];                                                       
         text_to_write = current_scene.text[id];
         writing_director.TypingEffect(TextDisplay, text_to_write, 0.045f);
         return TextDisplay.text;
@@ -367,7 +430,7 @@ public class SO_Director : MonoBehaviour
             TextDisplay.text = "";
             if(x < 4)
             {
-                //TextDisplay.text = dialogue.responses[response[x]];                                         // => Replace this with TextDirector's Writing Function when done!
+                //TextDisplay.text = dialogue.responses[response[x]];                                        
                 text_to_write = dialogue.responses[response[x]];
                 writing_director.TypingEffect(TextDisplay, text_to_write, 0.045f);
                 Debug.Log(dialogue.responses[response[x]]);

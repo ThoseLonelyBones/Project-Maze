@@ -23,7 +23,9 @@ MonoBehaviour:
   - You stop and watch
   scene_exits:
   - '[1,0,0,0][1,0,0,0]'
-  scene_flags: 62006100
+  scene_flags:
+  - bt
+  - at
   responses:
   - Default Response
   - You stop to watch. You realize that, if you are seeing a direct response, it

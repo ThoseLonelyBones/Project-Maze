@@ -4,11 +4,12 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MainGameplayLoop : MonoBehaviour
+public class Gameplay_Director : MonoBehaviour
 {
    // private Writing_Director    writing_director; 
     private SO_Director         so_director;
     public  SOT_Play            sot_play;
+    public Timer_Director      timer_director;
 
     public static GameObject       button1,
                                    button2,
@@ -47,6 +48,9 @@ public class MainGameplayLoop : MonoBehaviour
     public string           text_check;
 
     public SOT_Scene scene;
+
+    [SerializeField]
+    private int             hook_index;
     
 
     /*
@@ -61,6 +65,11 @@ public class MainGameplayLoop : MonoBehaviour
     private void Awake()
     {
         so_director = GetComponent<SO_Director>();
+        timer_director = GetComponent<Timer_Director>();
+        if(timer_director == null)
+        {
+            Debug.Log("Timer Director not set");
+        }
         //writing_director = GetComponent<Writing_Director>();
         
 
@@ -69,10 +78,10 @@ public class MainGameplayLoop : MonoBehaviour
         button3 = GameObject.Find("Button 3");
         button4 = GameObject.Find("Button 4");
 
-        button_1.onClick.AddListener(() => buttonClick("Button 1"));                       // This may not work?
-        button_2.onClick.AddListener(() => buttonClick("Button 2"));                       // This may not work?
-        button_3.onClick.AddListener(() => buttonClick("Button 3"));                       // This may not work?
-        button_4.onClick.AddListener(() => buttonClick("Button 4"));                       // This may not work?
+        button_1.onClick.AddListener(() => buttonClick("Button 1"));                       
+        button_2.onClick.AddListener(() => buttonClick("Button 2"));                       
+        button_3.onClick.AddListener(() => buttonClick("Button 3"));                       
+        button_4.onClick.AddListener(() => buttonClick("Button 4"));                      
 
         Debug.Log("Awoke");
 
@@ -106,7 +115,6 @@ public class MainGameplayLoop : MonoBehaviour
     {
         for(int x = 0; x < 4; x++)
         {
-            Debug.Log("ButtonSet exit for button n°" + (x + 1) + "is " + exits[x]);
             if(exits[x] > 0)
             {
                 switch(x)
@@ -185,51 +193,66 @@ public class MainGameplayLoop : MonoBehaviour
 
 
 
-    public void readFlag(char flag)
+    public void readFlag(char[] flag)
     {
-        switch(flag)
+        for(int x = 0; x < flag.Length; x++)
         {
-            case 'a':
-                if(!alternateScene)
-                {
-                    index = 0;
+            switch (flag[x])
+            {
+                case 'a':
+                    if (!alternateScene)
+                    {
+                        index = 0;
+                        text_check = so_director.ChangeScenarioText(index);
+                        alternateScene = true;
+                    }
+                    else
+                    {
+                        index = so_director.alternate_index;
+                        so_director.alternate_index = 0;
+                        text_check = so_director.ChangeScenarioText(index);
+                    }
+                    break;
+                case 'b':
+                    buttonsSet(so_director.CallExits());
+                    break;
+                case 'c':
+                    index++;
                     text_check = so_director.ChangeScenarioText(index);
-                    alternateScene = true;
-                }
-                else
-                {
-                    index = so_director.alternate_index;
-                    so_director.alternate_index = 0;
+                    break;
+                case 'f':
+                    text_check = so_director.ChangeScenarioText(hook_index);
+                    index = hook_index;
+                    break;
+                case 'h':
+                    hook_index = index;
+                    break;
+                case 'r':
+                    if (act_index == sot_play.all_acts[play_index].act_elements.Length)
+                    {
+                        play_index++;
+                        act_index = 0;
+                        index = 0;
+                    }
+                    else
+                    {
+                        act_index++;
+                        index = 0;
+                    }
+                    so_director.ChangeScene(sot_play.all_acts[play_index].act_elements[act_index]);  // This sometimes gets out of bounds? I don't even see how it is possible
+                    Debug.Log(play_index + " is play index and " + act_index + " is act index");
                     text_check = so_director.ChangeScenarioText(index);
-                }
-                return;
-            case 'b':
-                buttonsSet(so_director.CallExits());
-                return;
-            case 'c':
-                index++;
-                text_check = so_director.ChangeScenarioText(index);
-                return;
-            case 'r':
-                if(act_index == sot_play.all_acts[play_index].act_elements.Length)
-                {
-                    play_index++;
-                    act_index = 0;
-                    index = 0;
-                }
-                else
-                {
-                    act_index++;
-                    index = 0;
-                }
-
-                so_director.ChangeScene(sot_play.all_acts[play_index].act_elements[act_index]);
-                text_check = so_director.ChangeScenarioText(index);
-                return;
-            default:
-                Debug.Log("How has this even happened? Is this even possible?");
-                return;
+                    break;
+                case 't':
+                    timer_director.TimerCountdown();
+                    // do the return and text change in here.
+                    break;
+                default:
+                    Debug.Log("How has this even happened? Is this even possible?");
+                    break;
+            }
         }
+        
     }
 
     // This function is used to start game. This function will include random generation in itself further along development.
@@ -240,8 +263,9 @@ public class MainGameplayLoop : MonoBehaviour
         so_director.ChangeScenarioText(index);
 
         text_check = so_director.current_scene.text[index];
-
         progressText = true;
+
+        timer_director.Set_Attempt_Timer(30);
     }
 
     // Start is called before the first frame update
@@ -254,8 +278,7 @@ public class MainGameplayLoop : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        //text_check = TextDisplay.text;                                                  // This allows for text to be outright skipped. Not good.
+    {                                                          
 
         if (Input.GetKeyDown(KeyCode.Space) && progressText)
         {

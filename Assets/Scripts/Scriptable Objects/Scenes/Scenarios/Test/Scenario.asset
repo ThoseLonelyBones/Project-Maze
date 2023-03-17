@@ -26,6 +26,10 @@ MonoBehaviour:
   - Press to start the Dialogue
   scene_exits:
   - '[1,0,0,0][1,0,0,0]'
-  scene_flags: 620061006300
+  scene_flags:
+  - bt
+  - at
+  - ct
+  - ct
   scenario_dialogues:
   - {fileID: 11400000, guid: 0a15d8c65dd1f274e86574820c9f94d8, type: 2}

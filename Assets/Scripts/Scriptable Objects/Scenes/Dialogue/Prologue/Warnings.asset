@@ -1,0 +1,106 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ed339f40d44eae4ebce6e5fd6b580ac, type: 3}
+  m_Name: Warnings
+  m_EditorClassIdentifier: 
+  id: 0
+  text:
+  - Before we start, there are a few things that you must know about this game.
+  - "This story is a work of fiction. All references to names, characters, people,
+    businesses, places, events and incidents in this game are the product of the
+    author\u2019s imagination\u2014 which has been influenced over the course of
+    the years by multiple, different sources. "
+  - "Any resemblance to real-life objects, places, religions, people or events is
+    purely coincidental and in no-way representative of actual history or events,
+    as well as not being a counterpart of any of the former\u2014 neither in satire,
+    critical commentary or any other intentionally referential form."
+  - Sometimes, a story is just a story. Do you understand this?
+  - "It is important you understand that none of the events in the game are real
+    \u2013 or meant to reppresent anything real \u2013 You will be shown those same
+    warnings again. "
+  - "This story may contain unsettling imagery for some. Themes such as false incarceration,
+    claustrophobia, torment and disadvantage are discussed at length in the story.
+    It\u2019s important that you understand that, by agreeing to play this game,
+    you are in no way bound to play it through completion."
+  - "Without permission, you are free to leave whenever you desire. However, the
+    themes may push you away from completing the game, or even playing it in the
+    first place. It\u2019s important to know whether these themes are a deal-breaker
+    for you."
+  - Do you still want to play the game?
+  - You will be returned to the main title screen. Let the developer know that you
+    do not intend to undertake the playtest.
+  - One last thing.
+  - "This game will save some data of your playthrough. Data will be used to compile
+    information about the effectivness of the game as a teaching and instructional
+    tool, as well as how effectively its premise \u2013 a narration heavy game with
+    little to no visual reference \u2013 works in the way of password memorization."
+  - Data regarding your playthrough will be saved and safely kept according to GDPR
+    standards. Additionally, no sensitive data (such as age, sex, etc.) will be kept.
+    Only questions regarding your status on cybersecurity, videogame activity and
+    enjoyment will be asked for the purposes of creating accurate charts in the dissertation.
+    These questions are in no way meant to discriminate or objectify you and are
+    only relevant within the confines of the research question.
+  - Do you agree to the game saving your data for research purposes?
+  - If the game still entices you, you may still play it. Your playthrough will not
+    be used for development and research purposes. As a lover of games, it would
+    sadden me knowing that you want to not play the game exclusively because of this.
+    Enjoy your playthrough regardless.
+  - 'I will show you the warning about data saving again then. '
+  - 'Very well. The game is about to start. '
+  exit_text:
+  - Default Button
+  - Yes, I do.
+  - No, I don't.
+  - Yes, I do.
+  - No, I don't.
+  - Yes, I do.
+  - No, I don't.
+  - Thank you. (Keep Playing)
+  - 'I changed my mind.
+
+    I want to agree.'
+  - 'I changed my mind.
+
+    I don''t want to play.'
+  scene_exits:
+  - '[0,1,2,0][0,5,4,0]'
+  - '[0,3,4,0][0,9,8,0]'
+  - '[0,5,6,0][0,15,13,0]'
+  - '[7,8,9,0][15,14,8,0]'
+  scene_flags:
+  - ch
+  - c
+  - c
+  - b
+  - f
+  - c
+  - c
+  - b
+  - d
+  - ch
+  - c
+  - c
+  - b
+  - b
+  - f
+  responses:
+  - Default Response
+  - Good, let's proceed.
+  - We cannot continue until you understand.
+  - Good, let's proceed.
+  - I'm sad, but I fully understand.
+  - Very well, we are done.
+  - I'm sad about this, but fret not!
+  - "No need for that, I fully understand. Just let the developer know you don\u2019t
+    want to consent to your data being used. Enjoy yourself! "
+  - Thank you for this.
+  - It saddens me, but I fully understand.

@@ -34,7 +34,7 @@ public class Writing_Director : MonoBehaviour
         {
             Textbox.text += Text[char_pos].ToString();
             char_pos++;
-            yield return new WaitForSeconds(time_to_write);
+            yield return new WaitForSeconds(time_to_write);                     // Need to make this work letter by letter (this writes more characters if the framerate allows it)
         }
     }
 

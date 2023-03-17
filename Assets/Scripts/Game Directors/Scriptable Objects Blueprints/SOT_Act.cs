@@ -23,6 +23,8 @@ public class SOT_Act : ScriptableObject
     [Tooltip("Act ID")]
     public int actid;
 
+    // Acts are divided into multiple Scenarios and Dialogues, which makes dividing dialogue much easier than simply implementing a massive scenario. Certain sections, like Dialogues and Scenarios may alternate one another but
+    // it's considerably orderly to have them catalogued in here. Remember that calling for continue on the last element of an act element makes the game progress to the next act in line in the Loaded Play.
     [Tooltip("All Scenarios and Dialogues that make an Act")]
     public SOT_Scene[] act_elements;
 }
