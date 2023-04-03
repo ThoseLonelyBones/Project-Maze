@@ -13,8 +13,130 @@ MonoBehaviour:
   m_Name: Accusation_Dialogue
   m_EditorClassIdentifier: 
   id: 0
-  text: []
-  exit_text: []
-  scene_exits: []
-  scene_flags: []
-  responses: []
+  text:
+  - "\u201CFLETCHER! THOU HAVE BEEN SUMMONED BY THE WILL OF THE EMPEROR OF THIS LAND
+    TO HIS MAJESTIC COURT ON THE ACCOUNT OF HIGH TREASON! YOU MAY SURRENDER AND COME
+    WITH US OR- AND MAY THE GODS HAVE MERCY ON YOUR SOUL IF YOU DO- RETALIATE AND
+    FACE THE IMPERIAL GUARD\u2019S WRATH!\u201D"
+  - "Treason? The Gods? The Emperor Himself? Surely, there must be a misunderstanding\u2026"
+  - "You are stunned by this information. Accused of treason by the Emperor himself\u2026
+    and\u2026 a process?"
+  - "The shrill voice lightly replies: \u201CYou will know in due time, Fletcher.
+    For know I need you to follow me.\u201D"
+  - You realize that standing in this cabin will do you no good. You have not bothered
+    anyone ever since the day you were born and surely you have not conspired against
+    the Emperor himself! What ridicolousness. Following this high-pitched agent of
+    the Emperor may be your only option right this moment but you are sure this is
+    but a misunderstanding.
+  - "In your mind various options and possibilities fly: could have it been that
+    your work was poor quality? You scoff at the though\u2014 you know your craft
+    and know the quality of your work in unmatched. Was it a joke or song blurted
+    out after one too few tankards at the tavern? I mean\u2026 if that counted as
+    treason they would have to arrest the whole town."
+  - "As you have been thinking in place \u2013 almost distracted from your current
+    circumstances \u2013 you hear the light cracking of your cabin\u2019s door bravely
+    withstanding the borderline-battering ram-strength of the Agent\u2019s \u201Cknocking\u201D:
+    so furious and powerful that you feel light vibrations from your cozy seat."
+  - You move towards your door and, after taking some time to locate all the locking
+    pins, you open the door.
+  - "A smell of sweat, horse and leather immediately hits your nostrils, as the man\u2019s
+    riding must have taken a few days\u2014 and judging by the pungent odor, he did
+    not make any stops along the road. Swiftly, a boney hand reaches for yours: cold
+    and wet, the shock hits you like lighting. Immediately, you move to retract your
+    hand but the man\u2019s grasp is firm and prevents you from moving your left
+    hand \u2013 or arm \u2013 further. \u201CI\u2019m glad you decided to agree to
+    this, Fletcher. The Gods only know what your process would have looked like otherwise.\u201D"
+  - "As he says this, you begin to pick up the faint smell of steel and gunpowder
+    from the man: hearing the light clanking of metal-on-metal makes you imagine
+    a pistol\u2026 but multiplied tenfold.  A brace of flintlock pistols, one of
+    which would have surely been your judge, jury and executioner."
+  - "Without even time to think, you feel you are being tugged into the cold drizzle
+    outside. The almost-freezing temperatures are making you shiver and rattle your
+    teeth. After an exasperated sigh, the Agent releases the grip on your wrist and,
+    immediately after, you feel the sudden warmth of a wool blanket he threw to you.
+    \u201CWell, you are all set and ready. It\u2019s time for you to go.\u201D"
+  - So, this is how your story starts.
+  exit_text:
+  - Default Text
+  - "\"I\u2019m loyal to the Emperor!\""
+  - '"Who are you? What are you doing at my house?"'
+  - '"Treason? Explain yourselves, please."'
+  - "\"\u2026\"\n(Say Nothing)"
+  - '"My trial? Explain yourself!"'
+  - "\u201CI\u2019m coming!\u201D"
+  - "\u201CLet me finish my soup first.\u201D"
+  - "\u201CDon\u2019t break my door!\u201D"
+  - "\u201CIt takes me some time\u2026\u201D"
+  - "\u201CI don\u2019t hear my horse.\u201D"
+  - "\u201CThank you for the blanket.\u201D"
+  - "\u201CAm I supposed to ride with you?\u201D"
+  - Make a break for it!
+  scene_exits:
+  - '[1,2,3,4][2,2,2,2]'
+  - '[5,0,0,0][3,0,0,0]'
+  - '[6,7,8,9][7,7,7,7]'
+  - '[10,11,12,13][11,11,11,11]'
+  scene_flags:
+  - c
+  - b
+  - b
+  - c
+  - c
+  - c
+  - b
+  - c
+  - c
+  - c
+  - b
+  - a
+  responses:
+  - Default Response
+  - "A shrill shriek returns to you: \u201CTHIS IS FOR THE EMPEROR\u2019S COURT TO
+    DECIDE DURING YOUR DUE TRIAL, FLETCHER. I AM BUT HERE TO RETRIEVE YOU IN HIS
+    NAME.\u201D"
+  - "The shrilling voice barks back: \u201CARE YOU ALSO DEAF, FLETCHER? YOU ARE ACCUSED
+    OF TREASON AND IF YOU DO NOT OPEN YOUR DOOR THIS INSTANT I SHALL SEE THAT DURING
+    THE TRIAL YOU ARE EXECUTED FOR IT AS WELL!\u201D"
+  - "In a piercing tone, the man decrys: \u201CI DO NOT HAVE TO EXPLAIN THE EMPEROR\u2019S
+    WILL, FLETCHER. YOU, IF TRULY A LAW-ABIDING, NON-CONSPIRING AND UN-TRETCHEROUS
+    INDIVIDUAL, SHOULD KNOW SUCH. YOUR ATTUTUDE MAKES IT HARD TO PROVE SUCH IN THE
+    TRIAL\u201D."
+  - "The once-screechy speech turns into a deafening shout somehow an octave higher:
+    \u201CYOU THINK ME A FOOL, FLETCHER? I KNOW YOU ARE IN THE HOUSE, I CAN SEE THE
+    LIGHT OF YOUR FIREPLACE. YOUR MOCKERY OF HIS IMPERIAL AUTHORITY AND HIS TRUSTED
+    SERVANTS IS NOT GOOD FOR YOUR TRIAL."
+  - 'You shout back: "The trial? Explain!". A moment of silence follows, and an exhasperated
+    sigh right after.'
+  - "\u201CI\u2019m coming!\u201D- you blurt out, hoping the sound will not be drawned
+    by the siege-weapon that is the Agent\u2019s knocking. You hope this may be,
+    at the very least, enough to save your door from certain distruction."
+  - "You calmly say: \u201CLet me finish my soup first\u201D. After a second passes,
+    you discover that, beyond any possibility, the Agent\u2019s knocking has somehow
+    become even more furious and faster. Alongside the screeching sounds coming from
+    behind your door, it sounds more like a rabid wolf than a man. For your and your
+    soup\u2019s incolumity, you decide to get up and open the door\u2014 without
+    your precious soup in hand."
+  - "\u201CPlease, don\u2019t break my door!\u201D \u2013 you decry. And from the
+    other side of the door, the shrill voice replies: \u201CPLEASE DON\u2019T TEST
+    MY PATIENCE FLETCHER. OPEN THE DOOR. NOW.\u201D. You realize that opening the
+    door is your only chance to avoid being executed right in your very home, however
+    the incessant battering assault seems to have stopped for now."
+  - "\u201CIt takes me some time\u2026\u201D \u2013 you say, in a sad and exhausted
+    tone. The man stops his incessant knocking and blurts out: \u201CI\u2026 must
+    apologize. But you best be opening this door, or else!\u201D"
+  - "\u201CI don\u2019t hear my horse.\u201D You proclaim, trying to perk your ears
+    in hope that you might have just missed it hiding amongst the other sounds. \u201CYou
+    don\u2019t have one. You walk.\u201D The agent barks with thinly-veiled impatience
+    in his tone. You want to object, but the sound of the flintlock pulling back
+    is making you reconsider. Walking will have to do."
+  - "\u201CThank\u2026 you for the blanket\u201D, you meekly reply. Another sigh
+    leaves the agent\u2019s mouth. \u201CYes, yes: \u2018thank yous\u2019 and all
+    that. That was the last courtesy I could spare. Start walking.\u201D"
+  - "\u201CAm I supposed to ride with you?\u201D you say towards your captor sneeringly.
+    \u201CHah! Prisoners do not ride alongside the officers, they walk. You better
+    start.\u201D"
+  - "This may be your one and only opportunity for escape. You take in a few deep
+    breaths and then start runni\u2026 but before you make any distance you hear
+    the thundering roar of the flintlock pistol crack behind you, the trail of the
+    bullet makes the air next to your right ear uncomfortably hot. \u201CThe next
+    one will be for you if you try that again. Start walking.\u201D"

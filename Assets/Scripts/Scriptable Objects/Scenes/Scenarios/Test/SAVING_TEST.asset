@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306bb26a6dc49594a93f3c1e031a10c7, type: 3}
+  m_Name: SAVING_TEST
+  m_EditorClassIdentifier: 
+  id: 1
+  text:
+  - This is a saving test
+  - This means that whatever content you are seeing right now, is irrelevant.
+  - Save Flag is active on this element
+  - Did it save?
+  exit_text:
+  - 
+  scene_exits: []
+  scene_flags:
+  - c
+  - c
+  - cs
+  - d
+  scenario_dialogues: []

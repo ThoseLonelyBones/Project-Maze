@@ -11,6 +11,7 @@ public class Timer_Director : MonoBehaviour
     */
     [SerializeField]
     private int Attempt_Timer;
+    private int Test_Timer;
 
     [SerializeField]
     private bool stage0 = true, stage1 = true, stage2 = true, stage3 = true, stage4 = true;
@@ -23,11 +24,13 @@ public class Timer_Director : MonoBehaviour
     public void Set_Attempt_Timer(int timer)
     {
         Attempt_Timer = timer;
+        Test_Timer = timer;
     }
 
     private void TimerCheck()
     {
-        
+        //Debug.Log("Timer Check!");
+
         if(Attempt_Timer >= 30 && stage0)
         {
             Debug.Log("Game has Started");
@@ -94,6 +97,10 @@ public class Timer_Director : MonoBehaviour
 
     private void Update()
     {
-        TimerCheck();
+        if(Test_Timer > Attempt_Timer)
+        {
+            TimerCheck();
+            Test_Timer = Attempt_Timer;
+        }
     }
 }

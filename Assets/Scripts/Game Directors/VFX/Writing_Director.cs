@@ -28,6 +28,12 @@ public class Writing_Director : MonoBehaviour
         StartCoroutine(Writing());
     }
 
+    public void WritingStop()
+    {
+        Textbox.text = "";
+        Text = "";
+    }
+
     IEnumerator Writing()
     {
         while (char_pos < Text.Length && Textbox.text != Text)

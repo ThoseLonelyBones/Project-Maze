@@ -187,14 +187,16 @@ public class SO_Director : MonoBehaviour
 
         Debug.Log(current_scene_exits[0]);
 
-        string exits_editing = current_scene_exits[exit_index];            // => exits_editing = [11,12,13,14][1,2,3,4]
+        string exits_editing = current_scene_exits[exit_index];            // => exits_editing = [11,12,13,14][1,2,3,4][0]
         // Step 1 = Merge '][' into ','                                  
-        exits_editing = exits_editing.Replace("][", ",");                   // => exits_editing = [11,12,13,14,1,2,3,4]
+        exits_editing = exits_editing.Replace("][", ",");                   // => exits_editing = [11,12,13,14,1,2,3,4,0]
         // Step 2 = Delete "[" and "]"
-        exits_editing = exits_editing.Replace("[", "");                     // => exits_editing = 11,12,13,14,1,2,3,4]
-        exits_editing = exits_editing.Replace("]", "");                     // => exits_editing = 11,12,13,14,1,2,3,4
+        exits_editing = exits_editing.Replace("[", "");                     // => exits_editing = 11,12,13,14,1,2,3,4,0]
+        exits_editing = exits_editing.Replace("]", "");                     // => exits_editing = 11,12,13,14,1,2,3,4,0
         // Step 3 = Split the String by "," -> The first 4 values are the value of exit_text (the button's text)
-        //                                  -> The last 4 values  are the Button values (exits[], the return integer array)                                  
+        //                                  -> The last 4 values  are the Button values (exits[], the return integer array)
+        //                                  -> The last value is the exit index addendum, which determines how much the exit array is supposed to increase whenever it is a value different than zero.
+        //                                     If it is 0, then Exit_array increases by only 1.
         string[] exits_formatted = exits_editing.Split(",");
         // Step 4 = exits_formatted is now usable in the next for loop! The example above now looks something like this:
         //
@@ -214,25 +216,25 @@ public class SO_Director : MonoBehaviour
                     case 0:
                         // Activate Button 1;
                         button1Text.text = "";                                                              // => Replace this with VFX_Director's ButtonSpawn Function when done!
-                        button1.SetActive(true);
+                        //button1.SetActive(true);
                         button1Text.text = current_scene.exit_text[int.Parse(exits_formatted[x])];      // => Replace this with VFX_Director's ButtonSpawn Function when done!
                         break;
                     case 1:
                         // Activate Button 2;
                         button2Text.text = "";                                                              // => Replace this with VFX_Director's ButtonSpawn  Function when done!
-                        button2.SetActive(true);
+                        //button2.SetActive(true);
                         button2Text.text = current_scene.exit_text[int.Parse(exits_formatted[x])];      // => Replace this with VFX_Director's ButtonSpawn Function when done!
                         break;
                     case 2:
                         // Activate Button 3;
                         button3Text.text = "";                                                              // => Replace this with VFX_Director's ButtonSpawn  Function when done!
-                        button3.SetActive(true);
+                        //button3.SetActive(true);
                         button3Text.text = current_scene.exit_text[int.Parse(exits_formatted[x])];      // => Replace this with VFX_Director's ButtonSpawn Function when done!
                         break;
                     case 3:
                         // Active Button 4;
                         button4Text.text = "";                                                               // => Replace this with VFX_Director's ButtonSpawn Function when done!
-                        button4.SetActive(true);
+                        //button4.SetActive(true);
                         button4Text.text = current_scene.exit_text[int.Parse(exits_formatted[x])];          // => Replace this with VFX_Director's ButtonSpawn  Function when done!
                         break;
                     default:
@@ -243,7 +245,28 @@ public class SO_Director : MonoBehaviour
            }
         }
 
-        exit_index++;
+        try
+        {
+            int exits_addendum = int.Parse(exits_formatted[8]);
+
+            if (int.Parse(exits_formatted[8]) > 0)
+            {
+                exit_index += int.Parse(exits_formatted[8]);
+            }
+            else
+            {
+                exit_index++;
+            }
+        }
+        catch(IndexOutOfRangeException)
+        {
+            Debug.Log("The array doesn't have an exits addendum declared, increase exit_index by 1");
+            exit_index++;
+        }
+
+
+        
+        
         return exits_array;
 
     }
@@ -261,6 +284,7 @@ public class SO_Director : MonoBehaviour
      * c: continue -> Load next Text[]
      * d: default -> default flag, does nothing. Don't use this!
      * r: return -> used exclusively as a way to tell the game that the current scene is over and to move over to the next one
+     * s: save -> used to save game progress (in testing).
      * t: timer -> used to decrease the attempt timer.
      * 
      * Additional Flags:
@@ -268,9 +292,9 @@ public class SO_Director : MonoBehaviour
      * f: fish -> used in conjunction with hook. Once called, the scene is reset to what the hook saved.
      * h: hook -> save the current index and when "fish" is called retrieve that scene. Used for Dead Ends.
      * 
-     * (possible implementation) 
-     * m: mood -> used to determine the Observer's mood. Possibly influences some dialogue choices.
-     * s: sound -> used to scour for sound clips and add a sound effect to the clip. Search the BBC network for loads of soundclips.
+     * 
+     * 
+     * 
      * 
      * 
      * Other steps that need to be undertaken are done in the Main Gameplay Loop script
@@ -354,6 +378,12 @@ public class SO_Director : MonoBehaviour
                         hook_exit_index = exit_index;
                         // Return to this index once 'f' is called. If 'h' is called again, override the old one.
                         break;
+                    case 'i':
+                        return_array[x] = 'i';
+                        break;
+                    case 's':
+                        return_array[x] = 's';
+                        break;
                     case 't':
                         return_array[x] = 't';
                         break;
@@ -429,11 +459,9 @@ public class SO_Director : MonoBehaviour
             SOT_Dialogue dialogue = (SOT_Dialogue)current_scene;
             TextDisplay.text = "";
             if(x < 4)
-            {
-                //TextDisplay.text = dialogue.responses[response[x]];                                        
+            {                                  
                 text_to_write = dialogue.responses[response[x]];
                 writing_director.TypingEffect(TextDisplay, text_to_write, 0.045f);
-                Debug.Log(dialogue.responses[response[x]]);
                 return dialogue.responses[response[x]];
             }
             else

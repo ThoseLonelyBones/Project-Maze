@@ -37,7 +37,7 @@ public class Gameplay_Director : MonoBehaviour
                             button3Text,
                             button4Text;
 
-    public GameObject       title;
+    public GameObject       passcode_field;
 
     public bool             progressText = true;
     public bool            alternateScene = false;
@@ -51,6 +51,12 @@ public class Gameplay_Director : MonoBehaviour
 
     [SerializeField]
     private int             hook_index;
+
+    [SerializeField]
+    private UI_Director     ui_director;
+
+    [SerializeField]
+    private Information_Handler info_handler;
     
 
     /*
@@ -66,6 +72,8 @@ public class Gameplay_Director : MonoBehaviour
     {
         so_director = GetComponent<SO_Director>();
         timer_director = GetComponent<Timer_Director>();
+        ui_director = GetComponent<UI_Director>();
+        info_handler = GetComponent <Information_Handler>();
         if(timer_director == null)
         {
             Debug.Log("Timer Director not set");
@@ -90,7 +98,7 @@ public class Gameplay_Director : MonoBehaviour
     // This function is used in the Demo Pre-Alpha to hide elements of the game before the first scenario is loaded
     public void demoHide()
     {
-        title.SetActive(false);
+        passcode_field.SetActive(false);
         buttonsHide();
     }
 
@@ -113,27 +121,31 @@ public class Gameplay_Director : MonoBehaviour
 
     public void buttonsSet(int[] exits)
     {
+        bool[] button_active = { false, false, false, false };
+
         for(int x = 0; x < 4; x++)
         {
             if(exits[x] > 0)
             {
-                switch(x)
+                button_active[x] = true;
+
+                switch (x)
                 {
                     case 0:
                         button1Exit = exits[x];
-                        button1.SetActive(true);
+                        //button1.SetActive(true);
                         break;
                     case 1:
                         button2Exit = exits[x];
-                        button2.SetActive(true);
+                        //button2.SetActive(true);
                         break;
                     case 2:
                         button3Exit = exits[x];
-                        button3.SetActive(true);
+                        //button3.SetActive(true);
                         break;
                     case 3:
                         button4Exit = exits[x];
-                        button4.SetActive(true);
+                        //button4.SetActive(true);
                         break;
                     default:
                         Debug.Log("There was supposed to be a cool error message here but I forgor :skull:");
@@ -141,6 +153,9 @@ public class Gameplay_Director : MonoBehaviour
                 }
             }
         }
+
+        
+        ui_director.ButtonAlign(button_active);
 
         progressText = false;
     }
@@ -190,9 +205,6 @@ public class Gameplay_Director : MonoBehaviour
         progressText = true;
     }
 
-
-
-
     public void readFlag(char[] flag)
     {
         for(int x = 0; x < flag.Length; x++)
@@ -227,6 +239,9 @@ public class Gameplay_Director : MonoBehaviour
                 case 'h':
                     hook_index = index;
                     break;
+                case 'i':
+                    // Input stuff
+                    break;
                 case 'r':
                     if (act_index == sot_play.all_acts[play_index].act_elements.Length)
                     {
@@ -239,9 +254,19 @@ public class Gameplay_Director : MonoBehaviour
                         act_index++;
                         index = 0;
                     }
-                    so_director.ChangeScene(sot_play.all_acts[play_index].act_elements[act_index]);  // This sometimes gets out of bounds? I don't even see how it is possible
+                    so_director.ChangeScene(sot_play.all_acts[play_index].act_elements[act_index]);
                     Debug.Log(play_index + " is play index and " + act_index + " is act index");
                     text_check = so_director.ChangeScenarioText(index);
+                    break;
+                case 's':
+                    SOT_Scene current_scene = so_director.current_scene;
+                    int exit_index          = so_director.exit_index;
+                    int timer               = timer_director.Get_Attempt_Timer();
+                    info_handler.SaveGame(current_scene, index, act_index, play_index, exit_index, timer, 0);
+
+                    string save_data_test = info_handler.LoadGame();
+                    Debug.Log(save_data_test);
+
                     break;
                 case 't':
                     timer_director.TimerCountdown();
@@ -304,4 +329,14 @@ public class Gameplay_Director : MonoBehaviour
         }
 
     }
+
+    // TODO:
+    /*
+     *  1) Integrate Inputs via Input Flag
+     *  2) Fully finish timer implementation
+     *  3) Create SFX and VFX directors
+     * 
+     * 
+     * 
+     */
 }
