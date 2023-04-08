@@ -72,7 +72,6 @@ public static class Encryption_Assistant
             aes_decryption.Padding = PaddingMode.Zeros;
 
             var decryptor = aes_decryption.CreateDecryptor(aes_decryption.Key, aes_decryption.IV);
-            //byte[] decrypted_data_array;
 
             using (var memory_stream = new MemoryStream(encrypted_data_array))
             {

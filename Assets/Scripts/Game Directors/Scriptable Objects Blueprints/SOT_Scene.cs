@@ -86,7 +86,13 @@ public abstract class SOT_Scene : ScriptableObject
      */
     [Tooltip("This is used to determine how the scene needs to proceed, if it needs to be interrupted, if certain dialogues need to be skipped or anything. \n This is the flag index: \n a: alternate (use exclusively in Scenarios w/ Dialogues or Dialogues-within-scenarios) \n" +
              "b: buttons \n c: continue \n d: default (used for interruption or displaying error messages) \n f: fish (used in conjunction with hook, fish is the last text before returning to the hook text \n h: hook (used in conjunction with fish, hook saves the current room and is called back with fish \n" +
-             "s#: sound# (calls the sound director for more specific sounds, searches using the number right after.) \n t: timer (decrease attempt timer)")]
+             "q: questionarre, saves the current button choice, used in conjunction with b  \n s#: sound# (calls the sound director for more specific sounds, searches using the number right after.) \n t: timer (decrease attempt timer)" +
+             "m#: music# (similar to s#, calls the sound director for the ambiance music, it's manually stopped with m0 or by playing a different track)."                                                                                                                                                                                                                                                                                                                  )]
     public string[] scene_flags;
+
+    [Tooltip("This is the sound list. Here all the sounds of this Scene are contained and then subsequently passed to the SFX director to play them when required!")]
+    public AudioSource[] scene_sfx;
+
+    public AudioSource[] scene_music;
 
 }

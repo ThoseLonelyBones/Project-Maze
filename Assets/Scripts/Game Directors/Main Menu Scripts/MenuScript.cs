@@ -43,12 +43,24 @@ public class MenuScript : MonoBehaviour
 
     void ClickStart()
     {
-        SceneManager.LoadScene("Gameplay Scene");
+        PlayerPrefs.SetInt("load", 0);
+        SceneManager.LoadScene("Gameplay Scene");     
     }
 
     void ClickLoad()
     {
-
+        string playersavedata = info_handler.LoadGame();
+        if(playersavedata == null)
+        {
+            TextDisplay.text = "The game incurred in an issue while loading your savefile. Make sure one is present or available!";
+        }
+        else
+        {
+            PlayerPrefs.SetString("savedata", playersavedata);
+            PlayerPrefs.SetInt("load", 1);
+            SceneManager.LoadScene("Gameplay Scene");
+        }
+       
     }
 
     void ClickOptions()

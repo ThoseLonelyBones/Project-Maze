@@ -10,20 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 306bb26a6dc49594a93f3c1e031a10c7, type: 3}
-  m_Name: SAVING_TEST
+  m_Name: Input Test
   m_EditorClassIdentifier: 
-  id: 1
+  id: 0
   text:
-  - This is a saving test
-  - This means that whatever content you are seeing right now, is irrelevant.
-  - Save Flag is active on this element
-  - Did it save?
-  exit_text:
-  - 
+  - This is an input test
+  - Before you stands a huge door!
+  - Insert the door's code
+  - The door's code you inserted is correct
+  - The door's code you inserted is incorrect
+  - You have passed through the door!
+  exit_text: []
   scene_exits: []
   scene_flags:
+  - ch
+  - ci
   - c
   - c
-  - cs
-  - d
+  - f
+  - c
   scenario_dialogues: []

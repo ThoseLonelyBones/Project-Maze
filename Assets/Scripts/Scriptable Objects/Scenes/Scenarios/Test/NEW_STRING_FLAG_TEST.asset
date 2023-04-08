@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306bb26a6dc49594a93f3c1e031a10c7, type: 3}
+  m_Name: NEW_STRING_FLAG_TEST
+  m_EditorClassIdentifier: 
+  id: 1
+  text:
+  - This is a test to see how the new flag system works
+  - Just to prove a point
+  - Flags on this element are loads!
+  - Did it crash?
+  - Hopefully not!
+  exit_text:
+  - 
+  scene_exits: []
+  scene_flags:
+  - c
+  - cm10
+  - cs11s14
+  - cm11s11m12
+  - r
+  scene_sfx: []
+  scene_music: []
+  scenario_dialogues: []

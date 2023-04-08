@@ -4,6 +4,8 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Text.RegularExpressions;
+
 
 /* 
  * The SO_Director (or Scriptable Object Director) is the script which governs the distribution and handling of information contained in Scriptable Object to other parts of the code.
@@ -85,8 +87,10 @@ public class SO_Director : MonoBehaviour
     // Two elements used in conjuction with the callexits and response handler functions 
     public int exit_index = 0;
     [SerializeField]
-    private int hook_exit_index = 0;
+    public int hook_exit_index = 0;
     private int[] response = { 0, 0, 0, 0 };
+
+    public int input_index = 0;
 
 
     // Awake is a good point to assing all elements where needed, to check if the various objects in the game and other scripts are reachable, etc.
@@ -300,35 +304,29 @@ public class SO_Director : MonoBehaviour
      * Other steps that need to be undertaken are done in the Main Gameplay Loop script
      */
 
-    public char[] SceneFlags(int scene_index)
+    public string[] SceneFlags(int scene_index)
     {
-        char[] return_array = { ' ' };
+        string[] return_array = { " " };
         bool returnconfirm = true;
 
-        int str_length = current_scene.scene_flags[scene_index].Length;
+        string[] section_array = SceneFlagSorter(scene_index);
 
-        // Apparently, strings aren't char[] in C#... buuuuuut there's a handy function to convert them into just that! (How nifty)
-        char[] section_array = current_scene.scene_flags[scene_index].ToCharArray();
-
-        for (int x = 0; x < str_length; x++)
+        for (int x = 0; x < section_array.Length; x++)
         {
-            if(x > 0)
-            {
-                Array.Resize(ref return_array, return_array.Length + 1);
-            }
 
             if (scene_index + 1 == current_scene.text.Length && alternate_scenario == null && returnconfirm == true)
             {
                 Debug.Log("Returning Flag R");
+                Array.Resize(ref section_array, section_array.Length + 1);
                 exit_index = 0;
-                return_array[x] = 'r';
+                section_array[x + 1] = "r";
                 returnconfirm = false;
             }
             else
             {
                 switch (section_array[x])
                 {
-                    case 'a':
+                    case "a":
                         if (alternate_scenario == null && current_scene is SOT_Scenario)
                         {
                             try
@@ -357,39 +355,33 @@ public class SO_Director : MonoBehaviour
                                 alternate_scenario = null;
                             }
                         }
-
-                        return_array[x] = 'a';
                         break;
-                    case 'b':
+                    case "b":
                         // Call Exits is called on the main gameplay loop (needs the int[] return to work)
-                        return_array[x] = 'b';
                         break;
-                    case 'c':
+                    case "c":
                         // Change Scenario Text -> this prompts into a change of the index.
-                        return_array[x] = 'c';
                         break;
-                    case 'f':
-                        return_array[x] = 'f';
+                    case "f":
                         exit_index = hook_exit_index;
                         // Return to saved 'h' index
                         break;
-                    case 'h':
-                        return_array[x] = 'h';
+                    case "h":
                         hook_exit_index = exit_index;
                         // Return to this index once 'f' is called. If 'h' is called again, override the old one.
                         break;
-                    case 'i':
-                        return_array[x] = 'i';
+                    case "i":
                         break;
-                    case 's':
-                        return_array[x] = 's';
+                    case "q":
                         break;
-                    case 't':
-                        return_array[x] = 't';
+                    case string m when Regex.IsMatch(m, "^m[0-9]{2}$"):             
+                        break;
+                    case string s when Regex.IsMatch(s, "^s[0-9]{2}$"):
+                        break;
+                    case "t":
                         break;
                     default:
                         // Return 'd', prompt error message on the d
-                        return_array[x] = 'd';
                         break;
                 }
             }
@@ -397,8 +389,102 @@ public class SO_Director : MonoBehaviour
            
         }
 
-        return return_array;
+        return section_array;
         
+    }
+
+    // Works as Intended, Perfect!
+    private string[] SceneFlagSorter(int scene_index)
+    {
+        string[] sort_array = { " " };
+
+        string scene_flags = current_scene.scene_flags[scene_index];
+        int y = 0;
+
+        for(int i = 0; i < scene_flags.Length; i++)
+        {
+            if (y > 0)
+            {
+                Array.Resize(ref sort_array, sort_array.Length + 1);
+            }
+
+            string workingstring = "";
+            bool processComplete = false;
+
+            while(!processComplete)
+            {
+                Debug.Log(i);
+                string process_string = scene_flags.Substring(i, 1);
+                foreach (char c in process_string)
+                {
+
+                   if(workingstring.Length >= 1)
+                   {
+                        if (Char.IsLetter(c))
+                        {
+                            sort_array[y] = workingstring;
+                            y++;
+
+                            processComplete = true;
+                            i--;
+                            break;
+                        }
+                        else if (Char.IsNumber(c))
+                        {
+                            workingstring += c.ToString();
+
+                            if (i + 1 == scene_flags.Length)
+                            {
+                                sort_array[y] = workingstring;
+                                y++;
+                                processComplete = true;
+                                break;
+                            }
+                            else
+                            {
+                                i++;
+                            }
+                            
+                            
+                        }
+                   }
+                   else
+                   {
+                        if (Char.IsLetter(c))
+                        {
+                            workingstring += c.ToString();
+
+                            if(i + 1 == scene_flags.Length)
+                            {
+                                sort_array[y] = workingstring;
+                                y++;
+                                processComplete = true;
+                                break;
+                            }
+                            else
+                            {
+                                i++;
+                            }
+
+                        }
+                        else
+                        {
+                            Debug.Log("Error in formatting exit flags, make sure they are correct!");
+                        }
+
+                    }
+
+   
+                }
+            }
+
+        }
+
+        for(int z = 0; z < sort_array.Length; z++)
+        {
+            Debug.Log("sort_array " + (scene_index + 1) + "'s value " + z + " is " + sort_array[z]);
+        }
+        return sort_array;
     }
 
     public int ChangeScene(SOT_Scene newscene)
@@ -476,5 +562,7 @@ public class SO_Director : MonoBehaviour
         }
         
     }
+
+
 
 }

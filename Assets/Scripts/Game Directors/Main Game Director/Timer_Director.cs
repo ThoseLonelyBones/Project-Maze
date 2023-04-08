@@ -14,6 +14,9 @@ public class Timer_Director : MonoBehaviour
     private int Test_Timer;
 
     [SerializeField]
+    private int Attempt_Number;
+
+    [SerializeField]
     private bool stage0 = true, stage1 = true, stage2 = true, stage3 = true, stage4 = true;
 
     // Getter and Setter for Attempt_Timer
@@ -25,6 +28,16 @@ public class Timer_Director : MonoBehaviour
     {
         Attempt_Timer = timer;
         Test_Timer = timer;
+    }
+
+    public int Get_Attempt_Number()
+    {
+        return Attempt_Number;
+    }
+
+    public void Set_Attempt_Number(int attempt)
+    {
+        Attempt_Number = attempt;
     }
 
     private void TimerCheck()
@@ -84,6 +97,12 @@ public class Timer_Director : MonoBehaviour
             // End the game, show message
         }
         
+    }
+
+    public void AttemptCountup()
+    {
+        Attempt_Number++;
+        Debug.Log("Attempt Number: " + Attempt_Number + 1 + "failed, resuming the game from the start.");
     }
 
     private void Start()

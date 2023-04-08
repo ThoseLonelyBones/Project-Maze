@@ -477,6 +477,8 @@ MonoBehaviour:
   - {fileID: 81911413}
   - {fileID: 347086126}
   button_align: {fileID: 2013291395}
+  system_text_group: {fileID: 0}
+  sys_text: {fileID: 0}
 --- !u!114 &182533521
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -547,6 +549,8 @@ MonoBehaviour:
   - {fileID: 81911413}
   - {fileID: 347086126}
   button_align: {fileID: 2013291395}
+  system_text_group: {fileID: 0}
+  sys_text: {fileID: 0}
 --- !u!114 &182533527
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1773,7 +1777,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: This is default text.
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

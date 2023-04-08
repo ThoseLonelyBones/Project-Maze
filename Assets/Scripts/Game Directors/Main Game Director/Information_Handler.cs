@@ -33,23 +33,22 @@ public class Information_Handler : MonoBehaviour
         secret_key = config.secret_key;
         iv = config.iv;
 
-        Debug.Log("This is me reading the JSON file:" + secret_key);
-        Debug.Log("This is me reading the JSON file, again:" + iv);
     }
 
-    public void SaveGame(SOT_Scene scene, int index, int act_index, int play_index,  int exit_index, int timer, int attempts)
+    public void SaveGame(SOT_Scene scene, int index, int act_index, int play_index,  int exit_index, int timer, int attempts, int hook_index)
     {
         string savepath = Path.Combine(filepath, savefile);
 
         Debug.Log(savepath);
 
-        game_data = "<currentscene>" + scene + "</currentscene>" + "\n"
-                  + "<index>" + index + "</index>" + "\n"
-                  + "<actindex>" + act_index + "</actindex>" + "\n"
-                  + "<playindex>" + play_index + "</playindex" + "\n"
-                  + "<exitindex" + exit_index + "</exitindex>" + "\n"
-                  + "<attempttimer>" + timer + "</attempttimer>" + "\n"
-                  + "<attemptnumber>" + attempts + "</attemptnumber>" + "\n";
+        game_data = "<currentscene>" + scene + "</currentscene>" + "\n"                 //SaveArray[0]
+                  + "<index>" + index + "</index>" + "\n"                               //SaveArray[1]
+                  + "<actindex>" + act_index + "</actindex>" + "\n"                     //SaveArray[2]
+                  + "<playindex>" + play_index + "</playindex>" + "\n"                  //SaveArray[3]
+                  + "<exitindex>" + exit_index + "</exitindex>" + "\n"                  //SaveArray[4]
+                  + "<attempttimer>" + timer + "</attempttimer>" + "\n"                 //SaveArray[5]
+                  + "<attemptnumber>" + attempts + "</attemptnumber>" + "\n"            //SaveArray[6]
+                  + "<hookindex>" + hook_index + "</hookindex>" + "\n";                 //SaveArray[7]
 
         Encryption_Assistant.Encrypt_GameData(game_data, savepath, secret_key, iv);
     }
@@ -65,7 +64,6 @@ public class Information_Handler : MonoBehaviour
     public void SaveData(/*Stuff saved with the 'q' flag (questionarre) will be put in here as an imported array, then edited inside this function.*/)
     {
         string savepath = Path.Combine(filepath, datafile);
-
 
     }
 
