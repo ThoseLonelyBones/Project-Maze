@@ -23,6 +23,18 @@ public class MenuScript : MonoBehaviour
     public GameObject textDisplay;
     public TextMeshProUGUI TextDisplay;
 
+    [SerializeField]
+    private GameObject AudioDirector, VisualDirector, OptionsMenu;
+
+    public GameObject MainMenu;
+
+    private void Awake()
+    {
+        DontDestroyOnLoad(AudioDirector);
+        DontDestroyOnLoad(VisualDirector);
+        // Find a way to make this persist, probably copying it and putting it in Gameplay Script
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,8 +43,25 @@ public class MenuScript : MonoBehaviour
 
         startbtn.onClick.AddListener(() => ClickStart());
         loadbtn.onClick.AddListener(() => ClickLoad());
-        optionsbtn.onClick.AddListener(() => ClickOptions());
+        //Options's action is dependent on context and is directly assigned from the Editor.
         creditsbtn.onClick.AddListener(() => ClickCredits());
+
+        Audio_Director audiodirector = AudioDirector.GetComponent<Audio_Director>();
+
+        if(!info_handler.LoadSettings())
+        {
+            PlayerPrefs.SetFloat("music_volume", 1f);
+            PlayerPrefs.SetFloat("game_sfx_volume", 1f);
+            PlayerPrefs.SetFloat("scene_sfx_volume", 1f);
+            PlayerPrefs.SetString("autosave", "true");
+            PlayerPrefs.SetString("datacollection", "true");
+            PlayerPrefs.SetInt("textsize", 48);
+            PlayerPrefs.SetFloat("textspeed", 0.045f);
+        }
+
+        Settings(audiodirector);
+
+        audiodirector.PlayMusic(0);
     }
 
     // Update is called once per frame
@@ -63,13 +92,16 @@ public class MenuScript : MonoBehaviour
        
     }
 
-    void ClickOptions()
+    void ClickCredits()
     {
 
     }
 
-    void ClickCredits()
+    void Settings(Audio_Director audiodirector)
     {
+        audiodirector.music_volume = PlayerPrefs.GetFloat("music_volume");
+        audiodirector.game_sfx_volume = PlayerPrefs.GetFloat("game_sfx_volume");
+        audiodirector.scene_sfx_volume = PlayerPrefs.GetFloat("scene_sfx_volume");
 
     }
 }

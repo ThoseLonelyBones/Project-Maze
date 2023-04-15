@@ -90,9 +90,13 @@ public abstract class SOT_Scene : ScriptableObject
              "m#: music# (similar to s#, calls the sound director for the ambiance music, it's manually stopped with m0 or by playing a different track)."                                                                                                                                                                                                                                                                                                                  )]
     public string[] scene_flags;
 
-    [Tooltip("This is the sound list. Here all the sounds of this Scene are contained and then subsequently passed to the SFX director to play them when required!")]
-    public AudioSource[] scene_sfx;
+    [Tooltip("This is the sound list. Here all the names of the sounds that are required are passed in. Then, these are loaded in via the Audio_Director on scene creation using the flag s, then following it with a number equal to the index of the soundfile's name, present in this list.")]
+    public string[] scene_sfx;
 
-    public AudioSource[] scene_music;
+    [Tooltip("This is the music list. Here all the names of the songs that are required are passed in. Then, these are loaded in via the Audio_Director on scene creation using the flag m, then following it with a number equal to the index of the soundfile's name, present in this list.")]
+    public string[] scene_music;
+
+    [Tooltip("Some scenes have passwords. When the flag i is inserted, the user input is confronted against the password: if it is correct, progress to a specific id (written in the addendum to i)")]
+    public string[] password;
 
 }

@@ -25,9 +25,9 @@ public class Gameplay_Director : MonoBehaviour
      * InputHandler, which handles passcode inputs and checks related to that.
      */
 
-    private SO_Director         so_director;
+    private SO_Director so_director;
 
-    public Timer_Director      timer_director;
+    public Timer_Director timer_director;
 
     [SerializeField]
     private UI_Director ui_director;
@@ -54,18 +54,18 @@ public class Gameplay_Director : MonoBehaviour
      * 
      */
 
-    public static GameObject       button1,
+    public static GameObject button1,
                                    button2,
                                    button3,
                                    button4;
 
-    public Button       button_1,
+    public Button button_1,
                         button_2,
                         button_3,
                         button_4;
 
 
-    public TextMeshProUGUI  button1Text,
+    public TextMeshProUGUI button1Text,
                             button2Text,
                             button3Text,
                             button4Text;
@@ -76,68 +76,82 @@ public class Gameplay_Director : MonoBehaviour
      * 
      */
 
-    public GameObject       textDisplay;
+    public GameObject textDisplay;
     public TextMeshProUGUI TextDisplay;
 
 
-    public Button           save_button;
+    public Button save_button;
 
 
-    public int              button1Exit,
+    public int button1Exit,
                             button2Exit,
                             button3Exit,
                             button4Exit;
 
 
-    public GameObject       passcode_field;
-    public GameObject       fake_passcode_field;
+    public GameObject passcode_field;
+    public GameObject fake_passcode_field;
 
-    public bool             progressText = true;
-    public bool             alternateScene = false;
-    public bool             isResponse = false;
+    public bool progressText = true;
+    public bool alternateScene = false;
+    public bool isResponse = false;
 
 
-    private string          button_response;
-    public string           text_check;
+    private string button_response;
+    public string text_check;
 
 
 
     [SerializeField]
-    private int             hook_index;
-    
+    private int hook_index;
+
 
     /*
      * One of the most important variables in the entire game. Index is used to navigate through the multitude of text that are present in the game. It's like a bookmark, telling the program at which page they are
      * currently at. It's used in a multitude of functions in both this script and the SO_Director. It's handled with the utmost care and it's always beeing kept track of.
      * 
      */
-    private int             index;
-    private int             act_index = 0;
-    private int             play_index = 0;
+    private int index;
+    private int act_index = 0;
+    private int play_index = 0;
+
+    private bool questionare_save = false;
 
     private void Awake()
     {
         so_director = GetComponent<SO_Director>();
         timer_director = GetComponent<Timer_Director>();
-        ui_director = GetComponent<UI_Director>();
-        info_handler = GetComponent <Information_Handler>();
+
+        info_handler = GetComponent<Information_Handler>();
         input = GetComponent<Input_Handler>();
 
-        if(timer_director == null)
+
+        if (timer_director == null)
         {
             Debug.Log("Timer Director not set");
         }
         //writing_director = GetComponent<Writing_Director>();
-        
+
 
         button1 = GameObject.Find("Button 1");
         button2 = GameObject.Find("Button 2");
         button3 = GameObject.Find("Button 3");
         button4 = GameObject.Find("Button 4");
 
-        button_1.onClick.AddListener(() => buttonClick("Button 1"));                       
-        button_2.onClick.AddListener(() => buttonClick("Button 2"));                       
-        button_3.onClick.AddListener(() => buttonClick("Button 3"));                       
+        GameObject audiodirector = GameObject.Find("AudioDirector");
+        audio_director = audiodirector.GetComponent<Audio_Director>();
+        if (audio_director == null)
+        {
+            Debug.Log("Audio Director not set!");
+        }
+        else
+        {
+            Debug.Log("Audio Director set!");
+        }
+
+        button_1.onClick.AddListener(() => buttonClick("Button 1"));
+        button_2.onClick.AddListener(() => buttonClick("Button 2"));
+        button_3.onClick.AddListener(() => buttonClick("Button 3"));
         button_4.onClick.AddListener(() => buttonClick("Button 4"));
 
         save_button.onClick.AddListener(() => SaveGame());
@@ -146,7 +160,7 @@ public class Gameplay_Director : MonoBehaviour
 
         Debug.Log("Main Gameplay Loop Awake");
 
-
+        
 
     }
 
@@ -173,16 +187,16 @@ public class Gameplay_Director : MonoBehaviour
 
         button4Text.text = "";
         button4.SetActive(false);
-        
+
     }
 
     public void buttonsSet(int[] exits)
     {
         bool[] button_active = { false, false, false, false };
 
-        for(int x = 0; x < 4; x++)
+        for (int x = 0; x < 4; x++)
         {
-            if(exits[x] > 0)
+            if (exits[x] > 0)
             {
                 button_active[x] = true;
 
@@ -211,7 +225,7 @@ public class Gameplay_Director : MonoBehaviour
             }
         }
 
-        
+
         ui_director.ButtonAlign(button_active);
 
         progressText = false;
@@ -264,7 +278,7 @@ public class Gameplay_Director : MonoBehaviour
 
     public void readFlag(string[] flag)
     {
-        for(int x = 0; x < flag.Length; x++)
+        for (int x = 0; x < flag.Length; x++)
         {
             Debug.Log("flag on Gameplay_Director is equal to " + flag[x]);
 
@@ -298,7 +312,7 @@ public class Gameplay_Director : MonoBehaviour
                 case "h":
                     hook_index = index;
                     break;
-                case "i":
+                case string i when Regex.IsMatch(i, "^i[0-9]{2}$"):
                     input.Cleanse();
 
                     Image passcode_image = passcode_field.GetComponent<Image>();
@@ -309,13 +323,16 @@ public class Gameplay_Director : MonoBehaviour
                     eventsystem.SetSelectedGameObject(null);
 
                     passcode_field.SetActive(true);
+                    input.inputfield.characterLimit = so_director.current_scene.password[so_director.input_index].Length;
+                    Debug.Log("The length of the input field is: " + input.inputfield.characterLimit + " because the password is " + so_director.current_scene.password[so_director.input_index]);
                     input.progress = false;
                     break;
                 case "q":
+                    questionare_save = true;
                     break;
                 case string m when Regex.IsMatch(m, "^m[0-9]{2}$"):
                     int music_index = int.Parse(flag[x].Substring(1, 2));
-                    audio_director.PlayMusic(music_index);
+                    audio_director.PlayMusic(music_index, true);
                     break;
                 case "r":
                     if (act_index == sot_play.all_acts[play_index].act_elements.Length)
@@ -335,7 +352,7 @@ public class Gameplay_Director : MonoBehaviour
                     break;
                 case string s when Regex.IsMatch(s, "^s[0-9]{2}$"):
                     int sfx_index = int.Parse(flag[x].Substring(1, 2));
-                    audio_director.PlaySFX(sfx_index);
+                    audio_director.PlaySceneSFX(sfx_index);
                     break;
                 case "t":
                     timer_director.TimerCountdown();
@@ -346,7 +363,7 @@ public class Gameplay_Director : MonoBehaviour
                     break;
             }
         }
-        
+
     }
 
     public void startGame()
@@ -357,9 +374,8 @@ public class Gameplay_Director : MonoBehaviour
         text_check = so_director.current_scene.text[index];
         progressText = true;
 
-        timer_director.Set_Attempt_Timer(30);
+        timer_director.Set_Attempt_Timer(5);
     }
-
     public void resumeGame()
     {
         so_director.ChangeScene(sot_play.all_acts[play_index].act_elements[act_index]);
@@ -372,9 +388,9 @@ public class Gameplay_Director : MonoBehaviour
     void Start()
     {
         cleanScreen();
-        
+
         int load = PlayerPrefs.GetInt("load");
-        if(load == 1)
+        if (load == 1)
         {
             Debug.Log("Loading your savefile!");
             string playersavedata = PlayerPrefs.GetString("savedata");
@@ -395,19 +411,24 @@ public class Gameplay_Director : MonoBehaviour
         {
             startGame();
         }
-        
+
+        timer_director.TimerCheck();
         Debug.Log("Game Started");
     }
 
     // Update is called once per frame
     void Update()
-    {                                                          
+    {
+        if(timer_director.reset)
+        {
+            AttemptReset();
+        }
 
         if (Input.GetKeyDown(KeyCode.Space) && progressText && input.progress == true)
         {
-            if(TextDisplay.text == so_director.text_to_write)                                          // Change to saved text (which can vary in case of a response) <= done
+            if (TextDisplay.text == so_director.text_to_write)                                          // Change to saved text (which can vary in case of a response) <= done
             {
-                if(!isResponse)
+                if (!isResponse)
                 {
                     //readFlag(so_director.SceneFlags(index));
                     ProgressGame();
@@ -437,10 +458,10 @@ public class Gameplay_Director : MonoBehaviour
 
         Match matcher;
 
-        for(int x = 0; x < savedata_array.Length; x++)
+        for (int x = 0; x < savedata_array.Length; x++)
         {
             matcher = Regex.Match(savedata_array[x], filler_pattern);
-            if(matcher.Success)
+            if (matcher.Success)
             {
                 savedata_array[x] = matcher.Groups[2].Value;
             }
@@ -461,20 +482,111 @@ public class Gameplay_Director : MonoBehaviour
 
     public void ProgressGame()
     {
-        readFlag(so_director.SceneFlags(index));
+        if(input.correct_password)
+        {
+            index = so_director.correct_input_index;
+            so_director.ChangeScenarioText(index);
+            input.correct_password = false;
+            so_director.input_index++;
+            
+        }
+        else
+        {
+            readFlag(so_director.SceneFlags(index));
+        }
+
     }
 
-    // PUT IN THE UI DIRECTOR SCRIPT
     public void HideInput()
     {
         passcode_field.SetActive(false);
     }
 
+    private void AttemptReset()
+    {
+        timer_director.reset = false;
+        GameObject eventsystem = GameObject.Find("EventSystem");
+        progressText = false;
+        text_check = so_director.Faint();
+        ui_director.DisableButtons();
+        ui_director.CanvasFade();                                                                                   // Lower everything's Alpha
+        StartCoroutine(WaitforCanvasFade());
+        StartCoroutine(WaitforCanvasSpawn());                                                                                                                                           
+    }
+
+    IEnumerator WaitforCanvasFade()
+    {
+        while(ui_director.canvas_active)
+        {
+            yield return null;
+        }
+
+        Debug.Log("Canvas has finished fading, reset starting now");
+        text_check = so_director.ClearScreen();
+        ui_director.CanvasSpawn();
+        //timer_director.AttemptCountup();
+        yield break;
+    }
+
+    IEnumerator WaitforCanvasSpawn()
+    {
+        while(!ui_director.canvas_spawn)
+        {
+            yield return null;
+        }
+
+
+            Debug.Log("Canvas has finished spawning, start now");
+            index = so_director.ChangeScene(sot_play.all_acts[1].act_elements[0]);                                     // End the Current Attempt
+            so_director.ChangeScenarioText(index);                                                                     // Restart from predetermined Index
+            text_check = so_director.current_scene.text[index];
+            progressText = true;
+            timer_director.Set_Attempt_Timer(5);
+            ui_director.EnableButtons();
+            ui_director.canvas_spawn = false;
+            yield break;
+
+
+    }
     // TODO:
     /*
-     *  1) Integrate Inputs via Input Flag          // Done!
-     *  2) Fully finish timer implementation        
-     *  3) Create SFX and VFX directors
+     *  1) Integrate Inputs via Input Flag
+     *      Add password recognition                => Done!
+     *  2) Fully finish timer implementation
+     *      Add Music Change and Restart functions  =>  Done!
+     *  3) Create SFX and VFX directors             => Done!
+     *  4) Options Menu                             => Done!
+     *  5) Credits Screen
+     *  6) Music and SFX arrangement                => Done!
+     *  7) Simple VFX Effects (Buttons Fading in)
+     *  8) Text Effects
+     *  
+     *  Game Writing Required:
+     *  
+     *  1) Intro
+     *      
+     *      => Warnings
+     *      => Execution, Halted
+     *      => Arrest
+     *      
+     *  2) Chapter 1
+     *  
+     *      => First Escape
+     *      => For the Good of the Kingdom
+     *  
+     *  3) Chapter 2
+     *  
+     *      => Jester, First Meet
+     *      => The Horn of Ammon
+     *      
+     *  4) Chapter 3
+     *  
+     *      => Speak with Ammon
+     *      => Jester, Second Meet
+     *      
+     *  5) Conclusion
+     *  
+     *      => Execution, Prevented
      * 
      * 
      * 

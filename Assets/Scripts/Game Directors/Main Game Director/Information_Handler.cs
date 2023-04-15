@@ -10,6 +10,7 @@ public class Information_Handler : MonoBehaviour
 
     private string savefile = "HornOfAmmon_Savefile.save";
     private string datafile = "HornOfAmmon_Datafile.data";
+    private string settingsfile = "HornOfAmmon_SettingsFile.opts";
 
     private string filepath;
 
@@ -65,6 +66,23 @@ public class Information_Handler : MonoBehaviour
     {
         string savepath = Path.Combine(filepath, datafile);
 
+    }
+
+
+    public bool LoadSettings()
+    {
+        bool settings;
+
+        if(PlayerPrefs.HasKey("music_volume") && PlayerPrefs.HasKey("textspeed"))
+        {
+            settings = true;
+        }
+        else
+        {
+            settings = false;
+        }
+
+        return settings;
     }
 
 

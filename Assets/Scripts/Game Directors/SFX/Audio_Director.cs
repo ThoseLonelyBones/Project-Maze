@@ -2,43 +2,92 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEditor;
 
 public class Audio_Director : MonoBehaviour
 {
-
+    [SerializeField]
     private AudioClip[] scene_sfx, scene_music, game_sfx, game_music;
 
     [SerializeField]
     private AudioSource music_audio_source;
-    private AudioSource[] sfx_audio_source;
 
+    [SerializeField]
+    private AudioSource writing_sfx_audio_source, game_sfx_audio_source;
+
+    [SerializeField]
+    private AudioSource[] scene_sfx_audio_source;
+
+    [SerializeField]
     private GameObject music_source;
+    [SerializeField]
     private GameObject[] sfx_source;
+
+    public float game_sfx_volume, scene_sfx_volume, music_volume;
 
     private void Awake()
     {
        music_audio_source = music_source.GetComponent<AudioSource>();
-       sfx_audio_source[0] = sfx_source[0].GetComponent<AudioSource>();
-       sfx_audio_source[1] = sfx_source[1].GetComponent<AudioSource>();
-       sfx_audio_source[2] = sfx_source[2].GetComponent<AudioSource>();
+       scene_sfx_audio_source[0] = sfx_source[0].GetComponent<AudioSource>();
+       scene_sfx_audio_source[1] = sfx_source[1].GetComponent<AudioSource>();
+       scene_sfx_audio_source[2] = sfx_source[2].GetComponent<AudioSource>();
 
-       string music_filepath = Path.Combine(Application.dataPath, "GameAssets/Audio/Game/Music");
+       for (int x = 0; x < scene_sfx_audio_source.Length; x++)
+       {
+           if(scene_sfx_audio_source[x] == null)
+            {
+                Debug.Log("Audio Source Unreachable...");
+            }
+       }
+
+       string music_filepath = Path.Combine(Application.dataPath, "Game Assets/Audio/Game/Music");
+       Debug.Log("Retriving Game Music from: " + music_filepath);
        StartCoroutine(LoadGameMusic(music_filepath));
 
-       string audio_filepath = Path.Combine(Application.dataPath, "GameAssets/Audio/Game/Audio");
+       string audio_filepath = Path.Combine(Application.dataPath, "Game Assets/Audio/Game/SFX");
+       Debug.Log("Retriving Game SFX from: " + audio_filepath);
        StartCoroutine(LoadGameSFX(audio_filepath));
+
 
     }
     // Start is called before the first frame update
     void Start()
     {
 
+        music_volume = PlayerPrefs.GetFloat("music_volume");
+        if(float.IsNaN(music_volume))
+        {
+            music_volume = 0.5f;
+            game_sfx_volume = 0.5f;
+            scene_sfx_volume = 0.5f;
+        }
+        else
+        {
+            music_audio_source.volume = music_volume;
+            game_sfx_volume = PlayerPrefs.GetFloat("game_sfx_volume");
+            game_sfx_audio_source.volume = game_sfx_volume;
+            scene_sfx_volume = PlayerPrefs.GetFloat("scene_sfx_volume");
+            scene_sfx_audio_source[0].volume = scene_sfx_volume;
+            scene_sfx_audio_source[1].volume = scene_sfx_volume;
+            scene_sfx_audio_source[2].volume = scene_sfx_volume;
+        }
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(music_volume != PlayerPrefs.GetFloat("music_volume") || game_sfx_volume != PlayerPrefs.GetFloat("game_sfx_volume") ||  scene_sfx_volume != PlayerPrefs.GetFloat("scene_sfx_volume"))
+        {
+            music_volume = PlayerPrefs.GetFloat("music_volume");
+            music_audio_source.volume = music_volume;
+            game_sfx_volume = PlayerPrefs.GetFloat("game_sfx_volume");
+            game_sfx_audio_source.volume = game_sfx_volume;
+            scene_sfx_volume = PlayerPrefs.GetFloat("scene_sfx_volume");
+            scene_sfx_audio_source[0].volume = scene_sfx_volume;
+            scene_sfx_audio_source[1].volume = scene_sfx_volume;
+            scene_sfx_audio_source[2].volume = scene_sfx_volume;
+        }
     }
 
     /*
@@ -57,51 +106,77 @@ public class Audio_Director : MonoBehaviour
             if(scene)
             {
                 music_audio_source.clip = scene_music[music_index];
-                StartCoroutine(MusicFadeIn(3f));
+                StartCoroutine(FadeIn(3f, music_audio_source, 0));
             }
             else
             {
                 music_audio_source.clip = game_music[music_index];
-                StartCoroutine(MusicFadeIn(3f));
+                StartCoroutine(FadeIn(3f, music_audio_source, 0));
             }
 
         }
 
     }
-    public void PlaySFX(int sfx_index, bool scene = false)
+    public void PlaySceneSFX(int sfx_index)
     {
-        Debug.Log("Playing Sound Effect number: " + sfx_index);
-        for(int x = 1; x < sfx_source.Length; x++)
+        Debug.Log("Playing Scene Sound Effect number: " + sfx_index);
+        for(int x = 0; x < sfx_source.Length; x++)
         {
-            if(!sfx_audio_source[x].isPlaying)
+            if(!scene_sfx_audio_source[x].isPlaying)
             {
-                if(scene)
-                {
-                    sfx_audio_source[x].clip = scene_sfx[sfx_index];
-                    break;
-                }
-                else
-                {
-                    sfx_audio_source[x].clip = game_sfx[sfx_index];
-                    break;
-                }
-                
+               scene_sfx_audio_source[x].clip = scene_sfx[(sfx_index - 1)];
+               scene_sfx_audio_source[x].Play();
             }
         }
     }
-    public void Silence()
-    {
-        StartCoroutine(MusicFadeOut(3f));
 
+    public void PlayGameSFX(int sfx_index)
+    {
+
+        Debug.Log("Playing Game Sound Effect number: " + sfx_index);
+        if(sfx_index == 1)
+        {
+            writing_sfx_audio_source.clip = game_sfx[(sfx_index - 1)];
+            writing_sfx_audio_source.volume = game_sfx_volume;
+
+            writing_sfx_audio_source.Play();
+        }
+        else
+        {
+            game_sfx_audio_source.clip = game_sfx[(sfx_index - 1)];
+            game_sfx_audio_source.volume = game_sfx_volume;
+
+            game_sfx_audio_source.Play();
+        }
+    }
+
+    public void StopMusic()
+    {
+        StartCoroutine(FadeOut(3f, music_audio_source, 0));
+    }
+
+    public void StopSceneSFX()
+    {
         for (int x = 0; x < sfx_source.Length; x++)
         {
-            if(!sfx_audio_source[x].isPlaying)
+            if (scene_sfx_audio_source[x].isPlaying)
             {
-                sfx_audio_source[x].Stop();
+                StartCoroutine(FadeOut(0.2f, scene_sfx_audio_source[x], 2));
             }
         }
+    }
 
-        
+    public void StopGameSFX()
+    {
+        StartCoroutine(FadeOut(0.2f, writing_sfx_audio_source, 1));
+        StartCoroutine(FadeOut(0.2f, game_sfx_audio_source, 1));
+    }
+
+    public void Silence()
+    {
+        StopMusic();
+        StopSceneSFX();
+        StopGameSFX();
     }
 
     /*
@@ -112,11 +187,11 @@ public class Audio_Director : MonoBehaviour
     {
         if(music != null)
         {
-            string music_filepath = Path.Combine(Application.dataPath, "GameAssets/Audio/Scene/Music");
+            string music_filepath = Path.Combine(Application.dataPath, "Game Assets/Audio/Scene/Music");
             StartCoroutine(LoadSceneMusic(music_filepath, music));
         }
 
-        string audio_filepath = Path.Combine(Application.dataPath, "GameAssets/Audio/Scene/Audio");
+        string audio_filepath = Path.Combine(Application.dataPath, "Game Assets/Audio/Scene/SFX");
         StartCoroutine(LoadSceneSFX(audio_filepath, sfx));
 
 
@@ -147,16 +222,38 @@ public class Audio_Director : MonoBehaviour
         yield return null;
     }
 
-    // The game's music and SFX. These stay consistent in the game, and I find no reason to load them in every single time I load a new scene. These are loaded once on Game Start and then are always available.
+
+    // The game's music and SFX. These stay consistent in the game, and I find no reason to load them in every single time I load a new scene. These are loaded once on the Game Start from the Main Menu and then are always available.
+    // As they are associated with a permanent gameobject (AudioDirector) they don't cease to exist once the main gameplay loop is called into action.
     IEnumerator LoadGameMusic(string filepath)
     {
-        game_music = Resources.LoadAll<AudioClip>(filepath);
+        string[] mp3_files = Directory.GetFiles(filepath, "*.mp3");
+        game_music = new AudioClip[mp3_files.Length];
+
+        for(int x = 0; x < game_music.Length; x++)
+        {
+            string s = mp3_files[x];
+            game_music[x] = AssetDatabase.LoadAssetAtPath<AudioClip>("Assets" + s.Substring(Application.dataPath.Length));
+        }
+
+        Debug.Log("All Game Music is loaded!");
+
         yield return null;
     }
 
     IEnumerator LoadGameSFX(string filepath)
     {
-        game_sfx = Resources.LoadAll<AudioClip>(filepath);
+        string[] mp3_files = Directory.GetFiles(filepath, "*.mp3");
+        game_sfx = new AudioClip[mp3_files.Length];
+
+        for (int x = 0; x < game_sfx.Length; x++)
+        {
+            string s = mp3_files[x];
+            game_sfx[x] = AssetDatabase.LoadAssetAtPath<AudioClip>("Assets" + s.Substring(Application.dataPath.Length));
+        }
+
+        Debug.Log("All Game SFX are loaded!");
+
         yield return null;
     }
 
@@ -166,45 +263,88 @@ public class Audio_Director : MonoBehaviour
      * Easy as that, really. They are just given a specific fade time and then count up using deltatime until that time has passed, fairly standard timed-action Coroutine.
      * 
      */
-    IEnumerator MusicFadeIn(float fade_time)
+    IEnumerator FadeIn(float fade_time, AudioSource audiosource, int volume_source = 3)
     {
+        float maxvolume;
+        float volume_reset;
+
+        switch(volume_source)
+        {
+            case 0:
+                maxvolume = music_volume;
+                volume_reset = music_volume;
+                break;
+            case 1:
+                maxvolume = game_sfx_volume;
+                volume_reset = game_sfx_volume;
+                break;
+            case 2:
+                maxvolume = scene_sfx_volume;
+                volume_reset = scene_sfx_volume;
+                break;
+            default:
+                maxvolume = 1f;
+                volume_reset = 1f;
+                break;
+        }
+
         float time = 0f;
         float volume = 0f;
-        music_audio_source.volume = volume;
-        music_audio_source.Play();
+        audiosource.volume = volume;
+        audiosource.Play();
 
         while (time < fade_time)
         {
             time += Time.deltaTime;
-            music_audio_source.volume = Mathf.Lerp(volume, 1f, time / fade_time);
+            audiosource.volume = Mathf.Lerp(volume, maxvolume, time / fade_time);
             yield return null;
         }
 
-        music_audio_source.volume = 1f;
+        audiosource.volume = volume_reset;
     }
 
-    IEnumerator MusicFadeOut(float fade_time)
+    IEnumerator FadeOut(float fade_time, AudioSource audiosource, int volume_source = 3)
     {
 
+        float volume_reset;
+
+        switch (volume_source)
+        {
+            case 0:
+                audiosource.volume = music_volume;
+                volume_reset = music_volume;
+                break;
+            case 1:
+                audiosource.volume = game_sfx_volume;
+                volume_reset = game_sfx_volume;
+                break;
+            case 2:
+                audiosource.volume = scene_sfx_volume;
+                volume_reset = scene_sfx_volume;
+                break;
+            default:
+                audiosource.volume = 1f;
+                volume_reset = 1f;
+                break;
+        }
+
         float time = 0f;
-        float volume = music_audio_source.volume;
+        float volume = audiosource.volume;
 
         while (time < fade_time)
         {
             time += Time.deltaTime;
-            music_audio_source.volume = Mathf.Lerp(volume, 0f, time / fade_time);
+            audiosource.volume = Mathf.Lerp(volume, 0f, time / fade_time);
             yield return null;
         }
 
-        music_audio_source.volume = 1f;
-
-        music_audio_source.Stop();
-        music_audio_source.volume = volume;
+        audiosource.volume = volume_reset;
+        audiosource.Stop();
     }
 
     IEnumerator MusicChange(int music_index, float fade_time, bool scene = false)
     {
-        StartCoroutine(MusicFadeOut(fade_time));
+        StartCoroutine(FadeOut(fade_time, music_audio_source, 0));
         yield return new WaitForSeconds(fade_time);
         if(scene)
         {
@@ -215,7 +355,7 @@ public class Audio_Director : MonoBehaviour
             music_audio_source.clip = game_music[music_index];
         }
         
-        StartCoroutine(MusicFadeIn(fade_time));
+        StartCoroutine(FadeIn(fade_time, music_audio_source, 0));
     }
 
 }

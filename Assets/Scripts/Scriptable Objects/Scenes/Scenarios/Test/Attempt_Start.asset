@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306bb26a6dc49594a93f3c1e031a10c7, type: 3}
+  m_Name: Attempt_Start
+  m_EditorClassIdentifier: 
+  id: 0
+  text:
+  - This is a scenario to test the attempt reset function.
+  - Right now, the timer has been set to 5. This is to make this scenario (and act)
+    end as soon as possible.
+  - The rest of the text past the 5th element shouldn't matter at all. The player
+    will black out before they reach it.
+  - This is because every single one of these text elements has a "t" flag on them,
+    making the timer tick down by 1.
+  - Normally in the game only a few elements would actually have the t flag, to physically
+    prevent a player from repeating actions (such as checking passwords too frequently).
+  - This is to create intended and designed repetition in a non artificial way, creating
+    a unique gameplay component that the users can actively enjoy without hindering
+    them.
+  - Multiple attempts can lead the players to making different choices which in turn
+    will give them some extra unique hindsights on the game's story.
+  - By now, the game should have already ended.
+  exit_text: []
+  scene_exits: []
+  scene_flags:
+  - ct
+  - ct
+  - ct
+  - ct
+  - ct
+  - ct
+  - ct
+  scene_sfx: []
+  scene_music: []
+  password: []
+  scenario_dialogues: []

@@ -6,16 +6,15 @@ using UnityEngine.UI;
 using TMPro;
 using System.Text.RegularExpressions;
 
-
 /* 
  * The SO_Director (or Scriptable Object Director) is the script which governs the distribution and handling of information contained in Scriptable Object to other parts of the code.
  * The SO_Director is called by the GameDirector whenever information from a Scriptable Object needs to be put in the game, will it be from a Scenario or from a Dialogue.
  * While the SO_Director is able to communicate with all the Scriptable Objects, it doesn't do so in a specific order or by recovering data via hardcoded SO identifiers or functions: instead, it is a collection of generalized functions that allow for game scalability
  * The SO_Director makes use of Scriptable Object to deconstruct, reformat and present the information contained in them in the clearest and most obvious way possible to the player, as well as allowing for:
  * 
- *      Increased flexibility in the Gameplay_Director Script
- *      ONSIDERABLY less clutter (just compare the old Game Director script from the "The Guardsman's Stand" Demonstration to the new one and remember this game is INFINITELY bigger!)
- *      Ease of understanding of the code for any party involved, as well as providing IMMENSE scalabiity: the older code had a limited amount of actions, and each action was MANUALLY HARDCODED IN...
+ *      - Increased flexibility in the Gameplay_Director Script
+ *      - CONSIDERABLY less clutter (just compare the old Game Director script from the "The Guardsman's Stand" Demonstration to the new one and remember this game is INFINITELY bigger!)
+ *      - Ease of understanding of the code for any party involved, as well as providing IMMENSE scalabiity: the older code had a limited amount of actions, and each action was MANUALLY HARDCODED IN...
  *         "
  *          [...] the all-caps of the previous sentence should let you know how bad it was. To be both the devil and the advocate, I had one week to learn Unity and create a fully-fledged Text-Adventure Demo
  *          [...] now, this code is MUCH more effective for scaling upwards as well as adding new scenarios or dialogue to the game. As long as I can add Scriptable Objects, I can do anything! ~ OHOHOHohohoh <3 ~ "
@@ -24,8 +23,6 @@ using System.Text.RegularExpressions;
  * Creates a unique script that is called by whatever is needed, instead of having to load the Scriptable Object TWICE or more into memory. The Scriptable Object is called in here ONCE, and only the
  *      [...] current one. The ScenarioIndex variable in the GameDirector Script helps find which script to load.
  */
-
-
 
 public class SO_Director : MonoBehaviour
 {
@@ -91,11 +88,21 @@ public class SO_Director : MonoBehaviour
     private int[] response = { 0, 0, 0, 0 };
 
     public int input_index = 0;
+    public int correct_input_index = 0;
 
 
     // Awake is a good point to assing all elements where needed, to check if the various objects in the game and other scripts are reachable, etc.
     private void Awake()
     {
+        GameObject visualdirector = GameObject.Find("VisualDirector");
+        writing_director = visualdirector.GetComponent<Writing_Director>();
+
+
+        if(writing_director == null)
+        {
+            Debug.Log("writing_director is null");
+        }
+
         Debug.Log("Scriptable Object Director Start-Up");
 
         loop = GetComponent<Gameplay_Director>();
@@ -370,7 +377,9 @@ public class SO_Director : MonoBehaviour
                         hook_exit_index = exit_index;
                         // Return to this index once 'f' is called. If 'h' is called again, override the old one.
                         break;
-                    case "i":
+                    case string i when Regex.IsMatch(i, "^i[0-9]{2}$"):
+                        correct_input_index = int.Parse(i.Substring(1, 2));
+                        Debug.Log("This is the index you'll be sent if you put the correct password: " + correct_input_index);
                         break;
                     case "q":
                         break;
@@ -507,8 +516,26 @@ public class SO_Director : MonoBehaviour
         TextDisplay.text = "";
         //TextDisplay.text = current_scene.text[id];                                                       
         text_to_write = current_scene.text[id];
-        writing_director.TypingEffect(TextDisplay, text_to_write, 0.045f);
+        writing_director.TypingEffect(TextDisplay, text_to_write);
+        Debug.Log("Writing... if you see this twice it means there's a repeat action somewhere");
         return TextDisplay.text;
+    }
+
+    public string Faint()
+    {
+        Debug.Log("Fainting.");
+        TextDisplay.text = "";
+        text_to_write = "Your mind feels... so... very... heavy...";
+        writing_director.TypingEffect(TextDisplay, text_to_write);
+        return text_to_write;
+    }
+
+    public string ClearScreen()
+    {
+        TextDisplay.text = "";
+        text_to_write = "";
+        writing_director.TypingEffect(TextDisplay, text_to_write);
+        return text_to_write;
     }
 
     // Dialogue Response
@@ -547,7 +574,7 @@ public class SO_Director : MonoBehaviour
             if(x < 4)
             {                                  
                 text_to_write = dialogue.responses[response[x]];
-                writing_director.TypingEffect(TextDisplay, text_to_write, 0.045f);
+                writing_director.TypingEffect(TextDisplay, text_to_write);
                 return dialogue.responses[response[x]];
             }
             else

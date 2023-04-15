@@ -12,11 +12,12 @@ public class Input_Handler : MonoBehaviour
 
     public  bool   progress;
     public bool inputoff = false;
+    public bool correct_password = false;
 
     Color newColor = Color.white;
 
     [SerializeField]
-    private TMP_InputField inputfield;
+    public TMP_InputField inputfield;
 
     [SerializeField]
     private TMP_Text placeholderfield;
@@ -28,6 +29,9 @@ public class Input_Handler : MonoBehaviour
     private GameObject inputfieldobject;
 
     private string textshown;
+
+    [SerializeField]
+    private SO_Director so_director;
 
     // Start is called before the first frame update
     void Start()
@@ -76,12 +80,22 @@ public class Input_Handler : MonoBehaviour
     {
         input = player_input;
         Debug.Log("Retriving Input: " + input);
-        progress = true;
-        inputoff = true;
         inputfield.text = "";
-
         Cleanse();
         placeholder.SetActive(false);
+
+        if(input == so_director.current_scene.password[so_director.input_index])
+        {
+            correct_password = true;
+        }
+        else
+        {
+            correct_password = false;
+        }
+
+        progress = true;
+        inputoff = true;
+
         //return input;
     }
 

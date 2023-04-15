@@ -12,7 +12,8 @@ public class ButtonHover : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        writing_director = GetComponent<Writing_Director>();
+        GameObject visualdirector = GameObject.Find("VisualDirector");
+        writing_director = visualdirector.GetComponent<Writing_Director>();
     }
 
     // Update is called once per frame
@@ -44,7 +45,7 @@ public class ButtonHover : MonoBehaviour
                 break;
         }
 
-        writing_director.TypingEffect(TextDisplay, text_to_write, 0.025f);
+        writing_director.TypingEffect(TextDisplay, text_to_write);
 
         //TextDisplay.text = text_to_write;
     }

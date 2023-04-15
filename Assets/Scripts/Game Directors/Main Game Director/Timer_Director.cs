@@ -17,7 +17,14 @@ public class Timer_Director : MonoBehaviour
     private int Attempt_Number;
 
     [SerializeField]
-    private bool stage0 = true, stage1 = true, stage2 = true, stage3 = true, stage4 = true;
+    private bool stage0 = true, stage1 = true, stage2 = true, stage3 = true;
+
+    private Audio_Director audio_director;
+
+    [SerializeField]
+    private SO_Director so_director;
+
+    public bool reset = false;
 
     // Getter and Setter for Attempt_Timer
     public int Get_Attempt_Timer()
@@ -40,46 +47,48 @@ public class Timer_Director : MonoBehaviour
         Attempt_Number = attempt;
     }
 
-    private void TimerCheck()
+    public void TimerCheck()
     {
         //Debug.Log("Timer Check!");
 
         if(Attempt_Timer >= 30 && stage0)
         {
             Debug.Log("Game has Started");
+            audio_director.PlayMusic(1);
             stage0 = false;
         }
-        else if(Attempt_Timer > 30 && Attempt_Timer < 20 && stage1)
+        else if(Attempt_Timer < 30 && Attempt_Timer >= 20 && stage1)
         {
           Debug.Log("Timer Stage 1 Reached");
-          stage1 = false;
+            audio_director.PlayMusic(2);
+            stage1 = false;
           // Display Text: The sun is still high in the sky
           // Play: At Rest
         }
-        else if (Attempt_Timer <= 20 && Attempt_Timer > 10 && stage2)
+        else if (Attempt_Timer < 20 && Attempt_Timer >= 10 && stage2)
         {
             Debug.Log("Timer Stage 2 Reached");
+            audio_director.PlayMusic(3);
             stage2 = false;
             // Display Text: The sun is lower than you remember
             // Play: Worried
         }
-        else if (Attempt_Timer <= 10 && Attempt_Timer > 5 && stage3)
+        else if (Attempt_Timer < 10 && Attempt_Timer > 0 && stage3)
         {
             Debug.Log("Timer Stage 3 Reached");
+            audio_director.PlayMusic(4);
             stage3 = false;
             // Display Text: The sun is beginning to set
             // Play: Anxious
         }
-        else if(Attempt_Timer <= 5 && stage4)
-        {
-            Debug.Log("Timer Stage 4 Reached");
-            stage4 = false;
-            // Display Text: There is but a sliver of daylight left
-            // Play: Panic
-        }
-        else if(Attempt_Timer == 0 && !stage4)
+        else if(Attempt_Timer == 0)
         {
             Debug.Log("Game End");
+            audio_director.StopMusic();
+            reset = true;
+            // Disable Save, Options, Spacebar.
+            // Lower everything's Alpha
+            // Restart from predetermined Index
             // End the Current Attempt
         }
 
@@ -111,7 +120,9 @@ public class Timer_Director : MonoBehaviour
         stage1 = true;
         stage2 = true;
         stage3 = true;
-        stage4 = true;
+
+        GameObject audiodirector = GameObject.Find("AudioDirector");
+        audio_director = audiodirector.GetComponent<Audio_Director>();
     }
 
     private void Update()
