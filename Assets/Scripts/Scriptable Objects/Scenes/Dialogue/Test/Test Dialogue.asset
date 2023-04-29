@@ -41,7 +41,10 @@ MonoBehaviour:
   - ct
   - bt
   - ct
-  - ct
+  - r
+  scene_sfx: []
+  scene_music: []
+  password: []
   responses:
   - This is the default response.
   - You wave hello... but the game cannot wave back.

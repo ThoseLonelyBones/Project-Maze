@@ -5,10 +5,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Text.RegularExpressions;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 /*
+ * The bad, the good and the ABSOLUTELY MASSIVE GAMEPLAY DIRECTOR!
+ * 
  *  Gameplay_Director is the main gameplay script of the game. In here, the flags of each Textblock are further checked from SO_Director and specific actions are taken based on the player's choices. This script governs
- *  button presses, saving through the save button and the save flag and handles the passcode input. Additionally, it is the main connection junction between most other scripts.
+ *  button presses, saving through the save button and the save flag and handles the passcode input. Additionally, it is the main connection junction between most other scripts. Gameplay Director calls all utility scripts to itself
+ *  and uses this fact to pass information between various other scripts. Additionally it handles navigation through the scenes of an act and the acts of a play.
  * 
  */
 
@@ -23,6 +27,7 @@ public class Gameplay_Director : MonoBehaviour
      * UIDirector, which governs aspects such as button placement, etc.
      * InformationHandler, which handles information stored and saved in the game.
      * InputHandler, which handles passcode inputs and checks related to that.
+     * AudioDirector, which handles all audio related aspects of the game.
      */
 
     private SO_Director so_director;
@@ -42,7 +47,7 @@ public class Gameplay_Director : MonoBehaviour
     private Audio_Director audio_director;
 
     /*
-     * The two ScriptableObjects used in the game, Play (which contains a collection of acts which are a collection of scenes (abstract parent of dialogues and scenarios)
+     * The two ScriptableObjects used in the game, Play (which contains a collection of acts which are a collection of scenes (abstract parent of dialogues and scenarios) and the current scene.
      */
 
     public SOT_Play sot_play;
@@ -54,68 +59,105 @@ public class Gameplay_Director : MonoBehaviour
      * 
      */
 
-    public static GameObject button1,
+    public static GameObject       button1,
                                    button2,
                                    button3,
                                    button4;
 
-    public Button button_1,
-                        button_2,
-                        button_3,
-                        button_4;
+    public Button                  button_1,
+                                   button_2,
+                                   button_3,
+                                   button_4;
 
 
-    public TextMeshProUGUI button1Text,
-                            button2Text,
-                            button3Text,
-                            button4Text;
+    public TextMeshProUGUI         button1Text,
+                                   button2Text,
+                                   button3Text,
+                                   button4Text;
 
     /*
      * 
-     * The text display, which is where the bulk of the game's text is displayed.
+     * The text display, which is where the bulk of the game's text is displayed, both in GameObject and TMP form
      * 
      */
 
     public GameObject textDisplay;
     public TextMeshProUGUI TextDisplay;
 
-
+    /*
+     *  The SaveGame Button
+     */
     public Button save_button;
 
 
-    public int button1Exit,
+    /*
+     * Button Exits, used to determine to which index the user should be sent to once they click on this specific button. For more information, search for the ReadFlag's "b" flag.
+     * 
+     */
+    public int              button1Exit,
                             button2Exit,
                             button3Exit,
                             button4Exit;
 
+    /*
+     * Passcode Field and Fake Passcode Field, used to give the appearance of a Password Field that gets filled by the user. More on this in Input Handler and UI Director
+     * 
+     */
 
     public GameObject passcode_field;
     public GameObject fake_passcode_field;
 
+    /*
+     * Control Booleans:
+     * progressText = required to make the game go to the next index / terminate current scene. If its off then it means the game wants to keep you on the current scene.
+     * alternateScene = used in conjunction with the flag "a" of the ReadFlags function. For more info, read about flag "a"
+     * isResponse = used during dialogues, isResponse triggers after a button response, showing text but not progressing the game by reading the flags of the current index.
+     */
+
     public bool progressText = true;
     public bool alternateScene = false;
     public bool isResponse = false;
+    public bool fixFlagR = true;
 
 
+    /*
+     * Control Strings:
+     * button_response: used to determine which button was pressed in the ButtonClick function
+     * text_check: used to verify whether or not the text being written in at the moment is correct
+     */
     private string button_response;
     public string text_check;
 
 
-
+    /*
+     * Control Int:
+     * Hook index is used in conjunction with the "h" and "f" flags to allow the game to return to a determined index when needed.
+     */
     [SerializeField]
     private int hook_index;
 
 
     /*
      * One of the most important variables in the entire game. Index is used to navigate through the multitude of text that are present in the game. It's like a bookmark, telling the program at which page they are
-     * currently at. It's used in a multitude of functions in both this script and the SO_Director. It's handled with the utmost care and it's always beeing kept track of.
+     * currently at. It's used in a multitude of functions in both this script and the SO_Director. It's handled with the utmost care and it's always beeing kept track of. Other two indexes, act_index and play_index are used to specifically
+     * keep track of where in the general game progression one is.
      * 
      */
+    [SerializeField]
     private int index;
+    [SerializeField]
     private int act_index = 0;
+    [SerializeField]
     private int play_index = 0;
 
+    /*
+     * 
+     * 
+     * 
+     */
+
     private bool questionare_save = false;
+    private bool autosave_save = false;
 
     private void Awake()
     {
@@ -164,7 +206,7 @@ public class Gameplay_Director : MonoBehaviour
 
     }
 
-    // This function is used in the Demo Pre-Alpha to hide elements of the game before the first scenario is loaded
+    // This function is used to hide elements of the game before the first scenario is loaded
     public void cleanScreen()
     {
         passcode_field.SetActive(false);
@@ -330,25 +372,36 @@ public class Gameplay_Director : MonoBehaviour
                 case "q":
                     questionare_save = true;
                     break;
+                case "k":
+                    BacktoMainMenu();
+                    break;
                 case string m when Regex.IsMatch(m, "^m[0-9]{2}$"):
                     int music_index = int.Parse(flag[x].Substring(1, 2));
-                    audio_director.PlayMusic(music_index, true);
+                    audio_director.PlayMusic(music_index);
                     break;
                 case "r":
-                    if (act_index == sot_play.all_acts[play_index].act_elements.Length)
-                    {
-                        play_index++;
-                        act_index = 0;
-                        index = 0;
-                    }
-                    else
-                    {
-                        act_index++;
-                        index = 0;
-                    }
-                    so_director.ChangeScene(sot_play.all_acts[play_index].act_elements[act_index]);
+                    // THIS IS FINE BUT WHY IS IT RUNNING TWICE AAAAAH
+                    //if(fixFlagR)
+                    //{
+                        int act_length = sot_play.all_acts[play_index].act_elements.Length;
+                        Debug.Log("Act Length: " + act_length);
+                        if ((act_index + 1) == act_length)
+                        {
+                            Debug.Log("yes");
+                            act_index = 1;
+                            play_index++;
+                        }
+                        else
+                        {
+                            Debug.Log("no");
+                            act_index++;
+                        }
+
                     Debug.Log(play_index + " is play index and " + act_index + " is act index");
+                    index = so_director.ChangeScene(sot_play.all_acts[play_index].act_elements[act_index]);
                     text_check = so_director.ChangeScenarioText(index);
+                    fixFlagR = false;
+                    audio_director.LoadSceneAudio(so_director.current_scene.scene_sfx);
                     break;
                 case string s when Regex.IsMatch(s, "^s[0-9]{2}$"):
                     int sfx_index = int.Parse(flag[x].Substring(1, 2));
@@ -369,12 +422,14 @@ public class Gameplay_Director : MonoBehaviour
     public void startGame()
     {
         index = so_director.ChangeScene(sot_play.all_acts[play_index].act_elements[act_index]);
+        Debug.Log("Act Index: " + act_index);
+        Debug.Log("Play Index: " + play_index);
         so_director.ChangeScenarioText(index);
 
         text_check = so_director.current_scene.text[index];
         progressText = true;
 
-        timer_director.Set_Attempt_Timer(5);
+        timer_director.Set_Attempt_Timer(30);
     }
     public void resumeGame()
     {
@@ -382,6 +437,7 @@ public class Gameplay_Director : MonoBehaviour
         so_director.ChangeScenarioText(index);
         text_check = so_director.current_scene.text[index];
         progressText = true;
+        audio_director.LoadSceneAudio(so_director.current_scene.scene_sfx);
     }
 
     // Start is called before the first frame update
@@ -390,6 +446,7 @@ public class Gameplay_Director : MonoBehaviour
         cleanScreen();
 
         int load = PlayerPrefs.GetInt("load");
+        Debug.Log("PlayerLoad is set to: " + load);
         if (load == 1)
         {
             Debug.Log("Loading your savefile!");
@@ -443,8 +500,8 @@ public class Gameplay_Director : MonoBehaviour
             }
             else
             {
+                TextDisplay.text = so_director.text_to_write;              // Skips text writing program when it will be done
 
-                TextDisplay.text = so_director.text_to_write;              // Skips text writing program when it will be done.
             }
         }
 
@@ -535,24 +592,32 @@ public class Gameplay_Director : MonoBehaviour
             yield return null;
         }
 
-
             Debug.Log("Canvas has finished spawning, start now");
             index = so_director.ChangeScene(sot_play.all_acts[1].act_elements[0]);                                     // End the Current Attempt
             so_director.ChangeScenarioText(index);                                                                     // Restart from predetermined Index
+            so_director.exit_index = 0;
+            so_director.input_index = 0;
+            so_director.hook_exit_index = 0;
+            hook_index = 0;
             text_check = so_director.current_scene.text[index];
             progressText = true;
-            timer_director.Set_Attempt_Timer(5);
+            timer_director.Set_Attempt_Timer(30);
             ui_director.EnableButtons();
             ui_director.canvas_spawn = false;
             yield break;
 
 
     }
+
+    private void BacktoMainMenu()
+    {
+        SceneManager.LoadScene("Main Menu");
+    }
     // TODO:
     /*
      *  1) Integrate Inputs via Input Flag
      *      Add password recognition                => Done!
-     *  2) Fully finish timer implementation
+     *  2) Fully finish timer implementation        => Done!           
      *      Add Music Change and Restart functions  =>  Done!
      *  3) Create SFX and VFX directors             => Done!
      *  4) Options Menu                             => Done!
@@ -565,13 +630,13 @@ public class Gameplay_Director : MonoBehaviour
      *  
      *  1) Intro
      *      
-     *      => Warnings
-     *      => Execution, Halted
-     *      => Arrest
+     *      => Warnings                 // Done!
+     *      => Execution, Halted        // Done!
+     *      => Arrest                   // WIP
      *      
      *  2) Chapter 1
      *  
-     *      => First Escape
+     *      => First Escape                         // WIP
      *      => For the Good of the Kingdom
      *  
      *  3) Chapter 2

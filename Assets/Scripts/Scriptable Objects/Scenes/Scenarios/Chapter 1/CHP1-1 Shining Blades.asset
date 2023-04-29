@@ -1,0 +1,340 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306bb26a6dc49594a93f3c1e031a10c7, type: 3}
+  m_Name: CHP1-1 Shining Blades
+  m_EditorClassIdentifier: 
+  id: 0
+  text:
+  - '<b><align="center"><size=200%>Chapter 1</b>
+
+    <b>Shining Blades</b>'
+  - "You feel nauseated and disoriented. The first sensation that hits you is the
+    cold stone floor\u2019s gelid contact. Your nostrils are filled with dust, as
+    is everything around you. As you slowly get up, you feel a thick layer of dust
+    everywhere on the floor. Wherever you are, no-other person has been in a long
+    time."
+  - You steadily get up, a sense of vertigo almost pushing you back down. With the
+    help of your hands, you take a few minutes to restabilize yourself.
+  - 'Currently, nothing is at hand: no points of reference for you, but the floor.
+    Istinctually, you take short steps forwards, hands in front of yourself attempting
+    to find a surface to use as a guide.'
+  - "After a dozen or so steps, your hand meet something that feels slighly rugged.
+    As you keep touching in an attempt to discern what it is, your hand occasionally
+    meets direct, gravely stone; occasionally, a chip of material; more often than
+    not, surface bumps of sometipe\u2014 for sure it is not braile, but, using your
+    imagination, you can figure this is some form of mosaic, ruined by the passage
+    of time."
+  - "Definetly, this is a mosaic of sorts: If you spend some time studying over this\u2026
+    you may actually understand what it represents. You decide that for now this
+    is the best course of action."
+  - "Investigating the mosaic takes you some time, but after accurately placing your
+    hands over the various figures you can discern something\u2026"
+  - Represented on the mural are a number of individuals, wiedling weapons, all around.
+    Some of the ones in the center are fighting given the various connections you
+    feel between figures.
+  - You wager this is some sort of war.
+  - Further in your exploration, you feel something on the higher parts of the mosaic.
+    It is a plaque of some sort.
+  - You decide that the plaque may provide you with further information on whatever
+    you have currently in front of you.
+  - 'While it is not written in braile, you do know the shapes and forms of the letters
+    of the alphabet. With some patience and time, you painstainkingly read the entire
+    plaque:'
+  - "<mspace=0.5em><color=#d9d9d9> \u201CThe Battle of Shining Blades: Here was the
+    kingdom\u2019s indipendence gained, here were the kingdom\u2019s most valuable
+    lives lost: thank them for their sacrifice and you may progress further.\u201D
+    </mspace></color>"
+  - "You stop and think for a second\u2026 there\u2019s something wrong with this
+    statement\u2026"
+  - "The voice of Ammon enters your head once more. <color=#00e64d>\u201CTwo individuals
+    gave their life at Shining Blades. Two individuals that the Emperor grew attached
+    to, those that, more than war-comrades were life-long friends. The Emperor, much
+    like Shining Blades itself, no longer remembers them and their crypt lies unused
+    and forgotten.\u201D</color>"
+  - "The voice of Ammon enters your head once more. <color=#00e64d>\u201CThis land
+    was once under the tyrannical rule of a Warlord called Zung of the Early Dawn.
+    This is something Dearion still belives but has not been the case for a long
+    time. He longingly looks into the distance, hoping to spot an army that has already
+    been here. Sharpening blades for a battle already fought\u2026 and already won.\u201D
+    </color>"
+  - "The voice of Ammon enters your head once more. <color=#00e64d>\u201CThe narrow
+    crevasse that separates the valley where this kingdom is hidden to the rest of
+    the world is known as Shining Blades. This much you knew. However, you all have
+    forgotten of the bloody war waged there\u2026 of the smashing victory\u2026 and
+    the crushing losses of Emperor Dearion\u2019s friends.\u201D</color>"
+  - "The voice of Ammon enters your head once more. <color=#00e64d>\u201CDuring the
+    now forgotten battle, two people gave their life to save Dearion. Two people
+    and the items that prove their connection to Dearion, which now lay forgotten
+    in this tomb\u2026 Two people that didn\u2019t deserve to be forgotten.\u201D</color>"
+  - The words of Ammon seem particularly sad. It is something that you can feel is
+    hurting him to say.
+  - "<color=#00e64d>\u201CIn a sense, I do. As the God of Memory, I know about everything
+    that transpired and will transpire. I know of what truly happened here\u2026
+    and why it was forgotten.\u201D</color>"
+  - "<color=#00e64d>\u201CIt is none of your fault. You weren\u2019t there to prevent
+    it, you weren\u2019t there to forget it\u2026 but I was.\u201D</color>"
+  - "<color=#00e64d>\u201CYes. Let\u2019s. This matches with my plans.\u201D</color>"
+  - "<color=#00e64d> \u201CI suggest you spend as little time as possible just talking
+    to me. It would be better for you to understand by way of proof\u2014 I know
+    there is little trust in the words of an Outlawed God, so I\u2019d rather you
+    see for yourself. Your time in here is short\u2026 and there is much to remember.
+    Do not worry\u2026 you will have the occasion to tread back on these conversations\u2026\u201D</color>"
+  - You shake your head confused. You have no idea what these words mean.
+  - 'You now stand in front of the wall, ready to make your choices. You start with
+    the wall in front of you, examining the edges of the mosaic. '
+  - "Further alongside the wall, you feel two slits\u2026 do you want to place your
+    hands in them?"
+  - You do not place your hands on the slits. Instead, you turn to look further inside
+    the room.
+  - Alongside which wall do you want to move?
+  - Skirting alongside the Left wall, you now gain a glimpse of the structure of
+    the room as the wall curves inwards. Some sort of wide circular room.
+  - It takes you a good minute or two to reach anything of note. Occasionally, your
+    hands touch barricated windows, your feet hit rocky pebbles that were once part
+    of the wall, your face and hair gets tangled with old cobwebs long abandoned
+    by their little inhabitants.
+  - "The air around the place feels as heavy and as clogged and old as everything
+    else in here. Your mouth inhales a good dose of collected dust scattered around
+    in the environment with every step\u2014 first signs of activity in a long, long
+    time."
+  - Alongside the left wall, your hand finally moves inside a new alcove. Considerably
+    smaller than the large mosaic that was to your now-right, the one in front of
+    you now best extends by a few feet both horizontally and vertically.
+  - "Once again, by the feel of the material of this, you can guess this is another
+    mosaic. Your hand quickly scans for features once again. It appreas to be a single
+    large figure, an individual of some sort. It is striking a proud pose, holding
+    something in hand\u2014 short and thing."
+  - A plaque stands above the mosaic. Once again, you take some time to spell out
+    its contents.
+  - "<mspace=0.5em><color=#d9d9d9> \u201C<b><i>188</b></i>. Shrine of <b><i>Junia</i></b>,
+    Court Wizard. She brought magic as both a wizard and a true friend. Here she
+    lies buried with her <b><i>Wand of the War Mage</b></i>.\u201D </mspace></color>"
+  - "<color=#00e64d>\u201DJunia was a genius. Extremely young and extremely talented
+    as a mage. So much so that Emperor Dearion gave her the charge of Captain of
+    the 16th Regiment at Shining Blades\u2026\u201D</color>"
+  - "<color=#00e64d>\u201DJunia\u2019s most prized possession was the <b><i>Wand
+    of the War Mage.</b></i> It was gifted to her by Dearion himself when she became
+    the Court Wizard at only 15. While it wasn\u2019t anything out of the ordinary,
+    the Wand carries emotional attachment for both Junia and Dearion\u2026 or at
+    least, it did.</color>"
+  - "<color=#00e64d>\u201DTruthfully, Junia never trained as a Wizard. Just a magically
+    inclined girl with a lot of innate talent and a very, very patient and clement
+    king. Emperor Dearion caught her stealing from his personal room when she was
+    only <b><i>12</i></b>. Instead of punishing her, he applauded her abilities and
+    asked her if she wanted to train under him.</color>"
+  - "<color=#00e64d>The Emperor doesn\u2019t remember her, but Junia\u2019s spirit
+    still does remember her friend and mentor. Emperor Dearion was the father Junia
+    never had, the friend that never judged her for who she was, for her talent and
+    for her age.</color>"
+  - "<color=#00e64d>Junia never survived Shining Blades. Her regiment decided as
+    a bold manouver to distract the enemy cavalry to allow for further retreat. A
+    strategic move that resulted in a painful trade: The 16th Regiment\u2019s life
+    in exchange for a smashing victory.</color>"
+  - <color=#00e64d>When counting casualties, Junia ended up being the <b><i>188th</b></i>.
+    This is the reason why that number is engraved in front of her name. Emperor
+    Dearion cried for a day straight when he received the news of her demise.</color>
+  - "<color=#00e64d>I realize it is weird for me to spin such a tale of Dearion,
+    the man who hunts me down so vehemently\u2026 but I\u2019m impratial to the matters
+    of man and their strife. He was a good men\u2026 Can men simply forget who they
+    are? Are they so reliant on memory and the events that transpire to shape them?</color>"
+  - "<color=#00e64d>I\u2019m\u2026 sorry for my rambling. You best get back. </color>"
+  - You move back towards the center of the room.
+  - You decide to turn your attention to the Right of this room. Taking light steps,
+    you start hearing the faint drizzling of water. A small puddle has formed from
+    a leak in the brickwork. Some form of underground river or spring must be somewhere
+    nearby, hastily walled over by whoever worked on this Shrine.
+  - The pavement, much like the rest of this room, has barely stood the test of time,
+    weathered by the small puddle worming its way around the brickwork. You feel
+    the slippery cobbles barely fit for walking underneath your shoes.
+  - "The rest of the wall\u2019s conditions aren\u2019t much nicer. You feel as if
+    every brick you place your hand on is going to fall, like a precarious tree trunk
+    ready to fall over at any strike. You exercise particular caution when moving
+    around here, at it takes you slightly longer than expected."
+  - "Alongside the right wall, your hand meets a sudden emptiness: an alcove of some
+    sort, possibly another mosaic of some sort\u2014 albeit much smaller than the
+    one on the central wall."
+  - Your guess proves correct when your hand moves over the wall contained in this
+    small alcove. A mosaic of a large figure, striking an heroic pose with weapon
+    high in the sky and a large object in his left hand.
+  - A plaque stands above this mosaic. You take some time to read its contents.
+  - "<mspace=0.5em><color=#d9d9d9> \u201C<b><i>392</i></b>. Shrine of <b><i>Barristan</i></b>,
+    Right Hand of the Emperor. His ingenious battle cunning and the power of his
+    <b><i>Shield of Princely Protection</b></i> were only second to his thunderous
+    laughter and jovial spirit.\u201D </mspace></color>"
+  - "<color=#00e64d>\u201D<b><i>Barristan</b></i> was a man like no other. Emperor
+    Daerion knew him ever since he rose from small nobility into a figure of relevance
+    in the kingdom. Back then, he was a simple mercenary\u2014 scrounging coins in
+    exchange for his brilliant tactics.\u201D</color>"
+  - "<color=#00e64d>\u201DIn time they both became more and more attached to one
+    another. From a soldier of fortune and his master to true friends. Both have
+    taken many blades and arrows for one another, in both a literal and metaphorical
+    sense. This is why Barristan prized his <b><i>Shield of Princely Protection.
+    </b></i>\u201D</color>"
+  - "<color=#00e64d>\u201DSurprisingly enough, the Shield wasn\u2019t gifted by Dearion.
+    It was won over a game of cards. Barristan remembers that day well, he won with
+    a smashing <b><i>61 </b></i>points\u2026 against Dearion\u2019s 59.\u201D</color>"
+  - "<color=#00e64d>\u201DOf course, Barristan was a bit too drunk to realize the
+    Emperor lost intentionally\u2026 it may have stopped his bragging about it if
+    he had known. But the Emperor didn\u2019t seem to mind letting his friend tell
+    a tall-tale of a card game narrated with such emphasis that makes fighting a
+    dragon look like a regular Tuesday afternoon.\u201D</color>"
+  - "<color=#00e64d>\u201DAll his joy and cunning did not stop the arrows that killed
+    him at Shining Blades, however.\u201D</color>"
+  - "<color=#00e64d>\u201DIn the battle, Barristan was the <b><i>392nd</b></i> and
+    last casualty of the battle. As the enemy archers fired their last volley before
+    routing away from the battlefield, Barristan valiantly stood in front of the
+    arrows that would have killed the Emperor\u2026 and lost his life in the process.\u201D</color>"
+  - "<color=#00e64d>\u201DDearion has forgotten about this, of course. So has everyone
+    else. Such noble sacrifice, a fate diverted\u2026 what for? If no-one rememembers
+    your name have you even existed in the first place? Quell these questions in
+    me and remember Barristan\u2019s name, please: so that his sacrifice may have
+    not been in vain. You best go back and search more clues.\u201D</color>"
+  - You move back towards the center of the room.
+  - Two slits stand in front of you. You initally place your hand inside the one
+    to your left
+  - 'Once again, the slit feels just the right size for an arm to fit through. With
+    a hum, the wall responds:'
+  - "<mspace=0.5em><color=#d9d9d9> \u201CMy Emperor, have you come to honor the dead?
+    You are the only one that may proceed.\u201D </mspace></color>"
+  - "<mspace=0.5em><color=#d9d9d9> \u201CProve to me you are Dearion. Speak aloud
+    this passcode: The Initial of the Court Wizard. The number associated with her
+    death. The initial of her weapon of choice. And the years she had when you first
+    met her. (All letters need to be Uppercase!)\u201D </mspace></color>"
+  - "The gate hums back:<mspace=0.5em><color=#d9d9d9> \u201CIncorrect Passcode.\u201D
+    </color></mspace>"
+  - You remove your hand from the slit and look at the wall again.
+  - "The gate hums: <mspace=0.5em><color=#d9d9d9> \u201CCorrect Passcode. Please,
+    unlock the next one to progress.\u201D </mspace></color >"
+  - 'You insert your hand on the right slit, which fits your arm perfectly. With
+    a hum the wall responds:'
+  - "<mspace=0.5em><color=#d9d9d9> \u201CMy Emperor, have you come to honor the dead?
+    You are the only one that may proceed.\u201D </mspace></color>"
+  - "<mspace=0.5em><color=#d9d9d9> \u201CProve to me you are Dearion. Speak aloud
+    this passcode: The Initial of your Right Hand. The number associated with his
+    death. The initial of his Prized Shield. And the points he got when he won it
+    from you. (All letters need to be Uppercase!)\u201D </mspace></color>"
+  - "The gate hums back:<mspace=0.5em><color=#d9d9d9> \u201CIncorrect Passcode.\u201D
+    </color></mspace>"
+  - You remove your hands from the slits and look at the wall again.
+  - "The gate hums: <mspace=0.5em><color=#d9d9d9>\u201CCorrect Passcode. Welcome
+    to the Hall of Memories, Emperor Dearion. The Horn of Ammon awaits you.\u201D</mspace></color>"
+  - "<color=#00e64d>\u201DI knew I made the right choice. You are remembering the
+    life and death of the people closest to Dearion, for he has forgotten.\u201D</color>"
+  - "<color=#00e64d>\u201DLet me show you why he has and... my involvement in all
+    of this.\u201D</color>"
+  - "<color=#00e64d>\u201DI must warn you. I cannot help your reaction over the discoveries
+    you will make. I can only hope you keep your mind focused and your heart steady.\u201D</color>"
+  exit_text:
+  - Default Text
+  - "\u201CValuable Lives?\u201D"
+  - "\u201CIndipendence?\u201D"
+  - "\u201CShining Blades?\u201D"
+  - "\u201CSacrifice?\u201D"
+  - '"Thank you for telling me this."'
+  - "\u201CDo you know about this?\u201D"
+  - "\u201CI\u2019m sorry\""
+  - "\u201CLet\u2019s proceed.\u201D"
+  - '"..."'
+  - Yes
+  - No
+  - Move Left
+  - Move Right
+  scene_exits:
+  - '[1,2,3,4][14,15,16,17]'
+  - '[5,0,0,0][18,0,0,0]'
+  - '[6,7,8,0][19,20,21,0]'
+  - '[9,0,0,0][22,0,0,0]'
+  - '[0,10,11,0][0,59,26,0]'
+  - '[0,12,13,0][0,28,44,0]'
+  scene_flags:
+  - cm00
+  - ct
+  - c
+  - c
+  - c
+  - c
+  - c
+  - c
+  - c
+  - c
+  - c
+  - c
+  - c
+  - bs01
+  - bs00
+  - bs00
+  - bs00
+  - bs00
+  - bs01
+  - bs00s01
+  - bs00s01
+  - bs00s01
+  - cs00
+  - ch
+  - c
+  - b
+  - c
+  - b
+  - c
+  - c
+  - c
+  - c
+  - c
+  - c
+  - cs01
+  - c
+  - c
+  - c
+  - cs00s01
+  - c
+  - cs00s01
+  - c
+  - cs00
+  - f
+  - c
+  - c
+  - c
+  - c
+  - c
+  - c
+  - cs01
+  - cs00s01
+  - c
+  - c
+  - cs00s01
+  - c
+  - cs00s01
+  - cs00
+  - f
+  - c
+  - c
+  - ci65
+  - c
+  - c
+  - f
+  - c
+  - c
+  - ci71
+  - c
+  - c
+  - f
+  - cs01
+  - c
+  - ds00
+  scene_sfx:
+  - 
+  - Ammon1
+  scene_music: []
+  password:
+  - J188WWM12
+  - B392SPP61
+  scenario_dialogues: []

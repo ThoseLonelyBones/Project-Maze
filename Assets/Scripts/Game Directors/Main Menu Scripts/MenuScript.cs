@@ -55,13 +55,13 @@ public class MenuScript : MonoBehaviour
             PlayerPrefs.SetFloat("scene_sfx_volume", 1f);
             PlayerPrefs.SetString("autosave", "true");
             PlayerPrefs.SetString("datacollection", "true");
-            PlayerPrefs.SetInt("textsize", 48);
+            PlayerPrefs.SetInt("textsize", 46);
             PlayerPrefs.SetFloat("textspeed", 0.045f);
         }
 
         Settings(audiodirector);
 
-        audiodirector.PlayMusic(0);
+        audiodirector.PlayMusic(1);
     }
 
     // Update is called once per frame

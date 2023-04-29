@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEditor;
+using UnityEngine.Networking;
 
 public class Audio_Director : MonoBehaviour
 {
@@ -24,6 +25,8 @@ public class Audio_Director : MonoBehaviour
     private GameObject[] sfx_source;
 
     public float game_sfx_volume, scene_sfx_volume, music_volume;
+
+    private string resourcePath;
 
     private void Awake()
     {
@@ -48,7 +51,7 @@ public class Audio_Director : MonoBehaviour
        Debug.Log("Retriving Game SFX from: " + audio_filepath);
        StartCoroutine(LoadGameSFX(audio_filepath));
 
-
+        resourcePath = Application.dataPath + "/Resources/";
     }
     // Start is called before the first frame update
     void Start()
@@ -96,38 +99,59 @@ public class Audio_Director : MonoBehaviour
      */
     public void PlayMusic(int music_index, bool scene = false)
     {
-        Debug.Log("Playing Music clip number: " + music_index);
-        if(music_audio_source.isPlaying)
+        if (music_index == 0)
         {
-            StartCoroutine(MusicChange(music_index, 3f, false));
+            StopMusic();
         }
         else
         {
-            if(scene)
+
+            Debug.Log("Playing Music clip number: " + music_index);
+            music_index--;
+            if (music_audio_source.isPlaying)
             {
-                music_audio_source.clip = scene_music[music_index];
-                StartCoroutine(FadeIn(3f, music_audio_source, 0));
+                StartCoroutine(MusicChange(music_index, 3f, false));
             }
             else
             {
-                music_audio_source.clip = game_music[music_index];
-                StartCoroutine(FadeIn(3f, music_audio_source, 0));
-            }
+                if (scene)
+                {
+                    music_audio_source.clip = scene_music[music_index];
+                    StartCoroutine(FadeIn(3f, music_audio_source, 0));
+                }
+                else
+                {
+                    music_audio_source.clip = game_music[music_index];
+                    StartCoroutine(FadeIn(3f, music_audio_source, 0));
+                }
 
+            }
         }
+       
 
     }
     public void PlaySceneSFX(int sfx_index)
     {
-        Debug.Log("Playing Scene Sound Effect number: " + sfx_index);
-        for(int x = 0; x < sfx_source.Length; x++)
+        if (sfx_index == 0)
         {
-            if(!scene_sfx_audio_source[x].isPlaying)
-            {
-               scene_sfx_audio_source[x].clip = scene_sfx[(sfx_index - 1)];
-               scene_sfx_audio_source[x].Play();
-            }
+            StopSceneSFX();
         }
+        else
+        {
+            Debug.Log("Playing Scene Sound Effect number: " + sfx_index);
+            for (int x = 0; x < sfx_source.Length; x++)
+            {
+                if (!scene_sfx_audio_source[x].isPlaying)
+                {
+                    Debug.Log("Playing Sound!");
+                    scene_sfx_audio_source[x].clip = scene_sfx[(sfx_index)];
+                    scene_sfx_audio_source[x].Play();
+                    break;
+                }
+            }
+
+        }
+
     }
 
     public void PlayGameSFX(int sfx_index)
@@ -185,17 +209,18 @@ public class Audio_Director : MonoBehaviour
      */
     public void LoadSceneAudio(string[] sfx, string[] music = null)
     {
+        Debug.Log("Loading Scene Audio!");
         if(music != null)
         {
-            string music_filepath = Path.Combine(Application.dataPath, "Game Assets/Audio/Scene/Music");
+            string music_filepath = "Audio/Scene/Music";
             StartCoroutine(LoadSceneMusic(music_filepath, music));
         }
 
-        string audio_filepath = Path.Combine(Application.dataPath, "Game Assets/Audio/Scene/SFX");
+        string audio_filepath = "Audio/Scene/SFX";
+        Debug.Log("Audio_filepath = " + audio_filepath);
         StartCoroutine(LoadSceneSFX(audio_filepath, sfx));
-
-
     }
+
     IEnumerator LoadSceneMusic(string filepath, string[] filenames)
     {
         scene_music = new AudioClip[filenames.Length];
@@ -203,6 +228,8 @@ public class Audio_Director : MonoBehaviour
         for(int x = 0; x < scene_music.Length; x++)
         {
             string audioclip_path = Path.Combine(filepath, filenames[x]);
+            audioclip_path += ".mp3";
+            audioclip_path = audioclip_path.Replace("\\", "/");
             var audio = Resources.Load<AudioClip>(audioclip_path);
             scene_music[x] = audio;
         }
@@ -211,13 +238,28 @@ public class Audio_Director : MonoBehaviour
 
     IEnumerator LoadSceneSFX(string filepath, string[] filenames)
     {
+        Debug.Log("Loading Game SFX!");
+
         scene_sfx = new AudioClip[filenames.Length];
 
-        for (int x = 0; x < scene_sfx.Length; x++)
+        for (int x = 1; x < scene_sfx.Length; x++)
         {
-            string audioclip_path = Path.Combine(filepath, filenames[x]);
-            var audio = Resources.Load<AudioClip>(audioclip_path);
-            scene_sfx[x] = audio;
+            string audioclip_path = filepath + "/" + filenames[x];
+            audioclip_path = audioclip_path.Replace("\\", "/");
+            string file_resourcePath = Path.Combine(resourcePath, audioclip_path);
+            file_resourcePath = file_resourcePath.Replace("\\", "/");
+            Debug.Log("Audioclip " + x + "'s path: " + resourcePath);
+            if (File.Exists(file_resourcePath + ".mp3"))
+            {
+                Debug.Log("Loading Audioclip now!");
+                AudioClip audioclip = Resources.Load<AudioClip>(audioclip_path);
+                scene_sfx[x] = audioclip;
+            }
+            else
+            {
+                Debug.Log("Audioclip does not exist!");
+            }
+
         }
         yield return null;
     }
@@ -243,9 +285,9 @@ public class Audio_Director : MonoBehaviour
 
     IEnumerator LoadGameSFX(string filepath)
     {
+        
         string[] mp3_files = Directory.GetFiles(filepath, "*.mp3");
         game_sfx = new AudioClip[mp3_files.Length];
-
         for (int x = 0; x < game_sfx.Length; x++)
         {
             string s = mp3_files[x];

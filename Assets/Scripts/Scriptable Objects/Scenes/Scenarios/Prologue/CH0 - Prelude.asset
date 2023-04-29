@@ -1,0 +1,225 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306bb26a6dc49594a93f3c1e031a10c7, type: 3}
+  m_Name: CH0 - Prelude
+  m_EditorClassIdentifier: 
+  id: 0
+  text:
+  - '<b><align="center"><size=200%>Chapter 0</b>
+
+    <b>Prelude</b>'
+  - "<color=#00e64d>\u201D\u2026\u201D</color>"
+  - "<color=#00e64d>\u201D\u2026\u201D</color>"
+  - "<color=#00e64d>\u201D\u2026\u201D</color>"
+  - "<color=#00e64d>\u201DKee\u2026\u201D</color>"
+  - "<color=#00e64d>\u201D\u2026per\u201D</color>"
+  - "<color=#00e64d>\u201DKeeper.\u201D</color>"
+  - "<color=#00e64d>\u201DYou\u2026 must\u2026\u201D</color>"
+  - "<color=#00e64d>\u201Dsave\u2026 this\u2026 kingdom\u2026\u201D</color>"
+  - "<color=#00e64d>\u201DSave\u2026 Save\u2026 Save\u2026\u201D</color>"
+  - "<color=#00e64d>\u201DSave\u2026\u201D</color>"
+  - Once again, you jolt awake. Such dreams have been recurring to you for quite
+    a while. Ever since a few years ago, the voice in the back of your mind became
+    ever louder.
+  - The more it became difficult to zone it out, the harder it became to see. At
+    this point, you almost barely remember what things looked like before.
+  - "You know of the voice that has been speaking to you. You know that it is powerful\u2014
+    you know it is forbidden."
+  - "<b><i>\u201CThey who listen to treatcherous voices in their mind shall pay with
+    their lives\u201D</i></b>  said the royal decree. You fancy keeping your head
+    on your shoulders; where it oughta be."
+  - "At least you are awake now. Bad dreams can\u2019t reach you in your bed unless
+    you are sleeping."
+  - ...
+  - Or so you thought.
+  - A piercing thought enters your mind. Like a migrane, it feels as if your head
+    is being split in two with an axe. You can barely steady your breathing.
+  - "<color=#00e64d>\u201DKeeper\u201D</color>"
+  - "<color=#00e64d>\u201DYou are finally awake.\u201D</color>"
+  - "<color=#00e64d>\u201DI am the profane god of memory, Ammon. You must listen
+    to me as you are the only hope of these lands.\u201D</color>"
+  - With a mixture of shock and fear, any words you want to say simply do not come
+    out of your mouth. The pain makes it hard to speak.
+  - "<color=#00e64d>\u201DEmperor Dearion rules over this lands with an iron fist.
+    This is what you remember. This is what everyone remembers. This is what Dearion
+    himself remembers.</color>"
+  - "<color=#00e64d>\u201DThis kingdom is called \u2018the Cruel\u2019 because of
+    its grueling work and its endless turmoil. Preparations for a war, says Emperor
+    Dearion, but against whom?\u201D</color>"
+  - "<color=#00e64d>\u201DThey who speak their mind against the Emperor himself shall
+    pay with their life\u2019, a heavy price to ask for the truth.\u201D</color>"
+  - "<color=#00e64d>\u201DYou may simply believe that Dearion was born cold-hearted
+    and stone-faced, unable to feel emotion for the commonfolk he so blatantly takes
+    advantage of.\u201D</color>"
+  - "<color=#00e64d>\u201DBut the truth is\u2026 Dearion simply forgot who he was.
+    Everyone did. As the God of Memory, I simply cannot allow that to be the case.\u201D</color>"
+  - "<color=#00e64d>\u201DI needed to contact you regarding this. I needed a person
+    such as yourself. You are blind to this false truth, in a literal sense. You
+    cannot see the lies the lack of memories of history are causing, the horrible
+    consequence that follow the most grave forgetfulness.\u201C</color>"
+  - "<color=#00e64d>\u201DI beg of you. You are the only hope of this kingdom. I
+    have forseen your success. You will walk out in a few minutes. A fire will start
+    soon enough in a nearby house: the work of anarchic arsonistst, spitting in the
+    face of Emperor Dearion\u2014 this I have forseen.\u201D</color>"
+  - "<color=#00e64d>\u201DSo, use this opportunity. Slip in the allyways of the city
+    and reach the imperial palace. Once you are there, search for the back of the
+    palace. No guards will be there on account of the fire. Before the door, feel
+    your hand against the wall, until the wall no longer feels real. There, speak
+    the word \u201CCOGITUS\u201D.</color>"
+  - "<color=#00e64d>\u201DYou will need to remember the history of this kingdom.
+    This task is much to bear, that I know. However, you must not falter. Consider
+    access to the Secret Halls my first test to you.\u201D</color>"
+  - "<color=#00e64d>\u201DI will speak to you when you arrive there. Please, Keeper.\u201C</color>"
+  - "Before you can respond to the voice, or inquire about everything that\u2019s
+    been said\u2026 you feel warmth coming over your side."
+  - "People are starting to panic outside. A number of guards are rapidly approaching,
+    and sounds of battle seem to have begun\u2026 is this\u2026 the fire? The anarchists?
+    Has the voice\u2026 told the truth?"
+  - "Only one way to find out\u2026"
+  - "You are tired. You were probably hallucinating! That conversation never even
+    happened\u2026 you may as well just sleep over it! After all, the fire is making
+    your bed <i> sooooo cozy </i>\u2026"
+  - "<color=#00e64d>\u201D\u2026\u201D </color>"
+  - "<color=#00e64d>\u201D\u2026\u201D </color>"
+  - "<color=#00e64d>\u201D\u2026\u201D </color>"
+  - "<color=#00e64d>\u201DI\u2026 beg of you\u2026 save\u2026 this kingdom. You cannot
+    fall asleep now. Not like\u2026 <i>HER</i>\u2026 again\u2026\u201D </color>"
+  - Well, so much for it being an hallucination. You can still hear the voice in
+    your head.
+  - You grumble and pout. You would rather be sleeping but you guess you can do a
+    little effort to save the Kingdom. The Voice owes you one, however.
+  - You hastily find clothing and a cloak to mask your form. As the battle rages
+    on outside, you slip, to your knowledege unnoticed or at the very least disregarded
+    by the agents of the conflict outside.
+  - "Even without sight, you know the road to the Imperial Palace all to well. You
+    stop to occasionally hear the guards make their way towards the fray. You hear
+    the city being turned inside out by the populace. This isn\u2019t a fire\u2026
+    this is a true revolution."
+  - "You fear that if the voice lied to you\u2026 there will be no populace left
+    in this kingdom after tonight. Only foolish revolutionaries or obidient slaves
+    to Emperor Dearion. "
+  - Making your way to the palace, you perk your ears to spot any guards that may
+    still be lurking outside the place. Fortunately for you, the entrance is silent.
+  - "Like a shadow, you guide yourself with the side of the wall, moving as fast
+    as a stealthy approach allows you to, reaching the back of the palace after a
+    few minutes: the curvature of the wall ended, and once again a flat surface meets
+    your palm\u2014 you remembered the Imperial Palace being oval in shape from the
+    time when you could still see!"
+  - "Has\u2026 your memory improved somewhat? Wait\u2026 memory?"
+  - "As your hand moves alongside the wall, it suddenly gives way to nothing. Your
+    arm slides inside a cavity, almost perfectly shaped to fit your arm and an open
+    palm at its end. This sudden movement prompts a soft humming from the wall\u2026"
+  - "<mspace=0.5em><color=#d9d9d9>\u201CPLEASE, ACCESS THE MAGILOCK BY SPEAKING THE
+    SECRET PASSCODE. \u201D </color></mspace>"
+  - "Oh, rats. You were supposed to remember that word the Voice told you! What\u2026
+    what was it again?"
+  - "The gate hums back: <mspace=0.5em><color=#d9d9d9>\"INCORRECT PASSCODE. \u201D
+    </color></mspace>"
+  - "No\u2026 that wasn\u2019t it\u2026. It was\u2026 something like\u2026"
+  - "<color=#00e64d>\u201DCo\u2026\u201D</color>"
+  - "<color=#00e64d>\u201D\u2026git\u2026\u201D</color>"
+  - "<color=#00e64d>\u201D\u2026us\u2026\u201D</color>"
+  - "The gate hums back: <mspace=0.5em><color=#d9d9d9>\"CORRECT PASSCODE. \u201D
+    </color></mspace>"
+  - "Without any warning, you feel a sudden, magical force drag you towards the wall.
+    You brace for impact, expecting it to be hard as\u2026 well\u2026 wall usually
+    is. Instead, the bricks have turned to the consistency of gelatine, bouncing
+    and shifting to your body being pulled in ever deeper."
+  - "<color=#00e64d>\u201DYou have made it! You have made it\u2026\u201D</color>"
+  - "<color=#00e64d>\u201DNow, let the walls carry you to the forgotten, silent halls
+    of this castle. Let the events of the past enter your mind.\u201D</color>"
+  - "Crushed within these walls, your breath becomes more unsteady\u2026 it becomes
+    harder and harder to hold on\u2026 Until you lose conciousness."
+  - ...
+  - ...
+  exit_text:
+  - Default Button
+  - Head to the Imperial Palace!
+  - Sleep over it!
+  scene_exits:
+  - '[0,1,2,0][0,43,36,0]'
+  scene_flags:
+  - cm04s01
+  - c
+  - c
+  - c
+  - c
+  - c
+  - c
+  - c
+  - c
+  - c
+  - cs00
+  - c
+  - c
+  - c
+  - c
+  - c
+  - c
+  - c
+  - cs01
+  - c
+  - c
+  - cs00
+  - cs01
+  - c
+  - c
+  - c
+  - cs00s01
+  - c
+  - c
+  - cs00s01
+  - c
+  - c
+  - cs00s02
+  - cs03
+  - c
+  - bs00
+  - cs01q
+  - c
+  - c
+  - c
+  - cs00
+  - c
+  - c
+  - cs02s04s05
+  - c
+  - cs00
+  - c
+  - c
+  - c
+  - ch
+  - ci57
+  - c
+  - c
+  - cs01
+  - c
+  - c
+  - s00f
+  - c
+  - c
+  - c
+  - c
+  - c
+  - c
+  - d
+  scene_sfx:
+  - 
+  - Ammon1
+  - Fire
+  - BattleGuards
+  - GuardWalk
+  - PopulaceStirs
+  scene_music: []
+  password:
+  - Cogitus
+  scenario_dialogues: []

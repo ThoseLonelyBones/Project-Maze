@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   text:
-  - "Hey, you. You\u2019re finally awake. "
+  - "<b>Hey, you. You\u2019re finally awake.</b>"
   - You were trying to cross the border, right? Walked right into that Imperial Ambush,
     same as us.
   - "Damn you, Stormcloaks. Skyrim was fine until you came along. The Empire was
@@ -43,7 +43,7 @@ MonoBehaviour:
   - ct
   - ct
   - ct
-  - ct
+  - d
   scene_sfx:
   - 
   scene_music: []

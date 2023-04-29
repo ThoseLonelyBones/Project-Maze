@@ -1,0 +1,187 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ed339f40d44eae4ebce6e5fd6b580ac, type: 3}
+  m_Name: P0 - Warnings & Tutorial
+  m_EditorClassIdentifier: 
+  id: 0
+  text:
+  - Hello and welcome to Horn of Ammon! Before we start with the game, there are
+    a few clarification I must make regarding the nature, purpose and contents of
+    the game. Press <b>SPACEBAR</b> to continue.
+  - You must press <b>SPACEBAR</b> whenever the text has finished displaying on your
+    screen to progress further. You can also press <b>SPACEBAR</b> whenever the text
+    is being written to skip immediately to the completed text.
+  - The game makes uses of <b>BUTTONS</b> to progress through the game. These <b>BUTTONS</b>
+    are shown in the lower-side of the screen <i>(for now, ignore the two buttons
+    to the bottom sides of the screen!)</i>. Whenever there is a choice to be made,
+    the game will grant you up to four possible choices. These choices allow you
+    to progress through the game.
+  - "For example, now you\u2019ll be given a few choices. These choices appear once
+    you press <b>SPACEBAR</b> after certain blocks of text. For example, the game
+    might ask you which flavour of Ice-Cream is your favourite between a few choices\u2026"
+  - "As you can see, the game gave you a different answer, based on your choices!
+    Not every instance of text will result in you making choices, but <b>be sure
+    to value your options when presented with one</b>. Time in game only passes when
+    changing dialogue so don\u2019t feel pressured to pick an answer quickly: you
+    may reflect for as long as you like."
+  - "I brought to your attention two additional <b>BUTTONS</b> before. The button
+    to the bottom-right is the <b>SAVE GAME BUTTON </b>. If you don\u2019t feel like
+    playing the game in an entire session, you may decide to save and continue later.
+    To load a saved game, simply click the \u201CLoad Game\u201D <b> BUTTON </b>
+    in the Main Menu instead of the \u201CNew Game\u201D one."
+  - The other <b>BUTTON</b>, to your bottom-left, is the <b>OPTIONS BUTTON</b>. Here
+    you can modify some settings of the game to be more to your liking. Maybe the
+    music has been a bit too loud, or the typing sound not to your liking, maybe
+    the text has been too big or has been moving too slow. You can access this menu
+    from both the Game and the Main Menu. Options are saved locally and do not need
+    to be reset every time you open the game.
+  - Now that you know the controls, there are some warnings and information that
+    needs to be said about the game.
+  - "The game tries to tell a story for you to enjoy. This story the game presents
+    is a <b>work of fiction</b>. All references to names, characters, people, buisnesses,
+    places, events and incidents in this game are the product of the author\u2019s
+    imagination\u2014 which has been influenced over the course of the years by multiple,
+    different sources: some whom may be familiar to you, others unfamiliar."
+  - "Any resemblance to real-life objects, places, religions, people or events is
+    <b>purely coincidental</b> and in no-way representative of actual history or
+    events, as well as not being a counterpart of any of the former\u2014 neither
+    in satire, critical commentary or any other intentionally referential form."
+  - <i>Sometimes, a story is just a story</i>. <b>Do you understand this?</b>
+  - "It is important you understand that none of the events in the game are real
+    \u2013 or meant to reppresent anything real \u2013 You will be shown those same
+    warnings again. "
+  - "As a story, it treats various themes and scenarios. However, the story may contain
+    unsettling imagery for some. Themes such as <b>false incarceration</b>, <b>claustrophobia</b>,
+    <b>loss</b> and <b>disadvantage</b>, as well as <b>implied physical violence</b>
+    are discussed, even if only in passing, in the story. It\u2019s important that
+    you understand that, by agreeing to play this game, you are in no way bound to
+    play it through completion."
+  - "As a safety measure, you are free to leave whenever you desire, without any
+    permission required. However, the themes may push you away from completing the
+    game, or even playing it in the first place. <b>It\u2019s important to know whether
+    these themes are a deal-breaker for you.</b>"
+  - Do you <i>still want to play</i> the game, <b>knowing of its themes and contents?</b>
+  - 'You will be returned to the main title screen. Let the developer know that you
+    do not intend to undertake the playtest. '
+  - There is  <b>one last thing</b> I must warn you about before you begin playing.
+  - "This game will <b>save some data of your playthrough.</b> Data will be used
+    to compile information about the effectivness of the game as a teaching and instructional
+    tool, as well as how effectively its premise \u2013 <i> a narration heavy game
+    with little to no visual reference </i>\u2013 works in the way of password memorization."
+  - "In addition to that, upon the game\u2019s completion, you will be presented
+    with a <b>questionnaire</b> to compile regarding your experience with the game.
+    These questions will be asked upon the game\u2019s completion, which is estimated
+    to be 15-20 minutes. In the <b>questionnaire</b>, only questions regarding your
+    status on cybersecurity, videogame activity and enjoyment of Horn of Ammon will
+    be asked for the purposes of creating accurate charts in the working dissertation.
+    <i>These questions are in no way meant to discriminate or objectify you and are
+    only relevant within the confines of the research question.</i>"
+  - Data regarding your playthrough will be saved and safely kept according to <b>GDPR
+    standards</b>. <i>Your data will be safely encrypted and only kept under your
+    accord.</i> Additionally, no sensitive data (such as age, sex, etc.) will be
+    kept nor asked for.
+  - Do you agree to the game <b>saving your data for research purposes?</b>
+  - If the game still entices you, <b>you may still play it</b>. However, <b>Your
+    playthrough will not be used for development and research purposes </b>. As a
+    lover of games myself, I do not want to force you to play only to gather data.
+    Enjoy your playthrough regardless. <i>Data Gathering will be disabled.</i> If
+    you desire it to re-enable it, you may click the <b>Data Gathering Toggle</b>
+    in the <b>OPTIONS</b> menu.
+  - I will show you the warnings about data saving again.
+  - Data Gathering will be enabled from this point onwards.
+  - The warnings and tutorial section is finished and the game is about to start!
+  - "But\u2026 <i>where</i> to start? There are many interesting points in this story\u2026"
+  - Oh. I know!
+  - "Let\u2019s start this story at <b>its most important moment\u2026</b>"
+  - <b><color=#cc3300><align="center"><size=200%>Your Execution.</color></b>
+  - '<b><align="center"><size=200%>Prologue</b>
+
+    <b>Your Execution</b>'
+  exit_text:
+  - Default Answer
+  - <color=#ffff99>Vanilla!</color>
+  - <color=#4dff88>Mint-Chocolate Chip!</color>
+  - "<color=#ff8080>Strawberry</color> \n& <color=#ffff66>Lemon!</color>"
+  - <color=#cc9900>Cookie Dough!</color>
+  - Yes, I do.
+  - No, I don't.
+  - Yes, I do.
+  - No, I don't.
+  - Yes, I do.
+  - No, I don't.
+  - 'Thank you.
+
+    (Keep Playing)'
+  - 'I changed my mind,
+
+    I want to agree.'
+  - I don't want to play.
+  scene_exits:
+  - '[1,2,3,4][4,4,4,4]'
+  - '[0,5,6,0][0,12,11,0]'
+  - '[0,7,8,0][0,16,15,0]'
+  - '[0,9,10,0][0,23,21,0]'
+  - '[11,12,13,0][24,22,15,0]'
+  scene_flags:
+  - c
+  - c
+  - c
+  - b
+  - c
+  - c
+  - c
+  - ch
+  - c
+  - c
+  - b
+  - f
+  - c
+  - c
+  - b
+  - km00
+  - ch
+  - c
+  - c
+  - c
+  - b
+  - b
+  - f
+  - cg
+  - c
+  - cm00
+  - c
+  - c
+  - c
+  - m05d
+  scene_sfx: []
+  scene_music: []
+  password: []
+  responses:
+  - Default Response
+  - <color=#ffff99><b>Vanilla</b></color> is a great pick, you can never go wrong
+    with the classics!
+  - "I\u2019m not going to lie, <color=#4dff88><b>Mint-Chocolate Chip</b></color>
+    is my favourite flavour! <i>So fresh and sweet</i> ..."
+  - Fruit flavours are the best! <color=#ff8080><b>Strawberry</b></color> and <color=#ffff66><b>Lemon</b></color>
+    are a good combination, nice pick!
+  - "<color=#cc9900><b>Cookie Dough</b></color> is a bit excessive but it\u2019s
+    also <i>excessively</i> delicious, so \u2026 good choice!"
+  - Let's proceed.
+  - I'm sorry, but I <b>can't allow you to play</b> the game until you understand
+    that this story is a work of fiction.
+  - We are almost done, hold tight!
+  - No pressure.
+  - Fantastic, we are done here!
+  - Very well, but you may want to hear this.
+  - '<i>Enjoy the game!</i> '
+  - Very well.
+  - Very well.

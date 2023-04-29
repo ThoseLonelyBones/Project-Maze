@@ -15,3 +15,4 @@ MonoBehaviour:
   actid: 0
   act_elements:
   - {fileID: 11400000, guid: 7a10671cf91cfb54595d0f407aa1c415, type: 2}
+  - {fileID: 11400000, guid: 7a10671cf91cfb54595d0f407aa1c415, type: 2}

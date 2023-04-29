@@ -71,6 +71,8 @@ public class Writing_Director : MonoBehaviour
     IEnumerator Writing()
     {
         bool play_typing_sound = true;
+        bool tag_effect = false;
+        string tag = "";
 
         while (char_pos < Text.Length && Textbox.text != Text)
         {
@@ -80,9 +82,24 @@ public class Writing_Director : MonoBehaviour
                 play_typing_sound = false;
             }
 
-            Textbox.text += Text[char_pos].ToString();
+            if(Text[char_pos] == '<' || tag_effect)
+            {
+                tag_effect = true;
+                Textbox.text += Text[char_pos].ToString();
+                tag += Text[char_pos].ToString();
+
+                if(Text[char_pos] == '>')
+                {
+                    tag_effect = false;
+                }
+            }
+            else
+            {
+                Textbox.text += Text[char_pos].ToString();
+                yield return new WaitForSeconds(time_to_write);                     
+            }
+
             char_pos++;
-            yield return new WaitForSeconds(time_to_write);                     // Need to make this work letter by letter (this writes more characters if the framerate allows it)
         }
 
         audio_director.StopGameSFX();
@@ -92,4 +109,5 @@ public class Writing_Director : MonoBehaviour
     {
         Textbox.fontSize = PlayerPrefs.GetInt("textsize");
     }
+
 }

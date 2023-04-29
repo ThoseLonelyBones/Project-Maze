@@ -48,13 +48,16 @@ public class OptionsScript : MonoBehaviour
         audio_director = audio_director_object.GetComponent<Audio_Director>();
 
         musicvolume.value = audio_director.music_volume;
-        musicvolume_text.text = (musicvolume.value * 100).ToString("0.00");
+        int display_value_1 = Mathf.FloorToInt((musicvolume.value * 100));
+        musicvolume_text.text = display_value_1.ToString();
 
         gamesfxvolume.value = audio_director.game_sfx_volume;
-        gamesfx_text.text = (gamesfxvolume.value * 100).ToString("0.00");
+        int display_value_2 = Mathf.FloorToInt((gamesfxvolume.value * 100));
+        gamesfx_text.text = display_value_2.ToString();
 
         scenesfxvolume.value = audio_director.scene_sfx_volume;
-        scenesfx_text.text = (scenesfxvolume.value * 100).ToString("0.00");
+        int display_value_3 = Mathf.FloorToInt((scenesfxvolume.value * 100));
+        scenesfx_text.text = display_value_3.ToString();
 
         musicvolume.onValueChanged.AddListener(VolumeSlider);
         gamesfxvolume.onValueChanged.AddListener(VolumeSlider);
@@ -144,17 +147,20 @@ public class OptionsScript : MonoBehaviour
             case Slider _ when slider == musicvolume:
                 //audio_director.music_volume = value;
                 PlayerPrefs.SetFloat("music_volume", value);
-                musicvolume_text.text = (value * 100).ToString("0.00");
+                int display_value_1 = Mathf.FloorToInt((value * 100));
+                musicvolume_text.text = display_value_1.ToString();
                 break;
             case Slider _ when slider == gamesfxvolume:
                 //audio_director.game_sfx_volume = value;
                 PlayerPrefs.SetFloat("game_sfx_volume", value);
-                gamesfx_text.text = (value * 100).ToString("0.00");
+                int display_value_2 = Mathf.FloorToInt((value * 100));
+                gamesfx_text.text = display_value_2.ToString();
                 break;
             case Slider _ when slider == scenesfxvolume:
                 //audio_director.scene_sfx_volume = value;
                 PlayerPrefs.SetFloat("scene_sfx_volume", value);
-                scenesfx_text.text = (value * 100).ToString("0.00");
+                int display_value_3 = Mathf.FloorToInt((value * 100));
+                scenesfx_text.text = display_value_3.ToString();
                 break;
             default:
                 break;
@@ -195,19 +201,23 @@ public class OptionsScript : MonoBehaviour
         int textsize = PlayerPrefs.GetInt("textsize");
         switch(textsize)
         {
-            case 48:
-                PlayerPrefs.SetInt("textsize", 54);
+            case 46:
+                PlayerPrefs.SetInt("textsize", 58);
                 writing_director.UpdateSize();
                 writing_director.TypingEffect(options_text, "Text size set to Large");
                 textsize_button.text = "Text Size: LARGE";
                 break;
-            case 54:
-                PlayerPrefs.SetInt("textsize", 48);
+            case 58:
+                PlayerPrefs.SetInt("textsize", 46);
                 writing_director.UpdateSize();
                 writing_director.TypingEffect(options_text, "Text size set to Standard");
                 textsize_button.text = "Text Size: Standard";
                 break;
             default:
+                PlayerPrefs.SetInt("textsize", 46);
+                writing_director.UpdateSize();
+                writing_director.TypingEffect(options_text, "Text size set to Standard");
+                textsize_button.text = "Text Size: Standard";
                 break;
         }
     }

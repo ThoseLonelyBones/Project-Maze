@@ -1,0 +1,321 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ed339f40d44eae4ebce6e5fd6b580ac, type: 3}
+  m_Name: P1 - Execution 1
+  m_EditorClassIdentifier: 
+  id: 0
+  text:
+  - You were wandering the halls of the Imperial Palace, hoping to receive audience
+    with the Emperor himself. Unfortunately enough, <i>your prayers have been answered.</i>
+  - A guards spots you before you notice its presence. With a shout, many more are
+    called to your position. You make no attempt to resist, in case your arrest turns
+    into your death.
+  - One by one, a number of guards subdue you and then forcibly start moving you.
+    Once again, you pose no resistance to them.
+  - "You hear your heart racing in your ears. You cannot see where you are being
+    dragger, only the occasional noise of your chains being shaken and moven. At
+    least two individuals are dragging you, one by each arm. You hear the clattering,
+    metallic footsteps of the Emperor\u2019s Holy Guard behind you, their armor as
+    lound as cracking thunder. You can\u2019t distinguish how many individuals are
+    behind you, only that they are not few."
+  - "Your head is spinning and you feel nauseous. But this is the moment you have
+    been preparing for. This is where you make your case for freedom\u2026 for survival.
+    To whomever Gods you give reverence, you let out a quiet prayers. The guards
+    do not seem to mind this action and proceed with their grim task."
+  - "Initially distant, you start to hear the chittering sounds of the Imperial Court
+    become louder and louder. At least you aren\u2019t being dragged to the gallows
+    yet. The smell of expensive perfumes and burning wax fills the air. You cannot
+    see, but judging by how far the sounds still feel you can determine that the
+    room you are being carried in is quite big."
+  - "After a few seconds, the guards release you. With a shove, you are brought to
+    your knees. Istinctively, you attempt to get up again, only for the back of your
+    neck to meet a cold, steel point. There will be no attempts of getting up that
+    won\u2019t result in early death."
+  - Watching the scene, the crowd becomes rowdier and more than whispering, they
+    are gossiping about your situation.
+  - "<color=#cc0000>\u201CSilence.\u201D</color> \u2013 a voice, loud and clear,
+    at best 10 meters in front of you, shouts."
+  - "<color=#cc0000>\u201CI see you came willingly at least. However, this doesn\u2019t
+    change the purpose of this meeting: this is the trial for your execution.\u201D</color>"
+  - "<color=#cc0000>\u201CAs by the power the charge of Emperor of the Vast Lands
+    grants me, I will grant you a fair trial.\u201D</color>"
+  - "<color=#cc0000>\u201COr\u2026at least, as fair as one such as you deserves.\u201D</color>"
+  - "At this sentence, the crowd erupts in laughter: mocking your current condition\u2026
+    it won\u2019t be easy to win them over, much less not to make a spectacle about
+    this."
+  - "<color=#cc0000>\u201CNo introductions on your end will be needed. Your nature
+    is known to all those partecipating to the trial.\u201D</color>"
+  - "<color=#7094db>\u201CEven those not partecipating know your name\u2026 you are
+    basically a super-star! As famous as the Emperor themselves! I\u2019d know there
+    are people that would\u2026 KILL \u2026 to be in your position.\u201D</color>"
+  - "<color=#7094db>\"<size=150%>Ahah<size=125%>ahh<size=100%>ahah<size=75%>ahah<size=50%>ahah<size=25%>ahah<size=12%>aha\u2026<size=100%>\"</color>"
+  - A familiar voice emerges, A cackling laughter coming from in front of you. The
+    Jester, and Advisor, to the Emperor himself.
+  - "<color=#cc0000>\u201CJester\u2026 this is no joking matter. We have finally
+    found who we were looking for\u201D.</color>"
+  - "<color=#cc0000>\u201CThe one who hosts Ammon. The Great Traitor.\u201D</color>"
+  - "<color=#cc0000>\u201CVery well, Great Traitor, let\u2019s begin. To start with,
+    do you have anything to say for yourself?\u201D</color>"
+  - "<color=#cc0000>\u201CMh. It appears you do not understand your predicament.\u201D</color>
+    The emperor calls for the Jester."
+  - "<color=#cc0000>\u201CJester, are you sure this individual is the Great Traitor?\u201D</color>
+    You can hear a sarcastic and mocking tone in the Emperor\u2019s voice."
+  - "<color=#7094db>\u201COhhhhh\u2026 as sure as you are Emperor, my Emperor. Although
+    I\u2019m not sure of much these days\u2026 for example I\u2019m not sure the
+    Great Traitor will make it out of here alive\u2026\u201D</color>"
+  - "<color=#7094db>\"<size=150%>Ahah<size=125%>ahh<size=100%>ahah<size=75%>ahah<size=50%>ahah<size=25%>ahah<size=12%>aha\u2026<size=100%>\"</color>"
+  - "<color=#cc0000>\u201CYou may not see it, Traitor, but the Mark of Ammon is on
+    you. From this point onwards I suggest paying heed to your words and take good
+    care of saying the truth. Least this trial turns into an execution.\u201D</color>"
+  - "<color=#cc0000>\u201CDo not make a mockery authority I posses, nor the loyalty
+    of my subjects. If you truly were loyal to me, you\u2019d understand the benefits
+    of ending your life, here and now.\u201D </color>"
+  - "<color=#7094db>\u201COh-oh! I think you may be right, your Majesty! See how
+    he\u2019s bowing? The Traitor may already be practicing the correct form for
+    the chopping block!\u201D </color>"
+  - "<color=#7094db>\"<size=150%>Ahah<size=125%>ahh<size=100%>ahah<size=75%>ahah<size=50%>ahah<size=25%>ahah<size=12%>aha\u2026<size=100%>\"</color>"
+  - "<color=#cc0000>\u201CSpare me from this pathetic show. For how harrowing and
+    sad your death will be, its service to the kingdom is a price I\u2019m more than
+    willing to pay.\u201D </color>"
+  - "<color=#7094db>\u201CYeesh. And I thought my fake crying was bad.\u201D </color>"
+  - "<color=#7094db>\"<size=150%>Ahah<size=125%>ahh<size=100%>ahah<size=75%>ahah<size=50%>ahah<size=25%>ahah<size=12%>aha\u2026<size=100%>\"</color>"
+  - "<color=#cc0000>\u201CYou do realize the situation you are in, right? Silence
+    will only damn you further.\u201D </color>"
+  - "<color=#cc0000>\u201CIn any case, the Great Traitor is here for all the court
+    to admire.\u201D </color>"
+  - "The once hushed whispers turn to a roaring cacophony coming from your sides\u2026
+    like being an animal in a caged, oogled at by passerbyes and seekers of the curious
+    and unusual. And the chaos signals it is time to put on a show."
+  - "<color=#cc0000>\u201CI must ask something of you first, Great Traitor. What
+    are your thoughts right now? To whom are your prayers directed towards?\u201D
+    </color>"
+  - "The court\u2019s words are many and confused. They are trying to understand
+    your character, your motivation, your reasoning. While you can\u2019t grasp any
+    solid words, a few of the more frequent one become clear amidst the chaos."
+  - "<color=#d9d9d9>\n\u201CTraitor\u2026\u201D\r\n\u201CDid they betray the Emperor?
+    They seem lost\u2026\u201D\r\n\u201CThat is all an act! They clearly are allied
+    with the evil Ammon!\u201D\r\n\u201CAmmon\u2026 what an awful power for such
+    an evil god\u2026\u201D\r\n\u201CThe Traitor will pay for this!\u201D\r\n\n</color>"
+  - "You feel that whatever control you have over this situation is slipping away
+    from you fast. If you can\u2019t quickly make a case for yourself, the Court
+    will ask for your head. You need to think of something that would convince the
+    Court to at the very least hear you\u2026"
+  - " Even with the best odds\u2026 No, you cannot afford for a defeatist act, you
+    NEED to think, FAST."
+  - " You can\u2019t remember much of what happened before but you know that, hidden
+    somewhere deep within your memories, there is the solution for this problem. 
+    But\u2026 you can\u2019t seem to get to them. "
+  - "<color=#00e64d> \u201CThe situation seems bleak but you must not panic.\u201D</color>"
+  - "<color=#00e64d> \u201CYour memory of the events that transpired will save you,
+    Keeper.\u201D </color>"
+  - "<color=#00e64d> \u201CYou must simply tap into it once more. Now, reach deep
+    into your mind and share with Emperor Dearion the memories he has lost. The memories
+    that will save his life, the life of his subjects, the life of this kingdom\u2026
+    and your life too, Keeper.\u201D </color>"
+  - 'You pull yourself from the ground and, standing as tall as the guard allows
+    you to, you profess these words:'
+  - "<color=#7094db>\u201CMh.. It appears newfound resolve has sparked in the Great
+    Traitor\u2026 or should we say Keeper? Am I correct? I know I\u2019m correct\u2026
+    <size=150%>Ahah<size=125%>ahah<size=100%>ahah<size=75%>ahah<size=50%>\u201Cah<size=25%>\u201Cah<size=12%>\u201Caha\u2026\u201D\u201D</color>"
+  - "<color=#cc0000>\u201CJESTER! Is this some elaborate prank? I do not appreciate
+    it! You have overstepped your boundries as advisor to the Emperor.\u201D </color>"
+  - "<color=#7094db>\u201COh merely a simple jest, your Majesty. But, I suggest that
+    we let the Great Traitor speak for themselves. If they truly are lying\u2026
+    the worth of their lies will be compared to the wealth of knowledge of the court
+    and, of course, your Own memories.\u201D </color>"
+  - "<color=#7094db>\u201CAfter all\u2026 you were there.\u201D </color>"
+  - "<color=#7094db>\"<size=150%>Ahah<size=125%>ahh<size=100%>ahah<size=75%>ahah<size=50%>ahah<size=25%>ahah<size=12%>aha\u2026<size=100%>\"</color>"
+  - "The court erupts in a series of conjectures and tall-tales, meek attempts to
+    interpret the meaning of your words, the reaction of the Emperor and most importantly,
+    the Jester\u2019s own words. Hushered whispers follow about the Emperor, about
+    the events that transpired during his reign, about the great victories he conquered
+    and the smashing losses he suffered. While the guards try their best to husher
+    everyone, only the word of the Emperor may actually quiet down the court."
+  - "<color=#cc0000>\u201CSilence.\u201D </color> The Emperor\u2019s voice is steady
+    but audibly shaken by your words."
+  - "<color=#cc0000>\u201CI have decided to grant you the time to explain yourself
+    to this court. You will have a fair trial after all. However\u2026 if I do not
+    like your answers\u2026\u201D</color>"
+  - "<color=#cc0000>\u201CI. WILL. KILL YOU. And, as Emperor I also decree that the
+    Jester, who loves to joke about conspiring against me, suffers the same end.\u201D
+    </color>"
+  - 'A shocked gasp comes from the Court. Their whispers and speculations find more
+    and more solid ground to stand: the Jester is an ally to the Great Traitor!'
+  - "<color=#7094db>\"<size=150%>Eheh... Eheh... Eheh<size=125%>eheh<size=100%>eheh<size=75%>eheh<size=50%>eheh<size=25%>eheh<size=12%>eheh\u2026<size=100%>\"</color>"
+  - "<color=#7094db>\u201CThis game is becoming more interesting by the minute! I\u2019d
+    gladly play it, my Emperor!\u201D </color>"
+  - "<color=#7094db>\u201CWell\u2026 now it\u2019s up to you, Keeper. Tell to Emperor
+    Dearion the truths he has forgotten.\u201D </color>"
+  - "<color=#cc0000>\u201CWell\u2026 Begin to tell your story. Possibly from the
+    moment you entered the Imperial Palace\u2019s Secret Halls.\u201D </color>"
+  - "<color=#00e64d>\u201DFrom now on it\u2019s up to you, Keeper.\u201D </color>
+    \u2013 The voice of Ammon once again speaks in your mind."
+  - "<color=#00e64d>\u201DI will help you relive the events of today. However, I
+    cannot remember them for you. I will allow you to tap into all those memories
+    until they become crystal clear.\u201D</color>"
+  - "<color=#00e64d>\u201DNow, Keeper. Lend me your thoughts and I will make them
+    once again real for you.\u201D</color>"
+  - "<color=#00e64d>\u201DBut before that\u2026 remember who you are.</color>"
+  exit_text:
+  - Default Answer
+  - <b>"Great Traitor?"</b>
+  - <b>"I'm Loyal to you, my Liege"</b>
+  - <b>"Please spare my life"</b>
+  - <b>*Say Nothing*</b>
+  - <b>"Wait! Please!"</b>
+  - "<b>\"The Gods.\u201D</b>"
+  - "<b>\u201CMy Family.\u201D</b>"
+  - "<b>\u201CYou, my Emperor.\u201D</b>"
+  - "<b>\u201CAmmon.\u201D</b>"
+  - <b>Nothing comes to mind...</b>
+  - <b>You try to think...</b>
+  - <b><color=#00e64d> "Focus."</color></b>
+  - "<b>\u201CI know why you survived Shining Blades.\u201D</b>"
+  - "<b>\u201CI know what happened to your family.\u201D</b>"
+  - "<b>\u201CI know who summoned Ammon to your aid.\u201D</b>"
+  - "<b>\u201CI know where the Horn of Ammon is.\u201D</b>"
+  scene_exits:
+  - '[1,2,3,4][20,25,28,31]'
+  - '[5,0,0,0][33,0,0,0]'
+  - '[6,7,8,9][35,35,35,35]'
+  - '[10,0,0,0][38,0,0,0]'
+  - '[11,0,0,0][39,0,0,0]'
+  - '[12,0,0,0][40,0,0,0]'
+  - '[13,14,15,16][44,44,44,44]'
+  scene_flags:
+  - cm00m05
+  - c
+  - cs01s02s03
+  - cs01s00
+  - cs02s04
+  - c
+  - c
+  - cs00s05
+  - c
+  - cs06
+  - cs07
+  - cs08
+  - c
+  - c
+  - c
+  - c
+  - cs09
+  - cs10
+  - c
+  - b
+  - cs11
+  - c
+  - c
+  - cs12
+  - bs04
+  - c
+  - c
+  - bs04
+  - c
+  - c
+  - bs04
+  - c
+  - bs04
+  - cs00s14
+  - b
+  - cs04
+  - cs03
+  - b
+  - b
+  - bs00s15
+  - c
+  - c
+  - cs00
+  - b
+  - cs16
+  - c
+  - c
+  - c
+  - cs04
+  - cs00s14
+  - cs17
+  - cs18
+  - c
+  - c
+  - c
+  - c
+  - cs17
+  - cs15
+  - c
+  - c
+  - c
+  - s00d
+  scene_sfx:
+  - 
+  - Chains
+  - GuardWalk
+  - Heartbeat
+  - Court3
+  - Emperor10
+  - Emperor4
+  - Emperor6
+  - Court2
+  - Emperor11
+  - Emperor24
+  - Emperor15
+  - Emperor7
+  - Emperor2
+  - Emperor9
+  - Ammon1
+  - Emperor12
+  - Emperor16
+  - Emperor8
+  scene_music: []
+  password: []
+  responses:
+  - Default Response
+  - "You muster up the courage to speak. You ask the Emperor what the term \u201CGreat
+    Traitor\u201D means, and why you are being called such."
+  - From your crouched form, you attempt to form a humble bow towards the direction
+    of the voice. You utter words of loyalty and fidelity to the Emperor and his
+    court.
+  - 'Getting somehow closer to the ground, your form becomes compressed and small:
+    you beg for your life in front of the court, almost to the point of tears.'
+  - Either in defiance or shock, you do not utter a sound. Your form does not change
+    and you wait for the Emperor to speak again.
+  - You attempt to get the Emperor's attention, but your voice is silenced immediatly
+    by a much larger source of noise
+  - "<color=#cc0000>\u201CA choice that I understand well. There are some Gods that
+    deserve praise, others that do not. The one that has marked you, for example,
+    is owed only insults and blasphemies. If you truly are cursed by Them only in
+    passing, then you must know how evil such a God can be.\u201D </color>"
+  - "<color=#cc0000>\u201CHow banal. Your familiy is lucky to not have you around
+    anymore, for this Empire \u2013 your family included \u2013 should not have to
+    tolerate the terror that is Ammon. I pray only that you realize this in time
+    for your death.\u201D </color>"
+  - "<color=#cc0000>\u201CYou won\u2019t win me over with insincere begs and nags.
+    Your time is short and you best be making the best use of it: if you truly believe
+    crying to my deaf ears is such, then I\u2019d think you haven\u2019t much of
+    a case for yourself.\u201D </color>"
+  - "<color=#cc0000>\u201CBlasphemous to the end, I see! I\u2019d wager that Ammon
+    would hate to see such a \u2018pious\u2019 and \u2018holy\u2019 person\u2019s
+    head on a PIKE. If you are trying to get me riled up for some sick scheme or
+    trick, you are succeding.\u201D </color>"
+  - In your mind possibilities are rushing; each carefully calculated, each torn
+    apart by your current predicament.
+  - A sense of panic overwhelms you. Your memory feels scattered and lost. Thinking
+    is not an option in your current state of mind.
+  - "You zone out the sounds of the Imperial Court, of the Emperor\u2019s orders\u2026
+    and focus. In this state of mind, words that are not your own enter your mind."
+  - "<color=#cc0000>\u201CW-What? How\u2026 how do you know about that? How do you
+    know about ANY of that?\u201D </color>"
+  - "<color=#cc0000>\u201CW-What? How\u2026 how do you know about that? How do you
+    know about ANY of that?\u201D </color>"
+  - "<color=#cc0000>\u201CW-What? How\u2026 how do you know about that? How do you
+    know about ANY of that?\u201D </color>"
+  - "<color=#cc0000>\u201CW-What? How\u2026 how do you know about that? How do you
+    know about ANY of that?\u201D </color>"

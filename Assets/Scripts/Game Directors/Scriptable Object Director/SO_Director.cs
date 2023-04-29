@@ -383,11 +383,14 @@ public class SO_Director : MonoBehaviour
                         break;
                     case "q":
                         break;
+                    case "k":
+                        break;
                     case string m when Regex.IsMatch(m, "^m[0-9]{2}$"):             
                         break;
                     case string s when Regex.IsMatch(s, "^s[0-9]{2}$"):
                         break;
                     case "t":
+                        break;
                         break;
                     default:
                         // Return 'd', prompt error message on the d
@@ -589,7 +592,5 @@ public class SO_Director : MonoBehaviour
         }
         
     }
-
-
 
 }
