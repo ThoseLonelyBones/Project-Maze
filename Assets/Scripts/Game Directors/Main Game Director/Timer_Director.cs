@@ -49,34 +49,33 @@ public class Timer_Director : MonoBehaviour
 
     public void TimerCheck()
     {
-        //Debug.Log("Timer Check!");
 
-        if(Attempt_Timer >= 30 && stage0)
+        if(Attempt_Timer >= 15 && stage0)
         {
             Debug.Log("Game has Started");
-            audio_director.PlayMusic(2);
+            audio_director.PlayMusic(6);
             stage0 = false;
         }
-        else if(Attempt_Timer < 30 && Attempt_Timer >= 20 && stage1)
+        else if(Attempt_Timer < 15 && Attempt_Timer >= 10 && stage1)
         {
           Debug.Log("Timer Stage 1 Reached");
-            audio_director.PlayMusic(3);
+            audio_director.PlayMusic(7);
             stage1 = false;
           // Display Text: The sun is still high in the sky
           // Play: At Rest
         }
-        else if (Attempt_Timer < 20 && Attempt_Timer >= 10 && stage2)
+        else if (Attempt_Timer < 10 && Attempt_Timer >= 5 && stage2)
         {
             Debug.Log("Timer Stage 2 Reached");
-            audio_director.PlayMusic(4);
+            audio_director.PlayMusic(8);
             stage2 = false;
             // Display Text: The sun is lower than you remember
             // Play: Worried
         }
-        else if (Attempt_Timer < 10 && Attempt_Timer > 0 && stage3)
+        else if (Attempt_Timer < 5 && Attempt_Timer > 0 && stage3)
         {
             Debug.Log("Timer Stage 3 Reached");
-            audio_director.PlayMusic(5);
+            audio_director.PlayMusic(9);
             stage3 = false;
             // Display Text: The sun is beginning to set
             // Play: Anxious

@@ -151,13 +151,19 @@ public class Gameplay_Director : MonoBehaviour
     private int play_index = 0;
 
     /*
+     * These two booleans are activated by the menu options present in the game, also questionare has an exclusive flag to activate i
      * 
-     * 
-     * 
+     * gamedata_save can be activated by the flag q or by the Data Gathering toggle in the options menu
+     * autosave is on by default and can be toggled to be off
      */
 
-    private bool questionare_save = false;
-    private bool autosave_save = false;
+
+    // The string containing the quantity of player choices they have made. Nothing spectacular.
+    private string gamedata;
+
+    public int[] exits_addendum_array = { 1, 1, 1, 1 };
+
+
 
     private void Awake()
     {
@@ -202,8 +208,8 @@ public class Gameplay_Director : MonoBehaviour
 
         Debug.Log("Main Gameplay Loop Awake");
 
-        
 
+        audio_director.Silence();
     }
 
     // This function is used to hide elements of the game before the first scenario is loaded
@@ -292,21 +298,25 @@ public class Gameplay_Director : MonoBehaviour
                     so_director.ChangeScenarioText(button1Exit);
                     text_check = so_director.ChangeScenarioText(button1Exit);
                     index = button1Exit;
+                    so_director.exit_index += exits_addendum_array[0];
                     break;
                 case "Button 2":
                     so_director.ChangeScenarioText(button2Exit);
                     text_check = so_director.ChangeScenarioText(button2Exit);
                     index = button2Exit;
+                    so_director.exit_index += exits_addendum_array[1];
                     break;
                 case "Button 3":
                     so_director.ChangeScenarioText(button3Exit);
                     text_check = so_director.ChangeScenarioText(button3Exit);
                     index = button3Exit;
+                    so_director.exit_index += exits_addendum_array[2];
                     break;
                 case "Button 4":
                     so_director.ChangeScenarioText(button4Exit);
                     text_check = so_director.ChangeScenarioText(button4Exit);
                     index = button4Exit;
+                    so_director.exit_index += exits_addendum_array[3];
                     break;
                 default:
                     Debug.Log("How could this happen to me?");
@@ -370,7 +380,8 @@ public class Gameplay_Director : MonoBehaviour
                     input.progress = false;
                     break;
                 case "q":
-                    questionare_save = true;
+                    PlayerPrefs.SetString("datacollection", "true");
+                    Debug.Log("Data Collection is enabled!");
                     break;
                 case "k":
                     BacktoMainMenu();
@@ -380,9 +391,6 @@ public class Gameplay_Director : MonoBehaviour
                     audio_director.PlayMusic(music_index);
                     break;
                 case "r":
-                    // THIS IS FINE BUT WHY IS IT RUNNING TWICE AAAAAH
-                    //if(fixFlagR)
-                    //{
                         int act_length = sot_play.all_acts[play_index].act_elements.Length;
                         Debug.Log("Act Length: " + act_length);
                         if ((act_index + 1) == act_length)
@@ -399,8 +407,13 @@ public class Gameplay_Director : MonoBehaviour
 
                     Debug.Log(play_index + " is play index and " + act_index + " is act index");
                     index = so_director.ChangeScene(sot_play.all_acts[play_index].act_elements[act_index]);
+                    so_director.input_index = 0;
                     text_check = so_director.ChangeScenarioText(index);
                     fixFlagR = false;
+                    if(PlayerPrefs.GetString("autosave") == "true")
+                    {
+                        SaveGame();
+                    }
                     audio_director.LoadSceneAudio(so_director.current_scene.scene_sfx);
                     break;
                 case string s when Regex.IsMatch(s, "^s[0-9]{2}$"):
@@ -410,6 +423,32 @@ public class Gameplay_Director : MonoBehaviour
                 case "t":
                     timer_director.TimerCountdown();
                     // do the return and text change in here.
+                    break;
+                case string u when Regex.IsMatch(u, "^u[0-9]{2}$"):
+                    int finale = int.Parse(flag[x].Substring(1, 2));
+                    switch(finale)
+                    {
+                        case 1:
+                            SceneManager.LoadScene("Credits");
+                            PlayerPrefs.SetInt("credits_scene", 1);
+                            break;
+                        case 2:
+                            SceneManager.LoadScene("Credits");
+                            PlayerPrefs.SetInt("credits_scene", 2);
+                            break;
+                        default:
+                            SceneManager.LoadScene("Credits");
+                            PlayerPrefs.SetInt("credits_scene", 0);
+                            break;
+                    }
+                    break;
+                case "x":
+                    if(PlayerPrefs.GetString("datacollection") == "true")
+                    {
+                        Debug.Log("Data is being collected!");
+                        gamedata += ("Player has reached this index: " + (index - 1) + " in this scenario " + (act_index + 1) + " of the act number " + play_index + ", at the attempt number " + timer_director.Get_Attempt_Number() + "\n");
+                        info_handler.SaveData(gamedata);
+                    }
                     break;
                 default:
                     Debug.Log("How has this even happened? Is this even possible?");
@@ -429,7 +468,7 @@ public class Gameplay_Director : MonoBehaviour
         text_check = so_director.current_scene.text[index];
         progressText = true;
 
-        timer_director.Set_Attempt_Timer(30);
+        timer_director.Set_Attempt_Timer(20);
     }
     public void resumeGame()
     {
@@ -459,8 +498,11 @@ public class Gameplay_Director : MonoBehaviour
             so_director.exit_index = int.Parse(savedata_array[4]);
             timer_director.Set_Attempt_Timer(int.Parse(savedata_array[5]));
             timer_director.Set_Attempt_Number(int.Parse(savedata_array[6]));
+            timer_director.TimerCheck();
             hook_index = int.Parse(savedata_array[7]);
             so_director.hook_exit_index = hook_index;
+            so_director.input_index = int.Parse(savedata_array[8]);
+            Debug.Log(so_director.input_index);
             Debug.Log(hook_index);
             resumeGame();
         }
@@ -532,7 +574,8 @@ public class Gameplay_Director : MonoBehaviour
         SOT_Scene current_scene = so_director.current_scene;
         int exit_index = so_director.exit_index;
         int timer = timer_director.Get_Attempt_Timer();
-        info_handler.SaveGame(current_scene, index, act_index, play_index, exit_index, timer, 0, hook_index);
+        int password_index = so_director.input_index;
+        info_handler.SaveGame(current_scene, index, act_index, play_index, exit_index, timer, 0, hook_index, password_index);
 
         ui_director.SystemText("Game Saved!", 5);
     }
@@ -561,14 +604,20 @@ public class Gameplay_Director : MonoBehaviour
 
     private void AttemptReset()
     {
+        if (PlayerPrefs.GetString("autosave") == "true")
+        {
+            SaveGame();
+        }
         timer_director.reset = false;
         GameObject eventsystem = GameObject.Find("EventSystem");
         progressText = false;
+        act_index = 0;
         text_check = so_director.Faint();
         ui_director.DisableButtons();
         ui_director.CanvasFade();                                                                                   // Lower everything's Alpha
         StartCoroutine(WaitforCanvasFade());
-        StartCoroutine(WaitforCanvasSpawn());                                                                                                                                           
+        StartCoroutine(WaitforCanvasSpawn());     
+        
     }
 
     IEnumerator WaitforCanvasFade()
@@ -601,7 +650,7 @@ public class Gameplay_Director : MonoBehaviour
             hook_index = 0;
             text_check = so_director.current_scene.text[index];
             progressText = true;
-            timer_director.Set_Attempt_Timer(30);
+            timer_director.Set_Attempt_Timer(20);
             ui_director.EnableButtons();
             ui_director.canvas_spawn = false;
             yield break;
@@ -612,48 +661,7 @@ public class Gameplay_Director : MonoBehaviour
     private void BacktoMainMenu()
     {
         SceneManager.LoadScene("Main Menu");
+        audio_director.music_audio_source.Stop();
     }
-    // TODO:
-    /*
-     *  1) Integrate Inputs via Input Flag
-     *      Add password recognition                => Done!
-     *  2) Fully finish timer implementation        => Done!           
-     *      Add Music Change and Restart functions  =>  Done!
-     *  3) Create SFX and VFX directors             => Done!
-     *  4) Options Menu                             => Done!
-     *  5) Credits Screen
-     *  6) Music and SFX arrangement                => Done!
-     *  7) Simple VFX Effects (Buttons Fading in)
-     *  8) Text Effects
-     *  
-     *  Game Writing Required:
-     *  
-     *  1) Intro
-     *      
-     *      => Warnings                 // Done!
-     *      => Execution, Halted        // Done!
-     *      => Arrest                   // WIP
-     *      
-     *  2) Chapter 1
-     *  
-     *      => First Escape                         // WIP
-     *      => For the Good of the Kingdom
-     *  
-     *  3) Chapter 2
-     *  
-     *      => Jester, First Meet
-     *      => The Horn of Ammon
-     *      
-     *  4) Chapter 3
-     *  
-     *      => Speak with Ammon
-     *      => Jester, Second Meet
-     *      
-     *  5) Conclusion
-     *  
-     *      => Execution, Prevented
-     * 
-     * 
-     * 
-     */
+    
 }

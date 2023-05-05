@@ -39,7 +39,7 @@ public class Writing_Director : MonoBehaviour
         textsize = PlayerPrefs.GetInt("textsize");
         textspeed = PlayerPrefs.GetFloat("textspeed");
 
-        if (textsize != null)
+        if (textsize != 0)
         {
             Textbox.fontSize = textsize;
         }

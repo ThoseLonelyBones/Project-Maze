@@ -93,8 +93,9 @@ MonoBehaviour:
   - "<color=#cc0000>\u201CIn any case, the Great Traitor is here for all the court
     to admire.\u201D </color>"
   - "The once hushed whispers turn to a roaring cacophony coming from your sides\u2026
-    like being an animal in a caged, oogled at by passerbyes and seekers of the curious
-    and unusual. And the chaos signals it is time to put on a show."
+    it feels like you are an exotic animal in a cage, oogled at by passerbyes and
+    seekers of the curious and unusual. And the chaos signals it is time to put on
+    a show."
   - "<color=#cc0000>\u201CI must ask something of you first, Great Traitor. What
     are your thoughts right now? To whom are your prayers directed towards?\u201D
     </color>"
@@ -192,7 +193,7 @@ MonoBehaviour:
   - '[12,0,0,0][40,0,0,0]'
   - '[13,14,15,16][44,44,44,44]'
   scene_flags:
-  - cm00m05
+  - cm05
   - c
   - cs01s02s03
   - cs01s00
@@ -205,29 +206,29 @@ MonoBehaviour:
   - cs07
   - cs08
   - c
-  - c
-  - c
+  - cs19
+  - cs20
   - c
   - cs09
   - cs10
   - c
   - b
-  - cs11
+  - cs11x
   - c
-  - c
+  - cs22
   - cs12
   - bs04
-  - c
-  - c
+  - cx
+  - cs22
   - bs04
-  - c
-  - c
+  - cx
+  - cs20
   - bs04
-  - c
+  - cx
   - bs04
   - cs00s14
   - b
-  - cs04
+  - cs04x
   - cs03
   - b
   - b
@@ -237,16 +238,16 @@ MonoBehaviour:
   - cs00
   - b
   - cs16
+  - cs21
   - c
-  - c
-  - c
+  - cs22
   - cs04
   - cs00s14
   - cs17
   - cs18
   - c
-  - c
-  - c
+  - cs23
+  - cs21
   - c
   - cs17
   - cs15
@@ -274,6 +275,11 @@ MonoBehaviour:
   - Emperor12
   - Emperor16
   - Emperor8
+  - JesterLaughLowShort
+  - JesterLaughHighShort4
+  - JesterImperator1
+  - JesterLaughHoller2
+  - JesterLaughHoller
   scene_music: []
   password: []
   responses:

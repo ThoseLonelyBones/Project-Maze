@@ -54,14 +54,16 @@ public class MenuScript : MonoBehaviour
             PlayerPrefs.SetFloat("game_sfx_volume", 1f);
             PlayerPrefs.SetFloat("scene_sfx_volume", 1f);
             PlayerPrefs.SetString("autosave", "true");
-            PlayerPrefs.SetString("datacollection", "true");
+            PlayerPrefs.SetString("datacollection", "false");
             PlayerPrefs.SetInt("textsize", 46);
             PlayerPrefs.SetFloat("textspeed", 0.045f);
         }
 
         Settings(audiodirector);
+        PlayerPrefs.SetInt("credits_scene", 0);
 
-        audiodirector.PlayMusic(1);
+        audiodirector.MainMenuMusic();
+
     }
 
     // Update is called once per frame
@@ -94,7 +96,7 @@ public class MenuScript : MonoBehaviour
 
     void ClickCredits()
     {
-
+        SceneManager.LoadScene("Credits");
     }
 
     void Settings(Audio_Director audiodirector)

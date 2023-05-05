@@ -67,38 +67,45 @@ public static class Encryption_Assistant
     // Gamedata is decrypted following a similar process to encryption. Retrive the encrypted data and then decrypte it with a Decryptor, instead of an Encryptor, in a CryptoStream that subsequently gets read via a StreamReader
     public static string Decrypt_GameData(string filepath, string secret_key_string, string iv_string)
     {
-        byte[] encrypted_data_array = File.ReadAllBytes(filepath);
-
-        secret_key = Encoding.UTF8.GetBytes(secret_key_string);
-        iv = Encoding.UTF8.GetBytes(iv_string);
-
-        // Don't Worry! The data isn't simply saved in base64. If you try to conver encrypted_data_array using base64, your result will be absolute gibberish. It needs to be decrypted!
-        Debug.Log("This is the incripted data: " + Convert.ToBase64String(encrypted_data_array));
-        string decrypted_data;
-
-        using (var aes_decryption = Aes.Create())
+        try
         {
-            aes_decryption.Key = secret_key;
-            aes_decryption.IV = iv;
-            aes_decryption.Padding = PaddingMode.Zeros;
+            byte[] encrypted_data_array = File.ReadAllBytes(filepath);
 
-            var decryptor = aes_decryption.CreateDecryptor(aes_decryption.Key, aes_decryption.IV);
+            secret_key = Encoding.UTF8.GetBytes(secret_key_string);
+            iv = Encoding.UTF8.GetBytes(iv_string);
 
-            using (var memory_stream = new MemoryStream(encrypted_data_array))
+            // Don't Worry! The data isn't simply saved in base64. If you try to conver encrypted_data_array using base64, your result will be absolute gibberish. It needs to be decrypted!
+            Debug.Log("This is the incripted data: " + Convert.ToBase64String(encrypted_data_array));
+            string decrypted_data;
+
+            using (var aes_decryption = Aes.Create())
             {
-                using (var crypto_stream = new CryptoStream(memory_stream, decryptor, CryptoStreamMode.Read))
+                aes_decryption.Key = secret_key;
+                aes_decryption.IV = iv;
+                aes_decryption.Padding = PaddingMode.Zeros;
+
+                var decryptor = aes_decryption.CreateDecryptor(aes_decryption.Key, aes_decryption.IV);
+
+                using (var memory_stream = new MemoryStream(encrypted_data_array))
                 {
-                    using (var reader = new StreamReader(crypto_stream))
+                    using (var crypto_stream = new CryptoStream(memory_stream, decryptor, CryptoStreamMode.Read))
                     {
-                        decrypted_data = reader.ReadToEnd();
+                        using (var reader = new StreamReader(crypto_stream))
+                        {
+                            decrypted_data = reader.ReadToEnd();
+                        }
                     }
                 }
+
             }
 
+            Debug.Log("Save File Loaded!");
+
+            return decrypted_data;
         }
-
-        Debug.Log("Save File Loaded!");
-
-        return decrypted_data;
+        catch(FileNotFoundException)
+        {
+            return null;
+        }
     }
 }

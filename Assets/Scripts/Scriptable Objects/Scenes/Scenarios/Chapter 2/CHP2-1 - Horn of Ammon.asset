@@ -1,0 +1,363 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306bb26a6dc49594a93f3c1e031a10c7, type: 3}
+  m_Name: CHP2-1 - Horn of Ammon
+  m_EditorClassIdentifier: 
+  id: 0
+  text:
+  - 'After this strange conversation with Ammon, you feel a light tremor shaking
+    your feet.  '
+  - "Instinctively, you decide to take a step back, away from the wall. The tremor
+    grows faster. In but a few moments, you hear a crumbling sound and a hail of
+    small rocks pelts your front side\u2014 prompting you to instictively shield
+    yourself with your arms. In a few longs seconds, the tremor stops and no rocks
+    hit your face anymore. Only the choking smell of a cloud of dust and fine crushed
+    rock invades your lungs.\nImmediately, you are hit with air even more stagnant
+    and, surpringly enough, a light wind blowing from where the mosaic stands."
+  - Approaching the wall in few careful steps and guiding yourself with your hands,
+    you find with little shock that the entire wall as collapsed.
+  - "<color=#00e64d>\u201DThat\u2026 was not supposed to happen. A door should have
+    just slid open\u2026 for how long has this place been left unattended? This may
+    be worse than I thought. </color>"
+  - Ammon seemingly ignores your queries. His voice becomes quieter and quieter,
+    until it disappears completely.
+  - "Whatever he is thinking right now, is not good. If it can cause panic and confusion
+    in a God\u2026 anything up ahead is surely important in solving all of this."
+  - "As you place your hands on the sides of where the central mosaic was, you feel
+    a steadily-narrowing rock tunnel. By going a few feet deep, you realize that
+    you will have to proceed carefully and, most importantly, you won\u2019t have
+    much wiggle room in here."
+  - "You steady your breathing, focus your mind\u2026 and proceed inside the tunnel."
+  - 'The jagged rocks that make up this old and decrepit place show that it is either
+    unfisinished or rightfully never-used: it hurts to even walk in here. Every other
+    step, the sharp edge of a rocky protrusion nips at your body, occasionally creating
+    a tear in your clothing or a stining pain sensation in your body. Even walking
+    as slow as possible does not prevent the tunnel from biting back with a hidden
+    shank of natural material grazing your flesh and your appearal.'
+  - "While on every other sense it is agonizing, your sense of smell is surpisingly
+    relived: the light, natural breeze has been steadily growing from the faintest
+    feeling of movement to a refreshing, if still quite low, current. Even through
+    the occasional bout of pain, it keeps you going\u2026 it\u2019s certainly better
+    than whatever stuffy air the crypt contained\u2026"
+  - "This walk may not be long, but the short movements and glacial pace make it
+    feel like it has been lasting for what feels like an eternity. Are you at least
+    even reaching someplace useful? Well\u2026you were at the castle\u2019s lowest
+    level when you entered\u2026 the only place you would need to move towards in
+    the castle is up\u2026"
+  - 'You painstakingly decide to test a theory. With the most care possible, you
+    decide to reach low to the ground and see if you have been walking on an incline.
+    Turns out, your observations were correct: a low, if barely percievable incline
+    has allowed you to steadily climb out of your location.'
+  - "<color=#00e64d>\u201D\u2026\u201D</color>"
+  - "<color=#00e64d>\u201D\u2026\u201D</color>"
+  - "<color=#00e64d>\u201D\u2026\u201D</color>"
+  - "<color=#00e64d>\u201DYou have been walking for a few minutes now.\u201D</color>"
+  - "<color=#00e64d>\u201DThese tunnels\u2026 are not long. But for you, travelling
+    around them feels almost eternal. That, I know. If only I had shared your caution,
+    maybe none of this would have happened.\u201D</color>"
+  - "<color=#00e64d>\u201DI must confess to you that the reason why Dearion fears
+    me is justified. My powers are truly an awful thing.\u201D</color>"
+  - "<color=#00e64d>\u201DThere is a certain presumptuosness that comes with power.
+    Dearion knows this and you probably know how it affects men\u2014 you surely
+    have been subject to it at some point in your life.\u201D</color>"
+  - "<color=#00e64d>\u201DThose in power believe it is owed to them. They make excuses
+    on why their actions are justified. They believe themselves heroes of their own
+    story.\u201D</color>"
+  - "<color=#00e64d>\u201D\u2026\u201D</color>"
+  - "<color=#00e64d>\u201DGods and Men aren\u2019t so different after all.\u201D</color>"
+  - "<color=#00e64d>\u201DI believed myself a merciful entity. I believe that what
+    I brought was a gift\u2014 a cure for the malignance brewing in this kingdom.
+    I\u2026 upheld their request. But those who wallow in pain seldom are searching
+    for a solution\u2014 rather, an esape.\u201D</color>"
+  - "<color=#00e64d>\u201DIt wasn\u2019t ignorance or maliciousness that brought
+    me to do such an action\u2026 it was presumtuosness. I believed myself capable
+    of fixing something that required no solution at all\u2014 I didn\u2019t cure
+    the disease afflicting Dearion\u2019s heart; I simply removed the latter.\u201D</color>"
+  - "<color=#00e64d>\u201DIt is in memory that one\u2019s character is built after
+    all... What is a human if not a collection of memories?\u201D</color>"
+  - "<color=#00e64d>\u201DOnce again, I ask you not to beg for burden of proof on
+    my part. Anything that comes out of my mouth doesn\u2019t hold the same value
+    as actual evidence. I invite you to explore around the next room\u2026 I think
+    that will clear any doubt you may have on this situation.\u201D</color>"
+  - "Over the course of the next twenty or so minutes, you push your way through
+    the unfinished passageway, progressively getting larger and larger\u2014 finally
+    giving up enough space to allow you to stretch your arms fully."
+  - "The tunnel you are In become more and more of a refined passageway as you walk
+    through it. The occasional jagged edge poking you becomes less and less frequent,
+    the barely scraped rock under your feet slowly turning into cobblestone, then
+    brick\u2014 the air that makes its way through this entrance becoming a light,
+    pleasant breeze."
+  - As you keep making your way around the tunnel, it suddenly gives way to a larger
+    room. You can feel its size by the echoing sound of your footsteps around here.
+    The walls feel cool and slightly humid, made of some form of polished stone.
+    Moving around the walls to make sense of the room reveals its hexagonal shape.
+  - "Slowly inching towards the center of the room takes you some time, but reveals
+    a smaller element of the room, sharing its shape with the latter and made of
+    what you assume to be the same material. Feeling it with your hands, something
+    far colder meets your hand\u2014 glass, of some sort, in a dome shape. Judging
+    by its position, you wager this is some sort of display case."
+  - You take some time to do a thourough investigation of the object in front of
+    you. Tapping the dome a few times, you wager that it would be impossible to break
+    it open. Its contents shall remain a mystery for you now.
+  - The stone support reveals a few peculiarities. A small plate, similar to the
+    previous ones you have encountered is available. However... there is a difference.
+    The metal seems newer, its edge sharper and by the thickness of the plate it
+    feels as if it was placed upon an original inscription on a  later date. You
+    take some time to spell out its text.
+  - "<mspace=0.5em><color=#d9d9d9> \u201CShards of the Horn of Ammon. As Ammon betrayed
+    Dearion in a vile, treacherous plot his nefarious artefacts stands here\u2014
+    broken as the empty promises of the Great Enemy.\u201D </mspace></color>"
+  - "<color=#00e64d>\u201D...\u201D</color>"
+  - "<color=#00e64d>\u201DI had suspsected as much.\u201D</color>"
+  - Ammon takes a few seconds to reply to you.
+  - "<color=#00e64d>\u201DThe Horn of Ammon was a gift for me to Dearion. I was summoned
+    here by one of his faithful servants in hope I could cure him of his broken heart.
+    The Horn of Ammon is the instrument that allowed for such act\u2026 but if it\u2019s
+    broken\u2026 it means everything\u2019s lost.\u201D</color>"
+  - You feel Ammon contemplating which words to choose, carefully.
+  - "<color=#00e64d>\u201DDearion believes I betrayed him. Of course, he has no memory
+    of the actual accident, I simply did as I was asked of him. In truth, it is my
+    fault: I should have not did as they begged me to.\u201D</color>"
+  - "Ammon\u2019s reflexive and calm tone shatters for a second, revealing an air
+    of uncertainity"
+  - "<color=#00e64d>\u201DThe horn used to contain something extremely important\u2014
+    Dearion\u2019s own memories. If it is broken, your job has gotten considerably
+    harder. Convincing Dearion of his past memories will be nigh impossible.\u201D</color>"
+  - Ammon reflects on his words for a moment.
+  - "<color=#00e64d>\u201DWhile I\u2019m a god of memory, there are some things that
+    are beyond me. Dearion\u2019s memories from our contract onwards are unreachable
+    to me... I didn\u2019t know for certain he broke the Horn but I always suspected
+    it.\u201D</color>"
+  - "As you contemplate on the words professed to you\u2026 something interrupts
+    your thinking."
+  - "<color=#7094db> <size=25%>\u201COh Ammon, oh Ammon in your name I pray. Oh Ammon,
+    oh Ammon please answer to me\u201D </color>"
+  - ' A hushed, silent whisper can be faintly heard'
+  - Concentrating at the best of your capabilities, you feel the whispering as if
+    being carried from the wind, coming from the highest point of this room.
+  - "<color=#7094db> <size=25%>\u201COh Ammon, oh Ammon in your name I pray. Oh Ammon,
+    oh Ammon please answer to me\u201D </color>"
+  - "<color=#7094db> <size=75%>\u201COh Ammon, oh Ammon why have you forsaken me?
+    Your prophet, your worshipper, the devout and the pious?\u201D</color>"
+  - "<color=#7094db> <size=75%>\u201CIs it truly all lost? Is all of it gone and
+    done? Why am I still praying in your name? Why am I still attached to the days
+    past?\u201D</color>"
+  - "<color=#7094db> <size=100%>\u201CMaybe\u2026 maybe.. eh\u2026 Eheh\u2026 Eheheheh\u2026
+    this really is\u2026 a <b> Fool\u2019s Errand </b>?\u201D</color>"
+  - "<color=#7094db>\"<size=150%>Ahah<size=125%>ahh<size=100%>ahah<size=75%>ahah<size=50%>ahah<size=25%>ahah<size=12%>aha\u2026<size=100%>\"</color>"
+  - "<color=#7094db><size=150%>\u201CEEEEEEEEEEEEEEEEK!!!\u201D</b></color>"
+  - "<color=#7094db><size=125%>\u201DWho... Who GOES THERE!? I\u2019m\u2026 I\u2019m
+    ALLOWED to be here! I\u2019m the JESTER of this Castle, of course me being inside
+    the Forbidden halls is NOT. WEIRD. AT. ALL!\u201D</color>"
+  - "<color=#7094db><size=125%>\u201DWhere are you!? Come out! Come out now!\u201D</color>"
+  - "<color=#7094db> \u201CYes! Yes\u2026 of course\u2026 I shall be more careful
+    not to make any noise\u2026\u201D </color>"
+  - "<color=#7094db> \u201CDown here where exaclty? It's dark and I'm not a bat!
+    Wait\u2026 Don\u2019t tell me!?\u201D </color>"
+  - "<color=#7094db> \u201CFine! Fine! I will! Where even are you!? \u201C </color>"
+  - "<color=#7094db>\u201D Eheheheheh\u2026 that was a nice joke. Wait, no! Where
+    are you!?\u201D</color>"
+  - "<color=#7094db> \u201C\u2026 Wait\u2026 is the voice\u2026 coming from\u2026
+    the Horn? Down there? I can\u2026 barely\u2026 see\u2026 \u201C</color>"
+  - "<color=#7094db>\u201D I can make out someone\u2019s\u2026 shape\u2026 down to
+    the Horn? Wait\u2026 How did you get there? It\u2019s a long drop from here to
+    there, not to mention the massive grate that is here too\u2026 unless you can
+    squeeze through inches of metal\u2026\u201D</color>"
+  - "<color=#00e64d>\u201DPoor Maurice. His part in this play has left his mind a
+    bit lost...  </color>"
+  - "<color=#00e64d>\u201DWe need to find a way to calm him down or else he\u2019ll
+    probably rile up the entire castle\u2014 say this to him: Dearion will soon be
+    cured.\u201D</color>"
+  - "<color=#7094db> \"Huh? But\u2026 that means!\"</color>"
+  - <color=#7094db>"Oh what joyous day! Oh what wonderful miracle! All my praying
+    has finally paid off! You are here! The one who Hosts Ammon! The new Keeper!"</color>
+  - <color=#7094db>"Yes, the Keeper of Ammon! You have the God of Memory within you!
+    You can listen to his voice! To his melodious, methodical and miracuolous murmuring!
+    Just as I once did!"</color>
+  - "<color=#7094db>\"You have been blessed my friend! Blessed, I say! I was once
+    like you my friend but my mind has become a bit\u2026 scattered after the past
+    years. But I never forgot my promise to Ammon nor King Dearion! I will help him
+    with his affliction, no matter the cost!</color>"
+  - "<color=#7094db> \"I just need to\u2026 get the Horn\u2026 to\u2026 summon\u2026
+    him\u2026 Dearion wants to forget\u2026 he wants to let everyone forget\u2026\"</color>"
+  - "<color=#7094db>\"Wait\u2026 he wants to\u2026 forget? Forget about what? What
+    does Dearion want to forget about?\"</color>"
+  - "<color=#7094db> \"Unless\u2026\"</color>"
+  - "<color=#00e64d>\u201DYes. Dearion already used the Horn once. His memories were
+    already removed from him. Poor Maurice doesn\u2019t remember. No-one can. He
+    is still stuck in the same way he was\u2014 trying to summon me, trying to cure
+    Dearion of his broken heart. </color>"
+  - "<color=#7094db> \"Dearion\u2026 already forgot? But\u2026 why is the kingdom\u2026
+    so\u2026 bleak? And scary? And terrible? Has\u2026 has it not worked?\"</color>"
+  - "<color=#7094db>\u201CYou\u2026 did not see the state of Dearion. Something needed
+    to be done!\u201D</color>"
+  - "<color=#7094db>\u201CWell THAT much I can see\u2026 but why? Did I make everything
+    worse?\u201D</color>"
+  - "<color=#7094db> \u201CHas Dearion truly forgotten everything? Can he not remember
+    the kind and nice person he was?\u201D</color>"
+  - "<color=#7094db> \u201CEven if I am a Jester that doesn\u2019t mean I find <b>every</b>
+    joke funny. This one wasn\u2019t even a bit funny. Unless you think that the
+    \u201CCruel Kingdom\u201D is a nice place to live, then you may be more mad than
+    me\u2026\u201D</color>"
+  - "<color=#7094db>\u201DBut\u2026 you are here now! That means that you can fix
+    the Horn! You can help Dearion!\u201D</color>"
+  - "<color=#00e64d>\u201DIf removing Dearion\u2019s memories caused this mess\u2026
+    giving back Dearion\u2019s memories may help the situation\u2026 However\u2026
+    there was a reason why they were removed.\u201D</color>"
+  - "<color=#00e64d>\u201DThere\u2019s a chance it may make the situation worse but
+    at this point any chance we get to make the situation right is welcome.\u201D</color>"
+  - "<color=#00e64d>\u201DFor now\u2026 we need to find a way to get the Horn. Even
+    if it broken there is a way to fix it. There has to be a lock on this display
+    case, right?\u201D</color>"
+  - "<color=#7094db>\u201DAre you stuck down there, Keeper? I\u2019ll see what I
+    can do to help you!\u201D</color>"
+  exit_text:
+  - Default Text
+  - '"Worse than you thought?"'
+  - "\"The Horn of Ammon\u2026\""
+  - "\"Betrayal\u2026\""
+  - "\"It\u2019s broken?\""
+  - '"You suspected it?"'
+  - '"..."'
+  - You try to locate the sound.
+  - You focus a bit more.
+  - You focus even more.
+  - '"Who is this?"'
+  - '"Do you want to help me?"'
+  - '"Whose side are you on?"'
+  - '"Are you an Ammon worshipper?"'
+  - '"Quiet down!"'
+  - "\"I\u2019m down here!\""
+  - '"Help me, damn you!"'
+  - '"You are making a <b> FOOL </b> out of yourself."'
+  - '"..."'
+  - '"Dearion will soon be cured"'
+  - '"Keeper?"'
+  - "\u201CUnless Dearion already forgot about it.\u201D"
+  - "\u201CIt was a terrible idea.\u201D"
+  - "\u201CIt has not worked as intended.\u201D"
+  - "\u201CIt worked <b>too</b> well\u2026\u201D"
+  - "\u201CMaybe it\u2019s not so bad\u2026\u201D"
+  - '"How exactly?"'
+  scene_exits:
+  - '[1,0,0,0][4,0,0,0]'
+  - '[2,3,4,5][35,37,39,41]'
+  - '[6,0,0,0][43,0,0,0]'
+  - '[7,0,0,0][46,0,0,0]'
+  - '[8,0,0,0][47,0,0,0]'
+  - '[9,0,0,0][48,0,0,0]'
+  - '[10,11,12,13][52,52,52,52]'
+  - '[14,15,16,17][55,56,57,58]'
+  - '[18,0,0,0][59,0,0,0]'
+  - '[19,0,0,0][63,0,0,0]'
+  - '[20,0,0,0][65,0,0,0]'
+  - '[21,0,0,0][70,0,0,0]'
+  - '[22,23,24,25][72,73,74,75]'
+  - '[18,0,0,0][76,0,0,0]'
+  - '[23,0,0,0][77,0,0,0]'
+  scene_flags:
+  - cs07s08
+  - c
+  - cs01
+  - bs00
+  - c
+  - c
+  - c
+  - cs02
+  - cs00s02t
+  - cs02
+  - cs02
+  - cs01t
+  - c
+  - c
+  - c
+  - c
+  - cs00s01
+  - c
+  - c
+  - c
+  - c
+  - cs00s01
+  - c
+  - c
+  - c
+  - cs00
+  - c
+  - c
+  - c
+  - c
+  - c
+  - c
+  - cs01
+  - c
+  - bs00
+  - cs01
+  - bs00
+  - c
+  - b
+  - c
+  - b
+  - c
+  - b
+  - c
+  - c
+  - b
+  - b
+  - b
+  - c
+  - cs09
+  - cs10
+  - b
+  - c
+  - c
+  - b
+  - b
+  - b
+  - b
+  - b
+  - cs03
+  - cs01
+  - c
+  - bs00
+  - cs04
+  - b
+  - cs05
+  - c
+  - c
+  - c
+  - bs01
+  - cs00
+  - b
+  - b
+  - b
+  - b
+  - b
+  - cs01
+  - c
+  - c
+  - cs00s06
+  - d
+  scene_sfx:
+  - 
+  - Ammon1
+  - RockScrape
+  - JesterOhLong
+  - JesterAmmonShort
+  - JesterLaughLowShort3
+  - JesterOhMedium
+  - WallCollapse
+  - DirtThrow
+  - JesterLaughHighShort2
+  - JesterLaughHoller
+  scene_music: []
+  password: []
+  scenario_dialogues: []

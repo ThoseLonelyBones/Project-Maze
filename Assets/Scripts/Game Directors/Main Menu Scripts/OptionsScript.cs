@@ -252,4 +252,10 @@ public class OptionsScript : MonoBehaviour
         }
     }
 
+    public void ReturntoMainMenu()
+    {
+        audio_director.Silence();
+        SceneManager.LoadScene("Main Menu");
+    }
+
 }

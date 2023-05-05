@@ -1,0 +1,280 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306bb26a6dc49594a93f3c1e031a10c7, type: 3}
+  m_Name: EP - 1 - First Choice
+  m_EditorClassIdentifier: 
+  id: 0
+  text:
+  - "<color=#00e64d>\u201DAfter all this time\u2026 there is a chance to right my
+    wrongs.\u201C</color>"
+  - "<color=#00e64d>\u201DThank you for this.\u201C</color>"
+  - "<color=#00e64d>\u201D\u2026 there is but one step left. Facing Dearion.\u201C</color>"
+  - "<color=#00e64d>\u201D While the memories are now back in the horn\u2026 they
+    are not with Dearion. Not yet. You need to find an occasion to talk to him and
+    return these memories to him.\u201C</color>"
+  - "<color=#00e64d>\u201D But there is a problem.\u201C</color>"
+  - "<color=#00e64d>\u201DA BIG Problem.\u201C</color>"
+  - "<color=#00e64d>\u201DWe can\u2019t simply use the Horn.\u201C</color>"
+  - "<color=#00e64d>\u201DI\u2019m afraid that reciving back all of those painful
+    memories will be a shock for Dearion. If he recieves them all at once, with no
+    chance to process them or make them have logical sense\u2026 Dearion\u2019s sanity
+    may forever be twisted.\u201C</color>"
+  - "<color=#00e64d>\u201DWe will need to give him the information slowly\u2026 but
+    there will be no chance to do so without Dearion noticing. </color>"
+  - "<color=#00e64d>\u201DDearion doesn\u2019t trust Maurice and he\u2019ll be wary
+    of any word he says, so he cannot be the person to tell him the truth. So I have
+    a plan, but you may not like it.\u201C</color>"
+  - "<color=#00e64d>\u201DYou need to receive audience with the King himself.\u201C</color>"
+  - "<color=#00e64d>\u201DAdvancing towards him in good terms will be nigh impossible
+    right now\u2014 as the revolution rages, so does Dearion\u2019s hatred for his
+    enemies. Right now he needs a political distraction\u2026 something to pin the
+    blame on.\u201C</color>"
+  - "<color=#00e64d>\u201DAn Ammon worshipper, perhaps? Or\u2026 better yet, Ammon\u2019s
+    Keeper?\u201C</color>"
+  - "<color=#00e64d>\u201DYes, I do. I mean giving yourself up to Dearion and getting
+    your audience not as a honoured guest\u2026 but as a prisoner on trial.\u201C</color>"
+  - "<color=#00e64d>\u201DYou will need to make a case for yourself. If Dearion is
+    truly the person he is, deep down, he will listen. You just need his attention
+    and your memory, as long as the Horn is somewhat close to Dearion, it will do
+    the rest.\u201C</color>"
+  - "<color=#00e64d>\u201DDearion can\u2019t remember anything unless he willingly
+    choses to do so. To do that, you will need to help him recall the events of his
+    life. As he ponders about everything, he will slowly extract the memories from
+    the Horn himself.\u201C</color>"
+  - "<color=#00e64d>\u201DSlowly, calmly... at his own pace. Dearion\u2019s disposition
+    may visibly change during the Trial but you must continue until everything is
+    remembered and no stone in Dearion\u2019s mind is left unturned.\u201C</color>"
+  - "<color=#00e64d>\u201DAs for the consequences of our actions\u2026 we will have
+    to improvise.\u201C</color>"
+  - "<color=#00e64d>\u201DI\u2019m afraid not. We can\u2019t afford to wait any longer
+    than tonight. Dearion\u2019s temperment may become too jaded to even allow for
+    simple discourse by then.\u201C</color>"
+  - "<color=#00e64d>\u201DBut this also means that if you can\u2019t make Dearion
+    recall his past...<i> YOU WILL DIE. </i>\u201C</color>"
+  - "<color=#00e64d>\u201DThis is the only way.\u201C</color>"
+  - "<color=#00e64d>\u201DKeeper please! You must understand that this is the only
+    hope we have to set things right, we can\u2019t give up now!\u201C</color>"
+  - "<color=#00e64d>\u201DIf it\u2019s not tonight, it\u2019s <b><i>NEVER</i></b>.
+    Are you truly unwilling to change Dearion\u2019s mind? After everything we have
+    been through?\u201C</color>"
+  - "<color=#00e64d>\u201DThank you for reconsidering.\u201C</color>"
+  - Player, is this truly your final choice? (You will get a unique Epilogue and
+    ending, but miss another ending).
+  - "<color=#00e64d>\u201D\u2026\u201C</color>"
+  - "<color=#00e64d>\u201D\u2026\u201C</color>"
+  - "<color=#00e64d>\u201D\u2026\u201C</color>"
+  - "<color=#00e64d>\u201D\u2026\u201C</color>"
+  - "<color=#00e64d>\u201D\u2026\u201C</color>"
+  - "<color=#00e64d>\u201DI\u2026 have vowed to not make the same mistake again.
+    I will not impose my will over you. Mortals have to make their own choices.\u201C</color>"
+  - "<color=#00e64d>\u201DYou have to escape the Palace, correct? You need only to
+    buy enough time\u2026 this I have forseen. Revolutionaries will soon be at the
+    doors and the guards won\u2019t hold them back for long. Get dragged to Dearion\u2019s
+    chamber and use the time he gives you to spin a long story. Buy yourself enough
+    time to wait for your saviours to arrive.\u201C</color>"
+  - "<color=#00e64d>\u201DTake a horse... flee the palace. Flee the Cruel Kingdom
+    and what it could have been. I just ask that you leave the Horn of Ammon to Maurice.\u201C</color>"
+  - "<color=#00e64d>\u201D\u2026\u201C</color>"
+  - "<color=#00e64d>\u201DThank you.\u201C</color>"
+  - "<color=#00e64d>\u201D\u2026\u201C</color>"
+  - "<color=#00e64d>\u201DI supposed I\u2019m not owed any gratitude.\u201C</color>"
+  - Exploring around a room, you find the place where supposedly stairs used to be,
+    covered in boards. A few swift kicks allow you to break through towards the exit
+    from this accursed mausoleum.
+  - "Following the advice of Ammon, you get captured by the guards. When prompted
+    to speak, you start spinning a tall tale\u2026 buying yourself enough time to
+    let the court be dismissed. Your about to be executed on the spot when the revolutionaires
+    break down the doors of the Throne room."
+  - "The battle is fierce and brutal, but fairly swift. Amidst the chaos and carnage,
+    you find a way to grab the guard\u2019s keys, unlock your manacles and bolt out
+    of the palace. Heading for the stables, you can find a horse in well enough conditions."
+  - You flee. You run out of the walls of the city into the great unknown, no destination
+    able to be seen, no track to follow, no other option but to wander. But at the
+    very least you are free.
+  - "Some nights, nightmares about the event that occurred within the palace haunt
+    your dreams\u2014 a cackling mad laughter, walls that swallow you whole, the
+    fear of never waking up again\u2026 but none of it matters anymore. You hear
+    in passing news that the revolution of the Kingdom of Sheon has been crushed
+    by an opposing rival lord who has siezed control of the Palace and the Imperial
+    City."
+  - "Slowly, but surely, even the nightmares subside. You have proven that gods cannot
+    meddle with men undisturbed. There is no other concern but survival: to die in
+    the attempt of heroism is a tale only for books or games and the grim reality
+    of the situation says that men have to look out for themselves. Those who are
+    heroic are killed\u2014 such was Shining Blades. Those who attempt sacrifice
+    get punished\u2014 such is the tale of the late King Dearion."
+  - "A tale only you know\u2026 and even then, over time, come to forget. One last
+    time, you give it thought\u2026 what could it have been? What consequences have
+    your actions had? Could you have saved the Kingdom?"
+  - "\u2026 the real question is \u2018Does it matter anymore\u2019?"
+  - You think not.
+  - ...
+  - "<color=#00e64d>\u201DVery well. We don\u2019t have much time. Let\u2019s find
+    a way out of here first.\u201C</color>"
+  - Knocking over the walls, you find that some planks ring hollow. They have nothing
+    behind them! It takes you some time, but you manage to break them apart with
+    a  few kicks. Inside this small exit, you feel with your hands a spiral staircase
+    that leads straight up.
+  - Taking the staircase, you walk for a considerable amount of time, until it suddenly
+    ends. You appear in a closed off room as your hands tell you. Stumbling towards
+    some form of exit, you realize one brick is looser than the other. Pushing it
+    down causes a heavy shift in the wall, the vibrations of which you can feel with
+    your own hands.
+  - "You walk into the silent hallways of the Palace for a while, attempting to find
+    anyone to take you to the throne room\u2026 but the Silent Hallways are called
+    so for a reason."
+  - "\u2026"
+  - "You feel lost\u2026 when suddenly!"
+  - A figure ambushes you from behind!
+  - Startled you turn around, only to hear the familiar voice of the Jester.
+  - "<color=#7094db> \u201COh Keeper! You are here! Finally! Ammon warned me about
+    his plans! He is a wise God indeed\u2026 wise and cunning!\u201D </color>"
+  - "<color=#7094db> \u201CWell, it seems you need to be caught\u2026 and some help
+    telling a story I see! Well, well, well!\u201D </color>"
+  - "<color=#7094db> \u201CWorry not Keeper! I can arrange both for you, lickety-split!
+    I\u2019ll go back to the Throne Room and say to them that I have found not any
+    heretic, but one that SPEAKS to Ammon! But\u2026 there is a small problem\u2026\u201D
+    </color>"
+  - "<color=#7094db> \u201CYou will probably be shaken down for your possessions
+    when they find you. But I have thought of this too! Please, Keeper, let me have
+    the Horn of Ammon! I shall give it to you when the timing is more fortuitus!\u201D
+    </color>"
+  - You give to Maurice the Horn of Ammon for temporary safekeeping.
+  - "<color=#7094db> \u201CVery well! It\u2019s time for our little play to start!
+    I can\u2019t believe this! The Keeper has arrived on this dreary night, spoken
+    with Ammon, fixed the Horn and is about to save the Kingdom! How exciting! What
+    honor to be able to set up this act with them!\u201D </color>"
+  - "<color=#7094db> \u201CAhah! I can\u2019t wait! I\u2019ll hurry as fast as I
+    can!\u201D </color>"
+  - "<color=#7094db> \u201COf course, of course! This is no moment for pleasantries!
+    I\u2019ll hurry as fast as I can!\u201D </color>"
+  - "<color=#7094db> \u201CWe are blessed by Ammon, even in death our names will
+    be forever rememembered! Good luck and remember to act the part!\u201D </color>"
+  - "<color=#7094db> \u201CAHAH! Even to the end the Keeper proves to be the gift
+    that keeps on giving! I may have some competition as professional funnyman! I\u2019ll
+    get the guards, you stay here, alright?\u201D </color>"
+  - '<b><align="center"><size=200%>Epilogue</b>
+
+    <b>Memories of the King</b>'
+  exit_text:
+  - Default Text
+  - What!?
+  - Why not?
+  - And how would I do that?
+  - You don't mean...
+  - My memory?
+  - There is no Plan B?
+  - Okay.
+  - No way!
+  - I do not want to save Dearion
+  - I want to save Dearion
+  - Yes
+  - No
+  - I will
+  - I won't
+  - ...
+  - The Pleasure is all mine!
+  - Less talking, more snitching!
+  - "Let\u2019s do this!"
+  - Ammon-ly getting started!
+  scene_exits:
+  - '[1,0,0,0][3,0,0,0]'
+  - '[2,0,0,0][7,0,0,0]'
+  - '[3,0,0,0][11,0,0,0]'
+  - '[4,0,0,0][13,0,0,0]'
+  - '[5,0,0,0][15,0,0,0]'
+  - '[6,0,0,0][18,0,0,0]'
+  - '[7,8,0,0][47,21,0,0][5,1,0,0]'
+  - '[9,10,0,0][24,23,0,0]'
+  - '[11,12,0,0][25,23,0,0]'
+  - '[13,14,0,0][33,35,0,0]'
+  - '[15,0,0,0][37,0,0,0]'
+  - '[16,17,18,19][61,62,63,64]'
+  - '[15,0,0,0][65,0,0,0]'
+  scene_flags:
+  - c
+  - c
+  - bs00s01
+  - c
+  - c
+  - c
+  - bs00s01
+  - c
+  - c
+  - cs00s01
+  - b
+  - cs00s01
+  - b
+  - c
+  - bs00s01
+  - c
+  - cs00s01
+  - b
+  - c
+  - chs00s01
+  - bs00s01
+  - c
+  - bs00
+  - f
+  - bs01
+  - c
+  - c
+  - c
+  - c
+  - cs00s01
+  - c
+  - c
+  - bs00s01
+  - c
+  - bs00
+  - c
+  - bs00
+  - c
+  - cs03
+  - c
+  - cs04
+  - c
+  - c
+  - c
+  - c
+  - c
+  - u01
+  - cs02
+  - cs04
+  - c
+  - c
+  - c
+  - c
+  - c
+  - cs05
+  - c
+  - c
+  - c
+  - c
+  - c
+  - b
+  - b
+  - b
+  - b
+  - b
+  - d
+  scene_sfx:
+  - 
+  - Ammon1
+  - WoodKnock
+  - BattleGuards
+  - JesterLaughVeryHighShort
+  - StoneSteps
+  - JesterDaiLong
+  scene_music: []
+  password: []
+  scenario_dialogues: []

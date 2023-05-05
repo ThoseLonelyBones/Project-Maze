@@ -38,7 +38,7 @@ public class Input_Handler : MonoBehaviour
     {
         //inputfield.onValueChanged.AddListener(BackspaceFix);
         newColor.a = 1f;
-        inputfield.characterLimit = 10;
+        //inputfield.characterLimit = 10;
 
         Cleanse();
     }
@@ -91,6 +91,7 @@ public class Input_Handler : MonoBehaviour
         else
         {
             correct_password = false;
+            so_director.input_index = 0;
         }
 
         progress = true;

@@ -11,7 +11,7 @@ public class Audio_Director : MonoBehaviour
     private AudioClip[] scene_sfx, scene_music, game_sfx, game_music;
 
     [SerializeField]
-    private AudioSource music_audio_source;
+    public AudioSource music_audio_source;
 
     [SerializeField]
     private AudioSource writing_sfx_audio_source, game_sfx_audio_source;
@@ -28,6 +28,7 @@ public class Audio_Director : MonoBehaviour
 
     private string resourcePath;
 
+
     private void Awake()
     {
        music_audio_source = music_source.GetComponent<AudioSource>();
@@ -42,16 +43,17 @@ public class Audio_Director : MonoBehaviour
                 Debug.Log("Audio Source Unreachable...");
             }
        }
-
-       string music_filepath = Path.Combine(Application.dataPath, "Game Assets/Audio/Game/Music");
-       Debug.Log("Retriving Game Music from: " + music_filepath);
-       StartCoroutine(LoadGameMusic(music_filepath));
-
-       string audio_filepath = Path.Combine(Application.dataPath, "Game Assets/Audio/Game/SFX");
-       Debug.Log("Retriving Game SFX from: " + audio_filepath);
-       StartCoroutine(LoadGameSFX(audio_filepath));
-
         resourcePath = Application.dataPath + "/Resources/";
+
+       string game_music_path = "Audio/Game/Music";
+       Debug.Log("Retriving Game Music from: " + game_music_path);
+       StartCoroutine(LoadGameMusic(game_music_path));
+
+       string game_sfx_path = "Audio/Game/SFX";
+       Debug.Log("Retriving Game SFX from: " + game_sfx_path);
+       StartCoroutine(LoadGameSFX(game_sfx_path));
+
+        
     }
     // Start is called before the first frame update
     void Start()
@@ -203,6 +205,21 @@ public class Audio_Director : MonoBehaviour
         StopGameSFX();
     }
 
+    public void MainMenuMusic()
+    {
+        music_audio_source.Stop();
+        if (music_audio_source.GetComponent<AudioClip>() == game_music[0])
+        {
+            //music_audio_source.Play();
+            Debug.Log("Keep on Playing!");
+        }
+        else
+        {
+            PlayMusic(1);
+            Debug.Log("Let's start the beat!");
+        }
+    }
+
     /*
      * Load the current scene's SFX and Music from GameFiles. Having every single instance of a SFX or music repeated through the code is INSANE. I'd rather have a string array of names to load when a current scene is started, then subsequently
      * use the loaded audio elements to play in the scene using flags as normal. Much more memory efficent!
@@ -238,7 +255,7 @@ public class Audio_Director : MonoBehaviour
 
     IEnumerator LoadSceneSFX(string filepath, string[] filenames)
     {
-        Debug.Log("Loading Game SFX!");
+        Debug.Log("Loading Scene SFX!");
 
         scene_sfx = new AudioClip[filenames.Length];
 
@@ -248,7 +265,7 @@ public class Audio_Director : MonoBehaviour
             audioclip_path = audioclip_path.Replace("\\", "/");
             string file_resourcePath = Path.Combine(resourcePath, audioclip_path);
             file_resourcePath = file_resourcePath.Replace("\\", "/");
-            Debug.Log("Audioclip " + x + "'s path: " + resourcePath);
+            Debug.Log("Scene Audioclip " + x + "'s path: " + resourcePath);
             if (File.Exists(file_resourcePath + ".mp3"))
             {
                 Debug.Log("Loading Audioclip now!");
@@ -269,33 +286,78 @@ public class Audio_Director : MonoBehaviour
     // As they are associated with a permanent gameobject (AudioDirector) they don't cease to exist once the main gameplay loop is called into action.
     IEnumerator LoadGameMusic(string filepath)
     {
-        string[] mp3_files = Directory.GetFiles(filepath, "*.mp3");
-        game_music = new AudioClip[mp3_files.Length];
+        Debug.Log("Loading Game Music!");
 
-        for(int x = 0; x < game_music.Length; x++)
+        string file_resourcePath = Path.Combine(resourcePath, filepath);
+        file_resourcePath = file_resourcePath.Replace("\\", "/");
+
+        string[] filenames = Directory.GetFiles(file_resourcePath, "*.mp3");
+        string[] filenames_resources = new string[filenames.Length];
+
+        for(int y = 0; y < filenames_resources.Length; y++)
         {
-            string s = mp3_files[x];
-            game_music[x] = AssetDatabase.LoadAssetAtPath<AudioClip>("Assets" + s.Substring(Application.dataPath.Length));
+            filenames_resources[y] = Path.Combine(filepath, Path.GetFileName(filenames[y]));
+            filenames_resources[y] = filenames_resources[y].Replace(".mp3", "");
         }
 
-        Debug.Log("All Game Music is loaded!");
+        game_music = new AudioClip[(filenames_resources.Length)];                               
 
+        for (int x = 0; x < game_music.Length; x++)
+        {
+            filenames_resources[x] = filenames_resources[x].Replace("\\", "/");
+            Debug.Log("MusicClip " + x + "'s complete path: " + filenames_resources[x]);
+
+            if (File.Exists(filenames[x]))
+            {
+                Debug.Log("Loading Music Clip now!");
+                AudioClip audioclip = Resources.Load<AudioClip>(filenames_resources[x]);
+                game_music[x] = audioclip;
+            }
+            else
+            {
+                Debug.Log("Audioclip does not exist!");
+            }
+
+        }
         yield return null;
     }
 
     IEnumerator LoadGameSFX(string filepath)
     {
-        
-        string[] mp3_files = Directory.GetFiles(filepath, "*.mp3");
-        game_sfx = new AudioClip[mp3_files.Length];
-        for (int x = 0; x < game_sfx.Length; x++)
+        Debug.Log("Loading Game SFX!");
+
+        string file_resourcePath = Path.Combine(resourcePath, filepath);
+        file_resourcePath = file_resourcePath.Replace("\\", "/");
+
+        string[] filenames = Directory.GetFiles(file_resourcePath, "*.mp3");
+        string[] filenames_resources = new string[filenames.Length];
+
+        for (int y = 0; y < filenames_resources.Length; y++)
         {
-            string s = mp3_files[x];
-            game_sfx[x] = AssetDatabase.LoadAssetAtPath<AudioClip>("Assets" + s.Substring(Application.dataPath.Length));
+            filenames_resources[y] = Path.Combine(filepath, Path.GetFileName(filenames[y]));
+            filenames_resources[y] = filenames_resources[y].Replace(".mp3", "");
         }
 
-        Debug.Log("All Game SFX are loaded!");
+        game_sfx = new AudioClip[(filenames_resources.Length)];
 
+        for (int x = 0; x < game_sfx.Length; x++)
+        {
+            filenames_resources[x] = filenames_resources[x].Replace("\\", "/");
+            Debug.Log(filenames_resources[x]);
+
+            Debug.Log("MusicClip " + x + "'s path: " + filenames_resources[x]);
+            if (File.Exists(filenames[x]))
+            {
+                Debug.Log("Loading Music Clip now!");
+                AudioClip audioclip = Resources.Load<AudioClip>(filenames_resources[x]);
+                game_sfx[x] = audioclip;
+            }
+            else
+            {
+                Debug.Log("Audioclip does not exist!");
+            }
+
+        }
         yield return null;
     }
 

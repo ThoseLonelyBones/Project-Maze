@@ -1,0 +1,638 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306bb26a6dc49594a93f3c1e031a10c7, type: 3}
+  m_Name: CHP3-2 - Elodie
+  m_EditorClassIdentifier: 
+  id: 0
+  text:
+  - '<b><align="center"><size=200%>Chapter 3</b>
+
+    <b>Elodie</b>'
+  - You cautiously open the door in front of you. With very light resistance, the
+    old wood once again creeks open. There is no sound initially coming to this room.
+  - Your feet are almost elated from joy as you slightly sink within the floor of
+    this room, as velvety carpet-like material makes the most of this room enjoyable
+    to walk around.
+  - "Even as you place your hands on the floor to confirm your suspicions, you notice
+    something odd\u2014 while the door was considerably old, there is not a spec
+    of dust on the floor. In fact, most of this room smells like a delicate perfume"
+  - "By inhaling the air in the room a bit, you can pinpoint it to either apricot
+    or peach. It\u2019s a very welcome change to the damp \u2013 if fresh \u2013
+    air of the previous room, or the suffocatingly stuffy crypt."
+  - "You begin making your way around this room by starting from its right side.
+    Exploring the walls reveals that they have an internal wood finish, polished
+    and waxed with care\u2014 no splinters or imperfections can be felt with your
+    hands, at least on a first pass. Occasionally, you hit some extension of the
+    wall, also made of wood. You figure it\u2019s some type of shelf, over which
+    an assortment of items are placed\u2014 either cups, flowers, jewelry or other
+    paraphenelia of sorts."
+  - "Alongside all walls you feel no writing nor incisions, no secret messages or
+    ways to proceed: uncannily enough, this seems just to be a normal room\u2026"
+  - "\u2026where it not for its centerpiece."
+  - "As you finish scanning the walls, you move closer to the center to examine the
+    contents. Here, your feet bump against a wooden object\u2014 fairly tall and
+    quite sturdy."
+  - You crouch down to examine the base, a filled in rectangle that extends roughly
+    two meters in length and one meter in width. Alongside it there are beautiful,
+    intricate patterns carved in the wood.
+  - "Attempting to examine the top of this centerpiece, your hand touches something
+    that makes you recoil immediately\u2014 cold to the touch, yet bouncy and soft
+    as skin. You go to touch it again."
+  - "Once again, the reaction is offputting\u2014 but the initial shock has vanished,
+    and some courage has been mustered. Progressing with your analysis, you realize
+    that what you are touching is a freezing-cold human hand."
+  - Your mind comes to think of the worst possibility but, as you begin to panic,
+    the voice of Ammon settles in you mind.
+  - "<color=#00e64d>\u201DListen closely.\u201D</color>"
+  - "An extremely faint breathing can be heard, slightly to your left\u2026 coming
+    from the figure. The initial weirdness of an ice-cold sleeping person doesn\u2019t
+    hit you immediately\u2014 what does is a wave of relief that the person in front
+    of you is alive."
+  - "<color=#00e64d>\u201DOh Elodie. What cruel faith has fate reserved you. Trapped
+    forever in a lone mausoleum, hoping one day for someone \u2013 he who should
+    remember you the most \u2013 to recall your name, your face, your smile.\u201D</color>"
+  - "<color=#00e64d>\u201DKeeper, this is Elodie of Deistella, wife and queen consort
+    to Emperor Dearion.\u201D</color>"
+  - "\u2026"
+  - You feel a vibration from your pocket.
+  - "You take out the bundled shards of the Horn of Ammon, trembling inside their
+    silk container. As you attempt to pick up one of the pieces, it vibrates like
+    a leaf on the wind\u2014 all of them do, reacting to the environment around you."
+  - "<color=#00e64d>\u201DThe Horn is reacting to the memory it has taken from Dearion.
+    The memory of Elodie, the memory of Shining Blades, of using the Horn\u2026 all
+    of them you will need to put back inside. All of them will mend the Horn. This
+    is where I trust your memory, Keeper.\u201D</color>"
+  - "<color=#00e64d>\u201DLeave the shards near this resting place, Keeper, and scout
+    the room for information. To fix the horn, you require to write three glyphs:
+    one to mend the horn\u2019s form, : one to take the memories from you and the
+    last one to transfer them inside the horn once more. I used a similar incantation
+    with Dearion before but this is much more complicated than that. The Horn will
+    reveal what it seeks\u201D</color>"
+  - "Placing your hands on the shards of the horn, you notice they re-arrange as
+    you pass your finger through them\u2014 not by chance but with purpose, each
+    passage a letter of a series of instructions."
+  - 'Taking your time, you gather the following:'
+  - "<mspace=0.5em><color=#d9d9d9> \u201CShards of the Horn to fix, Shards of Memories
+    to collect\u2014 just enough, just a few letter, just a number. Meld them together
+    with purpose and sense and the Horn will follow suit.\u201D</mspace></color>"
+  - Your objective is to mend the Horn of Ammon. To do so, you will need to inscrybe
+    three glyphs containing fragments of the lost memories of Dearion. Search and
+    explore the room to find them and ask Ammon about anything of interest.
+  - You are currently residing in the center of the room, what would you like to
+    do?
+  - "<mspace=0.5em><color=#d9d9d9>\u201CThe most surface-level memories lost to Dearion
+    need to be constructed first. Tell me shards about Shining Blades, about the
+    people that have been lost, about why it started and why it ended.\u201D</mspace></color>"
+  - "<mspace=0.5em><color=#d9d9d9>Write a glyph using them\u2014\r\nThe number of
+    days Dearion waited for the enemy, the initials of the Title of the rival warlord,
+    the first letter of each word said by Dearion to his enemy and the number of
+    days the battle lasted. </mspace></color>\r\n"
+  - "You place your hands on the horn, but you seemingly can\u2019t create the correct
+    glyph. You will have to try again. "
+  - You place your hands on the horn and, after uttering the correct words, you can
+    feel pieces of the horn shape themselves back together.
+  - "<color=#00e64d>\u201DYou must do this incantation all at once, Keeper. The horn
+    won\u2019t hold its shape otherwise.\u201D</color>"
+  - 'With your hands still on the horn, a new sentence is spelled out:'
+  - "<mspace=0.5em><color=#d9d9d9> \u201CThe pact, the method Dearion used this instrument
+    under the advice of a trusted person, how it ruined him and why he felt he had
+    to.\u201D </mspace></color>"
+  - "<mspace=0.5em><color=#d9d9d9> Write a glyph using them\u2014\r\nThe initials
+    of the one that adviced Dearion to use the Horn, the date that he used it on
+    and the initials of the last words uttered before the Horn was used. </mspace></color>\r\n"
+  - "You place your hands on the horn, but you seemingly can\u2019t create the correct
+    glyph. You will have to try again. The forces that held up the Horn from the
+    previous glyph dissipate. "
+  - "<color=#00e64d>\u201DDon\u2019t give up yet.\u201D</color>"
+  - You keep your hands on the horn, and as you utter the correct words, you can
+    feel even more pieces of the horn shape themselves back together.
+  - "<color=#00e64d>\u201DYou are almost done, don\u2019t give up now!\u201D</color>"
+  - 'The remaining fragments spell out one last sentence:'
+  - "<mspace=0.5em><color=#d9d9d9> \u201CThe time before. The secrets of Dearion\u2014
+    give back his most important memory\u201D </mspace></color>"
+  - "<mspace=0.5em><color=#d9d9d9> Write a glyph using that\u2014\r\nThe intial letters
+    of Elodie\u2019s curse, each initial of Dearion\u2019s promise to her and the
+    Date Dearion met Elodie. </mspace></color>\r\n"
+  - "With a last sigh you utter your words, but you seemingly can\u2019t create the
+    correct glyph. The horn dismantles and returns in its original position."
+  - "<color=#00e64d>\u201DYou are very close. I believe in you.\u201C</color>"
+  - You finish your sentence and hear the Horn's shape shift...
+  - Exploring around the room reveals a few shelves, four to be precise, scattered
+    around the room. One on each different wall.
+  - 'On the western shelf, a series of various artefacts and baubles can be felt.
+    You pick up what appears to be a medal of sort. Its metal indentation is small
+    and it takes you some time to actually spell out its contents:'
+  - "<mspace=0.5em><color=#d9d9d9>\u201DTo the honour of Barristan Roszce, hero of
+    Shining Blades. He charged first into the fray after the King\u2019s command:
+    \u201Clet cruel Conquerors reason in Blood\". May he find an afterlife where
+    he is honoured as the hero he was.\u201D</mspace></color>"
+  - "That\u2019s it for now\u2026"
+  - "On the northern shelf, a collection of books can be found. Various papers are
+    also scattered about, and you can feel a few glass containers spread about. You
+    assume this is either a collection of alchemical notes or some sort of study
+    area. Unfortunately enough, these books are not written in braile, so you can\u2019t
+    gain their informations."
+  - "That\u2019s it for now\u2026"
+  - On the southern shelf, a plaque commemorates an event. You grab it from its shelf
+    and, laying on the ground, start examining its contents.
+  - "\u201CThe day where Ammon will free my mind, where I will be able to rule again
+    for the good of the Kingdom: the 24th day of the 3rd month. This plaque acts
+    as my will in case my mind goes astray, or I do not survive the divine intervention.
+    Let this kingdom in the hands of Maurice Delaroe, his cunning and wisdom did
+    not doom me, but will lead me to be a better ruler for all. I\u2019m done being
+    the one to whom sacrifices are owed\u2014 it is time I take my own.\u201D"
+  - "<color=#00e64d>\u201D\u2026 I can see why Dearion suspected Maurice of betraying
+    him. If you had no memory of the events that occurred, wouldn\u2019t you believe
+    this is a forgery made by Maurice to take control of the castle?\u201C</color>"
+  - "<color=#00e64d>\u201D\u2026 still, Dearion viewed all this as a sacrificed he
+    needed to take. He truly believed everyone else had given up so much, and him
+    so little\u2026\u201C</color>"
+  - "That\u2019s it for now\u2026"
+  - "On the eastern shelf, a collection of various soft items can be found. You pick
+    up one or two of them, and squish them near your chest. These feel quite comforting
+    and soft to hold\u2026 You wonder what they are."
+  - "<color=#00e64d>\u201DI believe I have the answer to that.\u201C</color>"
+  - "<color=#00e64d>\u201DAfter Shining Blades, the King was honoured once again
+    as a paragon of virtue and heroism. The populace felt like they needed to repay
+    him somewhat\u2026\u201C</color>"
+  - "<color=#00e64d>\u201DIn honour of his fallen friends, the local seamstress made
+    him two soft stuffed dolls of his beloved comrades, to place next to Elodie\u2019s
+    bed so that they may protect her in her endless dreams.\u201C</color>"
+  - "<color=#00e64d>\u201DEven such acts of comfort weren\u2019t capable of helping
+    the King\u2014 he viewed each and every gift as further proof that he was an
+    egoist for not enduring the sacrifice people expected him to.\u201C</color>"
+  - "That\u2019s it for now\u2026"
+  - "At the center of the room lies what you have now identified as a wooden bed.
+    No mattress or softness can be found here\u2026 and given the conditions of its
+    occupant its more of a coffin than a bed."
+  - Still thinking about the details of her case, you can't help but feel sorry for
+    her situation.
+  - "<color=#00e64d>\u201DLet Elodie rest eternally. Focus on other details.\u201C</color>"
+  - As you once again examine the wooden support structure, you realize some of the
+    carvings are actually a small inscryption.
+  - "<mspace=0.5em><color=#d9d9d9>\u201DHere lies Elodie of Deistella, sole daughter
+    of the Exile King of Deistella. May his fate not follow her, and his accursed
+    dealings be the end of him. She paid the price of a bad bargain instead of her
+    treacherous father\u2014 with no fault of her own. Let my solemn promise be forever
+    here: <i>\u2018Your dreams will Not be Eternal\u2019</i>.\r\nSigned, Dearion
+    of Sheon\u201D </mspace></color >\r\n"
+  - "<color=#00e64d>\u201D\u2026 even if she can\u2019t wake anymore, let\u2019s
+    make sure her memory is never forgotten.\u201C</color>"
+  - "That\u2019s it for now\u2026"
+  - "<color=#00e64d>\u201DOf course, I\u2019m happy to assist. What do you wish to
+    discuss?\u201C</color>"
+  - "<color=#00e64d>\u201DTake your time.\u201C</color>"
+  - "<color=#00e64d>\u201DI\u2026 never knew Elodie personally. By the time I was
+    contacted by Maurice she was already asleep.\u201C</color>"
+  - "<color=#00e64d>\u201DOf course I did have access to her memories, but I never
+    truly looked deep within them. I didn\u2019t want them to change my mind on helping
+    Dearion.\u201C</color>"
+  - "<color=#00e64d>\u201DIf I did it before my grievous act, it may have ended differently.\u201C</color>"
+  - "<color=#00e64d>\u201DI may be able to help you with some of the details of them\u2014but
+    not all of them. Memories aren\u2019t perfect, after all\u2026\u201C</color>"
+  - "<color=#00e64d>\u201DMh, it\u2019s somewhat amusing. Dearion was always terrible
+    at remembering dates\u2026 but he definetly did remember about this one.\u201C</color>"
+  - "<color=#00e64d>\u201DThey met at a gal\xE0 when Dearion was still small nobility.
+    At the time, Elodie was already a princess of a kingdom\u2026 she wouldn\u2019t
+    remain that for long however. A few years later, revolution would hit her country
+    by storm and her dad, the then-king, would be forced into exhile.\u201C</color>"
+  - "<color=#00e64d>\u201DOf course the two hit it off well to start, but no matter
+    how charming Dearion was, Elodie\u2019s father would have never consented to
+    marriage into small nobility. The only suitor she would be allowed to choose
+    would be one to expand her kingdom\u2014 not reduce its influence.\u201C</color>"
+  - "<color=#00e64d>\u201DHowever, the two kept sending letters to one another in
+    secret. A true forbidden love story, of two young people destined to be separated.\u201C</color>"
+  - "<color=#00e64d>\u201DWhen her dad went into exhile and revolutionairres occupied
+    their palace, she fled the city with a horse and her clothes\u2014 nothing else,
+    not even a bite of bread for the road.\u201C</color>"
+  - "<color=#00e64d>\u201DShe rode her all the way here, past the sands of Hikidima,
+    past Shining Blades Pass\u2026 to end up, half-starved, to Dearion\u2019s door.
+    Her first words to him were \u2018Sorry I didn\u2019t bring a Gift.\u2019\u2026
+    and then she fainted.\u201C</color>"
+  - "<color=#00e64d>\u201DCan you imagine that? Dearion was worried sick about her.
+    I can vividly describe the anguish he was feeling, the panic for his beloved\u2026
+    only for her to say a quip and then immediately faint at his doorstep.\u201C</color>"
+  - "<color=#00e64d>\u201DAnyway, Dearion made a point to celebrate both their first
+    meeting and their reunion. The grand gala was the 24th day of the 8th month of
+    the year 1325. Then next they were reunited the 11th day of the 2nd month of
+    the year 1330\u201C</color>"
+  - "<color=#00e64d>\u201D...\u201C</color>"
+  - "<color=#00e64d>\u201DSigh...\u201C</color>"
+  - "<color=#00e64d>\u201DThese memories were truly beloved by Dearion once. I still
+    cannot fathom how much it must have hurt losing Elodie\u2026 to the point of
+    cleansing your mind from even these joyous moments.\u201C</color>"
+  - "That\u2019s it for now\u2026"
+  - "<color=#00e64d>\u201DDearion turned every corner of the World to search more
+    information about this. I have a very clear picture.\u201C</color>"
+  - "<color=#00e64d>\u201DElodie appears to be under the effects of a potent primordial
+    spell, the magic of hags or witches. She apparently was cursed with a blossom
+    of a spell, which matured as she grew older. By the time she met Dearion, her
+    fate was sealed.\u201C</color>"
+  - "<color=#00e64d>\u201DThe spell gave her unnaturally cold skin, long bouts of
+    torpor and made her unable to sire children. But none of the terrible effects
+    of the spell matched its awful completion\u2014 eternal sleep.\u201C</color>"
+  - "<color=#00e64d>\u201DThe spell was cast on her when she was but a child, after
+    her father, now an exile king, slighted a powerful hag. The name of this powerful
+    spell is the <i>\u201CCurse of Frozen Rest\u201C</i></color>"
+  - "<color=#00e64d>\u201DOf course, the nature of the spell is what makes it hard
+    to reverse it. It may even have been completely irreversible when Dearion made
+    his deal with me \u2026 and by now it\u2019s for sure an impossible feat.\u201C</color>"
+  - "<color=#00e64d>\u201DPlease, try to avert your mind from searching solutions
+    to this problem. I can\u2019t allow you to make the same mistake Dearion made\u2014
+    forgetting the past is as bad as endlessly chasing it. You must remember it but
+    be content with the fact that it may never be back.\u201D</color>"
+  - "That\u2019s it for now\u2026"
+  - "<color=#00e64d>\u201DDearion and Elodie were inseparable. Truly a couple sent
+    by the Divine to rule as a just pair of monarchs. They complemented each other
+    so much that other rulers were afraid of them, some even trying to emulate their
+    relationship with their wives or husbands in turn.\u201C</color>"
+  - "<color=#00e64d>\u201DBut truly, Dearion and Elodie were one of a kind.\u201C</color>"
+  - "That\u2019s it for now\u2026"
+  - "<color=#00e64d>\u201DDearion held Elodie in the highest regard. They truly where
+    happy together. Which is why it hurt him so to forever lose her. A sad affair
+    that one.\u201C</color>"
+  - "<color=#00e64d>\u201DDearion loved Elodie as much as he loved his Kingdom and
+    the Kingdom loved Elodie as much as Dearion did. She was radiant, charming and
+    smart\u2014 helped Dearion in some of the hardest choices. Whenever a moral compass
+    was needed Elodie was the woman for the job.\u201C</color>"
+  - "<color=#00e64d>\u201DWhen she was gone\u2026 Dearion was emotionally lost\u2014
+    how can man weight love against duty? All men, women and children were mourning
+    her loss too\u2026 but they all turned to the Emperor for help.\u201C</color>"
+  - "<color=#00e64d>\u201DDearion felt a budding resentment towards his populace\u2014
+    he was more at loss than them and yet they required his attention and power,
+    some even attempted to extract money or information from his weakened mental
+    state.\u201C</color>"
+  - "<color=#00e64d>\u201DEffectively a widower, the image of Elodie was used against
+    him more than once\u2014 and Dearion caved, always. Some people have no qualms
+    in exploiting the sick or the dead for their benefit and the mere mention of
+    his wife cracked open his fa\xE7ade as a stern but just ruler, showing nothing
+    more than a mourning man.\u201C</color>"
+  - "<color=#00e64d>\u201D\u2026\u201C</color>"
+  - "<color=#00e64d>\u201DTell me Keeper. Was I in the wrong? Should I have just
+    not\u2026 helped him?\u201C</color>"
+  - "<color=#00e64d>\u201DI suppose you are right. For how my power is strong, my
+    understanding of mortals is\u2026 limited. Most people paint memories in colours
+    of their choice and from them alone it is hard to gauge the truth of a situation,
+    or the complexities therein.\u201C</color>"
+  - "<color=#00e64d>\u201DThank you for your answer.\u201C</color>"
+  - "That\u2019s it for now\u2026"
+  - "<color=#00e64d>\u201DI... wasn\u2019t expecting this answer. I guess the consequences
+    of such an action were unforseen even to me\u2026 but does it justify my carelessness?
+    Isn\u2019t it the duty of the divine to aid the mortal? Or is this the same logical
+    fallacy that brought Dearion to seek help from me, as his populace sought help
+    from him? I suppose the damage is done but the blame rests on none\u2026\u201C</color>"
+  - "<color=#00e64d>\u201DThank you for your answer.\u201C</color>"
+  - "That\u2019s it for now\u2026"
+  - "<color=#00e64d>\u201DIndeed. I turned to you for guidance on the matter but
+    it seems the matter is very much not easy to solve.\u201C</color>"
+  - "<color=#00e64d>\u201DThank you for your answer.\u201C</color>"
+  - "That\u2019s it for now\u2026"
+  - "<color=#00e64d>\u201DDearion was not as cruel as you may have come to know him
+    now. In fact, some would say he was too kind as a ruler.\u201C</color>"
+  - "<color=#00e64d>\u201DDearion cared about his people, and he cared enough about
+    them to sully out to the field of battle himself\u2014 Shining Blades was the
+    last time he did so.\u201C</color>"
+  - "<color=#00e64d>\u201DDearion\u2019s kingdom was prosperous, but after Elodie
+    entered the final stage of her spell\u2026 saying Dearion was distraught would
+    be an understatement. The man was an emotional wreck. He could barely hold audience
+    to his subjects, the more cunning of them exploiting this weakness for profit
+    or benefits.\u201C</color>"
+  - "<color=#00e64d>\u201DBut all them were naught but small fish gathering around
+    the carcass of a king\u2014 the blood of the kingdom was in the water and, sooner
+    or later, sharks would follow.\u201C</color>"
+  - "<color=#00e64d>\u201DVoices of a weak teary-eyed king who could barely hold
+    his subject together spread fast amongst those who deal in the game of power
+    and thrones\u2014 especially interested are those who own armies but no kingdom
+    of their own. Scoundrels, Tyrants, Conquerors\u2014 Warlords.\u201C</color>"
+  - "<color=#00e64d>\u201DMake no mistake: war was inevitable\u2014 such is the nature
+    of kingdom politics. The question was not if the banners would fly, only when
+    and which colours. Subjects were already leaving the kingdom, or cutting deals
+    of inside information of anything relevant with the ever-contending Lords.\u201C</color>"
+  - "<color=#00e64d>\u201DAnd of all the carrion-eaters, the worst of them all shows
+    up to the doorsteps: Zung Recok-ket. Known as \u201Cthe Early Dawn\u201D by most,
+    he commands one of the most ferocious bands of mercenaries the World has ever
+    seen. At best, sellswords of dubious honour\u2026 at worse, nomad carnifex of
+    the worst kind, with no alliegance but coin.\u201C</color>"
+  - "<color=#00e64d>\u201DWhen voices of the impeding war started spreadng, even
+    the most loyal of subjects were afraid. Dearion did not care about anything,
+    and hoped to never wake from the day of the attack. But a small part of himself
+    worked against apathic surrender\u2014 a small sign that maybe, the Dearion people
+    knew was still there with them.\u201C</color>"
+  - "<color=#00e64d>\u201DIn a never-to-be-seen move, Dearion moved against its grief
+    and heartache to personally lead the troops to battle. Never had the kingdom
+    been in such ecstatic turmoil: the King was back and he would defend them personally
+    from the attack!\u201C</color>"
+  - "<color=#00e64d>\u201DAfter the declaration of war had arrived to the doorsteps
+    of the Palace, the King was already fitted for war. He waited next to four months,
+    115 days to be precise, for the enemy to arrive.\u201C</color>"
+  - "<color=#00e64d>\u201DShining Blades was a terrifying display of competence and
+    strategic use of terrain, if it was remembered by any it would be part of the
+    curriculum of any tactician worth of note. In but 4 days, the defending forces
+    repelled a collective army that outnumbered them 25 to 1.\u201C</color>"
+  - "<color=#00e64d>\u201DBarristan\u2019s strategic advise, alongside Junia\u2019s
+    magical scouting and the King\u2019s split-second decision to divert the enemy
+    forces into a naturally formed chokehold proved to be decisive factors that turned
+    the tide in the favour of the Kingdom. Zung had to retreat with no kingdom conquered
+    and much of his brutes left without pay nor honor. Some say he was executed by
+    his own man, others say that he ran away with what measly sum they raided from
+    the villages and towns on their way to Shining Blades Pass.\u201C</color>"
+  - "<color=#00e64d>\u201DThe kingdom was safe\u2026 but at what cost? Two of his
+    best men\u2014 two of his friends lost in that battle and almost 400 men killed.
+    His lack of strength caused this, Dearion believed\u2026 he was ready to take
+    any measure necessary to stop this from happening ever again.\u201C</color>"
+  - "<color=#00e64d>\u201DWhile the King outwardly appeared cured\u2026 his mental
+    wellbeing was steadily declining, maybe even worse than before. When first he
+    met opportunist scavengers with what they desired, they\u2019d now be thrown
+    into dungeons or worse, sent to the gallows. And with these displays of strength,
+    he was simply masking the endless nights of crying in this very room.\u201C</color>"
+  - "<color=#00e64d>\u201DIt would be hard to not notice his steady decline as a
+    true friend\u2026 and even worse not intervening . That\u2019s when Maurice told
+    me about Dearion\u2019s plight\u2026 and when I decided to fix it myself.\u201C</color>"
+  - "<color=#00e64d>\u201DI removed all of his memories about Elodie. All of his
+    memories of Shining Blades\u2026 and the conditions of our deal. I thought that
+    removing the memories would cause him to return as he once was\u2026 that was
+    not the case.\u201C</color>"
+  - "<color=#00e64d>\u201DDearion\u2019s sorrow persisted, but now it had no clear
+    source or reference anymore. This mausoleum became abbandoned, these halls lost
+    in the Palace forever. He feels to this day a terrible sense of discomfort, rage
+    and sadness\u2026 but nothing can fix it\u2014 what caused it in him is not there
+    anymore. He waits for an enemy that he has already defeated, for he has no memory
+    of Shining Blades. He grieves for a person that in his mind no longer exists.</color>"
+  - "<color=#00e64d>\u201DThe only memories he has is that he has done a deal with
+    me\u2026 and now feels this way. Judging by the information he has, it\u2019s
+    not hard to see why he reacted the way he did, why he outlawed my name, why he
+    hates me so. I don\u2019t blame him at all\u2026 He made this reasoning with
+    the means I left him after all.\u201C</color>"
+  - "That\u2019s it for now\u2026"
+  - "<color=#00e64d>\u201DThis room is a mausoleum, a recreation of Dearion and Elodie\u2019s
+    room back in the small manor of the now-King. It contains trinkets and baubles
+    of events past, a sort of \u2018remembrance room\u2019 if you will.\u201C</color>"
+  - "<color=#00e64d>\u201DYou cannot even begin to imagine Dearion\u2019s confusion
+    when he saw this room without his memories. He believed this entire place to
+    be cursed, a mockery built by me of a fate that never happened. He ordered it
+    sealed\u2026 but forgot a few entrances.\u201C</color>"
+  - "<color=#00e64d>\u201DDearion hates me, but he isn\u2019t fool enough to not
+    respect the power of a God. Destroying all of this, in his own mind, would have
+    incured my wrath\u2026 but one item he wanted to destroy, the symbol of this
+    curse I placed upon him\u2014 the Horn. After its destruction, I can no longer
+    recall anything of this kingdom, nor can I contact people other than you.\u201C</color>"
+  - "<color=#00e64d>\u201DGiven its significance, maybe you can explore around this
+    room a bit more to find more memories to reforge the Horn with.\u201C</color>"
+  - "That\u2019s it for now\u2026"
+  - "<color=#00e64d>\u201DThe Horn is an artifact that, a very long time ago, was
+    blessed in my name. I used to be more popular amongst mortals a long time ago\u2026
+    but somehow even the God of memory can be forgotten.\u201C</color>"
+  - "<color=#00e64d>\u201DDespite what Maurice belives, I\u2019m not eternal\u2014
+    no god truly is. We exist as long as someone belives in our existence. I\u2019ve
+    seen countless others of my kin cease existing because their names I could no
+    longer recall.\u201C</color>"
+  - "<color=#00e64d>\u201DThat day will come for me too. As the keeper of Memory,
+    I don\u2019t worry much about it\u2014 a new God will pick up my mantle, and
+    I welcome them in the challenge.\u201C</color>"
+  - "<color=#00e64d>\u201DStill\u2026 the day the Horn was activated is something
+    I don\u2019t think I\u2019ll ever forget. Dearion asked audience with me personally.
+    As he held the horn, he whispered these words: \u201CLend me Strength, enough
+    to save my Kingdom.\u201C</color>"
+  - "<color=#00e64d>\u201DDearion truly must have been desperate\u2026\u201D </color>"
+  - "That\u2019s it for now\u2026"
+  - "<color=#00e64d>\u201DWhat more is there to say about me? I\u2019m a divine entitiy,
+    a construct made by humans for humans to symbolize their memory and ability to
+    recall. I exist as long as people remember me, as all ideas do.\u201C</color>"
+  - "<color=#00e64d>\u201DI belive Maurice described my existence and ultimately
+    end of it as \u2018ironic\u2019, I\u2019m inclined to agree.\u201C</color>"
+  - "<color=#00e64d>\u201DJust know that for the time being, I\u2019ll stick out
+    with you.\u201C</color>"
+  - "That\u2019s it for now\u2026"
+  - "<color=#00e64d>\u201DMaurice Delaroe is a kind man and carried the title of
+    Keeper before you did.\u201C</color>"
+  - "<color=#00e64d>\u201DHe\u2019s an empathic man, but do not be dissuaded by his
+    courtly jester act. The man is far smarter than he looks and knew of Dearion\u2019s
+    situation. Truthfully, it hurts to know that Dearion no longer trusts him.\u201C</color>"
+  - "<color=#00e64d>\u201DBoth of them sense something towards me. Maurice devolved
+    into insanity and zelotry, Dearion in rage and disdain: however, Dearion senses
+    there is something off about the Jester. He doesn\u2019t remember that he suggested
+    to speak with Ammon to my request, but a sense of hatred is pervaded into him.\u201C</color>"
+  - "<color=#00e64d>\u201DEven with his mind in this sorry state, the Jester still
+    is trickingly cunning and a champion of the art of the word\u2014 Dearion cannot
+    truly discern his intentions or words and the Jester keeps his worship secret
+    to everybody.\u201C</color>"
+  - "<color=#00e64d>\u201DHis faith is the only thing he has left: the kingdom in
+    ruin, his friend suspecting him of treason and his God now forever absent\u2026
+    that type of devotion is truly without equal.\u201C</color>"
+  - "That\u2019s it for now\u2026"
+  - You take in deep breaths. You start scrambling to find the fragments of what
+    once was the Horn of Ammon... but can't find anything any smaller shards. Your
+    hands instead meet a newly finished form, a long horn that follows the shape
+    of a spiral... the Horn of Ammon.
+  exit_text:
+  - Default Text
+  - Use the Horn
+  - Explore around the Room
+  - Examine the Centerpiece
+  - Speak with Ammon
+  - Examine the West Shelf
+  - Examine the North Shelf
+  - Examine the South Shelf
+  - Examine the East Shelf
+  - About Elodie
+  - About Dearion
+  - About this Room
+  - "[\u2026] Other"
+  - About the Horn
+  - About Yourself
+  - About Maurice
+  - "Nevermind\u2026"
+  - About their first meeting...
+  - About her condition...
+  - About Dearion and Elodie...
+  - About her image...
+  - Yes
+  - No
+  - Hard to say...
+  - ...
+  scene_exits:
+  - '[1,2,3,4][27,45,62,69][6,1,1,2]'
+  - '[5,6,7,8][46,49,51,56][1,1,1,1]'
+  - '[9,10,11,12][71,113,132,69][2,1,1,1]'
+  - '[13,14,15,16][137,143,147,70][1,1,1,1]'
+  - '[17,18,19,20][75,87,94,97][1,1,1,1]'
+  - '[21,22,23,0][104,107,110,0][1,1,1,1]'
+  - '[24,0,0,0][153,0,0,0]'
+  scene_flags:
+  - cs02
+  - c
+  - c
+  - c
+  - c
+  - c
+  - c
+  - c
+  - c
+  - c
+  - c
+  - c
+  - cs01
+  - cs00
+  - cs01
+  - c
+  - cs00
+  - c
+  - c
+  - cs01
+  - c
+  - cs00
+  - c
+  - c
+  - c
+  - ch
+  - b
+  - ci30
+  - ct
+  - f
+  - cs01
+  - cs00
+  - c
+  - ci37
+  - ct
+  - cs01
+  - s00f
+  - cs01
+  - cs00
+  - c
+  - ci44
+  - ct
+  - cs01
+  - s00f
+  - bs03s04
+  - b
+  - ct
+  - c
+  - f
+  - ct
+  - f
+  - ct
+  - cs01
+  - c
+  - cs00
+  - f
+  - cs01t
+  - c
+  - cs00s01
+  - c
+  - cs00
+  - f
+  - c
+  - cs01
+  - cs00
+  - c
+  - cs01
+  - cs00t
+  - f
+  - b
+  - f
+  - cs01
+  - c
+  - cs00s01
+  - b
+  - cs00s01
+  - c
+  - c
+  - cs00s01
+  - c
+  - c
+  - cs00s01
+  - c
+  - c
+  - cs00s01
+  - cs00
+  - f
+  - cs01
+  - c
+  - cs00s01
+  - c
+  - cs00s01
+  - cs00
+  - f
+  - cs00s01
+  - cs00
+  - f
+  - cs00s01
+  - c
+  - cs00s01
+  - c
+  - cs00s01
+  - c
+  - bs01
+  - c
+  - cs00
+  - f
+  - c
+  - cs00
+  - f
+  - c
+  - cs00
+  - f
+  - cs00s01
+  - c
+  - cs00s01
+  - c
+  - c
+  - cs00s01
+  - c
+  - c
+  - cs00s01
+  - c
+  - c
+  - cs00s01
+  - c
+  - c
+  - cs00s01
+  - c
+  - c
+  - cs00
+  - f
+  - cs00s01
+  - c
+  - cs01
+  - cs00
+  - f
+  - cs00s01
+  - c
+  - c
+  - cs00s01
+  - cs00
+  - f
+  - cs00s01
+  - c
+  - cs00
+  - f
+  - cs00s01
+  - c
+  - c
+  - cs00s01
+  - cs00
+  - f
+  - ds01
+  scene_sfx:
+  - 
+  - Ammon1
+  - DoorCreek
+  - HornReshape
+  - HornReshape2
+  - ShelfPaper
+  - ShelfRustle
+  scene_music: []
+  password:
+  - 115tEDlcCriB4
+  - MD243LmSetsmK
+  - CoFRYdwNbE2481325
+  scenario_dialogues: []

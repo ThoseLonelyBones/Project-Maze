@@ -13,10 +13,55 @@ MonoBehaviour:
   m_Name: CHP1-0 Awakening
   m_EditorClassIdentifier: 
   id: 0
-  text: []
+  text:
+  - "<color=#00e64d>\u201DYour memory is failing you. Stop and focus.\u201D</color>"
+  - "<b><align=\"center\"=>TUTORIAL: Attempts & Attempt Timer</b></align>\nEach of
+    your attempts to progress through Horn of Ammon has a limited time for you to
+    unveil its mystery. The timer is not related to actual time spent in game, rather
+    certain actions in the game world cause the timer to decrease. You may have noticed
+    that, playing regularly and checking everything will cause the time you have
+    to run out rather quickly. To check the current timer\u2019s progress, you may
+    listen to the music in the background\u2014 which changes based on the timer\u2019s
+    value."
+  - "When your timer runs out, you will begin the game again from here\u2014 at the
+    start of Chapter 1. In addition to that, talking to others usually does not cause
+    the timer to decrease, only when you or another takes a <i>physical action</i>.
+    While not always extremely precise, this is a good rule of thumb."
+  - "However, an extremely important distinction needs to be made: nothing within
+    the game world changes as you take your attempts. All passcodes remain the exact
+    same. You are encouraged \u2013 and intended to \u2013 not check the solution
+    for each puzzle every time you begin a chapter: instead, use your knowledge aquired
+    from previous attempt to progress through the chapters while saving as many actions
+    as possible!"
+  - If you find the text on screen becoming repetitive, remember that you can change
+    the speed of text in the options menu and you can skip writing text by pressing
+    SPACEBAR as the text is being written.
+  - Just remember there is no score or bonus for completing the game in a low amount
+    of attempts. Take all the time you need and good luck!
+  - "Back to the game\u2026"
+  - "<color=#00e64d>\u201DKeeper\u2026\"</color>"
+  - "<color=#00e64d>\u201DKeeper!\"</color>"
+  - "<color=#00e64d>\u201DYou will not be able to remember everything...\u201D</color>"
+  - "<color=#00e64d>\u201DHowever your past knowledge will still be carried over,
+    no matter how many attempts it takes you.\u201C</color>"
+  - "<color=#00e64d>\u201DEverything is as it is supposed to be.\u201D</color>"
+  - "<color=#00e64d>\u201DNow\u2026 wake up.\"</color>"
   exit_text: []
   scene_exits: []
-  scene_flags: []
+  scene_flags:
+  - c
+  - c
+  - c
+  - c
+  - c
+  - c
+  - c
+  - c
+  - c
+  - c
+  - c
+  - c
+  - d
   scene_sfx: []
   scene_music: []
   password: []

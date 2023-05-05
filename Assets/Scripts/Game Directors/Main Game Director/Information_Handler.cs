@@ -10,7 +10,6 @@ public class Information_Handler : MonoBehaviour
 
     private string savefile = "HornOfAmmon_Savefile.save";
     private string datafile = "HornOfAmmon_Datafile.data";
-    private string settingsfile = "HornOfAmmon_SettingsFile.opts";
 
     private string filepath;
 
@@ -36,7 +35,7 @@ public class Information_Handler : MonoBehaviour
 
     }
 
-    public void SaveGame(SOT_Scene scene, int index, int act_index, int play_index,  int exit_index, int timer, int attempts, int hook_index)
+    public void SaveGame(SOT_Scene scene, int index, int act_index, int play_index,  int exit_index, int timer, int attempts, int hook_index, int password_index)
     {
         string savepath = Path.Combine(filepath, savefile);
 
@@ -49,7 +48,9 @@ public class Information_Handler : MonoBehaviour
                   + "<exitindex>" + exit_index + "</exitindex>" + "\n"                  //SaveArray[4]
                   + "<attempttimer>" + timer + "</attempttimer>" + "\n"                 //SaveArray[5]
                   + "<attemptnumber>" + attempts + "</attemptnumber>" + "\n"            //SaveArray[6]
-                  + "<hookindex>" + hook_index + "</hookindex>" + "\n";                 //SaveArray[7]
+                  + "<hookindex>" + hook_index + "</hookindex>" + "\n"                  //SaveArray[7]
+                  + "<passwordindex>" + password_index + "</passwordindex>" + "\n";     //SaveArray[8]
+        //  Maybe save passwords
 
         Encryption_Assistant.Encrypt_GameData(game_data, savepath, secret_key, iv);
     }
@@ -62,12 +63,20 @@ public class Information_Handler : MonoBehaviour
         return load_data;
     }
 
-    public void SaveData(/*Stuff saved with the 'q' flag (questionarre) will be put in here as an imported array, then edited inside this function.*/)
+    public void SaveData(string data)
     {
         string savepath = Path.Combine(filepath, datafile);
 
+        Encryption_Assistant.Encrypt_GameData(data, savepath, secret_key, iv);
     }
 
+    public string LoadData()
+    {
+        string savepath = Path.Combine(filepath, datafile);
+        string load_data = Encryption_Assistant.Decrypt_GameData(savepath, secret_key, iv);
+
+        return load_data;
+    }
 
     public bool LoadSettings()
     {

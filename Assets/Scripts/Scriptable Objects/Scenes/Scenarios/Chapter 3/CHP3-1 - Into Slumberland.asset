@@ -1,0 +1,107 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306bb26a6dc49594a93f3c1e031a10c7, type: 3}
+  m_Name: CHP3-1 - Into Slumberland
+  m_EditorClassIdentifier: 
+  id: 0
+  text:
+  - In front of you, covered by thick shards of whatever material protected them,
+    stand the shards of the Horn of Ammon.
+  - "A quick scan with your hands reveal that a number of fragments are amongst this
+    pile. The sensation you felt when touching it didn\u2019t match your expectations\u2014
+    an extremely cold feel from the object, texture and roughness similar to bone.
+    The shards you can collect are farily large, but judging by the size of each
+    fragment you take in your hands, the horn must not be bigger than half a meter
+    in length."
+  - You carefully collect each piece, noticing as you are feeling your way around
+    the display to find more pieces that a small piece of silk was what they rested
+    on. You decide that to keep the pieces all together you can bundle them in that
+    drape. Taking some time to collect everything and double checking that no pieces
+    have been dropped or are missing, you collect all the remains of the Horn of
+    Ammon.
+  - "<color=#00e64d>\u201DRecovering the pieces of the Horn is just one of the steps
+    I\u2019m afraid.\u201D</color>"
+  - "<color=#00e64d>\u201DNow comes the mater of suturing it back together.\u201D</color>"
+  - "<color=#00e64d>\u201DI gather you probably guessed how by now...\u201D</color>"
+  - "<color=#00e64d>\u201DAs the inscryption of the pedistal read, there is one more
+    room beyond this one...\u201D</color>"
+  - "<color=#00e64d>\u201DHowever, how to access it is beyond me. I have no idea
+    if there even is a door in this room\u2026\u201D</color>"
+  - "<color=#7094db>\u201DI think I do, actually.\u201D</color>"
+  - "<color=#7094db>\u201DThere is a lever right next to this grate. Judging by the
+    mechanism on it, it used to be a part of a magical elevator that reached all
+    the way up here\u2026 the display at the very least. I\u2019m not good with machinery,
+    much less magical ones so I never managed to fix it.\u201D</color>"
+  - "<color=#7094db>\u201DBut I do know that this thing can also go further down!\u201D</color>"
+  - With a thunderous sound, a humming begins to emit from the floor which, almost
+    imperceptably, seems to descend further and further below. A light scraping of
+    rock on rock suggests that this entire platform is moving ever closer to your
+    goal.
+  - "<color=#7094db>\u201DIf you can fix the Horn, Ammon can just contact me again!
+    When that happens, I\u2019ll see if I can help you get out!\u201D</color>"
+  - "<color=#7094db> <size=75%>\u201DFor now you\u2019ll have to do this by yourself!
+    Discover the truth that Dearion has willingly forgotten!\u201D</color>"
+  - "<color=#7094db> <size=50%>\u201DI\u2019m counting on you!\u201D</color>"
+  - "<color=#7094db> <size=25%>\u201DAhahahahahaahahahah!\u201D</color>"
+  - "<color=#7094db> <size=25%>\u201D\u2026\u201D</color>"
+  - "<color=#7094db> <size=25%>\u201D\u2026\u201D</color>"
+  - "<color=#7094db> <size=25%>\u201D\u2026\u201D</color>"
+  - "The Jester can no longer be heard. The platform has moved too far away from
+    its original location. In a quick attempt to gain information on the next location,
+    you begin to move your hands across the wall\u2014 the brickwork giving way to
+    full slabs of polished stone, perfectly even under your touch."
+  - The travel progresses,silently, for a few minutes. No words are exchanged between
+    you an Ammon at this time. Just contemplating your situation.
+  - "Then, suddenly, the contraption stops\u2014 coming to a slow, grinding end.
+    Quickly, you start scanning the walls for some sort of opening\u2014 an unlocked
+    wooden door with an intricate handle of an unknown material."
+  - "<color=#00e64d>\u201DI suggest you brace yourself for what you will see.\u201D</color>"
+  - "<color=#00e64d>\u201DLet\u2019s put an end to this mistake, once and for all.\u201D</color>"
+  exit_text:
+  - Default Text
+  - '"Jester, do you know the way out?"'
+  scene_exits:
+  - '[1,0,0,0][8,0,0,0]'
+  scene_flags:
+  - cs04
+  - cs04
+  - cs01
+  - c
+  - c
+  - cs00s01
+  - c
+  - bs00
+  - c
+  - c
+  - cs02
+  - ct
+  - c
+  - c
+  - cs00s02s03
+  - c
+  - c
+  - c
+  - c
+  - c
+  - cs00t
+  - cs01
+  - c
+  - s00d
+  scene_sfx:
+  - 
+  - Ammon1
+  - ElevatorMove
+  - JesterLaughHoller2
+  - DisplaySweep
+  scene_music: []
+  password: []
+  scenario_dialogues: []

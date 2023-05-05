@@ -198,12 +198,15 @@ public class SO_Director : MonoBehaviour
 
         Debug.Log(current_scene_exits[0]);
 
-        string exits_editing = current_scene_exits[exit_index];            // => exits_editing = [11,12,13,14][1,2,3,4][0]
+        string exits_editing = current_scene_exits[exit_index];            // => exits_editing = [11,12,13,14][1,2,3,4][0,0,0,0]
         // Step 1 = Merge '][' into ','                                  
-        exits_editing = exits_editing.Replace("][", ",");                   // => exits_editing = [11,12,13,14,1,2,3,4,0]
+        exits_editing = exits_editing.Replace("][", ",");                   // => exits_editing = [11,12,13,14,1,2,3,4,0,0,0,0]
         // Step 2 = Delete "[" and "]"
-        exits_editing = exits_editing.Replace("[", "");                     // => exits_editing = 11,12,13,14,1,2,3,4,0]
-        exits_editing = exits_editing.Replace("]", "");                     // => exits_editing = 11,12,13,14,1,2,3,4,0
+        exits_editing = exits_editing.Replace("[", "");                     // => exits_editing = 11,12,13,14,1,2,3,4,0,0,0,0]
+        exits_editing = exits_editing.Replace("]", "");                     // => exits_editing = 11,12,13,14,1,2,3,4,0,0,0,0
+                                                                            // => indexes       = 0,1,2,3 are the button's text
+                                                                            //                    4,5,6,7 are the button values
+                                                                            //                    8,9,10,11 are the exit array increases
         // Step 3 = Split the String by "," -> The first 4 values are the value of exit_text (the button's text)
         //                                  -> The last 4 values  are the Button values (exits[], the return integer array)
         //                                  -> The last value is the exit index addendum, which determines how much the exit array is supposed to increase whenever it is a value different than zero.
@@ -213,7 +216,6 @@ public class SO_Director : MonoBehaviour
         //
         //  exits_formatted[0] = 11; exits_formatted[3] = 14; exits_formatted[4] = 1; exits_formatted[7] = 4 
         // However this is still a string. So it still needs to be formatted a bit to actually work, as seen below using int.Parse
-        Debug.Log(exits_formatted);
 
         for (int x = 0; x < 4; x++)
         {
@@ -226,27 +228,27 @@ public class SO_Director : MonoBehaviour
                 {
                     case 0:
                         // Activate Button 1;
-                        button1Text.text = "";                                                              // => Replace this with VFX_Director's ButtonSpawn Function when done!
+                        button1Text.text = "";                                                              
                         //button1.SetActive(true);
-                        button1Text.text = current_scene.exit_text[int.Parse(exits_formatted[x])];      // => Replace this with VFX_Director's ButtonSpawn Function when done!
+                        button1Text.text = current_scene.exit_text[int.Parse(exits_formatted[x])];      
                         break;
                     case 1:
                         // Activate Button 2;
-                        button2Text.text = "";                                                              // => Replace this with VFX_Director's ButtonSpawn  Function when done!
+                        button2Text.text = "";                                                              
                         //button2.SetActive(true);
-                        button2Text.text = current_scene.exit_text[int.Parse(exits_formatted[x])];      // => Replace this with VFX_Director's ButtonSpawn Function when done!
+                        button2Text.text = current_scene.exit_text[int.Parse(exits_formatted[x])];      
                         break;
                     case 2:
                         // Activate Button 3;
-                        button3Text.text = "";                                                              // => Replace this with VFX_Director's ButtonSpawn  Function when done!
+                        button3Text.text = "";                                                             
                         //button3.SetActive(true);
-                        button3Text.text = current_scene.exit_text[int.Parse(exits_formatted[x])];      // => Replace this with VFX_Director's ButtonSpawn Function when done!
+                        button3Text.text = current_scene.exit_text[int.Parse(exits_formatted[x])];      
                         break;
                     case 3:
                         // Active Button 4;
-                        button4Text.text = "";                                                               // => Replace this with VFX_Director's ButtonSpawn Function when done!
+                        button4Text.text = "";                                                               
                         //button4.SetActive(true);
-                        button4Text.text = current_scene.exit_text[int.Parse(exits_formatted[x])];          // => Replace this with VFX_Director's ButtonSpawn  Function when done!
+                        button4Text.text = current_scene.exit_text[int.Parse(exits_formatted[x])];          
                         break;
                     default:
                         Debug.Log("LonelyBones has made the advancement [How Did We Get Here?]");
@@ -258,21 +260,31 @@ public class SO_Director : MonoBehaviour
 
         try
         {
-            int exits_addendum = int.Parse(exits_formatted[8]);
+            for(int x = 8; x < 12; x++)
+            {
 
-            if (int.Parse(exits_formatted[8]) > 0)
-            {
-                exit_index += int.Parse(exits_formatted[8]);
+                int exits_addendum = int.Parse(exits_formatted[x]);
+
+
+                if (exits_addendum > 1)
+                {
+                    //exit_index += int.Parse(exits_formatted[8]);
+                    Debug.Log("The exit formatted on the button " + (x - 7) + " is: " + exits_addendum);
+                    loop.exits_addendum_array[(x-8)] = exits_addendum;
+                }
+                else
+                {
+                    Debug.Log("The exit formatted on the button " + (x - 7) + " was 0 or 1 so exit_index increases by 1");
+                    loop.exits_addendum_array[(x-8)] = 1;
+                }
             }
-            else
-            {
-                exit_index++;
-            }
+           
         }
         catch(IndexOutOfRangeException)
         {
-            Debug.Log("The array doesn't have an exits addendum declared, increase exit_index by 1");
-            exit_index++;
+            Debug.Log("The array doesn't have exits addendum declared, all options increase exit_index by 1");
+            int[] substitute_array = { 1, 1, 1, 1 };
+            loop.exits_addendum_array = substitute_array;
         }
 
 
@@ -390,7 +402,6 @@ public class SO_Director : MonoBehaviour
                     case string s when Regex.IsMatch(s, "^s[0-9]{2}$"):
                         break;
                     case "t":
-                        break;
                         break;
                     default:
                         // Return 'd', prompt error message on the d

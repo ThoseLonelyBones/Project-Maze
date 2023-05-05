@@ -61,7 +61,7 @@ MonoBehaviour:
     like Shining Blades itself, no longer remembers them and their crypt lies unused
     and forgotten.\u201D</color>"
   - "The voice of Ammon enters your head once more. <color=#00e64d>\u201CThis land
-    was once under the tyrannical rule of a Warlord called Zung of the Early Dawn.
+    was once under the threat of war by a Warlord called Zung of the Early Dawn.
     This is something Dearion still belives but has not been the case for a long
     time. He longingly looks into the distance, hoping to spot an army that has already
     been here. Sharpening blades for a battle already fought\u2026 and already won.\u201D
@@ -152,9 +152,10 @@ MonoBehaviour:
     you start hearing the faint drizzling of water. A small puddle has formed from
     a leak in the brickwork. Some form of underground river or spring must be somewhere
     nearby, hastily walled over by whoever worked on this Shrine.
-  - The pavement, much like the rest of this room, has barely stood the test of time,
-    weathered by the small puddle worming its way around the brickwork. You feel
-    the slippery cobbles barely fit for walking underneath your shoes.
+  - "The pavement, much like the rest of this room, has barely stood the test of
+    time, weathered by the small puddle felt with your feet\u2014 worming its way
+    around the brickwork. You feel the slippery cobbles barely fit for walking underneath
+    your shoes."
   - "The rest of the wall\u2019s conditions aren\u2019t much nicer. You feel as if
     every brick you place your hand on is going to fall, like a precarious tree trunk
     ready to fall over at any strike. You exercise particular caution when moving
@@ -257,17 +258,17 @@ MonoBehaviour:
   - '[0,12,13,0][0,28,44,0]'
   scene_flags:
   - cm00
+  - c
+  - c
+  - c
+  - c
+  - c
   - ct
   - c
   - c
   - c
   - c
-  - c
-  - c
-  - c
-  - c
-  - c
-  - c
+  - ct
   - c
   - bs01
   - bs00
@@ -284,12 +285,12 @@ MonoBehaviour:
   - b
   - c
   - b
+  - cs
+  - ct
   - c
   - c
   - c
-  - c
-  - c
-  - c
+  - ct
   - cs01
   - c
   - c
@@ -300,11 +301,11 @@ MonoBehaviour:
   - c
   - cs00
   - f
+  - cts02
   - c
+  - cs00
   - c
-  - c
-  - c
-  - c
+  - ct
   - c
   - cs01
   - cs00s01
@@ -319,9 +320,9 @@ MonoBehaviour:
   - c
   - ci65
   - c
-  - c
+  - ct
   - f
-  - c
+  - ct
   - c
   - ci71
   - c
@@ -329,10 +330,14 @@ MonoBehaviour:
   - f
   - cs01
   - c
-  - ds00
+  - c
+  - s00d
   scene_sfx:
   - 
   - Ammon1
+  - WaterTrickle
+  - WallCollapse
+  - DirtThrow
   scene_music: []
   password:
   - J188WWM12

@@ -1,0 +1,356 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306bb26a6dc49594a93f3c1e031a10c7, type: 3}
+  m_Name: CHP2-2 - No Cost too Great
+  m_EditorClassIdentifier: 
+  id: 0
+  text:
+  - '<b><align="center"><size=200%>Chapter 2</b>
+
+    <b>Horn of Ammon</b>'
+  - Your current objective is to open the case that contains the shards of the Horn
+    of Ammon. It would be best to start examining that.
+  - 'Placing your hands on the stone pedistal, you notice a cavity you missed before.
+    Slinding your hand inside, the pedistal reacts:'
+  - "<mspace=0.5em><color=#d9d9d9>\u201DPronounce the two passcodes to open the case.
+    The first one low to the ground\u2014 as low as Ammon\u2019s vile intentions.
+    The second one high up in this room, touching the sky\u2014 where Ammon hides
+    from the retribution \u201D</mspace></color>"
+  - "It\u2019s clear that you must find a code somewhere low and somewhere high\u2026
+    what would you like to do?"
+  - You get down on all fours, attempting to scrounge any ounce of information from
+    the floor.
+  - "Exploring this large, hexagonal room takes you some time, especially as you
+    need to scour every surface for what could be even close to a letter or symbol\u2014
+    praying every deity you know that they aren\u2019t simply written down."
+  - "To your relif, circling around the room seems to be an inscryption cast in some
+    cold, metal with a vague smell of iron\u2014 pig iron or weak steel of sorts
+    you wager."
+  - "Especially time consuming is the actual reading process, as the letters are
+    scattered and cleverly hidden from being felt with one\u2019s feet by being at
+    level with the rest of the flooring."
+  - 'After some time, you get the entire writing. It reads the following:'
+  - "<mspace=0.5em><color=#d9d9d9>\u201DThis is the tomb of the memories of Emperor
+    Dearion. The sacrifices the people around him did. The venerations to the Gods.
+    The Grieving Loss he still suffers from to this day.\u201D </mspace></color >"
+  - "<mspace=0.5em><color=#d9d9d9>\u201DThe first room is dedicated to  the heroes
+    of Shining Blade\u2014 the crushing battle of the year 1340 of the new Age and
+    where Dearion\u2019s dearest gave their life for victory\u201D.</mspace> </color>"
+  - "<mspace=0.5em><color=#d9d9d9>\u201Dthe <i>Second</i> room is Dedicated to the
+    Horn of Ammon, a dedication to the unknown God of Memory\u201D</color> </mspace>"
+  - "<mspace=0.5em><color=#d9d9d9>\u201DThe Last Room is the resting place of Elodie,
+    his wife. She has been sleeping there ever since she turned 35.</color>"
+  - You make a mental note of everything spelled on the ground and proceed to examine
+    the rest of the room.
+  - You begin your careful examination of the walls. Maybe additional clues related
+    to this room or the case may be written alongside them.
+  - You spend some time to comb through them as thoroughly as possible, making sure
+    that not a single inch of wall is unturned.
+  - "Unfortunately enough\u2026 you find nothing of relevance. No clues that you
+    can pick up by touch or smell is immediately available to you."
+  - "However\u2026 there may be still a way to examine the walls."
+  - "That\u2019s it for the walls on your end\u2026"
+  - "<color=#7094db>\u201DOhh, Keeper! How may I be of service to you?\u201D</color>"
+  - "<color=#7094db>\u201DOf course! There may be something interesting along the
+    walls\u2026\u201D</color>"
+  - "<color=#7094db>\u201DMh\u2026\u201D</color>"
+  - "<color=#7094db>\u201DMhhhhhh\u2026\u201D</color>"
+  - "<color=#7094db>\u201DMhhhhhhhhh... Oh!\u201D</color>"
+  - "<color=#7094db>\u201DThere is a small excerpt on the wall, I\u2019ll read it
+    for you!\u201D</color>"
+  - "<color=#7094db>\u201DHere lie the spoils of Ammon, profane god of Memory. May
+    his actions be forever codemned. Let this display be proof that men do not need
+    Gods to mess with their minds.\u201D</color>"
+  - "<color=#7094db>\u201DThe Gods want nothing but pain from us mortals\u2014 when
+    they come knocking it\u2019s never to bring gifts, only to remind us never to
+    accept them.\u201D</color>"
+  - "<color=#7094db>\u201DWith the pretense of healing his aching heart, Dearion
+    has been robbed of his precious memories then he left without a trace.\u201D</color>"
+  - "<color=#7094db>\u201DUnder the coat of the righteous, Ammon struck Emperor Dearion
+    when he was at his weakest\u2026 after the loss of\u2026 the loss of\u2026\u201D</color>"
+  - "<color=#7094db>\u201DArgh! Frustrating. I can\u2019t read any further, it gets
+    way too dark after that. Sorry about it.\u201D</color>"
+  - You thank the Jester and resume your investigation.
+  - "<color=#7094db>\u201DEhm\u2026 Keeper\u2026 I find it a bit hard to do that
+    given the steep drop between you and me. It looks to be roughly 50 feet. I can
+    barely see your form, much less the ground from here! Unless\u2026 was that a
+    joke?\u201D</color>"
+  - "\u2026 Well, it was worth a shot."
+  - "<color=#7094db>\u201DMh? Oh, of course! Let\u2019s see here\u2026\u201D</color>"
+  - "<color=#7094db>\u201DOn the ceiling there\u2019s a small poem. I\u2019ll read
+    it aloud for you!\u201D</color>"
+  - "<color=#7094db>\u201DAmmon: the Cruel Joke\u201D</color>"
+  - "<color=#7094db>\u201DA thousand, five-hundred and four curses to you.\u201D</color>"
+  - "<color=#7094db>\u201Dyour Wicked Ways are Done.\u201D</color>"
+  - "<color=#00e64d>\u201DI can\u2019t say I blame Dearion for his reaction, even
+    if it hurts me personally. Curses of such type are commonplace for mortals with
+    anger against the gods\u2026 I just never figured I\u2019d see one written in
+    my name.\u201D</color>"
+  - "<color=#7094db>\u201DOh, yeah! This may be important to mention but the case
+    of the sentences was a bit off.\u201D </color>"
+  - "<color=#7094db>\u201DOf course, I attempted to portray the letter\u2019s case
+    as best as I could in my beautiful speech! Child\u2019s play for one such proficent
+    in the use of the word, you see\u2026\u201D</color>"
+  - "<color=#7094db>\u201DYou never know if you may need it somehow\u2026 Eheheheheh\u2026\u201D</color>"
+  - You thank the Jester and resume your investigation.
+  - "<color=#7094db>\u201DI\u2019m humbled, truly! What do you want to hear from
+    little ol\u2019 me?\u201D</color>"
+  - "<color=#7094db>\u201DAmmon is the most magnificent of gods, obiviously! His
+    power of memory is beyond compare!\u201D</color>"
+  - "<color=#7094db>\u201DGods can grow crops, or smite fools with holy light\u2026
+    but how many of them will exist when time passes by? How many will be truly remembered?\u201D</color>"
+  - "<color=#7094db>\u201DNo matter what\u2026 Ammon remains. Truly, if there was
+    a god to worship, why wouldn\u2019t you follow the truly immortal one?\u201D</color>"
+  - "<color=#7094db>\u201DI used to merely worship Ammon, but you could say I\u2019m
+    a bit of a zealot. After all, hearing your god\u2019s voice does wonders to stimulate
+    one\u2019s belief!\u201D</color>"
+  - "<color=#7094db>\u201DIt happened so suddenly! I was flabbergasted! The Great
+    Ammon speaking to a low one such as I! Mearly a clown!\u201D</color>"
+  - "<color=#7094db>\u201DI no longer remember when Ammon stopped talking to me\u2026
+    but it feels as if an eternity has passed\u2026 what I would I give to hear his
+    smooth whispering again!\u201D</color>"
+  - "<color=#00e64d>\u201DI could no longer contact Maurice after Dearion destroyed
+    the horn. I can no longer contact anyone in the kingdom. Anyone but you.\u201D</color>"
+  - "<color=#00e64d>\u201DI\u2019m sorry you had to be caught in this crossfire,
+    but Maurice has also been subjected to this false truth, like everyone else in
+    the kingdom. As long as they are a witness of it, I cannot enter their mind.
+    The God of Memory cannot gain access to what has not happened.\u201D</color>"
+  - "<color=#00e64d>\u201DSuch are the limitations of my power. I can create a boulder
+    heavy enough for me to be unable to lift it. That was the use of the Horn.\u201D</color>"
+  - "<color=#00e64d>\u201DWith the horn still intact, anyone who used it would be
+    able to regain their memories so even if I made a mess Dearion could still return
+    the way he was... but Dearion broke it.\u201D</color>"
+  - "<color=#00e64d>\u201DI waited patiently until the day I was able to contact
+    him or Maurice again\u2026 but that day never came. Until I found you, that is.
+    Your blindness confirmed to me my suspicions: Dearion wasn\u2019t content with
+    this arrangement, he just broke the Horn.\u201D</color>"
+  - "<color=#00e64d>\u201DI put too much faith in Dearion's ability to restore this
+    situation, and he put too much faith in my ability to heal his ailing heart.
+    Our crime wasn\u2019t maliciousness, it was trust.\u201D</color>"
+  - "Well, that\u2019s it for now\u2026"
+  - "<color=#7094db>\u201DThere isn\u2019t much to tell about myself. My name is
+    Maurice Delaroe, entratainer and professional funnyman.\u201D</color>"
+  - "<color=#7094db>\u201DBut truthfully I\u2019m also the advisor to the king. Not
+    having a central figure as one makes the king appear more competent and capable\u2026
+    if only the dolts of the Imperial Court knew! Ah, they\u2019d be the fools then!\u201D</color>"
+  - "<color=#7094db>\u201DI\u2019ve worked in the Imperial Court for a while now.
+    Dearion trusts me my judgement a lot, but they can\u2019t let everyone know he
+    takes advice on important matters from a clown.\u201D</color>"
+  - "<color=#7094db>\u201DThat would shatter his reputation as a ruler. But we both
+    found a workaround!\u201D</color>"
+  - "<color=#7094db>\u201DEach jab and quip disguises suggestions and mysteries!
+    Pretty exciting wordcraft, don\u2019t you think?\u201D</color>"
+  - "<color=#7094db>\u201CHm\u2026 I\u2019d thought you\u2019d me more excited about
+    it. Oh well.\u201D</color>"
+  - "Well, that\u2019s it for now\u2026"
+  - "<color=#7094db>\u201DYou\u2019re a tough crowd, lemme tell you that much. But
+    I like it\u2026 keeps me sharp. Ahahah\u2026\u201D</color>"
+  - "Well, that\u2019s it for now\u2026"
+  - "<color=#7094db>\u201DBrilliant! Not only you are the Keeper but you also are
+    a jokester! This truly is a blessed day!\u201D</color>"
+  - "<color=#7094db>\"<size=150%>Ahah<size=125%>ahh<size=100%>ahah<size=75%>ahah<size=50%>ahah<size=25%>ahah<size=12%>aha\u2026<size=100%>\"</color>"
+  - "Well, that\u2019s it for now\u2026 "
+  - "<color=#7094db>\u201DThe horn\u2026 Oh, the horn\u2026 It\u2019s probably my
+    fault it ended in Dearion\u2019s hands\u2026\u201D</color>"
+  - "<color=#7094db>\u201DAs a fervent follower of Ammon, I paid a small fortune
+    to get it from a travelling merchant. I\u2026 didn\u2019t belive it to be the
+    actual thing until Ammon spoke to me.\u201D</color>"
+  - "<color=#7094db>\u201DBut the horn is shattered now\u2026 I don\u2019t even remember
+    how that came to be\u2026 So I was trying to get it and repair it! But I can
+    never stay here for too long\u2026 I just can\u2019t reach it, no matter how
+    hard I try.\u201D</color>"
+  - "<color=#7094db>\u201DAmmon is feared and hated because Dearion belives something
+    was done to him by Ammon\u2026 given what you told me, I assume he was right.\u201D</color>"
+  - "<color=#7094db>\u201DOf course, I told Ammon of my worries and plights when
+    he was still speaking to me\u2026 and Dearion\u2019s. I couldn\u2019t bare him
+    seeing in such a state\u2026\u201D</color>"
+  - "<color=#7094db>\u201DBut\u2026 forgive me if the joke is not to your taste\u2026
+    now I can\u2019t even remember why Dearion was in such conditions.\u201D</color>"
+  - "<color=#7094db>\u201DHow ironic\u2026 it would be funny if it wasn\u2019t so
+    sad\u2026\u201D</color>"
+  - "Well, that\u2019s it for now\u2026"
+  - "<color=#7094db>\u201DMe and Dearion actually have known one another for some
+    time now. I was a travelling performer that one day showed up to his court.\u201D</color>"
+  - "<color=#7094db>\u201DHe liked my jokes and my demeanor, but liked the \u2018wisdom
+    behind my eyes\u2019 better.\u201D</color>"
+  - "<color=#7094db>\u201DEh\u2026 if he truly has lost his memory already\u2026
+    I can certainly say that he wasn\u2019t any good at reading people\u2026 eheh\u2026\u201D</color>"
+  - "<color=#7094db>\u201DThis is not funny at all\u2026\u201D</color>"
+  - "Well, that\u2019s it for now."
+  - Do you want to insert the codes now? (Both of these codes are <b>CASE SENSITIVE</b>)
+  - "<color=#00e64d>\u201DIf you are having trouble with the codes, remember where
+    they are first: one on the floor, the other on the ceiling.\u201D</color>"
+  - "<mspace=0.5em><color=#d9d9d9>\"Please pronounce the first passcode\u2014 the
+    one low to the ground.\"</color>"
+  - "<mspace=0.5em><color=#d9d9d9>\"Pronounce these words\u2014 \nThe number in the
+    second line of the writing.\r\nThe Uppercase letters in the third line of writing.\r\nThe
+    First and Last letter of the name of Daerion\u2019s wife (Case Sensitive), and
+    the years she had when her eternal slumber started.\"</color>\n"
+  - 'The pedestal whispers back: <mspace=0.5em><color=#d9d9d9>"Incorrect Passcode."</color>'
+  - "<color=#00e64d>\u201DTake your time to memorize it. Do as many attempts at this
+    as you need.\u201D</color>"
+  - 'The pedestal whispers back: <mspace=0.5em><color=#d9d9d9>"Correct Passcode."</color>'
+  - <mspace=0.5em><color=#d9d9d9>"Now, speak aloud the second code- the one high
+    above."</color>
+  - "<mspace=0.5em><color=#d9d9d9>\"Pronounce these words\u2014\nThe initial letter
+    of every word in the first sentence.\r\nThe number in the second sentence.\r\nThe
+    intial of every word in the third sentence starting from the last and going to
+    the first.\r </color>\n"
+  - 'The pedestal whispers back: <mspace=0.5em><color=#d9d9d9>"Incorrect Passcode."</color>'
+  - "<color=#00e64d>\u201DTake your time to memorize both codes. Do as many attempts
+    at this as you need.\u201D</color>"
+  - 'The pedestal whispers back: <mspace=0.5em><color=#d9d9d9>"Correct Passcode."</color>'
+  - "You hear the sound of glass slowly cracking. With a light sound, you hear a
+    cascade of glass shards hit the ground\u2014 the case is open and the Horn of
+    Ammon is ready for the taking\u2026 or whatever is left of it anyway."
+  - "<color=#00e64d>\u201DWell done.\u201D</color>"
+  exit_text:
+  - Default Response
+  - Turn to the Pedestal
+  - Examine the Ground
+  - Examine the Walls
+  - Talk to the Jester
+  - Help me examine the Walls
+  - Help me examine the Floor
+  - Help me examine the Ceiling
+  - Let's talk a bit...
+  - About Ammon...
+  - About yourself...
+  - About the horn...
+  - About Dearion...
+  - Yeah.
+  - Not really.
+  - <i>Ammon</i> the edge of my seat!
+  - Yes
+  - No
+  scene_exits:
+  - '[1,2,3,4][83,5,15,20][4,1,1,1]'
+  - '[5,6,7,8][21,32,34,44][1,1,1,1]'
+  - '[9,10,11,12][45,58,70,78][1,1,1,1]'
+  - '[13,14,15,0][63,65,67,0][1,1,1,1]'
+  - '[0,16,17,0][0,85,84,0][0,1,1,0]'
+  scene_flags:
+  - c
+  - c
+  - c
+  - ch
+  - b
+  - c
+  - ct
+  - c
+  - ct
+  - c
+  - c
+  - c
+  - c
+  - c
+  - f
+  - c
+  - ct
+  - c
+  - c
+  - f
+  - b
+  - c
+  - c
+  - c
+  - cs02
+  - cs05
+  - c
+  - c
+  - c
+  - c
+  - ct
+  - f
+  - c
+  - f
+  - c
+  - c
+  - c
+  - c
+  - cs01
+  - cs00
+  - c
+  - cs06
+  - ct
+  - f
+  - b
+  - cs04
+  - cs05
+  - c
+  - cs04
+  - c
+  - cs01
+  - cs00s01
+  - c
+  - c
+  - cs00s01
+  - c
+  - cs00
+  - f
+  - cs07
+  - cs08
+  - c
+  - cs09
+  - b
+  - c
+  - f
+  - c
+  - f
+  - cs10
+  - c
+  - f
+  - cs05
+  - c
+  - c
+  - c
+  - c
+  - c
+  - c
+  - f
+  - c
+  - c
+  - c
+  - c
+  - f
+  - b
+  - f
+  - i89c
+  - ct
+  - c
+  - f
+  - c
+  - i94c
+  - ct
+  - c
+  - f
+  - cs11
+  - cs01
+  - s00d
+  scene_sfx:
+  - 
+  - Ammon1
+  - JesterOhLong
+  - JesterPoderShort
+  - JesterAmmonLong
+  - JesterAmmonShort
+  - JesterLaughLowShort
+  - JesterParlar1
+  - JesterImperator1
+  - JesterOhMedium
+  - JesterLaughHoller3
+  - DisplayShatter
+  scene_music: []
+  password:
+  - 1340SDHAEe35
+  - AtCJ1504DaWWy
+  scenario_dialogues: []
