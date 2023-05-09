@@ -5,31 +5,38 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+// A simple script that runs the credit scene
 public class CreditsScript : MonoBehaviour
 {
+    // This integer is used to determine whether or not the Credits Scene should display a congratulations message of sorts or not, based on which finale you got... as well as seing if you got a finale.
     [SerializeField]
     int finale;
 
+    // The textbox as an object
     [SerializeField]
     GameObject text_box;
 
+    // Textbox and credits text as TMP, used to write their contents
     [SerializeField]
     TMP_Text textBox, credits_text;
 
     public Writing_Director writing_director;
-
+    
+    // Used specifically to give a new fontsize to credits.
     int fontsize;
 
     private Audio_Director director;
 
     void Awake()
     {
-        fontsize = PlayerPrefs.GetInt("textsize");
+        // Set fontsize to medium. Otherwise it breaks on the bigger font.
+        fontsize = 46;
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        // Based on the CreditsScene, either display a thanks for playing, game over screen or directly the credits
         switch (PlayerPrefs.GetInt("credits_scene"))
         {
             case 0:
@@ -46,6 +53,7 @@ public class CreditsScript : MonoBehaviour
 
         }
 
+        // Initialization
         GameObject audiodirector = GameObject.Find("AudioDirector");
         director = audiodirector.GetComponent<Audio_Director>();
 
@@ -53,13 +61,14 @@ public class CreditsScript : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    {   
+        // I, for the life of me, couldn't get the button to work. I swear I tried everything, it just didn't. So Spacebar it is.
         if (Input.GetKeyDown(KeyCode.Space))
         {
             returnToMenu();
         }
     }
-
+    // This function returns you to the main menu and stops the music. The music restarts on the menu screen.
     public void returnToMenu()
     {
         PlayerPrefs.SetInt("credits_scene", 0);
@@ -69,12 +78,13 @@ public class CreditsScript : MonoBehaviour
         director.music_audio_source.Stop();
     }
 
+    // Starts the Coroutine to display the credits.
     void DisplayCredits()
     {
         StartCoroutine(DisplayCreditsCoroutine());
 
     }
-
+    // The coroutine for the gameover effect... plus the credits.
     IEnumerator GameOver()
     {
         PlayerPrefs.SetInt("textsize", 80);
@@ -83,6 +93,7 @@ public class CreditsScript : MonoBehaviour
         StartCoroutine(DisplayCreditsCoroutine());
     }
 
+    // The coroutine for the Thanks for Playing screen... plus the credits.
     IEnumerator ThanksForPlaying()
     {
         PlayerPrefs.SetInt("textsize", 80);
@@ -91,6 +102,7 @@ public class CreditsScript : MonoBehaviour
         StartCoroutine(DisplayCreditsCoroutine());
     }
 
+    // I KNOW. I KNOW. The credits are hardcoded in, I should have maybe used another thing like a scriptable object like for the rest of the game but I was running out of time. I'd rather have a bad solution than not have a solution at all.
     IEnumerator DisplayCreditsCoroutine()
     {
         PlayerPrefs.SetInt("textsize", fontsize);

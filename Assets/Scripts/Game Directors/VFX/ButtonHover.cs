@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+// This just writes text in chat for the main meny when buttons are hovered over in the main menu
 public class ButtonHover : MonoBehaviour
 {
 
@@ -22,6 +23,7 @@ public class ButtonHover : MonoBehaviour
         
     }
 
+    //Nothing spectacular, just a function that is applied to the buttons in the main menu onButtonHover, writes down some simple text
     public void onButtonHover(string button_name)
     {
         string text_to_write = "";

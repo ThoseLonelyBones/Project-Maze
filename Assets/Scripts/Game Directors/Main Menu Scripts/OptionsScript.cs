@@ -5,29 +5,36 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 
+// This is the script that governs the options present in the game. This options script contains all operations that can be done in the options menu
 public class OptionsScript : MonoBehaviour
 {
+    // Gameobjects that govern the entirity of the Optionsmenu or the current active gameplay scene (either the main menu or the gameplay)
     public GameObject OptionsMenu;
     public GameObject GameplayScene;
 
+    // The various elements of the Options menu! The volume sliders, the toggles, etc.
     public Slider musicvolume, gamesfxvolume, scenesfxvolume;
 
     public Toggle autosave_toggle, datagathering_toggle;
 
+    // Audio and Writing director are implemented to allow for easier changes (and also to write information in the options menu)
     private Audio_Director audio_director;
-
     [SerializeField]
     private Writing_Director writing_director;
 
+    // Check the current active scene to know which elements to swap in the game.
     private Scene     ActiveScene;
 
     private string slidername;
 
+    // TMP text elements of the menu
     public TMP_Text musicvolume_text, gamesfx_text, scenesfx_text, options_text, textspeed_button, textsize_button;
 
+    // Used to update the menu when it is closed and open
     private bool update_menu = false;
 
 
+    // Initialization and Menu Update
     void Start()
     {
        
@@ -56,6 +63,7 @@ public class OptionsScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Simply put, check if update menu changes. If it does, do UpdateMenu() once.
         if(update_menu)
         {
             UpdateMenu();
@@ -63,6 +71,7 @@ public class OptionsScript : MonoBehaviour
         }
     }
 
+    // When the menu is opened... or closed... it either activates itself and disables the rest of the game or does the opposite. This also updates the menu.
     public void OptionsMenuOpen()
     {
         if(!OptionsMenu.activeSelf)
@@ -81,6 +90,7 @@ public class OptionsScript : MonoBehaviour
         
     }
 
+    // Simple volume sliders. This bit of code manages to keep a single function that changes its target based on which slider is being used.
     public void VolumeSlider(float value)
     {
         Slider slider = (Slider)UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.GetComponent(typeof(Slider));
@@ -110,6 +120,7 @@ public class OptionsScript : MonoBehaviour
         }
     }
 
+    // Every time you click the button it changes the game's speed to a different level of speed. Easy as that.
     public void TextSpeed()
     {
         float textspeed = PlayerPrefs.GetFloat("textspeed");
@@ -139,6 +150,7 @@ public class OptionsScript : MonoBehaviour
             
     }
 
+    // Same thing as textspeed but for the text size.
     public void TextSize()
     {
         int textsize = PlayerPrefs.GetInt("textsize");
@@ -165,6 +177,7 @@ public class OptionsScript : MonoBehaviour
         }
     }
 
+    // Either the autosave is on, and then gets disabled or it is disabled and becomes enabled (this function is on toggle change)
     public void AutoSave()
     {
         string autosave = PlayerPrefs.GetString("autosave");
@@ -180,6 +193,7 @@ public class OptionsScript : MonoBehaviour
         }
     }
 
+    // Either data collection is on, and then gets disabled or it is disabled and becomes enabled (this function is on toggle change)
     public void DataCollection()
     {
         string datacollection = PlayerPrefs.GetString("datacollection");
@@ -195,12 +209,14 @@ public class OptionsScript : MonoBehaviour
         }
     }
 
+    // Simply return to the main menu. Stop the music so it doesn't double up when you return there.
     public void ReturntoMainMenu()
     {
         audio_director.music_audio_source.Stop();
         SceneManager.LoadScene("Main Menu");
     }
 
+    // Menu's update takes all the PLayerPrefs and then sets each element of the menu to their current playerpref value. This keeps the options as consistent as possible.
     public void UpdateMenu()
     {
         musicvolume.value = audio_director.music_volume;

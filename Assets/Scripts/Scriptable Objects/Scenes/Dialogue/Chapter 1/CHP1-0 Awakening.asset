@@ -23,13 +23,13 @@ MonoBehaviour:
     to run out rather quickly. To check the current timer\u2019s progress, you may
     listen to the music in the background\u2014 which changes based on the timer\u2019s
     value."
-  - "When your timer runs out, you will begin the game again from here\u2014 at the
-    start of Chapter 1.\r\nHowever, an extremely important distinction needs to be
-    made: nothing within the game world changes as you take your attempts. All passcodes
-    remain the exact same. You are encouraged \u2013 and intended to \u2013 not check
-    the solution for each puzzle every time you begin a chapter: instead, use your
-    knowledge aquired from previous attempt to progress through the chapters while
-    saving as many actions as possible!\r\n"
+  - "When your timer runs out, you will begin the game again from here.\nHowever,
+    an extremely important distinction needs to be made: nothing within the game
+    world changes as you take your attempts. All passcodes remain the exact same.
+    You are encouraged \u2013 and intended to \u2013 not check the solution for each
+    puzzle every time you begin a chapter: instead, use your knowledge aquired from
+    previous attempt to progress through the chapters while saving as many actions
+    as possible!\r\n"
   - "Additionally, given that there is a lot of text to go through in the game you
     can ask the game to \u2018Test your Memory\u2019!"
   - "This is an opportunity for you to play through the game faster. Iif you can

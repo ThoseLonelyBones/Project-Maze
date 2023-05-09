@@ -6,16 +6,19 @@ using TMPro;
 
 public class Input_Handler : MonoBehaviour
 {
-
+    // Simple, just see the input and the password of the current input
     private string input;
     private string password;
 
+    // Check if you are allowed to progress, to set inputs or if the password is correct or not.
     public  bool   progress;
     public bool inputoff = false;
     public bool correct_password = false;
 
+    // Sets the colour of the placeholder, this is used to change its alpha and the alpha of the input bar. Remember that the input bar still needs to be active to work, so the best fix is to make it transparent.
     Color newColor = Color.white;
 
+    // Various inputfield, placeholders and objects, initialized and used throughout the script.
     [SerializeField]
     public TMP_InputField inputfield;
 
@@ -36,10 +39,8 @@ public class Input_Handler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //inputfield.onValueChanged.AddListener(BackspaceFix);
+        // Set alpha to 1, make the inputbar visible!
         newColor.a = 1f;
-        //inputfield.characterLimit = 10;
-
         Cleanse();
     }
 
@@ -49,6 +50,7 @@ public class Input_Handler : MonoBehaviour
 
     }
 
+    // This is a fix for a crash that occurs if you backspace in an input field.
     public void BackspaceFix(string text)
     {
         if (Input.GetKeyDown(KeyCode.Backspace) && string.IsNullOrEmpty(text))
@@ -56,7 +58,9 @@ public class Input_Handler : MonoBehaviour
             StartCoroutine(BackspaceFixCoroutine());
         }
     }
-
+    
+    // To give the illusion that the password is actually a series of characters you are inputting in (similar to old password terminals or the classic mental image of '_ _ _ _ _ ' symbolizing a password (to further enhance the retro feel)) a placeholder
+    // element, identical to the actual index input is spawned on top of the input bar. Here I can edit the text all I want without the game throwing a royal hissy fit.
     public void PlaceholderActive()
     {
         placeholder.SetActive(true);
@@ -64,6 +68,7 @@ public class Input_Handler : MonoBehaviour
         inputfield.image.color = newColor;
     }
 
+    // This fix is required to make backspace not crash the game in the input field. It's a fairly simple thing that instead of directly editing the input bar it changes its text to a substring of the characters - 1.
     IEnumerator BackspaceFixCoroutine()
     {
         yield return new WaitForEndOfFrame();
@@ -75,7 +80,7 @@ public class Input_Handler : MonoBehaviour
         }
         
     }
-
+    // This is applied on input submission on the input bar. This checks whether or not the input is correct and, based on that, determines what to progress and what to do.
     public void ReadInput(string player_input)
     {
         input = player_input;
@@ -100,11 +105,13 @@ public class Input_Handler : MonoBehaviour
         //return input;
     }
 
+    // This is used to give the Password Looking effect on the input bar.
     public void PasswordEffect(string input)
     {
         InputFormatter();
     }
 
+    // Cleanse is used to update the input bar and either make it visible or make it invisible depending on it current status
     public void Cleanse()
     {
         progress = true;
@@ -122,6 +129,7 @@ public class Input_Handler : MonoBehaviour
 
     }
 
+    // This takes the inputfield text, aka what the player is typing in and then creates an edited input string, which is made of input text + fill the remaining space with _ chracters for the length of inputfield's character limit (aka the password's length)
     public void InputFormatter()
     {
         string input_text = inputfield.text;

@@ -165,12 +165,14 @@ public class Gameplay_Director : MonoBehaviour
     // The string containing the quantity of player choices they have made. Nothing spectacular.
     private string gamedata;
 
+    // This is used to check how much to add to the exit_index from each button's click. If nothing is put in, only +1 is added to it (as usual)
     public int[] exits_addendum_array = { 1, 1, 1, 1 };
 
+    // This is used in checking whether the current scenario is the reset scenario.
     private bool reset_scenario = false;
 
 
-
+    // Initialize the WORLD! Everything needs to be initalized, EVERYTHING! You get an initalization aaaand you get an initalization aaaaand everything gets initalized!
     private void Awake()
     {
         so_director = GetComponent<SO_Director>();
@@ -184,7 +186,6 @@ public class Gameplay_Director : MonoBehaviour
         {
             Debug.Log("Timer Director not set");
         }
-        //writing_director = GetComponent<Writing_Director>();
 
 
         button1 = GameObject.Find("Button 1");
@@ -244,6 +245,9 @@ public class Gameplay_Director : MonoBehaviour
 
     }
 
+    // This function sets the buttons, and with that I mean that each time you apply the b index, the game goes through the respective button_exits on the current scene, an array of which the index is determined by exit_index. Whenever you click a button,
+    // you are lead to that exit, taken from the array's unique formatting (aka {x1,x2,x3,x4}, where x1 is the exit of the first button and so on and so forth.) This updates the buttons when they are put on screen. They use one function BUT their unique
+    // exit allows them to serve different purposes even compared to being the same button in a previous exit (the left-most button (button 1) will obviously lead to a different text than any previous button that was also button 1)
     public void buttonsSet(int[] exits)
     {
         bool[] button_active = { false, false, false, false };
@@ -279,12 +283,14 @@ public class Gameplay_Director : MonoBehaviour
             }
         }
 
-
+        // This aligns whichever buttons are currently active in the lower parts of the screen. It prevents me from doing manual setting badness and makes the game look more sleek.
         ui_director.ButtonAlign(button_active);
 
         progressText = false;
     }
 
+    // Whenever a button is clicked, it first checks if it should display a response. If it has to, it allows the game to play a response, then this function is called again and does the rest of its needed functions.
+    // Based on which button pressed which, send the user to that specific exit, updating the text to be correctly the one the user has decided to move towards as well as update the exit index by the addendum of the button (which can just be 1 if nothing else was set)
     public void buttonClick(string buttonname)
     {
         button_response = buttonname;
@@ -330,10 +336,13 @@ public class Gameplay_Director : MonoBehaviour
             }
         }
 
+        // Hide the buttons and then progress the text!
         buttonsHide();
         progressText = true;
     }
 
+    // This massive function is essentially the game's way of applying unique conditions to each differnt text that the game is shown. readFlag takes in a string array, flag[]. Truthfully, the string it takes in is nothing more than all the various flag of
+    // a given index on the scene_flags string array, separated in the various values of this string array. Here, for the length of the array, every time a flag and their flag options are detected it does a different effect. Going through them...
     public void readFlag(string[] flag)
     {
         for (int x = 0; x < flag.Length; x++)
@@ -342,6 +351,7 @@ public class Gameplay_Director : MonoBehaviour
 
             switch (flag[x])
             {
+                // Flag A causes the current scenario to swap to an internal dialogue, or to swap back from an internal dialogue to the actual scenario.
                 case "a":
                     if (!alternateScene)
                     {
@@ -356,26 +366,29 @@ public class Gameplay_Director : MonoBehaviour
                         text_check = so_director.ChangeScenarioText(index);
                     }
                     break;
+                    // Set the buttons 's exits and shows them to the player
                 case "b":
                     buttonsSet(so_director.CallExits());
                     break;
+                    // Simply progress through the game! It's nothing too complex, really.
                 case "c":
                     index++;
                     text_check = so_director.ChangeScenarioText(index);
                     break;
                 case "e":
-                    // This flag is checked every time you complete a code in the repeat section!
-
-                    // Find a way to calculate 
+                    // This flag is checked every time you complete a code in the repeat section, used to determine where you actually get to skip in the repeat area.
                     encore_index++;
                     break;
                 case "f":
+                    // Send a fish which means you have to return to a hook. Used for trial and error in buttons and for dialogue dead ends, as well as to set an overall scene for the game.
                     text_check = so_director.ChangeScenarioText(hook_index);
                     index = hook_index;
                     break;
                 case "h":
+                    // Set a hook. Whenever fish is called, this is the index they'll be reaching. It's a way to allow the game to backtrack without having to hardcode a button every single time.
                     hook_index = index;
                     break;
+                    // Display the input field and start the input field's various initalization's and requirments (the rest is handled by the input handler function).
                 case string i when Regex.IsMatch(i, "^i[0-9]{2}$"):
                     input.Cleanse();
 
@@ -390,17 +403,21 @@ public class Gameplay_Director : MonoBehaviour
                     input.inputfield.characterLimit = so_director.current_scene.password[so_director.input_index].Length;
                     input.progress = false;
                     break;
+                    // Data collection enabled, exclusively used in that one section of the warnings at the start of the game.
                 case "q":
                     PlayerPrefs.SetString("datacollection", "true");
                     Debug.Log("Data Collection is enabled!");
                     break;
+                    // Returns to the main menu... as straightforward as that.
                 case "k":
                     BacktoMainMenu();
                     break;
+                    // Play the specific music clip the flag options signal
                 case string m when Regex.IsMatch(m, "^m[0-9]{2}$"):
                     int music_index = int.Parse(flag[x].Substring(1, 2));
                     audio_director.PlayMusic(music_index);
                     break;
+                    // Progress thorugh the next scene or the next if its the last scene in an act. This has a special interaction with the reset scenario, where it is ignored in favour of the reset scenario's own changes to act_index and play_index.
                 case "r":
                     int act_length;
 
@@ -445,20 +462,23 @@ public class Gameplay_Director : MonoBehaviour
                     so_director.input_index = 0;
                     text_check = so_director.ChangeScenarioText(index);
                     fixFlagR = false;
+                    // if autosave is true it also saves.
                     if(PlayerPrefs.GetString("autosave") == "true")
                     {
                         SaveGame();
                     }
                     audio_director.LoadSceneAudio(so_director.current_scene.scene_sfx);
                     break;
+                // Play the scene sfx whose index in the scene_sfx array matches with the flag options
                 case string s when Regex.IsMatch(s, "^s[0-9]{2}$"):
                     int sfx_index = int.Parse(flag[x].Substring(1, 2));
                     audio_director.PlaySceneSFX(sfx_index);
                     break;
+                    // Decrease the timer by one. Easy as that.
                 case "t":
                     timer_director.TimerCountdown();
-                    // do the return and text change in here.
                     break;
+                    // based on the conditions, flag U sends you to the credits scene with a different title attached to it. Either a GameOver or a Thanks for Playing.
                 case string u when Regex.IsMatch(u, "^u[0-9]{2}$"):
                     int finale = int.Parse(flag[x].Substring(1, 2));
                     switch(finale)
@@ -477,6 +497,7 @@ public class Gameplay_Director : MonoBehaviour
                             break;
                     }
                     break;
+                    // the X flag harvests data from those succulent and ripe gamers, like Daddy Bezos intended. Of course the data is safely protected.
                 case "x":
                     if(PlayerPrefs.GetString("datacollection") == "true")
                     {
@@ -485,6 +506,9 @@ public class Gameplay_Director : MonoBehaviour
                         info_handler.SaveData(gamedata);
                     }
                     break;
+                // Z is a unique flag. When used with a flag option differnt than zero, it attempts to update the chapter progression index of the game. When it does, then that's it, that's the new maximum point you have reached in the game.
+                // When it's used with flag 0, it instead checks your progress in the Memory Gauntlet in the reset scenario. Based on your chapter progression index and the passwords you know, you are sent to the last known point up until you can remember
+                // the passwords for (IE, you will be sent to chapter 3 if you meet these conditions: have reached chapter 3 already and in the memory gauntlet have gone through each and every password of chapter 1 and chapter 2).
                 case string z when Regex.IsMatch(z, "^z[0-9]{2}$"):
                     int progression_check = int.Parse(flag[x].Substring(1, 2));
                     Debug.Log("Progression Check is: " + progression_check);
@@ -544,6 +568,7 @@ public class Gameplay_Director : MonoBehaviour
 
     }
 
+    // Starts game, simply and normally. Sets the Attempt Timer to 20.
     public void startGame()
     {
         index = so_director.ChangeScene(sot_play.all_acts[play_index].act_elements[act_index]);
@@ -556,6 +581,8 @@ public class Gameplay_Director : MonoBehaviour
 
         timer_director.Set_Attempt_Timer(20);
     }
+    // Resumegame is the alt-goth version of start game, because it just swings in a differnt direciton man...
+    // Stupidities aside, it's a different versionof start game used when the game is loaded
     public void resumeGame()
     {
         so_director.ChangeScene(sot_play.all_acts[play_index].act_elements[act_index]);
@@ -566,6 +593,7 @@ public class Gameplay_Director : MonoBehaviour
     }
 
     // Start is called before the first frame update
+    // WHen start is called and load is one, every information is unpacked and then distributed around the various parts of the game that might need them.
     void Start()
     {
         cleanScreen();
@@ -578,21 +606,21 @@ public class Gameplay_Director : MonoBehaviour
             string playersavedata = PlayerPrefs.GetString("savedata");
             string[] savedata_array = SaveUnpack(playersavedata);
 
-            index = int.Parse(savedata_array[1]);
-            act_index = int.Parse(savedata_array[2]);
-            play_index = int.Parse(savedata_array[3]);
-            so_director.exit_index = int.Parse(savedata_array[4]);
-            timer_director.Set_Attempt_Timer(int.Parse(savedata_array[5]));
-            timer_director.Set_Attempt_Number(int.Parse(savedata_array[6]));
-            timer_director.TimerCheck();
-            hook_index = int.Parse(savedata_array[7]);
-            so_director.hook_exit_index = hook_index;
-            so_director.input_index = int.Parse(savedata_array[8]);
-            chapter_progression_index = int.Parse(savedata_array[9]);
+            index = int.Parse(savedata_array[1]);                               // we have the index here, to tell us where in the text are we
+            act_index = int.Parse(savedata_array[2]);                           // at which scene
+            play_index = int.Parse(savedata_array[3]);                          // and in which scenario
+            so_director.exit_index = int.Parse(savedata_array[4]);              // it also, conveniently, shows you the current exit as saved here
+            timer_director.Set_Attempt_Timer(int.Parse(savedata_array[5]));     // saves your attempt timer
+            timer_director.Set_Attempt_Number(int.Parse(savedata_array[6]));    // and your attempt number
+            timer_director.TimerCheck();                                        // then it runs a quick little check here
+            hook_index = int.Parse(savedata_array[7]);                          // it saves the current hook index, so you can resume from wherever you like
+            so_director.hook_exit_index = hook_index;                           // it saves the hook exit index
+            so_director.input_index = int.Parse(savedata_array[8]);             // the input index
+            chapter_progression_index = int.Parse(savedata_array[9]);           // and the chapter progression index
             Debug.Log(so_director.input_index);
             Debug.Log(hook_index);
-            gamedata = info_handler.LoadData();
-            resumeGame();
+            gamedata = info_handler.LoadData();                                 // and if you have any data, it loads that data in gamedata
+            resumeGame();                                                       // then the game resumes
 
             audio_director.music_audio_source.Stop();
         }
@@ -608,11 +636,13 @@ public class Gameplay_Director : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // If this is valid, then reset the game
         if(timer_director.reset)
         {
             AttemptReset();
         }
 
+        // this allows you to pass through the game by pressing space bar.
         if (Input.GetKeyDown(KeyCode.Space) && progressText && input.progress == true)
         {
             if (TextDisplay.text == so_director.text_to_write)                                          // Change to saved text (which can vary in case of a response) <= done
@@ -639,6 +669,7 @@ public class Gameplay_Director : MonoBehaviour
 
     }
 
+    // This simply divides the text using a matcher and a filler pattern, to extrapolate the savefile
     private string[] SaveUnpack(string savedata)
     {
         string[] savedata_array = savedata.Split('\n');
@@ -659,6 +690,7 @@ public class Gameplay_Director : MonoBehaviour
         return savedata_array;
     }
 
+    // Saving the game requires a bit of extra things from a lot of different scripts so they are all gathered here
     private void SaveGame()
     {
         SOT_Scene current_scene = so_director.current_scene;
@@ -670,6 +702,7 @@ public class Gameplay_Director : MonoBehaviour
         ui_director.SystemText("Game Saved!", 5);
     }
 
+    // ProgressGame is used regularly just to read the flags but as a duplicitous function when an input field is out, to check if that's correct to give it it's unique properties. Otherwise, it attempts to read the flag of the input line (which is just a c, that continues into the reset).
     public void ProgressGame()
     {
         if(input.correct_password)
@@ -687,11 +720,13 @@ public class Gameplay_Director : MonoBehaviour
 
     }
 
+    // This just hides the passcode field.
     public void HideInput()
     {
         passcode_field.SetActive(false);
     }
 
+    // Save the game if autosave is on, then reset the game. To do that, use the various functions in so_director and ui director. Plus some extra setup like setting progressText to false and the act and play index to go to act 0 of chapter 1
     private void AttemptReset()
     {
         if (PlayerPrefs.GetString("autosave") == "true")
@@ -711,6 +746,7 @@ public class Gameplay_Director : MonoBehaviour
         reset_scenario = true;
     }
 
+    // This just waits for the canvas to finish fading, then clears the screen and spawns the canvas.
     IEnumerator WaitforCanvasFade()
     {
         while(ui_director.canvas_active)
@@ -725,6 +761,7 @@ public class Gameplay_Director : MonoBehaviour
         yield break;
     }
 
+    // This waits for the canvas to spawn and then does a series of setup funtions, such as setting the exit_index, the input_index, the hook_exit index, etc. all to 0, as well as setting the attempt timer back to 20.
     IEnumerator WaitforCanvasSpawn()
     {
         while(!ui_director.canvas_spawn)
@@ -749,6 +786,7 @@ public class Gameplay_Director : MonoBehaviour
 
     }
 
+    // This just goes back to the main menu
     private void BacktoMainMenu()
     {
         audio_director.music_audio_source.Stop();

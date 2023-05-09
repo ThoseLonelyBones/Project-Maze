@@ -68,21 +68,27 @@ public abstract class SOT_Scene : ScriptableObject
      * text array (aka index), which is used to determine which text is displayed AND what to do after that text is displayed
      * 
      * Scene flags uses certain characters to determine how progression is handled for different components. Here are the following:
-     * 
-     * a, or "alternate" Used in Scenarios, this is a clue for the game to save the current index and then start the dialogue within a scenario. This flag is also used in Scenario-exclusive Dialogues to return to the Scenario using the saved index.
-     * b, or "buttons": Call for the game to start Choice Buttons, using index to call the function CallExits()
-     * c, or "continue": The index increases by one, and the next text is displayed. This WAITS for the Response to be finished first in the case of Dialogue
-     * r, or "return": used exclusively as a way to tell the game that the current scene is over and to move over to the next one
+     *
+     * a: alternate -> Load the dialogue based on dialogue-index, a local variable exclusive to Scenarios, whilst saving the current Scenario and Index. This is used later to recover the dialogue when this flag is called again -> if this flag is called in a dialogue, return to the saved scenario.
+     * b: buttons -> Load CallExits[], allowing for the display of buttons
+     * c: continue -> Load next Text[], allowing to continue new text
+     * d: default -> default flag, does nothing.
+     * r: return -> used exclusively as a way to tell the game that the current scene is over and to move over to the next one
+     * s: Followed by a number flag, plays a specific scene sfx
+     * m: Followed by a number flag, plays a specific music
+     * t: timer -> used to decrease the attempt timer.
      * 
      * Additional Flags:
      * 
-     * f, or "fish": used in conjunction with hook. Once called, the scene is reset to what the hook saved.
-     * h, or "hook":save the current index and when "fish" is called retrieve that scene. Used for Dead Ends.
-     * 
-     * s, or "sound": used to scour for sound clips and add a sound effect to the clip. Search the BBC network for loads of soundclips.
-     * t, or "timer": used to decrease the attempt timer.
-     * 
-     * Other steps that need to be undertaken are done in the Main Gameplay Loop script
+     * f: fish -> used in conjunction with hook. Once called, the scene is reset to what the hook saved.
+     * h: hook -> save the current index and when "fish" is called retrieve that scene. Used for Dead Ends.
+     * q: Questionnaire -> Enables Data Collection, used only in the tutorial
+     * k: bacK -> Go back to the main menu
+     * z: ReZume -> used to both save the furthest reach the player has arrived to AND to resume the game if it's called with the flag option 00
+     * e: Encore -> Used to determine the player's progress in the Memory Gauntlet in the Reset Scenario
+     * i: Input -> Displays the input field. The flag that follows this is used to 
+     * x: eXploit the Gamers -> Retrive data if data collection is active.
+     *
      */
     [Tooltip("This is used to determine how the scene needs to proceed, if it needs to be interrupted, if certain dialogues need to be skipped or anything. \n This is the flag index: \n a: alternate (use exclusively in Scenarios w/ Dialogues or Dialogues-within-scenarios) \n" +
              "b: buttons \n c: continue \n d: default (used for interruption or displaying error messages) \n f: fish (used in conjunction with hook, fish is the last text before returning to the hook text \n h: hook (used in conjunction with fish, hook saves the current room and is called back with fish \n" +
@@ -90,12 +96,12 @@ public abstract class SOT_Scene : ScriptableObject
              "m#: music# (similar to s#, calls the sound director for the ambiance music, it's manually stopped with m0 or by playing a different track)."                                                                                                                                                                                                                                                                                                                  )]
     public string[] scene_flags;
 
+    // This are the various arrays of strings that contain the names of the various music files present in the resource folders. These are used to load up exclusively the audio or music of a given scene in the Audio Director script.
     [Tooltip("This is the sound list. Here all the names of the sounds that are required are passed in. Then, these are loaded in via the Audio_Director on scene creation using the flag s, then following it with a number equal to the index of the soundfile's name, present in this list.")]
     public string[] scene_sfx;
-
     [Tooltip("This is the music list. Here all the names of the songs that are required are passed in. Then, these are loaded in via the Audio_Director on scene creation using the flag m, then following it with a number equal to the index of the soundfile's name, present in this list.")]
     public string[] scene_music;
-
+    // Passwords are saved here, then checked out by the game using the i flag on the scene_flags array.
     [Tooltip("Some scenes have passwords. When the flag i is inserted, the user input is confronted against the password: if it is correct, progress to a specific id (written in the addendum to i)")]
     public string[] password;
 
