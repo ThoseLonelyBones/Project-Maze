@@ -25,6 +25,8 @@ public class OptionsScript : MonoBehaviour
 
     public TMP_Text musicvolume_text, gamesfx_text, scenesfx_text, options_text, textspeed_button, textsize_button;
 
+    private bool update_menu = false;
+
 
     void Start()
     {
@@ -47,79 +49,18 @@ public class OptionsScript : MonoBehaviour
         GameObject audio_director_object = GameObject.Find("AudioDirector");
         audio_director = audio_director_object.GetComponent<Audio_Director>();
 
-        musicvolume.value = audio_director.music_volume;
-        int display_value_1 = Mathf.FloorToInt((musicvolume.value * 100));
-        musicvolume_text.text = display_value_1.ToString();
-
-        gamesfxvolume.value = audio_director.game_sfx_volume;
-        int display_value_2 = Mathf.FloorToInt((gamesfxvolume.value * 100));
-        gamesfx_text.text = display_value_2.ToString();
-
-        scenesfxvolume.value = audio_director.scene_sfx_volume;
-        int display_value_3 = Mathf.FloorToInt((scenesfxvolume.value * 100));
-        scenesfx_text.text = display_value_3.ToString();
-
-        musicvolume.onValueChanged.AddListener(VolumeSlider);
-        gamesfxvolume.onValueChanged.AddListener(VolumeSlider);
-        scenesfxvolume.onValueChanged.AddListener(VolumeSlider);
-
-        float textspeed = PlayerPrefs.GetFloat("textspeed");
-        switch (textspeed)
-        {
-            case 0.020f:
-                textspeed_button.text = "Text Speed: FAST";
-                break;
-            case 0.045f:
-                textspeed_button.text = "Text Speed: STANDARD";
-                break;
-            case 0.075f:
-                textspeed_button.text = "Text Speed: SLOW";
-                break;
-            default:
-                textspeed_button.text = "Text Speed: STANDARD";
-                break;
-        }
-
-        int textsize = PlayerPrefs.GetInt("textsize");
-        switch (textspeed)
-        {
-            case 48:
-                textsize_button.text = "Text Size: STANDARD";
-                break;
-            case 54:
-                textsize_button.text = "Text Size: LARGE";
-                break;
-            default:
-                textsize_button.text = "Text Size: STANDARD";
-                break;
-        }
-
-        string datacollection = PlayerPrefs.GetString("datacollection");
-        if(datacollection == "true")
-        {
-            datagathering_toggle.isOn = true;
-        }
-        else
-        {
-            datagathering_toggle.isOn = false;
-        }
-
-        string autosave = PlayerPrefs.GetString("autosave");
-        if (autosave == "true")
-        {
-            autosave_toggle.isOn = true;
-        }
-        else
-        {
-            autosave_toggle.isOn = false;
-        }
+        UpdateMenu();
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(update_menu)
+        {
+            UpdateMenu();
+            update_menu = false;
+        }
     }
 
     public void OptionsMenuOpen()
@@ -128,11 +69,13 @@ public class OptionsScript : MonoBehaviour
         {
             OptionsMenu.SetActive(true);
             GameplayScene.SetActive(false);
+            update_menu = true;
         }
         else
         {
             OptionsMenu.SetActive(false);
             GameplayScene.SetActive(true);
+            update_menu = true;
         }
 
         
@@ -254,8 +197,77 @@ public class OptionsScript : MonoBehaviour
 
     public void ReturntoMainMenu()
     {
-        audio_director.Silence();
+        audio_director.music_audio_source.Stop();
         SceneManager.LoadScene("Main Menu");
     }
 
+    public void UpdateMenu()
+    {
+        musicvolume.value = audio_director.music_volume;
+        int display_value_1 = Mathf.FloorToInt((musicvolume.value * 100));
+        musicvolume_text.text = display_value_1.ToString();
+
+        gamesfxvolume.value = audio_director.game_sfx_volume;
+        int display_value_2 = Mathf.FloorToInt((gamesfxvolume.value * 100));
+        gamesfx_text.text = display_value_2.ToString();
+
+        scenesfxvolume.value = audio_director.scene_sfx_volume;
+        int display_value_3 = Mathf.FloorToInt((scenesfxvolume.value * 100));
+        scenesfx_text.text = display_value_3.ToString();
+
+        musicvolume.onValueChanged.AddListener(VolumeSlider);
+        gamesfxvolume.onValueChanged.AddListener(VolumeSlider);
+        scenesfxvolume.onValueChanged.AddListener(VolumeSlider);
+
+        float textspeed = PlayerPrefs.GetFloat("textspeed");
+        switch (textspeed)
+        {
+            case 0.020f:
+                textspeed_button.text = "Text Speed: FAST";
+                break;
+            case 0.045f:
+                textspeed_button.text = "Text Speed: STANDARD";
+                break;
+            case 0.075f:
+                textspeed_button.text = "Text Speed: SLOW";
+                break;
+            default:
+                textspeed_button.text = "Text Speed: STANDARD";
+                break;
+        }
+
+        int textsize = PlayerPrefs.GetInt("textsize");
+        switch (textspeed)
+        {
+            case 48:
+                textsize_button.text = "Text Size: STANDARD";
+                break;
+            case 54:
+                textsize_button.text = "Text Size: LARGE";
+                break;
+            default:
+                textsize_button.text = "Text Size: STANDARD";
+                break;
+        }
+
+        string datacollection = PlayerPrefs.GetString("datacollection");
+        if (datacollection == "true")
+        {
+            datagathering_toggle.isOn = true;
+        }
+        else
+        {
+            datagathering_toggle.isOn = false;
+        }
+
+        string autosave = PlayerPrefs.GetString("autosave");
+        if (autosave == "true")
+        {
+            autosave_toggle.isOn = true;
+        }
+        else
+        {
+            autosave_toggle.isOn = false;
+        }
+    }
 }

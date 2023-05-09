@@ -72,7 +72,7 @@ MonoBehaviour:
   scene_exits:
   - '[1,0,0,0][8,0,0,0]'
   scene_flags:
-  - cs04
+  - z03cs04
   - cs04
   - cs01
   - c

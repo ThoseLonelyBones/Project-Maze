@@ -119,7 +119,7 @@ MonoBehaviour:
   - "<color=#00e64d>\u201D...\u201D</color>"
   - "<color=#00e64d>\u201DI had suspsected as much.\u201D</color>"
   - Ammon takes a few seconds to reply to you.
-  - "<color=#00e64d>\u201DThe Horn of Ammon was a gift for me to Dearion. I was summoned
+  - "<color=#00e64d>\u201DThe Horn of Ammon is what binds me to him. I was summoned
     here by one of his faithful servants in hope I could cure him of his broken heart.
     The Horn of Ammon is the instrument that allowed for such act\u2026 but if it\u2019s
     broken\u2026 it means everything\u2019s lost.\u201D</color>"
@@ -265,7 +265,7 @@ MonoBehaviour:
   - '[18,0,0,0][76,0,0,0]'
   - '[23,0,0,0][77,0,0,0]'
   scene_flags:
-  - cs07s08
+  - z01cs07s08
   - c
   - cs01
   - bs00
@@ -323,7 +323,7 @@ MonoBehaviour:
   - b
   - b
   - b
-  - b
+  - bx
   - cs03
   - cs01
   - c

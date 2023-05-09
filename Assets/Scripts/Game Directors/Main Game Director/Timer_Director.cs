@@ -83,7 +83,7 @@ public class Timer_Director : MonoBehaviour
         else if(Attempt_Timer == 0)
         {
             Debug.Log("Game End");
-            audio_director.StopMusic();
+            //audio_director.StopMusic();
             reset = true;
             // Disable Save, Options, Spacebar.
             // Lower everything's Alpha

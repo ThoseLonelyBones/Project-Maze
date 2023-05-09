@@ -77,16 +77,15 @@ MonoBehaviour:
     in this tomb\u2026 Two people that didn\u2019t deserve to be forgotten.\u201D</color>"
   - The words of Ammon seem particularly sad. It is something that you can feel is
     hurting him to say.
-  - "<color=#00e64d>\u201CIn a sense, I do. As the God of Memory, I know about everything
-    that transpired and will transpire. I know of what truly happened here\u2026
+  - "<color=#00e64d>\u201CIn a sense, I do. As the God of Memory, I know everything
+    that is remembered... with some limits. But I know of what truly happened here\u2026
     and why it was forgotten.\u201D</color>"
   - "<color=#00e64d>\u201CIt is none of your fault. You weren\u2019t there to prevent
     it, you weren\u2019t there to forget it\u2026 but I was.\u201D</color>"
   - "<color=#00e64d>\u201CYes. Let\u2019s. This matches with my plans.\u201D</color>"
-  - "<color=#00e64d> \u201CI suggest you spend as little time as possible just talking
-    to me. It would be better for you to understand by way of proof\u2014 I know
-    there is little trust in the words of an Outlawed God, so I\u2019d rather you
-    see for yourself. Your time in here is short\u2026 and there is much to remember.
+  - "<color=#00e64d> \u201CIt would be better for you to understand by way of proof\u2014
+    I know there is little trust in the words of an Outlawed God, so I\u2019d rather
+    you see for yourself. Your time in here is short\u2026 and there is much to remember.
     Do not worry\u2026 you will have the occasion to tread back on these conversations\u2026\u201D</color>"
   - You shake your head confused. You have no idea what these words mean.
   - 'You now stand in front of the wall, ready to make your choices. You start with
@@ -112,7 +111,7 @@ MonoBehaviour:
   - "Once again, by the feel of the material of this, you can guess this is another
     mosaic. Your hand quickly scans for features once again. It appreas to be a single
     large figure, an individual of some sort. It is striking a proud pose, holding
-    something in hand\u2014 short and thing."
+    something in hand\u2014 short and thn."
   - A plaque stands above the mosaic. Once again, you take some time to spell out
     its contents.
   - "<mspace=0.5em><color=#d9d9d9> \u201C<b><i>188</b></i>. Shrine of <b><i>Junia</i></b>,
@@ -208,8 +207,8 @@ MonoBehaviour:
     You are the only one that may proceed.\u201D </mspace></color>"
   - "<mspace=0.5em><color=#d9d9d9> \u201CProve to me you are Dearion. Speak aloud
     this passcode: The Initial of the Court Wizard. The number associated with her
-    death. The initial of her weapon of choice. And the years she had when you first
-    met her. (All letters need to be Uppercase!)\u201D </mspace></color>"
+    death. The Uppercase initials of her weapon of choice. And the years she had
+    when you first met her. (All letters need to be Uppercase!)\u201D </mspace></color>"
   - "The gate hums back:<mspace=0.5em><color=#d9d9d9> \u201CIncorrect Passcode.\u201D
     </color></mspace>"
   - You remove your hand from the slit and look at the wall again.
@@ -221,8 +220,8 @@ MonoBehaviour:
     You are the only one that may proceed.\u201D </mspace></color>"
   - "<mspace=0.5em><color=#d9d9d9> \u201CProve to me you are Dearion. Speak aloud
     this passcode: The Initial of your Right Hand. The number associated with his
-    death. The initial of his Prized Shield. And the points he got when he won it
-    from you. (All letters need to be Uppercase!)\u201D </mspace></color>"
+    death. The Uppercase initials of his Prized Shield. And the points he got when
+    he won it from you. (All letters need to be Uppercase!)\u201D </mspace></color>"
   - "The gate hums back:<mspace=0.5em><color=#d9d9d9> \u201CIncorrect Passcode.\u201D
     </color></mspace>"
   - You remove your hands from the slits and look at the wall again.
@@ -320,15 +319,15 @@ MonoBehaviour:
   - c
   - ci65
   - c
-  - ct
+  - cx
   - f
-  - ct
+  - cx
   - c
   - ci71
   - c
-  - c
+  - cx
   - f
-  - cs01
+  - cs01x
   - c
   - c
   - s00d

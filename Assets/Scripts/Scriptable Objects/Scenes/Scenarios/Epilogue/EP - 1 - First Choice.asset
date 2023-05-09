@@ -68,7 +68,7 @@ MonoBehaviour:
     been through?\u201C</color>"
   - "<color=#00e64d>\u201DThank you for reconsidering.\u201C</color>"
   - Player, is this truly your final choice? (You will get a unique Epilogue and
-    ending, but miss another ending).
+    ending, but miss the True Ending of the game).
   - "<color=#00e64d>\u201D\u2026\u201C</color>"
   - "<color=#00e64d>\u201D\u2026\u201C</color>"
   - "<color=#00e64d>\u201D\u2026\u201C</color>"
@@ -226,7 +226,7 @@ MonoBehaviour:
   - bs00
   - f
   - bs01
-  - c
+  - cx
   - c
   - c
   - c
@@ -235,10 +235,10 @@ MonoBehaviour:
   - c
   - bs00s01
   - c
-  - bs00
+  - bs00x
   - c
-  - bs00
-  - c
+  - bs00x
+  - cx
   - cs03
   - c
   - cs04
@@ -249,13 +249,13 @@ MonoBehaviour:
   - c
   - u01
   - cs02
-  - cs04
-  - c
-  - c
-  - c
-  - c
-  - c
   - cs05
+  - c
+  - c
+  - c
+  - c
+  - c
+  - cs06
   - c
   - c
   - c

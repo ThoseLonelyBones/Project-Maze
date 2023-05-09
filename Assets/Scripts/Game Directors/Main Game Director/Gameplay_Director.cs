@@ -149,6 +149,10 @@ public class Gameplay_Director : MonoBehaviour
     private int act_index = 0;
     [SerializeField]
     private int play_index = 0;
+    [SerializeField]
+    private int chapter_progression_index = 0;
+    [SerializeField]
+    private int encore_index = 0;
 
     /*
      * These two booleans are activated by the menu options present in the game, also questionare has an exclusive flag to activate i
@@ -162,6 +166,8 @@ public class Gameplay_Director : MonoBehaviour
     private string gamedata;
 
     public int[] exits_addendum_array = { 1, 1, 1, 1 };
+
+    private bool reset_scenario = false;
 
 
 
@@ -357,6 +363,12 @@ public class Gameplay_Director : MonoBehaviour
                     index++;
                     text_check = so_director.ChangeScenarioText(index);
                     break;
+                case "e":
+                    // This flag is checked every time you complete a code in the repeat section!
+
+                    // Find a way to calculate 
+                    encore_index++;
+                    break;
                 case "f":
                     text_check = so_director.ChangeScenarioText(hook_index);
                     index = hook_index;
@@ -376,7 +388,6 @@ public class Gameplay_Director : MonoBehaviour
 
                     passcode_field.SetActive(true);
                     input.inputfield.characterLimit = so_director.current_scene.password[so_director.input_index].Length;
-                    Debug.Log("The length of the input field is: " + input.inputfield.characterLimit + " because the password is " + so_director.current_scene.password[so_director.input_index]);
                     input.progress = false;
                     break;
                 case "q":
@@ -391,20 +402,44 @@ public class Gameplay_Director : MonoBehaviour
                     audio_director.PlayMusic(music_index);
                     break;
                 case "r":
-                        int act_length = sot_play.all_acts[play_index].act_elements.Length;
-                        Debug.Log("Act Length: " + act_length);
-                        if ((act_index + 1) == act_length)
+                    int act_length;
+
+                        if(!reset_scenario)
                         {
-                            Debug.Log("yes");
-                            act_index = 1;
-                            play_index++;
+                            act_length = sot_play.all_acts[play_index].act_elements.Length;
                         }
                         else
                         {
-                            Debug.Log("no");
-                            act_index++;
+                            act_length = 0;
+                        }
+     
+                        Debug.Log("Act Length: " + act_length);
+                        if ((act_index + 1) == act_length)
+                        {
+
+                             Debug.Log("yes");
+                             act_index = 1;
+                             play_index++;
+
+
+                            
+                        }
+                        else
+                        {
+                            if(!reset_scenario)
+                            {
+                                Debug.Log("no");
+                                act_index++;
+                            }
+                            else
+                            {
+                                reset_scenario = false;
+                                
+                            }
+                            
                         }
 
+                    encore_index = 0;
                     Debug.Log(play_index + " is play index and " + act_index + " is act index");
                     index = so_director.ChangeScene(sot_play.all_acts[play_index].act_elements[act_index]);
                     so_director.input_index = 0;
@@ -450,6 +485,57 @@ public class Gameplay_Director : MonoBehaviour
                         info_handler.SaveData(gamedata);
                     }
                     break;
+                case string z when Regex.IsMatch(z, "^z[0-9]{2}$"):
+                    int progression_check = int.Parse(flag[x].Substring(1, 2));
+                    Debug.Log("Progression Check is: " + progression_check);
+                    if(chapter_progression_index < progression_check)
+                    {
+                        chapter_progression_index = progression_check;
+                        Debug.Log("chapter_progression_index is now:" + progression_check);
+                    }
+
+                    if(progression_check == 0 && encore_index >= chapter_progression_index)
+                    {
+                        switch(chapter_progression_index)
+                        {
+                            case 1:                                     // Interlude to Chapter 2
+                                play_index = 2;
+                                act_index = 1;
+                                Debug.Log("Going to the Interlude of Chapter 2, case 1");
+                                break;
+                            case 2:
+                                play_index = 2;
+                                act_index = 2;
+                                Debug.Log("Going to the start of Chapter 2, case 2");
+                                break;
+                            case 3:
+                                play_index = 3;
+                                act_index = 1;
+                                Debug.Log("Going to the Interlude of Chapter 3, case 3");
+                                break;
+                            case 4:
+                                play_index = 3;
+                                act_index = 2;
+                                Debug.Log("Going to the start of Chapter 3, case 4");
+                                break;
+                            default:
+                                play_index = 2;
+                                act_index = 1;
+                                Debug.Log("Going to the Interlude of Chapter 2, default");
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        if((encore_index == 2 || encore_index == 3) && chapter_progression_index > 2)
+                        {
+                            play_index = 2;
+                            act_index = 2;
+                            Debug.Log("Going to the start of Chapter 2... even though you know more than this!");
+                        }
+                    }
+                    break;
+
                 default:
                     Debug.Log("How has this even happened? Is this even possible?");
                     break;
@@ -502,9 +588,13 @@ public class Gameplay_Director : MonoBehaviour
             hook_index = int.Parse(savedata_array[7]);
             so_director.hook_exit_index = hook_index;
             so_director.input_index = int.Parse(savedata_array[8]);
+            chapter_progression_index = int.Parse(savedata_array[9]);
             Debug.Log(so_director.input_index);
             Debug.Log(hook_index);
+            gamedata = info_handler.LoadData();
             resumeGame();
+
+            audio_director.music_audio_source.Stop();
         }
         else
         {
@@ -575,7 +665,7 @@ public class Gameplay_Director : MonoBehaviour
         int exit_index = so_director.exit_index;
         int timer = timer_director.Get_Attempt_Timer();
         int password_index = so_director.input_index;
-        info_handler.SaveGame(current_scene, index, act_index, play_index, exit_index, timer, 0, hook_index, password_index);
+        info_handler.SaveGame(current_scene, index, act_index, play_index, exit_index, timer, 0, hook_index, password_index, chapter_progression_index);
 
         ui_director.SystemText("Game Saved!", 5);
     }
@@ -612,12 +702,13 @@ public class Gameplay_Director : MonoBehaviour
         GameObject eventsystem = GameObject.Find("EventSystem");
         progressText = false;
         act_index = 0;
+        play_index = 1;
         text_check = so_director.Faint();
         ui_director.DisableButtons();
         ui_director.CanvasFade();                                                                                   // Lower everything's Alpha
         StartCoroutine(WaitforCanvasFade());
-        StartCoroutine(WaitforCanvasSpawn());     
-        
+        StartCoroutine(WaitforCanvasSpawn());
+        reset_scenario = true;
     }
 
     IEnumerator WaitforCanvasFade()
@@ -660,8 +751,8 @@ public class Gameplay_Director : MonoBehaviour
 
     private void BacktoMainMenu()
     {
-        SceneManager.LoadScene("Main Menu");
         audio_director.music_audio_source.Stop();
+        SceneManager.LoadScene("Main Menu");
     }
     
 }

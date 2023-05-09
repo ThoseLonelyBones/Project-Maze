@@ -24,45 +24,132 @@ MonoBehaviour:
     listen to the music in the background\u2014 which changes based on the timer\u2019s
     value."
   - "When your timer runs out, you will begin the game again from here\u2014 at the
-    start of Chapter 1. In addition to that, talking to others usually does not cause
-    the timer to decrease, only when you or another takes a <i>physical action</i>.
-    While not always extremely precise, this is a good rule of thumb."
-  - "However, an extremely important distinction needs to be made: nothing within
-    the game world changes as you take your attempts. All passcodes remain the exact
-    same. You are encouraged \u2013 and intended to \u2013 not check the solution
-    for each puzzle every time you begin a chapter: instead, use your knowledge aquired
-    from previous attempt to progress through the chapters while saving as many actions
-    as possible!"
-  - If you find the text on screen becoming repetitive, remember that you can change
-    the speed of text in the options menu and you can skip writing text by pressing
-    SPACEBAR as the text is being written.
+    start of Chapter 1.\r\nHowever, an extremely important distinction needs to be
+    made: nothing within the game world changes as you take your attempts. All passcodes
+    remain the exact same. You are encouraged \u2013 and intended to \u2013 not check
+    the solution for each puzzle every time you begin a chapter: instead, use your
+    knowledge aquired from previous attempt to progress through the chapters while
+    saving as many actions as possible!\r\n"
+  - "Additionally, given that there is a lot of text to go through in the game you
+    can ask the game to \u2018Test your Memory\u2019!"
+  - "This is an opportunity for you to play through the game faster. Iif you can
+    remember the passcodes of a certain chapter, you may skip through said chapter
+    by entering the passwords. However, this does account for text you may have not
+    read yet, thus you won\u2019t be skipped to, say, the start of Chapter 3 if you
+    have yet to read the text between Chapter 2 and Chapter 3! If you want to re-read
+    older text, you may also begin from Chapter 1 again. "
+  - In addition to that, If you find the text on screen becoming repetitive, remember
+    that you can change the speed of text in the options menu and you can skip writing
+    text by pressing SPACEBAR as the text is being written.
   - Just remember there is no score or bonus for completing the game in a low amount
     of attempts. Take all the time you need and good luck!
-  - "Back to the game\u2026"
-  - "<color=#00e64d>\u201DKeeper\u2026\"</color>"
-  - "<color=#00e64d>\u201DKeeper!\"</color>"
-  - "<color=#00e64d>\u201DYou will not be able to remember everything...\u201D</color>"
-  - "<color=#00e64d>\u201DHowever your past knowledge will still be carried over,
-    no matter how many attempts it takes you.\u201C</color>"
-  - "<color=#00e64d>\u201DEverything is as it is supposed to be.\u201D</color>"
-  - "<color=#00e64d>\u201DNow\u2026 wake up.\"</color>"
-  exit_text: []
-  scene_exits: []
+  - Now, what do you want to do?
+  - 'Your memory rapidly goes through the motions played in front of you previously:
+    your investigations, your discoveries and the secrets that are no longer such.
+    Now in front of you stand two holes in the wall.'
+  - 'You place hand on the left slot. Once again, the slit feels just the right size
+    for an arm to fit through. With a hum, the wall responds:'
+  - "<mspace=0.5em><color=#d9d9d9> \u201CMy Emperor, have you come to honor the dead?
+    You are the only one that may proceed.\u201D </mspace></color>"
+  - "<mspace=0.5em><color=#d9d9d9> \u201CProve to me you are Dearion. Speak aloud
+    this passcode: The Initial of the Court Wizard. The number associated with her
+    death. The initial of her weapon of choice. And the years she had when you first
+    met her. (All letters need to be Uppercase!)\u201D </mspace></color>"
+  - "The gate hums back: <mspace=0.5em><color=#d9d9d9> \u201CIncorrect Passcode.\u201D
+    </mspace></color>"
+  - "The gate hums: <mspace=0.5em><color=#d9d9d9> \u201CCorrect Passcode. Please,
+    unlock the next one to progress.\u201D </mspace></color >"
+  - 'You insert your hand on the right slit, which fits your arm perfectly. With
+    a hum the wall responds:'
+  - "<mspace=0.5em><color=#d9d9d9> \u201CMy Emperor, have you come to honor the dead?
+    You are the only one that may proceed.\u201D </mspace></color>"
+  - "<mspace=0.5em><color=#d9d9d9> \u201CProve to me you are Dearion. Speak aloud
+    this passcode: The Initial of your Right Hand. The number associated with his
+    death. The initial of his Prized Shield. And the points he got when he won it
+    from you. (All letters need to be Uppercase!)\u201D </mspace></color>"
+  - "The gate hums back: <mspace=0.5em><color=#d9d9d9> \u201CIncorrect Passcode.\u201D
+    </mspace></color>"
+  - "The gate hums back: <mspace=0.5em><color=#d9d9d9> \u201CCorrect Passcode.\u201D
+    </mspace></color>"
+  - You brush through the events of Chapter 1, now locked in your mind. Now in front
+    of you stand a pedistal
+  - "<mspace=0.5em><color=#d9d9d9>\"Please pronounce the first passcode\u2014 the
+    one low to the ground.\"</color>"
+  - "<mspace=0.5em><color=#d9d9d9>\"Pronounce these words\u2014 \nThe number in the
+    second line of the writing.\r\nThe Uppercase letters in the third line of writing.\r\nThe
+    First and Last letter of the name of Daerion\u2019s wife (Case Sensitive), and
+    the years she had when her eternal slumber started.\"</color>\n"
+  - 'The pedestal whispers back: <mspace=0.5em><color=#d9d9d9>"Incorrect Passcode."</color>'
+  - 'The pedestal whispers back: <mspace=0.5em><color=#d9d9d9>"Correct Passcode."</color>'
+  - "<color=#00e64d>\u201DIt's the last stretch, you can do this!\u201D</color>"
+  - <mspace=0.5em><color=#d9d9d9>"Now, speak aloud the second code- the one high
+    above."</color>
+  - "<mspace=0.5em><color=#d9d9d9>\"Pronounce these words\u2014\nThe initial letter
+    of every word in the first sentence.\r\nThe number in the second sentence.\r\nThe
+    intial of every word in the third sentence starting from the last and going to
+    the first.\r </color>\n"
+  - 'The pedestal whispers back: <mspace=0.5em><color=#d9d9d9>"Incorrect Passcode."</color>'
+  - 'The pedestal whispers back: <mspace=0.5em><color=#d9d9d9>"Correct Passcode."</color>'
+  - You brush through the events of Chapter 2, now locked in your mind. Now...
+  - "<color=#00e64d>\u201DDon't give up just yet.\u201D</color>"
+  - Let's resume your adventure...
+  exit_text:
+  - Default Text
+  - '"Test my Memory!"'
+  - '"Let''s start from the Beginning"'
+  - '"Attempt to insert the passcode"'
+  - '"Resume from the point you remember"'
+  scene_exits:
+  - '[1,2,0,0][8,31,0,0]'
+  - '[3,4,0,0][10,31,0,0]'
+  - '[3,4,0,0][15,31,0,0]'
+  - '[3,4,0,0][20,30,0,0]'
+  - '[3,4,0,0][25,30,0,0]'
   scene_flags:
+  - s00m00c
   - c
   - c
   - c
   - c
   - c
   - c
+  - b
+  - ch
+  - b
+  - ci13
   - c
+  - f
+  - ech
+  - b
+  - ci18
   - c
+  - f
+  - ecz00h
+  - b
+  - ci23
   - c
+  - f
+  - ech
+  - b
+  - ci28
   - c
+  - f
   - c
-  - c
+  - ecs01
+  - cs00z00
   - d
-  scene_sfx: []
+  scene_sfx:
+  - 
+  - Ammon1
   scene_music: []
-  password: []
-  responses: []
+  password:
+  - J188WWM12
+  - B392SPP61
+  - 1340SDHAEe35
+  - AtCJ1504DaWWy
+  responses:
+  - 
+  - "<color=#00e64d>\u201DVery well. Get ready.\u201D</color>"
+  - "<color=#00e64d>\"Retreading your steps is the correct choice.\u201D</color>"
+  - "<color=#00e64d>\u201DNow... Focus.\u201D</color>"
+  - "<color=#00e64d>\u201DRetreading your steps is the correct choice.\u201D</color>"

@@ -85,6 +85,8 @@ public class SO_Director : MonoBehaviour
     public int exit_index = 0;
     [SerializeField]
     public int hook_exit_index = 0;
+    [SerializeField]
+    public int hook_input_index = 0;
     private int[] response = { 0, 0, 0, 0 };
 
     public int input_index = 0;
@@ -382,11 +384,13 @@ public class SO_Director : MonoBehaviour
                         // Change Scenario Text -> this prompts into a change of the index.
                         break;
                     case "f":
-                        exit_index = hook_exit_index;
                         // Return to saved 'h' index
+                        exit_index = hook_exit_index;
+                        input_index = hook_input_index;
                         break;
                     case "h":
                         hook_exit_index = exit_index;
+                        hook_input_index = input_index;
                         // Return to this index once 'f' is called. If 'h' is called again, override the old one.
                         break;
                     case string i when Regex.IsMatch(i, "^i[0-9]{2}$"):

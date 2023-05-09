@@ -52,7 +52,7 @@ MonoBehaviour:
   - "That wasn\u2019t the correct choice! You need to be careful with your words
     and your choices now. If autosave is enabled, the game has saved at the start
     of the Epilogue. You may retry to complete the Epilogue\u2026 but for now\u2026"
-  - "color=#00e64d>\u201D\u2026 \u201C</color>"
+  - "<color=#00e64d>\u201D\u2026 \u201C</color>"
   - "<color=#cc0000>\u201C\u2026\u201D </color>"
   - "<color=#7094db> \u201C\u2026\u201D </color>"
   - "<color=#cc0000>\u201CWhat does it matter? Why would I care about the Jester
@@ -336,6 +336,7 @@ MonoBehaviour:
     who you are. Don\u2019t let your future be defined by your past, but let its
     lessons reveal the path you want to follow."
   - "If this story is to be treated as a fable\u2026 then I want that to be its moral."
+  - '"Hey how did you even get back here?"'
   exit_text:
   - 'Default Exit
 
@@ -473,7 +474,7 @@ MonoBehaviour:
   - c
   - cs03
   - cs13
-  - c
+  - cs00
   - c
   - c
   - b
@@ -511,19 +512,19 @@ MonoBehaviour:
   - c
   - cs02
   - cs13
-  - ch
+  - chs00
   - b
   - f
   - c
   - cs13
-  - c
+  - cs00
   - cs14
   - cs15
   - c
   - b
   - c
   - cs16
-  - cs17
+  - cs17x
   - cs12
   - cs18
   - cs17
@@ -537,6 +538,7 @@ MonoBehaviour:
   - c
   - c
   - u01
+  - c
   scene_sfx:
   - 
   - Ammon1

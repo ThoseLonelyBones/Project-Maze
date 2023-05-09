@@ -46,7 +46,7 @@ MonoBehaviour:
     of Shining Blade\u2014 the crushing battle of the year 1340 of the new Age and
     where Dearion\u2019s dearest gave their life for victory\u201D.</mspace> </color>"
   - "<mspace=0.5em><color=#d9d9d9>\u201Dthe <i>Second</i> room is Dedicated to the
-    Horn of Ammon, a dedication to the unknown God of Memory\u201D</color> </mspace>"
+    Horn of Ammon, a dedication to the unknown god of memory\u201D</color> </mspace>"
   - "<mspace=0.5em><color=#d9d9d9>\u201DThe Last Room is the resting place of Elodie,
     his wife. She has been sleeping there ever since she turned 35.</color>"
   - You make a mental note of everything spelled on the ground and proceed to examine
@@ -239,7 +239,7 @@ MonoBehaviour:
   - '[13,14,15,0][63,65,67,0][1,1,1,1]'
   - '[0,16,17,0][0,85,84,0][0,1,1,0]'
   scene_flags:
-  - c
+  - z02c
   - c
   - c
   - ch
@@ -325,15 +325,15 @@ MonoBehaviour:
   - b
   - f
   - i89c
-  - ct
   - c
+  - cx
   - f
-  - c
+  - cx
   - i94c
-  - ct
   - c
+  - cx
   - f
-  - cs11
+  - cs11x
   - cs01
   - s00d
   scene_sfx:

@@ -35,21 +35,23 @@ public class Information_Handler : MonoBehaviour
 
     }
 
-    public void SaveGame(SOT_Scene scene, int index, int act_index, int play_index,  int exit_index, int timer, int attempts, int hook_index, int password_index)
+    public void SaveGame(SOT_Scene scene, int index, int act_index, int play_index,  int exit_index, int timer, int attempts, int hook_index, int password_index, int chapter_progression_index)
     {
         string savepath = Path.Combine(filepath, savefile);
 
         Debug.Log(savepath);
 
-        game_data = "<currentscene>" + scene + "</currentscene>" + "\n"                 //SaveArray[0]
-                  + "<index>" + index + "</index>" + "\n"                               //SaveArray[1]
-                  + "<actindex>" + act_index + "</actindex>" + "\n"                     //SaveArray[2]
-                  + "<playindex>" + play_index + "</playindex>" + "\n"                  //SaveArray[3]
-                  + "<exitindex>" + exit_index + "</exitindex>" + "\n"                  //SaveArray[4]
-                  + "<attempttimer>" + timer + "</attempttimer>" + "\n"                 //SaveArray[5]
-                  + "<attemptnumber>" + attempts + "</attemptnumber>" + "\n"            //SaveArray[6]
-                  + "<hookindex>" + hook_index + "</hookindex>" + "\n"                  //SaveArray[7]
-                  + "<passwordindex>" + password_index + "</passwordindex>" + "\n";     //SaveArray[8]
+        game_data = "<currentscene>" + scene + "</currentscene>" + "\n"                                      //SaveArray[0]
+                  + "<index>" + index + "</index>" + "\n"                                                    //SaveArray[1]
+                  + "<actindex>" + act_index + "</actindex>" + "\n"                                          //SaveArray[2]
+                  + "<playindex>" + play_index + "</playindex>" + "\n"                                       //SaveArray[3]
+                  + "<exitindex>" + exit_index + "</exitindex>" + "\n"                                       //SaveArray[4]
+                  + "<attempttimer>" + timer + "</attempttimer>" + "\n"                                      //SaveArray[5]
+                  + "<attemptnumber>" + attempts + "</attemptnumber>" + "\n"                                 //SaveArray[6]
+                  + "<hookindex>" + hook_index + "</hookindex>" + "\n"                                       //SaveArray[7]
+                  + "<passwordindex>" + password_index + "</passwordindex>" + "\n"                           //SaveArray[8]
+                  + "<chapterprogression>" + chapter_progression_index + "</chapterprogression>" + "\n";     //SaveArray[9]
+                
         //  Maybe save passwords
 
         Encryption_Assistant.Encrypt_GameData(game_data, savepath, secret_key, iv);

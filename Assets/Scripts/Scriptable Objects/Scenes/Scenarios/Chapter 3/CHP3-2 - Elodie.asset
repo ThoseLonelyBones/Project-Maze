@@ -201,7 +201,7 @@ MonoBehaviour:
     not all of them. Memories aren\u2019t perfect, after all\u2026\u201C</color>"
   - "<color=#00e64d>\u201DMh, it\u2019s somewhat amusing. Dearion was always terrible
     at remembering dates\u2026 but he definetly did remember about this one.\u201C</color>"
-  - "<color=#00e64d>\u201DThey met at a gal\xE0 when Dearion was still small nobility.
+  - "<color=#00e64d>\u201DThey met at a gala when Dearion was still small nobility.
     At the time, Elodie was already a princess of a kingdom\u2026 she wouldn\u2019t
     remain that for long however. A few years later, revolution would hit her country
     by storm and her dad, the then-king, would be forced into exhile.\u201C</color>"
@@ -467,8 +467,9 @@ MonoBehaviour:
   - '[17,18,19,20][75,87,94,97][1,1,1,1]'
   - '[21,22,23,0][104,107,110,0][1,1,1,1]'
   - '[24,0,0,0][153,0,0,0]'
+  - '[24,0,0,0][153,0,0,0]'
   scene_flags:
-  - cs02
+  - z04cs02
   - c
   - c
   - c
@@ -496,23 +497,23 @@ MonoBehaviour:
   - ch
   - b
   - ci30
-  - ct
+  - cx
   - f
-  - cs01
+  - cs01x
   - cs00
   - c
   - ci37
-  - ct
+  - cx
   - cs01
   - s00f
-  - cs01
+  - cs01x
   - cs00
   - c
   - ci44
-  - ct
+  - cx
   - cs01
   - s00f
-  - bs03s04
+  - bs03s04x
   - b
   - ct
   - c
@@ -572,13 +573,13 @@ MonoBehaviour:
   - cs00s01
   - c
   - bs01
-  - c
+  - cx
   - cs00
   - f
-  - c
+  - cx
   - cs00
   - f
-  - c
+  - cx
   - cs00
   - f
   - cs00s01

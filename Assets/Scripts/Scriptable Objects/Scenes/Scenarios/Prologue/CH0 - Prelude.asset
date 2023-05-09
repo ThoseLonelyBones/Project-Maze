@@ -125,9 +125,9 @@ MonoBehaviour:
   - "The gate hums back: <mspace=0.5em><color=#d9d9d9>\"INCORRECT PASSCODE. \u201D
     </color></mspace>"
   - "No\u2026 that wasn\u2019t it\u2026. It was\u2026 something like\u2026"
-  - "<color=#00e64d>\u201DCo\u2026\u201D</color>"
-  - "<color=#00e64d>\u201D\u2026git\u2026\u201D</color>"
-  - "<color=#00e64d>\u201D\u2026us\u2026\u201D</color>"
+  - "<color=#00e64d>\u201DCO\u2026\u201D</color>"
+  - "<color=#00e64d>\u201D\u2026GIT\u2026\u201D</color>"
+  - "<color=#00e64d>\u201D\u2026US\u2026\u201D</color>"
   - "The gate hums back: <mspace=0.5em><color=#d9d9d9>\"CORRECT PASSCODE. \u201D
     </color></mspace>"
   - "Without any warning, you feel a sudden, magical force drag you towards the wall.
@@ -148,7 +148,7 @@ MonoBehaviour:
   scene_exits:
   - '[0,1,2,0][0,43,36,0]'
   scene_flags:
-  - cm04s01
+  - cm00m04s01
   - c
   - c
   - c
@@ -184,7 +184,7 @@ MonoBehaviour:
   - cs03
   - c
   - bs00
-  - cs01q
+  - cs01x
   - c
   - c
   - c
@@ -221,5 +221,5 @@ MonoBehaviour:
   - PopulaceStirs
   scene_music: []
   password:
-  - Cogitus
+  - COGITUS
   scenario_dialogues: []
